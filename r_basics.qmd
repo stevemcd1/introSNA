@@ -1,0 +1,243 @@
+---
+title: "R Basics and Resources"
+author: "Dr. Steve McDonald"
+format: html
+editor: visual
+---
+
+## What is R and RStudio?
+
+This textbook teaches social network analysis in R. While R can be challenging for first time users, many excellent resources are available for learning R. This appendix offers links to those more detailed resources, while also providing a brief introduction to the software and the coding, focusing specifically on the coding particularities we rely on in this textbook.
+
+R is a statistical software program and coding language. RStudio is a software platform with a graphical user interface (GUI) that makes it easier to run R code and work with R. You can download these two programs and open RStudio and it will run R in the background. R comes with a series of base functions and these are supplemented with user-developed packages that can be downloaded from R's online repository or directly from user-specific repositories (typically, GitHub repositories).
+
+## Why R?
+
+The obvious first question is, why R? Social network analysis can be conducted in lots of different software programs and applications. We believe that R is the ideal program, at this current moment, for gaining extensive introductory training in SNA. First, R is free, so any student can access the program without the need for funds or an institutional affiliation that can provide those funds.
+
+Second, while RStudio has point-and-click capability and GUI interfaces, coding is essential for running detailed analyses and visualizations. This is a benefit, because any network analyst worth their salt should champion the ability to replicate their work. In other words, coding is a necessity and R offers an ideal platform to learn and apply software coding.
+
+Third, the decentralized character of R package development provides its users with a vast array of packages that are up to date and allow for an almost limitless font of data management and analysis functions. That is to say, there's almost nothing statistically you cannot do in R. We will, purposely, only focus on a small number of packages in this textbook. But learning the basics of SNA in R sets you up well for further statistical analyses.
+
+## External Resources for R
+
+There are many excellent guides for learning and using R & RStudio. An excellent introductory guide is Garrett Grolemund's \[Hands-On Programming with R\]<https://rstudio-education.github.io/hopr/>, which I highly recommend for those who are working with R for the first time. I also recommend Hadley Wickham's \[R for Data Science\]<https://r4ds.hadley.nz/> for further topics related to data management and coding workflow strategies. We rely heavily in our textbook on the tidy data principles that Hadley and his colleagues developed.
+
+The use of ChatGPT and other generative AI applications for assistance with coding has generated much debate in the social sciences. We have found these tools to be helpful when we do our coding work, though there are many reasons to be cautious. First, these tools often hallucinate by offering advice about packages or functions that do not (or no longer) exist. Second, these tools frequently offer complex solutions to relatively simple coding problems. It is better to ask about smaller and more precise tasks than to make broader queries about bigger problems. Third, make sure you understand the code that these applications are offering. They frequently offer to develop elaborate functions for you. When that happens, ask the app to break apart the function into smaller parts. And ask lots of questions about what the code is doing. It will take more time, but it will be time well spent.
+
+![](AI%20coding.jpg){fig-align="left"}
+
+## Installing R and RStudio
+
+R is available via the Comprehensive R Archive Network (\[CRAN\]<https://cran.r-project.org/>). Follow the link and select the file that matches your operating system. After installing R, go to the following link and do the same for \[RStudio\]<https://posit.co/downloads/>, just be sure to select the free option. R and RStudio are frequently updated, so you will periodically need to install new versions. When you open RStudio and a new update for R or RStudio are available, you'll be told that it's time to do so. It's usually a good idea to keep both programs up to date.
+
+Running R code requires that you open RStudio. You do not need to open R as well -- RStudio runs the R program in the background. Below is an example of what the interface looks like.
+
+![RStudio interface](Rstudio.png){fig-align="left"}
+
+## Interface
+
+As you can see, the interface includes 4 boxes. The upper left box is where you write the code. To be clear, **code** refers to the coding language that fits into this box. **Script** refers to the coding files which can be saved to your local or cloud environment. I recommend opening script files directly in RStudio, either by clicking on "File \> Open File..." or by using the open file icon at the upper left, instead of opening script files from outside of RStudio.
+
+To run code, you can highlight the portion of code that you want to run and then click on the "Run" button near the upper middle of the screen. Another option, which we find to be much easier, is to navigate to the line of the code that you want to run and press Ctrl+Enter. After that portion of the code is run, the cursor will move to the next line. This makes it very easy to sequentially run through the code in a script file.
+
+One other coding shortcut to mention: R makes autofill suggestions as you write your code. This can be a very helpful feature to rely on when you are calling on different objects and variables.
+
+When you run a command, the code and the corresponding output shows up in the console, which is lower left. You can also run code directly from the console by typing in your code and pressing enter.
+
+When you load or create an object, it shows up in your global environment (upper right). Graphical displays show up in the lower right box in the "Plots" tab. That lower right box also contains lots of other helpful tabs, including the "Help" tab which can be used to learn more about the various functions you will be using.
+
+## R Coding Basics
+
+At the simplest level, R can be used as a calculator. Just enter an equation and run the code. See below.
+
+```{r calc}
+8675*309
+
+```
+
+Here we can see the code in the shaded portion of the text above followed by the output. The output shows that the product of 8675 and 309 is 2680575. The \[1\] indicates that this is the first element of the output. In fact, it is the only element, which makes that information not especially useful. But rest assured it will be more helpful when your output includes multiple elements.
+
+Important note: if you move your cursor over the upper right hand portion of the shaded area, you'll see a button that copies the code to the clipboard. We recommend following along with the textbook chapters by copying the code and pasting it into your own script file. That way you can follow along with the various exercises, which will help you learn the material better.
+
+## Functions and Packages
+
+Typically, R is used to apply functions to data. Here's an illustration.
+
+```{r log}
+log(10)
+
+```
+
+log is a mathematical function that applies the natural logarithm to a number. This is typical format for code: function(information).
+
+To learn more about a function, you can type "?" followed by the name of the function and the details will show up in the "Help" tab in the bottom right box.
+
+Functions are grouped as part of packages. log is part of R's "base" package, which is always available when running RStudio. There are, of course, many other packages installed packages that are not immediately available when you open RStudio. To use those packages, they need to be brought into the library. Here's an example of bringing igraph, the main package we will use in this textbook, into the library.
+
+```{r library}
+#| warning: false
+library(igraph)
+
+```
+
+Now the various igraph functions can be run as part of your code. Quick note: bringing packages into libraries invokes a series of warning messages. We suppress warning messages in the output presented here, so you might see something different when you run these commands by yourself.
+
+Just like with the log function, you can use the Help window to examine the igraph package and its associated functions. You can also check out other installed and available packages in the "Packages" tab in the lower right hand box in RStudio. You can click on the check box in this window to load a package, though we recommend using the library command as part of your code instead.
+
+Some packages are not readily available as part of the standard R and RStudio downloads. For these types of packages, you need to first install the package (*install.packages("nameofpackage")*), which downloads it from CRAN and stores the file to your local machine. Then you need to bring the package into the library to use the function. You will only need to download the package once -- every subsequent time you will only need to bring it into the library. And you will see it appear in the "Packages" window after it is downloaded.
+
+## intronets
+
+We have created a new package for this textbook called "intronets". This package contains a command, "load_nets", that can be used to load the network data from our GitHub repository. To install intronets, use the following code. After doing this one time, you will be able to access the data files using the load_nets command. 
+
+```{r intronets}
+#| warning: false
+library(remotes)
+install_github("stevemcd1/intronets")
+
+```
+
+## Creating and Manipulating Objects
+
+A major benefit of R over other statistical software programs is that it is **object-oriented**, rather than **matrix-oriented** like SPSS, Stata, and SAS. Instead of loading and manipulating a matrix, R allows you to create and manipulate a wider array of different types of objects, matrices included.
+
+Let's create a very simple object. Then we can "call" that object to print it.
+
+```{r object}
+x <- 2 * 8
+x
+
+```
+
+The arrow ("\<-") serves as the assignment operator, which stores the information (the product of 2 and 8) in an object called x. If you are following along in RStudio, you'll note that the new object x now appears in the global environment. Note that you can name these objects whatever you want to (so long as the names do not include any spaces). And anytime you want to display an object in the console, you can just type its name and run the line.
+
+Here is a nifty shortcut for creating and printing objects in one step: wrap the entire line in parentheses.
+
+```{r paren}
+(x <- 2 * 8)
+
+```
+
+Objects can also be created with the use of functions and by using already existing objects.
+
+```{r sqrt}
+z <- sqrt(x)
+z
+
+```
+
+These are all single element objects. Multiple elements can be combined into more complex objects called **vectors** or **arrays** by using the "c()" command. Here are some examples.
+
+```{r vectors}
+number_vec1 <- c(1, 2, 3, 4, 5) 
+number_vec2 <- c(1:5) 
+number_vec1
+number_vec2
+
+character_vec <- c("Hello", "from", "Raleigh", "NC", "!")
+character_vec
+
+logical_vec <- c(TRUE, FALSE, TRUE, FALSE, TRUE)
+logical_vec
+
+```
+
+Here we can see three different types of vectors based on numbers, characters, and logical sequences. Once these objects are created, we might want to call on a specific element within the vector. This is called **subsetting** and involves the use of square brackets: "\[\]". See the examples below.
+
+```{r subset}
+number_vec1[3]
+character_vec[1:2]
+logical_vec[c(1,3,5)]
+
+```
+
+When these vectors are created, R stores information about the class of the object. You can use the "class" command to find out what type of object it is.
+
+```{r class}
+class(number_vec1)
+class(character_vec)
+class(logical_vec)
+
+```
+
+Vectors can be further combined to create more complex objects. We can "bind" vectors as rows (rbind) or as columns (cbind).
+
+```{r bind}
+rbind(number_vec1, character_vec, logical_vec)
+cbind(number_vec1, character_vec, logical_vec)
+
+```
+
+These more complex objects have their own classifications. For example, we could create matrices, data frames, or lists (which combine multiple complex objects).
+
+```{r complex}
+x_mat <- as.matrix(rbind(number_vec1, character_vec, logical_vec))
+x_df <- as.data.frame(cbind(number_vec1, character_vec, logical_vec))
+x_list <- as.list(c(x_mat,x_df))
+
+x_mat
+x_df
+x_list
+
+```
+
+Just like with vectors, we can subset elements within these complex objects. For matrices and data frames, we can call on a row, a column, or specific row and column combinations. We can also call on elements in lists.
+
+```{r subset2}
+x_mat[2,3]
+x_df[,3]
+x_list[[14]]
+
+```
+
+Data frames are especially useful objects because they allow us to examine and manipulate the columns as variables. We can call on a variable by using the "\$".
+
+```{r variable}
+x_df$number_vec1
+
+```
+
+You can see that each number in the list is wrapped in quotation marks. That means it is being treated as a character vector. In fact, all of the variables are being treated as character vectors. So let's change the variables to ensure that they are appropriately classified.
+
+```{r char2num}
+x_df$number_vec1 <- as.numeric(x_df$number_vec1)
+x_df$logical_vec <- as.logical(x_df$logical_vec)
+class(x_df$number_vec1)
+class(x_df$logical_vec)
+
+```
+
+There are times at which we will want to make multiple transformations simultaneously to an object such as a data frame. One way to make this easier is through the use of **piping**. This simplifies the commands by allowing you to identify the object first, then nest the transformations within the subsequent lines of code.
+
+Let's do a quick demonstration. First, we will need to bring dplyr into the library in order to use one of the functions (mutate) from that package. Then we identify our data frame, which we follow with the pipe operator ("\|\>" or sometimes "%\>%").
+
+The goal is to create a new variable that is the product of the values in the numeric and logical vectors (TRUEs are treated as 1s and the FALSEs are treated as 0s). The mutate command does that calculation, creating a new variable called "multiply". Then we can arrange the rows in the data frame in descending order based on the values from the multiply variable.
+
+```{r dplyr1}
+#| warning: false
+library(dplyr)
+x_df |> 
+  mutate(multiply = number_vec1*logical_vec) |> 
+  arrange(desc(multiply))
+
+```
+
+This does not make any changes to the data frame object itself -- it just makes the change and displays it. To change the data frame, we need to use the assignment operator ("\<-").
+
+```{r dplyr2}
+x_df <- x_df |> 
+  mutate(multiply = number_vec1*logical_vec) |> 
+  arrange(desc(multiply))
+
+```
+
+Finally, dplyr has a nice function called "glimpse" that allows us to take a quick scan on a data frame. Below we contrast glimpse with "head" from the base package which shows us the first six lines of a data frame. We will alternate between both display strategies in this textbook.
+
+```{r display}
+glimpse(x_df)
+head(x_df)
+
+```
+
+We'll cover a lot more in the other chapters, but this should provide you with the basics for getting started. Good luck!

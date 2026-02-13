@@ -1,0 +1,351 @@
+---
+title: "Ego network data setup"
+author: Dr. Steve McDonald
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Setting up ego network data
+
+Most of the techniques discussed as part of these tutorial use holistic network analysis. Let's initialize the necessary packages.
+
+```{r}
+#| warning: false
+library(intronets)
+library(igraph)
+library(ggraph)
+library(tidyverse)
+library(janitor)
+
+```
+
+Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By "bounded," I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.
+
+In many instances, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let's say we want to know about the relationships among people who are fans of Manga graphic novels.
+
+-   How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a "true" fan).
+
+-   Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.
+
+-   Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.
+
+For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.
+
+So instead of one big network defining all of the relationships within the group (for example)...
+
+```{r}
+set.seed(9035768)
+r1 <- sample_gnp(40, 1/15)
+
+ggraph(r1, layout = "fr") +
+  geom_edge_link(color = "darkgrey") +  
+  geom_node_point(color = "red", size = 4) +  
+  ggtitle("Holistic network") +
+  theme_void()                   
+
+```
+
+...we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as "egocentric").
+
+```{r}
+n_alters <- 5
+ego_id <- 1
+alter_ids <- 2:(n_alters + 1)
+
+edges <- data.frame(from = ego_id, to = alter_ids)
+alter_pairs <- t(combn(alter_ids, 2))
+n_alter_ties <- sample(1:nrow(alter_pairs), 3)
+random_alter_edges <- alter_pairs[n_alter_ties, , drop = FALSE]
+colnames(random_alter_edges) <- c("from", "to")
+edges_all <- rbind(edges, random_alter_edges)
+
+g <- graph_from_data_frame(edges_all, directed = FALSE)
+V(g)$label <- c("ego","alter1","alter2","alter3","alter4","alter5")
+
+ggraph(g, layout = "fr") +
+  geom_edge_link(color = "gray60") +
+  geom_node_point(size = 5, aes(color = label == "ego")) +
+  geom_node_text(aes(label = label), vjust = -1, size = 4) +
+  scale_color_manual(values = c("TRUE" = "firebrick", "FALSE" = "skyblue"), guide = "none") +
+  ggtitle("Egocentric network") +
+  theme_void() 
+
+```
+
+We will demonstrate egocentric network analysis using data from the General Social Survey. Let's load the data.
+
+```{r}
+url <- "https://raw.githubusercontent.com/stevemcd1/intronets/master/inst/extdata/gss.rda"
+load(url(url))
+
+```
+
+## General Social Survey network data
+
+The GSS is a national probability sample of adults in the United States that has been conducted annually or biannually every year since the 1970s. It is an extraordinarily valuable source of information about the attitudes and behaviors of the US population.
+
+We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as "confidants." The responses to this initial question are available in the NUMGIVEN variable.
+
+```{r}
+gss |> 
+  tabyl(NUMGIVEN)
+
+```
+
+The number of confidants is capped at six -- respondents could not provide more than that. There is also a surprising number of people who said that they do not confide in anyone (almost 400!) or only confide in a single person (281).
+
+Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts. If you are interested in this debate, check out some of the sources at the end of this tutorial. Otherwise, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.
+
+```{r}
+gss2 <- gss |> 
+  filter(NUMGIVEN >= 2) |> 
+  filter(GSSID != "NA") |> 
+  rename(ego_id = GSSID)
+
+```
+
+## Constructing the files
+
+### Ego attributes
+
+Three sets of files are essential for conducting egocentric network analysis. First, we need to gather information about all of the egos -- those individuals who were surveyed about their confidants. We therefore subset the gss2 file to include the first eight columns of data, which can then be viewed with the glimpse command.
+
+```{r}
+# save ego attribute data
+ego <- gss2[,1:8] 
+glimpse(ego)
+
+```
+
+For each ego, the data contain a numerical identifier and seven attribute questions. We won't use all of these variables, but they are available for you to examine if you like.
+
+### Alter attributes
+
+Ego was asked to provide information about each of their confidants, which we refer to as alters. So our next step is to construct an alter attribute file. We need the first column of data which includes the ego id, the eight column which is the NUMGIVEN variable, and then a long list of attributes for each alter.
+
+```{r}
+# save alter attribute data
+alter <- gss2[,c(1,8,25:114)]
+glimpse(alter)
+
+```
+
+The alter attributes include a number at the end of the variable name to indicate which which alter is being referenced. Note that these numbers range from 1 to 5. So if an ego said that they confide in 6 or more alters, the GSS collected information on only the first five alters. Consequently, the maximum number of ego network alters in our analysis will be five.
+
+At present, the data are organized by unique egos. But what we really want is for each line to represent a unique alter. In data management speak, the current file is in "wide" format (with the data extending out to the right as variables for separate alters) and needs to be transformed to "long" format (with the data for each alter extending down for each alter). If an ego has three alters, then there should be three rows in the data, one for each alter.
+
+To accomplish this, use the pivot_longer command. The code below reshapes the existing data from wide to long format, extending down information for each alter (so all columns except for ego_id and NUMGIVEN, which we want to repeat for each ego). The names\_ functions tell R how to rename the variables (SPOUSE1 should become SPOUSE) and create an alter id variable (and formatting that variable is numeric).
+
+```{r}
+# reshape alter attributes
+alterlong <- alter |> 
+  pivot_longer(
+    cols = -c(ego_id,NUMGIVEN), 
+    names_to = c(".value", "alter_id"),  # Split names into "base" and "set" parts
+    names_pattern = "(\\D+)(\\d+)"  # Separate variable base and set number
+  )
+
+# change alter_id to numeric variable
+alterlong$alter_id <- as.numeric(alterlong$alter_id)
+
+```
+
+Let's inspect this file before making further adjustments.
+
+```{r}
+glimpse(alterlong)
+
+```
+
+This new alterlong file has exactly five times the number of observations as the original alter file (288\*5 = 1440). That's because each ego now has five lines, given the potential for having up to five different alters. Alterlong also has much fewer variables, because each of the attributes that used to have five different variables (PARENT1-5) now has only a single variable (PARENT).
+
+This dataset contains multiple rows with missing information. For example, the first five entries are for ego_id = 3. The NUMGIVEN value of 4 indicates that this person reported 4 alters. The first 4 entries contain valid alter information, but the 5th entry contains 0s or -1s, which are invalid. Therefore, we need to delete all of the rows for alters that do not exist. Then we can remove the NUMGIVEN variable because it is no longer needed.
+
+```{r}
+# keep only rows where ALTERID <= NUMGIVEN
+# these rows refer to alters that do not exist in the data
+# then remove NUMGIVEN
+alterlong <- alterlong |> 
+  filter(alter_id <= NUMGIVEN) |> 
+  select(-NUMGIVEN)
+
+```
+
+The next step is to adjust the alter_id variables. At present, those ids (1-5) repeat across the dataset, so they are not unique. A better approach is to create unique identifiers that provide information not only about the number designation for the alter, but also the number of the ego to whom they are attached. The code below does this by multiplying the ego_id by 10 and then adding the alter_id.
+
+```{r}
+# distinct ID values
+alterlong$alter_id <- alterlong$ego_id*10 + alterlong$alter_id
+glimpse(alterlong[,1:2])
+
+```
+
+Now we can see that ego #10's 4th alter has an alter_id of 104. This will be very helpful when we visualize these networks later.
+
+### Alter edgelist
+
+An edgelist is also needed. For this file, we'll save the first column (ego_id) and columns 15-24.
+
+```{r}
+# save edge data
+edges <- gss2[,c(1,15:24)]
+glimpse(edges)
+
+```
+
+These variables measure how close ego thinks that the two alters are to one another. We will examine the specific values later. For now, just note that the numbers indicate which alters are being referenced. For example, CLOSE25 refers to the perceive closeness between alter 2 and alter 5.
+
+To create the edgelist, we need to pivot_long (like before) so that each line represents a unique relationship between alters.
+
+```{r}
+# reshape edges long
+edgeslong <- edges  |> 
+  pivot_longer(
+    cols = -ego_id,                             
+    names_to = "tie",     # Name for the column representing each tie variable
+    values_to = "weight"  # Name for the tie strength values
+  ) |> 
+  mutate(
+    from = as.integer(sub("CLOSE(\\d)(\\d)", "\\1", tie)),  # Extract first alter from tie variable
+    to = as.integer(sub("CLOSE(\\d)(\\d)", "\\2", tie))   # Extract second alter from tie variable
+  ) |> 
+  select(ego_id, from, to, weight) 
+glimpse(edgeslong)
+
+```
+
+In addition to the ego_id we have "from" and "to" variables which contain the numbers of the alters that are connected. The direction of the tie does not matter as these relationships are assumed to be symmetric.
+
+The weight variable tells us about the strength of the tie between each alter. Oddly, the GSS coded greater closeness between alters with descending values. It makes more sense to recode closer friends ("especially close") with higher values, which we do below. Also, "total strangers" indicates that there is no relationship, so those lines are removed from the dataset.
+
+```{r}
+# 1	ESPECIALLY CLOSE; 2	KNOW EACH OTHER; 3	TOTAL STRANGERS
+# recode 1->2, 2->1, 3->0, then remove zeros
+edgeslong <- edgeslong |> 
+  mutate(weight = recode(weight, `1`=2, `2`=1, `3`=0)) |> 
+  filter(weight > 0)
+
+```
+
+Now we need to adjust the id values for the alters so they match with the alter attribute file.
+
+```{r}
+# consistent IDs that will link with the alter attribute files
+edgeslong$from <- edgeslong$ego_id*10 + edgeslong$from
+edgeslong$to <- edgeslong$ego_id*10 + edgeslong$to
+glimpse(edgeslong)
+
+```
+
+## egor
+
+Now that the files are prepped, they can be combined into an "egor" object. egor is a package designed for conducting egocentric network analysis. The code below loads the egor package and combines the various files we just created into an egor object.
+
+```{r}
+# Create an egor object
+library(egor)
+egor.obj <- egor(egos = ego,
+                 alters = alterlong, 
+                 aaties = edgeslong, 
+                 ID.vars = list(ego = "ego_id",
+                                alter = "alter_id", 
+                                source = "from",
+                                target = "to"))
+
+```
+
+The next step is to convert the egor object into an igraph object. Then we can examine the object.
+
+```{r}
+# transform into an igraph object
+gr.list <- as_igraph(egor.obj)
+head(gr.list)
+
+```
+
+This new object looks a bit different from the igraph objects we've looked at in the past. Embedded in this object is not one single network, but multiple networks, with each element's name corresponding to the ego ID.
+
+```{r}
+names(gr.list)
+
+```
+
+Note that this set of networks only includes the alter-alter ties. We may want to generate another set of networks in which ego is also included. This can be done using the include.ego option.
+
+```{r}
+gr.list.ego <- as_igraph(egor.obj, include.ego = TRUE)
+
+```
+
+### Examining the egonet objects
+
+Now let's take a closer look at the first egonet object. To do this, we can subset the gr.list with a double bracket. Then let's look at the vertex sequence.
+
+```{r}
+(gr <- gr.list[["3"]])
+V(gr)
+
+```
+
+What if we examined the vertex sequence with ego included? Note the name of the last node.
+
+```{r}
+(gr.ego <- gr.list.ego[["3"]])
+V(gr.ego)
+
+```
+
+Now let's plot out the two versions of this ego network: one without ego and one with ego included.
+
+```{r}
+par(mar = c(0,0,2,0), mfrow = c(1,2))
+plot(gr, vertex.label = NA, main = "No ego")
+plot(gr.ego, vertex.label = NA, main = "With ego")
+
+```
+
+In the "With ego" graph, can you pick out which node is ego? Remember that ego will always be connected to all nodes in the graph.
+
+The next step is to add ego ID as a graph attribute in each list element. We will do this for the alter only object and the ego included object. This will be useful when graphing the different ego networks.
+
+```{r}
+# List of graphs without ego
+for (i in seq_along(gr.list)) {
+  gr.list[[i]]$ego_id <- names(gr.list)[[i]]
+}
+
+# List of graphs with ego
+for (i in seq_along(gr.list.ego)) {
+  gr.list.ego[[i]]$ego_id <- names(gr.list.ego)[[i]]
+}
+
+gr.list[["10"]]$ego_id
+
+```
+
+Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I've commented this out because the data have already been saved. We will load these objects and examine them in the next tutorial.
+
+```{r}
+# save(ego, alterlong, gr.list, gr.list.ego, file="gss_ego.rda")
+
+```
+
+## References
+
+This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<https://raffaelevacca.github.io/egocentric-r-book/>) for a more detailed discussion of ego networks.
+
+If you are interested in some of the substantive issues associated with the GSS "important matters" network data, check out the following resources.
+
+Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.
+
+Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.
+
+McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.
+
+Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.
+
+Smith, Jeffrey A., Miller McPherson, and Lynn Smith-Lovin. 2014. “Social Distance in the United States: Sex, Race, Religion, Age, and Education Homophily among Confidants, 1985 to 2004.” American Sociological Review 79(3):432–56.

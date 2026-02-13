@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Interactive Networks Visualisations – Networks for Newbies: A Tactile Approach to Learning SNA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Communities - ggraph.html" rel="next">
+<link href="./Advanced Visualisation - Dynamic.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f3c3bfab0c61019cfe2173a6002fcf62.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+
+<script src="site_libs/vis-9.1.0/vis-network.min.js"></script>
+
+<script src="site_libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<script src="site_libs/threejs-111/three.min.js"></script>
+
+<script src="site_libs/threejs-111/Detector.js"></script>
+
+<script src="site_libs/threejs-111/Projector.js"></script>
+
+<script src="site_libs/threejs-111/CanvasRenderer.js"></script>
+
+<script src="site_libs/threejs-111/TrackballControls.js"></script>
+
+<script src="site_libs/threejs-111/StateOrbitControls.js"></script>
+
+<script src="site_libs/scatterplotThree-binding-0.3.3/scatterplotThree.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Creating Clean Visuals - One Mode - ggraph.html">Visualisation</a></li><li class="breadcrumb-item"><a href="./Advanced Visualisation - Interactive.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Interactive Networks Visualisations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./"></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Orientation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Network Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Network Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Network Objects - One Mode - Characteristics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">One Mode Network Objects</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Visualisation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Creating Clean Visuals - One Mode - ggraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Creating Clean Visuals - One Mode</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Clean Visuals - One Mode - plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cleaning Network Visuals - One Mode</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Clean Visuals - Two Mode - plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Clean Visuals - Two Mode</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Advanced Visualisation - Dynamic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Network Visualisations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Advanced Visualisation - Interactive.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Interactive Networks Visualisations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Communities - ggraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./communities - plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Conclusions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#interactive-networks-using-visnetwork" id="toc-interactive-networks-using-visnetwork" class="nav-link active" data-scroll-target="#interactive-networks-using-visnetwork"><span class="header-section-number">7.1</span> Interactive networks using visNetwork</a></li>
+  <li><a href="#d-interctive-networks-with-threejs" id="toc-d-interctive-networks-with-threejs" class="nav-link" data-scroll-target="#d-interctive-networks-with-threejs"><span class="header-section-number">7.2</span> 3D interctive networks with threejs</a></li>
+  <li><a href="#closing-thoughts-on-interactive-networks" id="toc-closing-thoughts-on-interactive-networks" class="nav-link" data-scroll-target="#closing-thoughts-on-interactive-networks"><span class="header-section-number">7.3</span> Closing Thoughts on Interactive Networks</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Creating Clean Visuals - One Mode - ggraph.html">Visualisation</a></li><li class="breadcrumb-item"><a href="./Advanced Visualisation - Interactive.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Interactive Networks Visualisations</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Interactive Networks Visualisations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ADAPTSNA)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmlwidgets) <span class="co"># this helps us work with widgets in markdown</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltools) <span class="co">#this allows the widgets to present in the markdown file</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(visNetwork) <span class="co"># This is the first interactive network package</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(threejs) <span class="co"># This is the second interactive network package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So far, we have worked only on static visualisations but there are other ways you can present network data that are a little more fun and can be more instructive. In this chapter we are going to work on two interactive networks and discuss the utility of both. There are multiple packages in R that help you put together interactive visualisations using the visnetwork and threejs packages. For a more complete tutorial on some others, take a look at <a href="https://kateto.net/network-visualization">Katya Ognyanova’s website</a>.</p>
+<section id="interactive-networks-using-visnetwork" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="interactive-networks-using-visnetwork"><span class="header-section-number">7.1</span> Interactive networks using visNetwork</h2>
+<p>First, we will be using the visnetwork to create a network visualisation that you can click on, move and view labels one at a time. To do this, we are going to use the data I put together previously that we have used when working on node and edge characteristics. Like in that tutorial, you will need to set your own working directory for the below code to run and pull in each sheet.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vertices.df <span class="ot">&lt;-</span> <span class="fu">load_data</span>(<span class="st">"Node data.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>edges.df <span class="ot">&lt;-</span> <span class="fu">load_data</span>(<span class="st">"Edge data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a look at these objects so you can see how these data are structured. You will see that the vertices.df object has a few node characteristics that help describe those in the network. The edges.df object contains the connections between the nodes in the network and some information about those connections. These will all come into play as we construct our interactive networks based on it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vertices.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  name age role gender
+1    A  20   DJ      F
+2    B  25   MC      M
+3    C  21   DJ      F
+4    D  23 crew      M
+5    E  24   MC      M
+6    F  23   MC      F</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(edges.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  from to freq affinity
+1    A  B    2      pos
+2    A  C    1      neg
+3    A  D    1      pos
+4    A  E    1      neg
+5    A  F    3      neg
+6    E  F    2      pos</code></pre>
+</div>
+</div>
+<p>The visNetwork package requires that our each node has a unique ID. This ID is not separate from the network (i.e.&nbsp;a row number in a dataframe), rather, this unique ID MUST MATCH the names of the vertices. THIS IS IMPORTAT. If you are to create this type of network, you will need both the edge information and the node information. Remember, the latter, the node information, can simply consist of just an id column. So, if you are working with a network that only has a an adjacency matrix or a network, you can create a dataframe that has the other half you need - a dataframe with the node id (names).</p>
+<p>In our case, we have a network that I have created that has both of these separate dataframes that we can use to create our network. First, we need the aforementioned ID for each node. In this case, we can use the rename() function from the dplyr package to rename the column ‘name’ to id. The visNetwork package can now detect the unique ids that define each node.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vertices.df <span class="ot">&lt;-</span> vertices.df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that our data is structured in the correct format, we can use the visnNetwork() argument to create our interactive network! Outside of markdown, if you are working in a script file, this will appear in the viewer window of your Rstudio. Here, however, it will appear in a widget below the code chunk. Play around with the network. You can scroll in and out. Select and move a node around in the network.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(vertices.df, edges.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-3e58ab1b8ca3f750a66b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3e58ab1b8ca3f750a66b">{"x":{"nodes":{"id":["A","B","C","D","E","F","G"],"age":[20,25,21,23,24,23,22],"role":["DJ","MC","DJ","crew","MC","MC","MC"],"gender":["F","M","F","M","M","F","F"]},"edges":{"from":["A","A","A","A","A","E","F"],"to":["B","C","D","E","F","F","G"],"freq":[2,1,1,1,3,2,4],"affinity":["pos","neg","pos","neg","neg","pos","pos"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>The package visNetwork requires that you have certain variables available to it in order for the visualisation to reflect the information you have. Below, I demonstrate the label, title, and shadow options. Label does what you expect, it labels the nodes. The above visualisation does not have labels because visNetwork did not find a column in the vertices.df that is called label. Title is an option that enables you to click on the node and get more information about it. Shadow shows a small shadow behind the node - you can set this as TRUE or FALSE.</p>
+<p>Below, I set the label as the id. To do this, I have to ensure that R recognises these as strings or characters. Hence I use the as.character() function. Then, I set the title of the node to reflect the node’s gender. Then, for fun, I like the shadows!!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vertices.df<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">as.character</span>(vertices.df<span class="sc">$</span>id)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>vertices.df<span class="sc">$</span>title <span class="ot">&lt;-</span> vertices.df<span class="sc">$</span>gender</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>vertices.df<span class="sc">$</span>shadow <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vertices.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id age role gender label title shadow
+1  A  20   DJ      F     A     F   TRUE
+2  B  25   MC      M     B     M   TRUE
+3  C  21   DJ      F     C     F   TRUE
+4  D  23 crew      M     D     M   TRUE
+5  E  24   MC      M     E     M   TRUE
+6  F  23   MC      F     F     F   TRUE</code></pre>
+</div>
+</div>
+<p>The object now has these columns in it! Let’s see the visual that it creates!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(vertices.df, edges.df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-80a8fd2ccf7c699339fc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-80a8fd2ccf7c699339fc">{"x":{"nodes":{"id":["A","B","C","D","E","F","G"],"age":[20,25,21,23,24,23,22],"role":["DJ","MC","DJ","crew","MC","MC","MC"],"gender":["F","M","F","M","M","F","F"],"label":["A","B","C","D","E","F","G"],"title":["F","M","F","M","M","F","F"],"shadow":[true,true,true,true,true,true,true]},"edges":{"from":["A","A","A","A","A","E","F"],"to":["B","C","D","E","F","F","G"],"freq":[2,1,1,1,3,2,4],"affinity":["pos","neg","pos","neg","neg","pos","pos"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Here is a more complete visualisation using other options available to you with the visNetwork() function. The width = 100% ensures that the visualisation fills the space in the widget. The height option also does something similar. The background, main, submain, and footer options show other ways you can alter the visualisation. Fun, right??</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(vertices.df, edges.df, <span class="at">background=</span><span class="st">"firebrick"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">"TITLE HERE"</span>, <span class="at">submain=</span><span class="st">"SUB HERE!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-25910bf4afb10e15c98c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-25910bf4afb10e15c98c">{"x":{"nodes":{"id":["A","B","C","D","E","F","G"],"age":[20,25,21,23,24,23,22],"role":["DJ","MC","DJ","crew","MC","MC","MC"],"gender":["F","M","F","M","M","F","F"],"label":["A","B","C","D","E","F","G"],"title":["F","M","F","M","M","F","F"],"shadow":[true,true,true,true,true,true,true]},"edges":{"from":["A","A","A","A","A","E","F"],"to":["B","C","D","E","F","F","G"],"freq":[2,1,1,1,3,2,4],"affinity":["pos","neg","pos","neg","neg","pos","pos"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":{"text":"TITLE HERE","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":{"text":"SUB HERE!","style":"font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"},"footer":null,"background":"firebrick"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>One final thing that we can do is change the colours of the nodes to represent the communities they are a part of. I use the louvain algorithm with the igraph package. To do this, I create a igraph object from both data frames, run the clustering. Then I designate the “group” characteristic of the vertices data frame using the membership from the clustering object. The new visual</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> edges.df, <span class="at">vertices =</span> vertices.df, <span class="at">directed =</span> F)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>clust <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(edges)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>vertices.df<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(clust<span class="sc">$</span>membership)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(vertices.df, edges.df)<span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visOptions</span>(<span class="at">highlightNearest =</span> T, <span class="at">nodesIdSelection =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-596d76fff0bb657204b6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-596d76fff0bb657204b6">{"x":{"nodes":{"id":["A","B","C","D","E","F","G"],"age":[20,25,21,23,24,23,22],"role":["DJ","MC","DJ","crew","MC","MC","MC"],"gender":["F","M","F","M","M","F","F"],"label":["A","B","C","D","E","F","G"],"title":["F","M","F","M","M","F","F"],"shadow":[true,true,true,true,true,true,true],"group":["1","1","1","1","2","2","2"]},"edges":{"from":["A","A","A","A","A","E","F"],"to":["B","C","D","E","F","F","G"],"freq":[2,1,1,1,3,2,4],"affinity":["pos","neg","pos","neg","neg","pos","pos"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="d-interctive-networks-with-threejs" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="d-interctive-networks-with-threejs"><span class="header-section-number">7.2</span> 3D interctive networks with threejs</h2>
+<p>If you thought the visNetwork visualisation was cool… wait till you see these ones!!</p>
+<p>Here we will cover a second package, threejs and create some slightly different interactive visualisations. For this one, let’s use different network data. You need an network object created in igraph. We could use the data we have been using so far by creating an igraph object the way we have been doing so ar. However, to mix things up, let’s use our familiar Grime network.</p>
+<p>Here I bring in the Grime 2008 edgelist, clean it and store it in an object called grime_08_clean. This process if familiar to you now. You are pros!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>grime_edge_list <span class="ot">&lt;-</span> <span class="fu">load_data</span>(<span class="st">"GRIME_2008_Edge.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>grime_08 <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d=</span> grime_edge_list, <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grime_08)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Advanced-Visualisation---Interactive_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>grime_08_clean <span class="ot">&lt;-</span> <span class="fu">delete.edges</span>(grime_08, <span class="fu">E</span>(grime_08)[<span class="fu">which_loop</span>(grime_08)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we can create an object that threejs recognises. The function we need to use is the graphjs() that will convert your network into a 3D interactive network a bit like a molecular or planetary model. You should be able to do this with any one-mode network. In this chunk I create an object that has the 3D network called grime_08_3d. Then, I visualise it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>grime_08_3d <span class="ot">&lt;-</span> <span class="fu">graphjs</span>(grime_08_clean)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>grime_08_3d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="scatterplotThree html-widget html-fill-item" id="GHhwFY2FsH" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="GHhwFY2FsH">{"x":{"NROW":40,"height":null,"width":null,"axis":false,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":["#FFA500"],"size":2,"stroke":"black","flipy":true,"grid":false,"renderer":"auto","signif":8,"bg":"white","cexsymbols":1,"xlim":[-1,1],"ylim":[-1,1],"zlim":[-1,1],"axisscale":[1,1,1],"pch":["@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@"],"elementId":"GHhwFY2FsH","from":[[0,3,4,5,6,7,8,11,12,13,14,5,15,16,17,7,18,19,4,21,23,24,25,25,24,27,28,29]],"to":[[28,28,28,28,28,28,28,34,34,34,34,34,34,34,34,34,34,35,35,36,18,18,18,37,27,24,38,39]],"lwd":1,"linealpha":1,"center":true,"main":[""],"options":true,"alpha":[1],"vertices":[[-0.0095548748,0.3831211,-0.7801392700000001,0.17399611,0.069622844,0.7019969,0.0037096477,1,1,-0.33768462,0.396015,-0.61393624,0.031234037,0.5108868600000001,-0.049652166,0.09620920099999999,0.038954688,-0.71723076,-0.056009994,0.5803895100000001,-0.64316047,0.21326724,0.055094658,-0.59466253,-0.29645141,0.40166303,-0.36276565,-0.44533781,-0.37120457,0.61708564,-0.032641281,-0.56941581,0.59876635,0.64014934,-0.30652305,-0.50169383,0.52527472,-0.29701304,-0.87328624,0.68302427,-0.23160889,-0.72419039,0.088606712,-0.39844723,-0.87079417,0.43546913,-0.43354955,-0.40111974,0.30591969,-0.27505394,-1,0.40706472,-0.56298974,-0.65507009,-0.18245794,-0.42578031,-0.52848925,-0.044536198,0.58347677,0.40542058,-0.6664839299999999,-0.77094779,-0.3864886,0.8077232,0.078911913,0.20908624,0.34366438,-1,-0.046024547,-0.12949178,-0.51064892,-0.26575532,-0.59203334,-0.35581622,-0.63305559,-0.46025232,-0.48763229,-0.27847889,-1,0.12137541,-0.20955264,-0.80082264,-0.31901476,-0.66658175,0.0022350297,0.3586697,-0.45042604,0.54431132,-0.45569981,0.50391102,-0.5769133400000001,0.061965425,0.49622659,-0.9449633200000001,-0.28418882,0.16108655,-0.36347223,-0.96639469,0.17501131,0.25293421,-0.8611127,0.36667913,0.29968615,-0.26976761,-0.66638252,0.085487849,0.58481637,0.22838077,1,0.063902493,0.11743192,-0.68751975,-0.55202825,-0.08717915599999999,0.18985957,0.59959533,-0.35120734,0.69769812,-0.44978112,0.40113337]],"xticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"yticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"zticklab":["1.00","0.60","0.20","-0.20","-0.60","-1.00"],"xtick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ytick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ztick":[0,0.2,0.4,0.6000000000000001,0.8,1],"axislength":[1,1,1]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>We can make this visualisation a little cleaner by deleting the isolates. To do this, I use the delete_vertices() argument from the igraph package. Then, I recreate an object, now called grime_08_isol_3d. I also add a title to our visualisation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>grime_isol <span class="ot">&lt;-</span> <span class="fu">delete_vertices</span>(grime_08_clean,  <span class="fu">which</span>(<span class="fu">degree</span>(grime_08_clean)<span class="sc">==</span><span class="dv">0</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>grime_08_isol_3d <span class="ot">&lt;-</span> <span class="fu">graphjs</span>(grime_isol, <span class="at">main=</span><span class="st">"Grime 2008!"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>grime_08_isol_3d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="scatterplotThree html-widget html-fill-item" id="AcyRQkYwpE" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="AcyRQkYwpE">{"x":{"NROW":29,"height":null,"width":null,"axis":false,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":["#FFA500"],"size":2,"stroke":"black","flipy":true,"grid":false,"renderer":"auto","signif":8,"bg":"white","cexsymbols":1,"xlim":[-1,1],"ylim":[-1,1],"zlim":[-1,1],"axisscale":[1,1,1],"pch":["@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@"],"elementId":"AcyRQkYwpE","from":[[0,1,2,3,4,5,6,7,8,9,10,3,11,12,13,5,14,15,2,16,17,18,19,19,18,20,21,22]],"to":[[21,21,21,21,21,21,21,23,23,23,23,23,23,23,23,23,23,24,24,25,14,14,14,26,20,18,27,28]],"lwd":1,"linealpha":1,"center":true,"main":["Grime 2008!"],"options":true,"alpha":[1],"vertices":[[0.67610636,-0.02259235,1,0.87975869,-0.051474595,0.13293202,0.4589033,0.41164289,0.17689758,0.12913976,-0.33116477,0.39573727,0.28449521,0.076598002,0.8789405300000001,0.30059726,-0.39200976,0.1854144,1,0.080237608,0.44727442,-0.8305969,-0.56829912,0.037241144,-0.70654854,-0.66404622,0.33351152,-0.43597623,-0.73049509,0.54806881,-0.66464615,-0.37786733,-0.17854241,-0.0083073435,-0.92551651,0.39978137,0.067451076,-0.83787071,-0.045012571,-0.46256959,-1,0.11109212,-0.20710955,-0.33387279,-0.5396223999999999,0.36794725,0.94286661,-0.27932247,-0.62100871,0.90144469,-0.49481037,-0.21903145,-0.3047041,-0.96916459,-0.50167287,0.033931032,-0.69783145,0.19266777,-0.4715576,-0.84829573,-0.67304307,0.20988288,-0.82530855,0.54245028,-0.0064887099,0.50603493,-0.78100392,0.47775329,0.98782923,-0.2660552,-0.57583954,0.07949458199999999,0.37067913,0.83736264,0.072093357,-0.66946908,1,-0.19070542,0.50369849,-0.50540179,-1,0.75831508,0.31422991,0.73351334,-1,0.43569481,0.78201747]],"xticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"yticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"zticklab":["1.00","0.60","0.20","-0.20","-0.60","-1.00"],"xtick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ytick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ztick":[0,0.2,0.4,0.6000000000000001,0.8,1],"axislength":[1,1,1]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Okay, this is great, but we can tell a bit more of a story here. Let’s use something we are familiar with, a node attribute, to help us pull out a bit more of a story from this visualisation. I want to highlight highly central nodes in this network and change their colour if they are highly central (let’s say a degree above 3). Once again, the package threejs looks for specific characteristics of your network to visualise. One of these is the characteristic “color”. In the chunk below, I use the set_vertex_attr() function from igraph to create an attribute called color that threejs can recognise. Then, I use an ifelse() statement to set the colour of highly central attributes to red and others white. For sake of comparison, I copy the grime_isol object we worked on above, to a new object called grime_isol_colour. Although, you could set the vertex attribute to the object directly. I can also set the size of the node here to further its readability. The package threejs recognises the option ‘size’ as being the size of the node in the visualisation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>grime_isol_colour <span class="ot">&lt;-</span> grime_isol</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>grime_isol_colour <span class="ot">&lt;-</span> <span class="fu">set_vertex_attr</span>(grime_isol, <span class="st">"color"</span>, <span class="at">value =</span> <span class="fu">ifelse</span>(<span class="fu">degree</span>(grime_isol) <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"red"</span>, <span class="st">"ivory"</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(grime_isol_colour)<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>grime_08_isol_3d_col <span class="ot">&lt;-</span> <span class="fu">graphjs</span>(grime_isol_colour, <span class="at">main=</span><span class="st">"Major Collaborators in Grime 2008!"</span>, <span class="at">bg =</span> <span class="st">"black"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>grime_08_isol_3d_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="scatterplotThree html-widget html-fill-item" id="sRYuZTykxo" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="sRYuZTykxo">{"x":{"NROW":29,"height":null,"width":null,"axis":false,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":[["#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FF0000","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FF0000","#FFFFF0","#FF0000","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0","#FFFFF0"]],"size":[0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143],"stroke":"black","flipy":true,"grid":false,"renderer":"auto","signif":8,"bg":"black","cexsymbols":1,"xlim":[-1,1],"ylim":[-1,1],"zlim":[-1,1],"axisscale":[1,1,1],"pch":["@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@"],"elementId":"sRYuZTykxo","from":[[0,1,2,3,4,5,6,7,8,9,10,3,11,12,13,5,14,15,2,16,17,18,19,19,18,20,21,22]],"to":[[21,21,21,21,21,21,21,23,23,23,23,23,23,23,23,23,23,24,24,25,14,14,14,26,20,18,27,28]],"lwd":1,"linealpha":1,"center":true,"main":["Major Collaborators in Grime 2008!"],"options":true,"alpha":[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"vertices":[[-0.95049363,-0.33065473,0.3687199,-0.30139315,-0.31236907,1,-0.031574784,-0.60549096,0.72278405,-0.29201109,0.2385167,0.51517252,-0.72720411,-0.39481787,0.9731511900000001,-0.52387881,0.30928595,0.5424691,-1,-0.5729028,0.63009937,-0.69748463,0.82363237,0.015353775,0.078681051,0.8006946,-0.12003809,-0.51383712,0.61394836,-0.16947172,-0.42533835,1,0.43309978,-0.12844107,0.65745843,-0.37290034,-0.90789492,0.80687816,0.20413388,-0.47494379,0.96556806,-0.25582771,0.40818233,0.43624757,0.0076413262,0.70940213,-0.78344698,0.66406428,-0.19285849,-0.97148253,-0.31686438,0.82453968,0.54839446,0.025472669,0.64227045,0.22773265,-0.36965719,0.74913189,0.24387169,0.26928568,0.80347617,0.11359095,-0.5390891799999999,-0.5484895400000001,-0.3113417,0.63993238,-0.22458695,-0.3882929,-1,-0.30091954,0.66151085,0.12131262,0.32934593,-0.85017465,0.62560425,0.11834567,-1,-0.4442837,1,0.17880431,0.57203554,-0.60402832,-0.77531287,0.49689878,-0.53818208,-0.35303152,-0.91762815]],"xticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"yticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"zticklab":["1.00","0.60","0.20","-0.20","-0.60","-1.00"],"xtick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ytick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ztick":[0,0.2,0.4,0.6000000000000001,0.8,1],"axislength":[1,1,1]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>If you would like to save this widget, you can do so using the savewidget() function from the htmltools package. Then you can call upon it using the browseURL function. However, in order to make this work well in a html format, you will need to use the browsable() function on the object. The chunk below should open an html page with your network.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>grime_08_isol_3d_col <span class="ot">&lt;-</span> <span class="fu">browsable</span>(grime_08_isol_3d_col)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWidget</span>(grime_08_isol_3d_col, <span class="at">file=</span><span class="st">"grime_2008_JS.html"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">"grime_2008_JS.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, you can further represent elements of your graph in the 3D network. For example, you can change the colours of the nodes to reflect the membership of which community they are in. In this chunk, I use the infomap community detection algorithm to identify which communities the nodes are in. Then, I create a new node level characteristic called “color” that captures which community they are in. If you have many communities, you may need to use a colour palette package like vidris or RColorBrewer,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>grime_coms <span class="ot">&lt;-</span> grime_isol</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">cluster_infomap</span>(grime_coms)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(grime_coms)<span class="sc">$</span>color <span class="ot">&lt;-</span> cl<span class="sc">$</span>membership</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(grime_coms)<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>grime_coms3D <span class="ot">&lt;-</span> <span class="fu">graphjs</span>(grime_coms,   <span class="at">edge.color =</span> <span class="st">"maroon"</span>,  <span class="at">bg =</span> <span class="st">"white"</span>, <span class="at">main =</span> <span class="st">"Communities in Grime 2008"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>grime_coms3D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="scatterplotThree html-widget html-fill-item" id="5YgGxBXwIG" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="5YgGxBXwIG">{"x":{"NROW":29,"height":null,"width":null,"axis":false,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":[["#000000","#000000","#DF536B","#61D04F","#000000","#61D04F","#000000","#61D04F","#61D04F","#61D04F","#61D04F","#61D04F","#61D04F","#61D04F","#61D04F","#DF536B","#2297E6","#61D04F","#28E2E5","#61D04F","#28E2E5","#000000","#CD0BBC","#61D04F","#DF536B","#2297E6","#61D04F","#000000","#CD0BBC"]],"size":[0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143,0.7142857142857143],"stroke":"black","flipy":true,"grid":false,"renderer":"auto","signif":8,"bg":"white","cexsymbols":1,"xlim":[-1,1],"ylim":[-1,1],"zlim":[-1,1],"axisscale":[1,1,1],"pch":["@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@"],"elementId":"5YgGxBXwIG","from":[[0,1,2,3,4,5,6,7,8,9,10,3,11,12,13,5,14,15,2,16,17,18,19,19,18,20,21,22]],"to":[[21,21,21,21,21,21,21,23,23,23,23,23,23,23,23,23,23,24,24,25,14,14,14,26,20,18,27,28]],"lwd":1,"linealpha":1,"center":true,"main":["Communities in Grime 2008"],"lcol":["#B03060"],"options":true,"alpha":[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"vertices":[[0.058173671,-0.64032506,-0.64716591,0.3759899,-0.64519287,-0.26780761,-0.090323221,-0.26957,-0.62637297,-0.02610548,-0.338502,0.08117210499999999,-0.43025632,-0.75014392,-0.19249009,-0.11736711,-0.44662975,0.21356118,-0.36220833,-0.81921921,-0.5486466,-0.50382876,-0.11927883,0.79714417,0.29779812,-0.07439420099999999,0.7465486099999999,-0.15725351,-0.1248457,1,0.33817474,0.016271276,0.47172907,0.16378337,-0.35792567,0.84820248,0.032770975,0.21881255,0.83060979,-0.29870825,-0.49636198,0.80558924,-0.46130873,0.40231688,0.49129828,-0.16678444,0.23977749,-1,0.034588777,0.91469596,-0.44787689,-0.74010031,0.58998582,0.52219309,-0.80311829,0.34699299,0.19675324,-0.27339204,0.80415295,0.58156435,-1,0.30671303,0.0041766402,-0.042151086,-0.63247931,-0.28500384,0.90566577,0.18183687,-0.38923648,-0.098644141,-0.13139485,0.5930139,-0.10127959,0.059261964,-0.81279439,0.11934254,1,-0.2373267,-0.020894868,0.98425653,0.55428248,0.11247717,-1,-0.25738373,1,0.15922165,-0.15294062]],"xticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"yticklab":["-1.00","-0.60","-0.20","0.20","0.60","1.00"],"zticklab":["1.00","0.60","0.20","-0.20","-0.60","-1.00"],"xtick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ytick":[0,0.2,0.4,0.6000000000000001,0.8,1],"ztick":[0,0.2,0.4,0.6000000000000001,0.8,1],"axislength":[1,1,1]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="closing-thoughts-on-interactive-networks" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="closing-thoughts-on-interactive-networks"><span class="header-section-number">7.3</span> Closing Thoughts on Interactive Networks</h2>
+<p>I think these networks are cool. However, I really think they are a bit of a gimmick! Their utility is limited at best. For example, they only really work in online spaces while are completely useless in print. The click functions and maneuverable attributes of these graphs are fun to play around with, perhaps useful in grabbing the imagination of readers. However, many academic uses for network analysis is much easier to present using static graphs. Still… they are loads of fun!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Advanced Visualisation - Dynamic.html" class="pagination-link" aria-label="Dynamic Network Visualisations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Network Visualisations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Communities - ggraph.html" class="pagination-link" aria-label="Communities">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Communities</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

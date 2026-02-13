@@ -1,0 +1,33 @@
+---
+title: "Introduction to Social Network Analysis"
+author: "Dr. Steve McDonald"
+format: html
+editor: visual
+---
+
+## What is Social Network Analysis?
+
+Social network analysis (SNA) refers to the study of relationships between people or groups of people. Relationships are important to study for lots of reasons. For example...
+
+-   They can help us to understand how things like information, ideas, and diseases spread across societies.
+-   They can tell us about which people are the most popular, most powerful, and most healthy.
+-   They can reveal how people form subgroups or clusters of individuals.
+
+### Plan for the Book
+
+This book is designed as an introduction to social network analysis. This is an exciting method, but it can also be very complex statistically and very challenging in terms of software coding. For many years, we have been teaching social network analysis across multiple levels of college coursework -- from first semester college freshmen to advanced PhD students. We think that social network analysis can be easy to understand and apply. It does not require advanced statistical knowledge nor an extensive background in coding. Our goal is to break down the ideas and the procedures into an easily digestible way so that people who are learning about SNA for the first time can quickly understand and gain many useful skills.
+
+How do we accomplish this? By keeping things simple.
+
+1.  Rather than utilizing a dizzying array of different packages for conducting SNA, we instead rely almost entirely on igraph. That way, you can focus on working with one set of objects rather than having to move across multiple sets.
+
+2.  We make heavy use of network visualizations in order to illustrate the key concepts and procedures. We use, almost exclusively, one set of plotting tools: ggraph. This package is preferred over others because the coding logic is based on the widely used ggplot suite of visualizations, so working in ggraph will be easy for folks who are already familiar with ggplot and will offer highly transferable skills for newcomers.
+
+3.  We structure the book by first taking a deep dive into standard one mode, holistic networks. That way readers can keep this common form of network data in mind while working through the foundational concepts. Once this knowledge is established, we move on to extensions of the one mode framework, with demonstrations of working with and analyzing two-mode, ego-centric, text, and dynamic networks.
+
+Furthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).
+
+While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also makes explicit reference to the statistics that underlie these procedures. We also point readers to advanced sources for further study.
+
+Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the "R and RStudio setup and resources" chapter in the appendix for details.
+

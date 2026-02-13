@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Steve McDonald">
+
+<title>9&nbsp; Roles – Introduction to Social Network Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./netsim.html" rel="next">
+<link href="./assortitivity.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./WolfWebs.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Intro SNA</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WELCOME!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What is a Network?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graph_layouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">graph_layouts</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./communities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assortitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Assortativity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./roles.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./netsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extensions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./two_mode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">two_mode</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">text</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dynamic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">dynamic</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#roles-and-relationships" id="toc-roles-and-relationships" class="nav-link active" data-scroll-target="#roles-and-relationships"><span class="header-section-number">10</span> Roles and relationships</a>
+  <ul class="collapse">
+  <li><a href="#role-similarity-based-on-equivalence" id="toc-role-similarity-based-on-equivalence" class="nav-link" data-scroll-target="#role-similarity-based-on-equivalence"><span class="header-section-number">10.1</span> Role similarity based on equivalence</a>
+  <ul class="collapse">
+  <li><a href="#three-forms-of-equivalence-structural-automorphic-and-regular" id="toc-three-forms-of-equivalence-structural-automorphic-and-regular" class="nav-link" data-scroll-target="#three-forms-of-equivalence-structural-automorphic-and-regular"><span class="header-section-number">10.1.1</span> Three forms of equivalence: structural, automorphic, and regular</a></li>
+  </ul></li>
+  <li><a href="#roles-of-countries-in-the-world-system" id="toc-roles-of-countries-in-the-world-system" class="nav-link" data-scroll-target="#roles-of-countries-in-the-world-system"><span class="header-section-number">10.2</span> Roles of countries in the “world system”</a></li>
+  <li><a href="#blockmodeling" id="toc-blockmodeling" class="nav-link" data-scroll-target="#blockmodeling"><span class="header-section-number">10.3</span> Blockmodeling</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Steve McDonald </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="roles-and-relationships" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Roles and relationships</h1>
+<p>What makes people similar to one another? In the previous chapter, we discussed how people might be similar because they have similar personal characteristics or attributes: for example, the same gender, race/ethnicity, or psychological disposition. In this chapter, we consider how people might be similar because they fulfill the same social role.</p>
+<p>Social roles are different from attributes because they refer to how people relate to one another. A good example of a social role is a parent. Being a parent is not simply an attribute that someone has, it refers to a specific type of relationship: a parent cares for child. Tom and Steve fulfill similar social roles because they are each parents of children.</p>
+<p>This idea of social roles can be extended to the analysis of social networks. Two nodes in a network graph are considered to be similar if they engage in similar relations with other nodes in the network. Let’s generate a simple graph showing this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define edges</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="fu">c</span>(<span class="st">"Tom"</span>, <span class="st">"Steve"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">"Eleni"</span>, <span class="st">"Marleigh"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directed igraph object</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>parents <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges, <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Define manual layout</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>layout <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">2</span>,   <span class="co"># Tom:    x=1, y=2</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">2</span>,   <span class="co"># Steve:  x=2, y=2</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">1</span>,   <span class="co"># Eleni:  x=1, y=1</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">1</span>    <span class="co"># Marleigh: x=2, y=1</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign groups for coloring</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(parents)<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">V</span>(parents)<span class="sc">$</span>name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Tom"</span>, <span class="st">"Steve"</span>), <span class="st">"Dads"</span>, <span class="st">"Daughters"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above code starts by generating an edgelist with the two relationships – Tom to Eleni and Steve to Marleigh. This edgelist is then converted into an igraph. Then we manually set the layout so that the dads appear on the top of the graph and the daughters appear on the bottom. Finally, we add a vertex attribute called “group” which differentiates between the dads and the daughters. Now let’s generate the graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(parents, <span class="at">layout =</span> <span class="st">"manual"</span>, <span class="at">x =</span> layout[,<span class="dv">1</span>], <span class="at">y =</span> layout[,<span class="dv">2</span>]) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">'mm'</span>)),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">3</span>, <span class="st">'mm'</span>)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> group), <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">nudge_x =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Dads"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>, <span class="st">"Daughters"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fl">0.8</span>, <span class="fl">2.6</span>) <span class="sc">+</span>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The ggraph command generates the layout, adds arrows to denote the directed ties, colors the two groups based on their role similarity, and then expands the horizontal space (“xlim”) so that the labels fit correctly.</p>
+<section id="role-similarity-based-on-equivalence" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="role-similarity-based-on-equivalence"><span class="header-section-number">10.1</span> Role similarity based on equivalence</h2>
+<p>Even without coloring the nodes, it is easy to tell that Tom and Steve are similar and that Eleni and Marleigh are similar. This is because they have equivalent relations in this network, which we can define based on their network metrics. Tom and Steve each have an indegree of 0 and an outdegree of 1. Because their network metrics are identical, they fulfill the same role in the graph. Likewise, Eleni and Marleigh are part of the same role set because their network metrics are identical (indegree = 1; outdegree = 0).</p>
+<section id="three-forms-of-equivalence-structural-automorphic-and-regular" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="three-forms-of-equivalence-structural-automorphic-and-regular"><span class="header-section-number">10.1.1</span> Three forms of equivalence: structural, automorphic, and regular</h3>
+<p>When defining equivalent role sets, we can make decisions about how similar we want those sets to be. Sometimes we might want to group together nodes that are perfectly identical. Other times we might want to relax our equivalence criteria in order to group together nodes that have similar features, but not identical ones. For example, Tom just had a second child, which means his outdegree is now 2. Should we keep him in the “Dads” group with Steve or should he now be included in a separate role group?</p>
+<p>To examine this issue in more detail, let’s examine a new example network.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### example graph</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">make_graph</span>( <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">"A"</span>,<span class="st">"C"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"A"</span>,<span class="st">"D"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"B"</span>,<span class="st">"E"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">"B"</span>,<span class="st">"F"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">"C"</span>,<span class="st">"G"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"D"</span>,<span class="st">"H"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">"D"</span>,<span class="st">"I"</span>), <span class="at">directed =</span> F)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"salmon"</span>, <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>How might we group these nodes into equivalent role sets? This depends on whether we want to define our role sets as structurally, automorphically, or regularly equivalent. The most stringent form of equivalence is structural equivalence.</p>
+<ul>
+<li>Structurally equivalent actors have the exact same network metrics (e.g., indegree, outdegree, centrality, eccentricity, etc.)</li>
+<li>Structurally equivalent as set of nodes with the exact same connections to other nodes</li>
+<li>Structural equivalence is a local phenomenon - it reveals groups that are in close proximity in social space</li>
+<li>Structural equivalence results in the largest number of different groups</li>
+</ul>
+<p>Let’s color the nodes based on structural equivalence.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### add and graph structurally equivalent groups</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>struct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(struct)), </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">10</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Structural"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This graph contains very few nodes that are exactly structurally equivalent. In fact, &lt;H,I&gt; and &lt;E,F&gt; are the only identical role sets. H and I have all of the same network metrics and they are connected in the same way to the same node (D). E and F are also identical in network metrics and are connected in the same way to the exact same node (B). All of the other nodes are unique from one another and therefore make up their own unique role set.</p>
+<p>Now let’s relax the equivalence assumption by turning to automorphic equivalence, which is defined below.</p>
+<ul>
+<li>Automorphically equivalent actors have the exact same network metrics</li>
+<li>Automorphically equivalent nodes do not have to have the exact same connections to others</li>
+<li>Automorphic equivalence is a global phenomenon - it reveals groups that do not need to be in close proximity in social space</li>
+<li>Automorphic equivalence results in a medium number of different groups</li>
+</ul>
+<p>Now let’s display the automorphic sets in this graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>auto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(auto)), </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">10</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Automorphic"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>How did these role sets change? First, while &lt;H,I&gt; and &lt;E,F&gt; appeared as separate structurally equivalent sets, they can be combined into a single automorphically equivalent set. This is because they each contain the exact same network metrics and we removed the need for equivalent nodes to be connected to the exact same nodes. This relaxing of equivalence criteria illustrates the global character of automorphically equivalent role sets, which allows equivalent actors to be combined into sets even if they appear at opposite ends of the graph.</p>
+<p>B and D are also automorphically equivalent because they have the identical network metrics. Why is C not included in &lt;B,D&gt;? They do not have the same metrics – for example, C has a degree of 2, whereas B and D each have a degree of 3.</p>
+<p>Regular equivalence further relaxes the equivalence criteria…</p>
+<ul>
+<li>Regularly equivalent actors have similar, but not necessarily exact, network metrics</li>
+<li>Regularly equivalent nodes do not have to have the exact same connections to others</li>
+<li>Regular equivalence is a global phenomenon</li>
+<li>Regular equivalence results in the smallest number of different groups</li>
+</ul>
+<p>Let’s reveal regularly equivalent role sets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>reg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(reg)), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">10</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Regular"</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>These regularly equivalent sets now group together all of the network “pendants”: &lt;E,F,G,H,I&gt;. And whereas C was not automorphically equivalent with B and D, it can be considered regularly equivalent because it appears to fulfill a similar mediating role between a peripheral actor and the central A node.</p>
+<p>You may have sensed that regular equivalence is not as mathematically precise as structural and automorphic equivalence. Later we offer more details on how to statistically assign and label equivalent role sets. For now, let’s proceed to an example of how the idea of equivalence has been applied in research.</p>
+</section>
+</section>
+<section id="roles-of-countries-in-the-world-system" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="roles-of-countries-in-the-world-system"><span class="header-section-number">10.2</span> Roles of countries in the “world system”</h2>
+<p>Sociologists and political scientists have had a longstanding debate about how powerful countries may exploit weaker countries through trade relationships. Specifically, Wallerstein (1947) argued that the “world system” is comprised of 1) core countries that maintain trading connections with all other countries in the world, 2) peripheral countries that depend on core countries for access to goods, and 3) semi-periphery countries that are mostly dependent on the core, but maintain a few separate trade relations outside of the core.</p>
+<p>This theory implies that countries play roles within the world system based on their trading relationships. Empirically, then, we should be able to observe a core/semi-periphery/periphery structure in trade data.</p>
+<p>Let’s examine this idea using classic trade data collected by Smith and White in 1988. We will draw on a representative subset of the data reported by Wasserman and Faust in 1994. These data include multiple trade relationships, but to further simplify things, we will focus only on the trade of manufactured goods, which will provide a good test of the world systems thesis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"tradenets.rda"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_adjacency_matrix</span>(mg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24 x 24 sparse Matrix of class "dgCMatrix"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                              
+ALGERIA        . . . 1 1 . . . . . . . 1 . . . . . . . . . . 1
+ARGENTINA      1 . 1 1 . 1 . . 1 . 1 1 1 . . . 1 1 1 . 1 . 1 .
+BRAZIL         1 1 . 1 1 1 1 . 1 1 1 1 1 1 . 1 1 1 1 1 1 1 1 1
+CHINA          1 1 1 . 1 . 1 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1 1 1
+CZECHOSLOVAKIA 1 1 1 1 . 1 1 1 1 1 1 . 1 1 . 1 1 1 1 1 1 1 1 1
+ECUADOR        . . 1 . . . . . . . . . . . . . . . . . . . 1 .
+EGYPT          . . . . 1 . . 1 1 . . . 1 . . . . 1 1 . . 1 1 1
+ETHIOPIA       . . . . . . . . . . . . . . . . . 1 . . . 1 . .
+FINLAND        1 1 1 1 1 1 1 1 . 1 1 1 1 . . 1 1 1 1 1 1 1 1 1
+HONDURAS       . . . . . . . . . . . . . . . . . . . . . . 1 .
+INDONESIA      1 . . 1 1 . 1 . 1 . . . 1 . . 1 1 1 1 . 1 1 1 1
+ISRAEL         . 1 . . . . . 1 1 . . . 1 . . 1 . 1 1 . 1 1 1 1
+JAPAN          1 1 1 1 1 1 1 1 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1 1
+LIBERIA        . . . . . . . . . . . . . . . . . . . . . . . .
+MADAGASCAR     . . . . . . . . . . . . . . . . . . . . . 1 . .
+NEW_ZEALAND    1 . . 1 . . 1 . . . 1 . 1 . . . 1 1 . . 1 1 1 1
+PAKISTAN       . . . 1 1 . . . 1 . 1 . 1 1 . 1 . 1 1 1 1 1 1 .
+SPAIN          1 1 1 1 1 1 1 . 1 1 1 1 1 1 1 1 1 . 1 1 1 1 1 1
+SWITZERLAND    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 1 1 1 1 1
+SYRIA          . . . . . . . . . . . . . . . . . . . . . . . .
+THAILAND       . . 1 1 . . . . 1 . 1 1 1 . . 1 1 1 1 1 . 1 1 1
+UNITED_KINGDOM 1 . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 1 1
+UNITED_STATES  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 1
+YUGOSLAVIA     1 1 . 1 1 . 1 1 1 . 1 1 1 . . 1 1 1 1 1 1 1 1 .</code></pre>
+</div>
+</div>
+<p>The manufactured goods relations are part of the mg igraph object. The as_adjacency_matrix allows us to extract and view the adjacency matrix. This is a 24 by 24 matrix of countries. The country names are listed to the left along the rows, but note that the same sequence of countries is represented across the columns (even though no column labels are shown).</p>
+<p>Values of 1 indicate a trade relation in manufactured goods between countries. A “.” indicates no trade relation. The diagonal is always empty because we are not examining trade within countries. This matrix is also non-symmetric: the values tell us which country sends manufactured goods to which other country. The rows represent sent goods and the columns represent received goods. For example, the value of 1 in row 2 column 1 tells us that Argentina sent manufactured goods to Algeria. The “.” value in row 2 column 1 indicates that Algeria did not send manufactured goods to Argentina.</p>
+<p>Based on these patterns, how can we identify different roles played by these trading partners?</p>
+</section>
+<section id="blockmodeling" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="blockmodeling"><span class="header-section-number">10.3</span> Blockmodeling</h2>
+<p>Blockmodeling refers to a set of techniques that identifies patterns in network relationships and then groups nodes into “blocks” based on similar relationships. The approach results in a permutation and a partitioning of the adjacency matrix. The permutation step involves a re-ordering of the sequence of nodes (in our case, countries) along the rows and columns of the adjacency matrix. Countries with very similar trade relationships appear next to one another and those with very different trade relationships appear far apart. The partitioning step involves separating the matrix into blocks that contain distinctive relationships. These blocks constitute roles within the network.</p>
+<p>Many different statistical approaches have been used for blockmodeling. The original procedure, developed in the 1970s, was called CONCOR because it involved a “concatenation of correlations” to derive at equivalent blockgroups. In short, this procedure iteratively correlated the adjacency matrices to the point where the matrix values revealed perfectly structurally equivalent block groups.</p>
+<p>Modern procedures rely on more efficient clustering algorithms to partition the adjacency matrices based on equivalence. Applying fewer partitions results in regularly equivalent block groups, whereas many partitions results in structurally equivalent block groups. The researcher therefore gets to decide how strictly they want to define equivalence.</p>
+<p>Let’s apply the clustering procedures from the blockmodeling package to demonstrate how this works.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blockmodeling)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first thing to do is to extract the adjacency matrix from the igraph object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">as_adjacency_matrix</span>(mg)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s obtain blockmodeling results for a three block solution. The clustering procedure attempts multiple partitions to the adjacency matrix in order to identify the best three-way split that reduces error by minimizing internal block member differences and maximizing differences between blocks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a three block partition</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>class3 <span class="ot">&lt;-</span> <span class="fu">optRandomParC</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">M=</span>mat, <span class="at">k=</span><span class="dv">3</span>, <span class="at">rep=</span><span class="dv">10</span>, <span class="at">approach=</span><span class="st">"ss"</span>, <span class="at">blocks=</span><span class="st">"com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Starting optimization of the partiton 1 of 10 partitions.
+Starting partition: 2 2 1 2 2 3 1 2 1 2 3 3 3 2 3 1 3 2 1 2 2 2 1 1 
+Final error: 51.86916 
+Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+
+
+Starting optimization of the partiton 2 of 10 partitions.
+Starting partition: 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Final error: 51.86916 
+Final partition:    2 1 3 3 3 2 1 2 3 2 1 1 3 2 2 1 1 3 3 2 1 3 3 3 
+
+
+Starting optimization of the partiton 3 of 10 partitions.
+Starting partition: 3 2 3 1 2 1 2 2 1 3 2 1 3 1 3 1 2 2 1 3 1 2 3 3 
+Final error: 51.86916 
+Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+
+
+Starting optimization of the partiton 4 of 10 partitions.
+Starting partition: 3 2 3 1 2 3 3 2 3 1 2 2 1 3 2 1 2 3 1 1 3 1 2 2 
+Final error: 51.86916 
+Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+
+
+Starting optimization of the partiton 5 of 10 partitions.
+Starting partition: 1 1 1 1 1 1 1 2 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Final error: 51.86916 
+Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+
+
+Starting optimization of the partiton 6 of 10 partitions.
+Starting partition: 2 2 3 3 1 1 1 1 1 3 1 3 2 3 1 3 1 1 1 1 2 1 1 3 
+Final error: 51.86916 
+Final partition:    2 1 3 3 3 2 1 2 3 2 1 1 3 2 2 1 1 3 3 2 1 3 3 3 
+
+
+Starting optimization of the partiton 7 of 10 partitions.
+Starting partition: 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 
+Final error: 51.86916 
+Final partition:    2 3 1 1 1 2 3 2 1 2 3 3 1 2 2 3 3 1 1 2 3 1 1 1 
+
+
+Starting optimization of the partiton 8 of 10 partitions.
+Starting partition: 1 2 3 1 2 3 3 3 2 3 3 2 3 1 1 2 1 2 1 2 2 1 1 3 
+Final error: 51.86916 
+Final partition:    3 1 2 2 2 3 1 3 2 3 1 1 2 3 3 1 1 2 2 3 1 2 2 2 
+
+
+Starting optimization of the partiton 9 of 10 partitions.
+Starting partition: 1 1 3 1 2 3 2 3 1 2 1 2 2 3 3 3 1 3 2 2 1 2 3 1 
+Final error: 51.86916 
+Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+
+
+Starting optimization of the partiton 10 of 10 partitions.
+Starting partition: 1 2 3 1 1 2 1 2 3 2 1 2 3 3 3 1 1 2 2 2 1 2 3 1 
+Final error: 51.86916 
+Final partition:    2 3 1 1 1 2 3 2 1 2 3 3 1 2 2 3 3 1 1 2 3 1 1 1 
+
+
+Optimization of all partitions completed
+All 10 solutions have err 51.86916 </code></pre>
+</div>
+</div>
+<p>Note that the results end with a final error estimate. Higher error values represent worse fit to the data. We’ll return to this in a moment.</p>
+<p>Now let’s estimate a four block solution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a four block partition</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>class4 <span class="ot">&lt;-</span> <span class="fu">optRandomParC</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">M=</span>mat, <span class="at">k=</span><span class="dv">4</span>, <span class="at">rep=</span><span class="dv">10</span>, <span class="at">approach=</span><span class="st">"ss"</span>, <span class="at">blocks=</span><span class="st">"com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Starting optimization of the partiton 1 of 10 partitions.
+Starting partition: 2 1 4 2 4 1 4 4 3 3 1 2 2 2 2 4 1 4 1 1 3 3 3 3 
+Final error: 48.56111 
+Final partition:    2 3 4 4 4 1 2 1 4 1 3 3 4 1 1 3 3 4 4 1 3 4 4 4 
+
+
+Starting optimization of the partiton 2 of 10 partitions.
+Starting partition: 1 4 1 3 4 2 1 1 3 2 1 4 3 4 3 2 2 3 4 3 1 4 2 2 
+Final error: 48.16667 
+Final partition:    2 4 1 3 1 2 4 2 3 2 4 4 3 2 2 4 4 3 3 2 4 3 3 1 
+
+
+Starting optimization of the partiton 3 of 10 partitions.
+Starting partition: 3 3 3 3 2 3 1 4 4 4 3 4 2 2 1 4 3 1 4 1 1 1 3 3 
+Final error: 47.64365 
+Final partition:    4 1 2 2 2 4 1 4 2 4 3 1 2 4 4 3 3 2 2 4 3 2 2 2 
+
+
+Starting optimization of the partiton 4 of 10 partitions.
+Starting partition: 3 1 3 4 4 3 2 4 4 4 3 2 3 2 1 2 1 2 2 4 1 3 1 1 
+Final error: 47.64365 
+Final partition:    2 4 3 3 3 2 4 2 3 2 1 4 3 2 2 1 1 3 3 2 1 3 3 3 
+
+
+Starting optimization of the partiton 5 of 10 partitions.
+Starting partition: 4 2 2 2 3 4 4 3 4 4 4 4 4 3 4 2 2 3 4 3 2 2 3 1 
+Final error: 48.16667 
+Final partition:    3 4 1 2 1 3 4 3 2 3 4 4 2 3 3 4 4 2 2 3 4 2 2 1 
+
+
+Starting optimization of the partiton 6 of 10 partitions.
+Starting partition: 2 2 2 2 2 2 2 2 2 2 2 2 2 1 4 2 3 2 2 2 2 2 2 2 
+Final error: 48.16667 
+Final partition:    4 2 3 1 3 4 2 4 1 4 2 2 1 4 4 2 2 1 1 4 2 1 1 3 
+
+
+Starting optimization of the partiton 7 of 10 partitions.
+Starting partition: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 2 1 1 4 1 
+Final error: 48.16667 
+Final partition:    2 1 3 4 3 2 1 2 4 2 1 1 4 2 2 1 1 4 4 2 1 4 4 3 
+
+
+Starting optimization of the partiton 8 of 10 partitions.
+Starting partition: 3 1 1 4 3 1 1 3 4 2 3 1 2 4 3 2 4 2 3 4 1 4 4 2 
+Final error: 48.56111 
+Final partition:    2 1 4 4 4 3 2 3 4 3 1 1 4 3 3 1 1 4 4 3 1 4 4 4 
+
+
+Starting optimization of the partiton 9 of 10 partitions.
+Starting partition: 3 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 2 3 3 3 3 4 
+Final error: 50.44484 
+Final partition:    1 3 2 2 2 4 3 1 2 4 3 3 2 4 4 3 3 2 2 1 3 2 2 2 
+
+
+Starting optimization of the partiton 10 of 10 partitions.
+Starting partition: 4 2 3 3 3 2 2 2 1 3 4 4 2 1 4 1 1 4 1 2 1 3 3 4 
+Final error: 48.56111 
+Final partition:    1 4 3 3 3 2 1 2 3 2 4 4 3 2 2 4 4 3 3 2 4 3 3 3 
+
+
+Optimization of all partitions completed
+1 solution(s) with minimal error = 47.64365 found. </code></pre>
+</div>
+</div>
+<p>Now let’s examine the permutations and partitioning for these two different solutions, starting with the three block partition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(class3, <span class="at">main=</span><span class="st">""</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Three Block Partition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This useful visualization illustrates the presence of trade relations by darkened cells. The countries are ordered (permuted) based on similarity in relations and separated (partitioned) into block groups denoted by the blue lines.</p>
+<p>Let’s consider the patterns in the the three block group model. The center of the adjacency matrix shows the trade relations between the countries in the middle or second block group. The diagonal is understandably empty, but otherwise the block is nearly a complete graph. The exception is that Yugoslavia does not send manufactured goods to Brazil. Otherwise, all of these countries both send and receive manufactured goods from their fellow block members. To the right and to the left of the center partition, the results show that the second block group sends manufactured goods to many of the countries in the first block (Argentina to Thailand) and the third block (Algeria to Syria). Looking above the center partition, the results show that the second block group receives manufactured goods from many of the countries in the first block group. However, very few of the countries in the third block group send manufactured goods to the second block group. These patterns tell us something about the roles played by these countries. The second block represents the core in the world system. They send manufactured goods throughout the world. Block 3 represents periphery countries. They send manufactured goods to only a small number of countries in the core and otherwise receive manufactured goods from the core and a few other coutries. The first block represents the semi-periphery countries. They are heavily involved in trading manufactured goods with the core countries, with only a modest set of exports to periphery countries.</p>
+<p>Next let’s compare the three block partition with a four block partition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(class3, <span class="at">main=</span><span class="st">""</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Three Block Partition"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(class4, <span class="at">main=</span><span class="st">""</span>) </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Four Block Partition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The four block partition looks similar, but the original first block has now been partitioned into two separate blocks: Argentina to Israel and Indonesia to Thailand.</p>
+<p>Which is the best blockmodeling solution? We can use the error estimates to help us make our decision.</p>
+<p>On the one hand, further partitioning of the matrix will always result in a reduction in error. But that does not mean that the maximum number of partitions will always be better. A smaller number of partitions, given only modest error estimates, can provide a parsimonious and easy to understand explanation as to the optimal number of roles in the network. So really the goal is to try to balance a small number of groups (less complex is good!) with a reduction of error (precision is also good!).</p>
+<p>To do this, let’s estimate multiple blockmodel solutions and examine the error estimates. Here I created a loop that runs blockmodels for 2 groups all the way to 8 groups. I then save the error estimates and plot them in a graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a null data frame </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="cn">NULL</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># index for the loop can be run separately for each row in the df</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### estimate multiple blockmodels with different block number values</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> r) {</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  class <span class="ot">&lt;-</span> <span class="fu">optRandomParC</span>(<span class="at">M=</span>mat, <span class="at">k=</span>i, <span class="at">rep=</span><span class="dv">10</span>, <span class="at">approach=</span><span class="st">"ss"</span>, <span class="at">blocks=</span><span class="st">"com"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># bind the data and append to the dataframe</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  tempinfo <span class="ot">&lt;-</span> <span class="fu">cbind</span>(i, <span class="fu">as.numeric</span>(class<span class="sc">$</span>err[<span class="dv">10</span>]))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> <span class="fu">rbind</span>(error, tempinfo)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(error) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"i"</span>,<span class="st">"error"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">##### plot the results - what is the best partition value?</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(error, <span class="fu">aes</span>(<span class="at">x =</span> i, <span class="at">y =</span> error)) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This graph is referred to as an “elbow” graph. We are generally looking for the value on the x-axis (the number of block groups) that yields a major reduction in the error value. Here we can see that while the error is reduced with each additional partition, the biggest reduction in error is apparent when we move from two block groups to three. This creates the elbow in the graph, which suggests that three block groups is a very good solution.</p>
+<p>Finally, we can apply the block group membership to the network in order to visualize the groups as part of a network graph. The optimal partition for the three block solution is contained in the following object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>class3<span class="sc">$</span>best<span class="sc">$</span>best1<span class="sc">$</span>clu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1</code></pre>
+</div>
+</div>
+<p>We can therefore attach these values as a vertex attribute in the igraph object. Then we can color the labels in a network graph to denote the countries in the three different block groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(mg)<span class="sc">$</span>opt.blocks <span class="ot">&lt;-</span> class3<span class="sc">$</span>best<span class="sc">$</span>best1<span class="sc">$</span>clu</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(mg, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">color =</span> <span class="fu">as.factor</span>(opt.blocks)), </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="roles_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here we can see the core countries in the green labeling, the semi-periphery countries in the red labeling, and the blue countries on the periphery. These results are largely consistent with Wallerstein’s theory of the world system.</p>
+<p>Note that our decision to limit the partitioning to a small number partitions and block groups reflects an interest in regularly equivalent roles in the network. Further partitioning would result in a set of blocks that are more identical (and thus structurally equivalent) in their network relations.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./assortitivity.html" class="pagination-link" aria-label="Assortativity">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Assortativity</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./netsim.html" class="pagination-link" aria-label="Network Simulations">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

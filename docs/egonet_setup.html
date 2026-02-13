@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Steve McDonald">
+
+<title>11&nbsp; Ego network data setup – Introduction to Social Network Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./egonet_analysis.html" rel="next">
+<link href="./netsim.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-96e8a2c236aee144da7b9dc077376cca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./WolfWebs.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./WolfWebs.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Intro SNA</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WELCOME!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What is a Network?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graph_layouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">graph_layouts</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./communities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assortitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Assortativity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./roles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./netsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extensions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./two_mode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">two_mode</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">text</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dynamic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">dynamic</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setting-up-ego-network-data" id="toc-setting-up-ego-network-data" class="nav-link active" data-scroll-target="#setting-up-ego-network-data"><span class="header-section-number">11.1</span> Setting up ego network data</a></li>
+  <li><a href="#general-social-survey-network-data" id="toc-general-social-survey-network-data" class="nav-link" data-scroll-target="#general-social-survey-network-data"><span class="header-section-number">11.2</span> General Social Survey network data</a></li>
+  <li><a href="#constructing-the-files" id="toc-constructing-the-files" class="nav-link" data-scroll-target="#constructing-the-files"><span class="header-section-number">11.3</span> Constructing the files</a>
+  <ul class="collapse">
+  <li><a href="#ego-attributes" id="toc-ego-attributes" class="nav-link" data-scroll-target="#ego-attributes"><span class="header-section-number">11.3.1</span> Ego attributes</a></li>
+  <li><a href="#alter-attributes" id="toc-alter-attributes" class="nav-link" data-scroll-target="#alter-attributes"><span class="header-section-number">11.3.2</span> Alter attributes</a></li>
+  <li><a href="#alter-edgelist" id="toc-alter-edgelist" class="nav-link" data-scroll-target="#alter-edgelist"><span class="header-section-number">11.3.3</span> Alter edgelist</a></li>
+  </ul></li>
+  <li><a href="#egor" id="toc-egor" class="nav-link" data-scroll-target="#egor"><span class="header-section-number">11.4</span> egor</a>
+  <ul class="collapse">
+  <li><a href="#examining-the-egonet-objects" id="toc-examining-the-egonet-objects" class="nav-link" data-scroll-target="#examining-the-egonet-objects"><span class="header-section-number">11.4.1</span> Examining the egonet objects</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11.5</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Steve McDonald </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setting-up-ego-network-data" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="setting-up-ego-network-data"><span class="header-section-number">11.1</span> Setting up ego network data</h2>
+<p>Most of the techniques discussed as part of these tutorial use holistic network analysis. Let’s initialize the necessary packages.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By “bounded,” I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.</p>
+<p>In many instances, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let’s say we want to know about the relationships among people who are fans of Manga graphic novels.</p>
+<ul>
+<li><p>How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a “true” fan).</p></li>
+<li><p>Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.</p></li>
+<li><p>Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.</p></li>
+</ul>
+<p>For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.</p>
+<p>So instead of one big network defining all of the relationships within the group (for example)…</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9035768</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(<span class="dv">40</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(r1, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span>  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Holistic network"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()                   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="egonet_setup_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>…we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as “egocentric”).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_alters <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ego_id <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>alter_ids <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span>(n_alters <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">from =</span> ego_id, <span class="at">to =</span> alter_ids)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>alter_pairs <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">combn</span>(alter_ids, <span class="dv">2</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>n_alter_ties <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(alter_pairs), <span class="dv">3</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>random_alter_edges <span class="ot">&lt;-</span> alter_pairs[n_alter_ties, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(random_alter_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>edges_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges, random_alter_edges)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges_all, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ego"</span>,<span class="st">"alter1"</span>,<span class="st">"alter2"</span>,<span class="st">"alter3"</span>,<span class="st">"alter4"</span>,<span class="st">"alter5"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> label <span class="sc">==</span> <span class="st">"ego"</span>)) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Egocentric network"</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="egonet_setup_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We will demonstrate egocentric network analysis using data from the General Social Survey. Let’s load the data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/stevemcd1/intronets/master/inst/extdata/gss.rda"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(url))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="general-social-survey-network-data" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="general-social-survey-network-data"><span class="header-section-number">11.2</span> General Social Survey network data</h2>
+<p>The GSS is a national probability sample of adults in the United States that has been conducted annually or biannually every year since the 1970s. It is an extraordinarily valuable source of information about the attitudes and behaviors of the US population.</p>
+<p>We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as “confidants.” The responses to this initial question are available in the NUMGIVEN variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gss <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> NUMGIVEN   n    percent
+        0 397 0.27062031
+        1 281 0.19154738
+        2 263 0.17927744
+        3 232 0.15814588
+        4 128 0.08725290
+        5  96 0.06543967
+        6  70 0.04771643</code></pre>
+</div>
+</div>
+<p>The number of confidants is capped at six – respondents could not provide more than that. There is also a surprising number of people who said that they do not confide in anyone (almost 400!) or only confide in a single person (281).</p>
+<p>Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts. If you are interested in this debate, check out some of the sources at the end of this tutorial. Otherwise, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gss2 <span class="ot">&lt;-</span> gss <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NUMGIVEN <span class="sc">&gt;=</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GSSID <span class="sc">!=</span> <span class="st">"NA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ego_id =</span> GSSID)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="constructing-the-files" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="constructing-the-files"><span class="header-section-number">11.3</span> Constructing the files</h2>
+<section id="ego-attributes" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="ego-attributes"><span class="header-section-number">11.3.1</span> Ego attributes</h3>
+<p>Three sets of files are essential for conducting egocentric network analysis. First, we need to gather information about all of the egos – those individuals who were surveyed about their confidants. We therefore subset the gss2 file to include the first eight columns of data, which can then be viewed with the glimpse command.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save ego attribute data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ego <span class="ot">&lt;-</span> gss2[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 288
+Columns: 8
+$ ego_id   &lt;dbl&gt; 3, 5, 10, 12, 16, 30, 35, 36, 46, 54, 57, 59, 61, 62, 63, 65,…
+$ AGE      &lt;dbl&gt; 52, 34, 26, 58, 48, 73, 47, 58, 55, 49, 47, 55, 49, 40, 40, 5…
+$ EDUC     &lt;dbl&gt; 14, 17, 14, 12, 11, 16, 17, 16, 16, 12, 16, 16, 16, 16, 20, 2…
+$ SEX      &lt;dbl&gt; 1, 2, 1, 2, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2…
+$ RACE     &lt;dbl&gt; 2, 3, 2, 2, 2, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 3, 1, 1, 2, 2, 2…
+$ PARTYID  &lt;dbl&gt; 0, 2, 1, 1, 6, 5, 1, 0, 1, 5, 0, 2, 6, 5, 0, 5, 7, 5, 0, 0, 1…
+$ RELIG    &lt;dbl&gt; 1, 2, 1, 4, 1, 3, 99, 3, 5, 2, 4, 4, 1, 2, 8, 7, 3, 1, 2, 1, …
+$ NUMGIVEN &lt;dbl&gt; 4, 4, 6, 2, 2, 3, 3, 6, 3, 2, 3, 4, 2, 2, 3, 2, 2, 4, 2, 3, 2…</code></pre>
+</div>
+</div>
+<p>For each ego, the data contain a numerical identifier and seven attribute questions. We won’t use all of these variables, but they are available for you to examine if you like.</p>
+</section>
+<section id="alter-attributes" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="alter-attributes"><span class="header-section-number">11.3.2</span> Alter attributes</h3>
+<p>Ego was asked to provide information about each of their confidants, which we refer to as alters. So our next step is to construct an alter attribute file. We need the first column of data which includes the ego id, the eight column which is the NUMGIVEN variable, and then a long list of attributes for each alter.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save alter attribute data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>alter <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">25</span><span class="sc">:</span><span class="dv">114</span>)]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 288
+Columns: 92
+$ ego_id   &lt;dbl&gt; 3, 5, 10, 12, 16, 30, 35, 36, 46, 54, 57, 59, 61, 62, 63, 65,…
+$ NUMGIVEN &lt;dbl&gt; 4, 4, 6, 2, 2, 3, 3, 6, 3, 2, 3, 4, 2, 2, 3, 2, 2, 4, 2, 3, 2…
+$ SEX1     &lt;dbl&gt; 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 2…
+$ SEX2     &lt;dbl&gt; 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2…
+$ SEX3     &lt;dbl&gt; 1, 2, 1, 0, 0, 1, 2, 2, 1, 0, 2, 1, 0, 0, 1, 0, 0, 2, 0, 1, 0…
+$ SEX4     &lt;dbl&gt; 1, 2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0…
+$ SEX5     &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ RACE1    &lt;dbl&gt; 2, 3, 4, 2, 2, 4, 4, 4, 1, 3, 4, 4, 4, 4, 4, 5, 4, 4, 2, 4, 2…
+$ RACE2    &lt;dbl&gt; 2, 3, 2, 4, 2, 4, 4, 4, 1, 3, 1, 4, 4, 4, 4, 5, 4, 4, 2, 3, 2…
+$ RACE3    &lt;dbl&gt; 2, 3, 2, 0, 0, 4, 4, 4, 1, 0, 1, 4, 0, 0, 4, 0, 0, 4, 0, 2, 0…
+$ RACE4    &lt;dbl&gt; 2, 3, 3, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0…
+$ RACE5    &lt;dbl&gt; 0, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ SPOUSE1  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2, 2…
+$ SPOUSE2  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ SPOUSE3  &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ SPOUSE4  &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ SPOUSE5  &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ PARENT1  &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2…
+$ PARENT2  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1…
+$ PARENT3  &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ PARENT4  &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ PARENT5  &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ SIBLING1 &lt;dbl&gt; 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ SIBLING2 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2…
+$ SIBLING3 &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 1, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ SIBLING4 &lt;dbl&gt; 1, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0…
+$ SIBLING5 &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ CHILD1   &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ CHILD2   &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ CHILD3   &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ CHILD4   &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ CHILD5   &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ OTHFAM1  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2…
+$ OTHFAM2  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2…
+$ OTHFAM3  &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 1, 0, 0, 2, 0, 2, 0…
+$ OTHFAM4  &lt;dbl&gt; 2, 1, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ OTHFAM5  &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ COWORK1  &lt;dbl&gt; 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2…
+$ COWORK2  &lt;dbl&gt; 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ COWORK3  &lt;dbl&gt; 2, 1, 1, 0, 0, 2, 2, 2, 2, 0, 1, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ COWORK4  &lt;dbl&gt; 2, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ COWORK5  &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ MEMGRP1  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2…
+$ MEMGRP2  &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2…
+$ MEMGRP3  &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 1, 0, 2, 0…
+$ MEMGRP4  &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ MEMGRP5  &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ NEIGHBR1 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ NEIGHBR2 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2…
+$ NEIGHBR3 &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ NEIGHBR4 &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ NEIGHBR5 &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ FRIEND1  &lt;dbl&gt; 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1…
+$ FRIEND2  &lt;dbl&gt; 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2…
+$ FRIEND3  &lt;dbl&gt; 1, 1, 2, 0, 0, 1, 2, 1, 1, 0, 1, 2, 0, 0, 2, 0, 0, 2, 0, 1, 0…
+$ FRIEND4  &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ FRIEND5  &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ ADVISOR1 &lt;dbl&gt; 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ ADVISOR2 &lt;dbl&gt; 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ ADVISOR3 &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 2, 2, 1, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ ADVISOR4 &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ ADVISOR5 &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ OTHER1   &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2…
+$ OTHER2   &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2…
+$ OTHER3   &lt;dbl&gt; 2, 2, 2, 0, 0, 2, 1, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0…
+$ OTHER4   &lt;dbl&gt; 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0…
+$ OTHER5   &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ TALKTO1  &lt;dbl&gt; 4, 1, 1, 2, 2, 4, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 3, 3, 1, 1…
+$ TALKTO2  &lt;dbl&gt; 1, 1, 1, 2, 2, 3, 1, 2, 1, 1, 1, 2, 4, 2, 1, 2, 1, 2, 3, 1, 1…
+$ TALKTO3  &lt;dbl&gt; 2, 1, 1, 0, 0, 1, 2, 3, 2, 0, 1, 4, 0, 0, 3, 0, 0, 1, 0, 1, 0…
+$ TALKTO4  &lt;dbl&gt; 2, 1, 3, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0…
+$ TALKTO5  &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ KNOWN1   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ KNOWN2   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ KNOWN3   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ KNOWN4   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ KNOWN5   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ EDUC1    &lt;dbl&gt; 6, 7, 3, 3, 8, 7, 7, 6, 3, 3, 7, 7, 6, 0, 7, 7, 7, 3, 6, 5, 4…
+$ EDUC2    &lt;dbl&gt; 3, 3, 3, 6, 8, 6, 6, 6, 7, 3, 7, 6, 7, 6, 7, 7, 7, 7, 7, 6, 6…
+$ EDUC3    &lt;dbl&gt; 7, 7, 3, -1, -1, 6, 7, 7, 6, -1, 7, 6, -1, -1, 7, -1, -1, 4, …
+$ EDUC4    &lt;dbl&gt; 6, 7, 4, -1, -1, -1, -1, 7, -1, -1, -1, 6, -1, -1, -1, -1, -1…
+$ EDUC5    &lt;dbl&gt; -1, -1, 4, -1, -1, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1,…
+$ AGE1     &lt;dbl&gt; 56, 63, 25, 57, 50, 69, 47, 25, 50, 47, 55, 54, 48, 77, 43, 9…
+$ AGE2     &lt;dbl&gt; 40, 36, 25, 52, 98, 62, 79, 57, 24, 34, 50, 27, 72, 64, 40, 4…
+$ AGE3     &lt;dbl&gt; 58, 34, 39, -1, -1, 60, 55, 57, 52, -1, 35, 59, -1, -1, 41, -…
+$ AGE4     &lt;dbl&gt; 59, 36, 33, -1, -1, -1, -1, 59, -1, -1, -1, 58, -1, -1, -1, -…
+$ AGE5     &lt;dbl&gt; -1, -1, 30, -1, -1, -1, -1, 57, -1, -1, -1, -1, -1, -1, -1, -…
+$ RELIG1   &lt;dbl&gt; 1, 2, 5, 2, 8, 3, 9, 3, 4, 2, 1, 4, 1, 2, 5, 8, 3, 2, 4, 1, 1…
+$ RELIG2   &lt;dbl&gt; 1, 2, 5, 3, 8, 3, 9, 3, 4, 2, 5, 2, 1, 2, 5, 5, 3, 1, 2, 1, 1…
+$ RELIG3   &lt;dbl&gt; 1, 2, 2, 0, 0, 3, 9, 3, 5, 0, 8, 2, 0, 0, 4, 0, 0, 1, 0, 1, 0…
+$ RELIG4   &lt;dbl&gt; 1, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0…
+$ RELIG5   &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</code></pre>
+</div>
+</div>
+<p>The alter attributes include a number at the end of the variable name to indicate which which alter is being referenced. Note that these numbers range from 1 to 5. So if an ego said that they confide in 6 or more alters, the GSS collected information on only the first five alters. Consequently, the maximum number of ego network alters in our analysis will be five.</p>
+<p>At present, the data are organized by unique egos. But what we really want is for each line to represent a unique alter. In data management speak, the current file is in “wide” format (with the data extending out to the right as variables for separate alters) and needs to be transformed to “long” format (with the data for each alter extending down for each alter). If an ego has three alters, then there should be three rows in the data, one for each alter.</p>
+<p>To accomplish this, use the pivot_longer command. The code below reshapes the existing data from wide to long format, extending down information for each alter (so all columns except for ego_id and NUMGIVEN, which we want to repeat for each ego). The names_ functions tell R how to rename the variables (SPOUSE1 should become SPOUSE) and create an alter id variable (and formatting that variable is numeric).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape alter attributes</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alter <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(ego_id,NUMGIVEN), </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"alter_id"</span>),  <span class="co"># Split names into "base" and "set" parts</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(</span><span class="sc">\\</span><span class="st">D+)(</span><span class="sc">\\</span><span class="st">d+)"</span>  <span class="co"># Separate variable base and set number</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># change alter_id to numeric variable</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(alterlong<span class="sc">$</span>alter_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s inspect this file before making further adjustments.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,440
+Columns: 21
+$ ego_id   &lt;dbl&gt; 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 10, 10, 10, 10, 10, 12, 12, 12,…
+$ NUMGIVEN &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 6, 6, 6, 6, 2, 2, 2, 2, 2, 2…
+$ alter_id &lt;dbl&gt; 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1…
+$ SEX      &lt;dbl&gt; 2, 2, 1, 1, 0, 2, 1, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 0, 0, 0, 1…
+$ RACE     &lt;dbl&gt; 2, 2, 2, 2, 0, 3, 3, 3, 3, 0, 4, 2, 2, 3, 3, 2, 4, 0, 0, 0, 2…
+$ SPOUSE   &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ PARENT   &lt;dbl&gt; 2, 2, 2, 2, 0, 1, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ SIBLING  &lt;dbl&gt; 2, 2, 2, 1, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ CHILD    &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ OTHFAM   &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 1, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ COWORK   &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 0, 0, 0, 2…
+$ MEMGRP   &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ NEIGHBR  &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ FRIEND   &lt;dbl&gt; 1, 1, 1, 2, 0, 2, 1, 1, 2, 0, 2, 1, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ ADVISOR  &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1…
+$ OTHER    &lt;dbl&gt; 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2…
+$ TALKTO   &lt;dbl&gt; 4, 1, 2, 2, 0, 1, 1, 1, 1, 0, 1, 1, 1, 3, 1, 2, 2, 0, 0, 0, 2…
+$ KNOWN    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ EDUC     &lt;dbl&gt; 6, 3, 7, 6, -1, 7, 3, 7, 7, -1, 3, 3, 3, 4, 4, 3, 6, -1, -1, …
+$ AGE      &lt;dbl&gt; 56, 40, 58, 59, -1, 63, 36, 34, 36, -1, 25, 25, 39, 33, 30, 5…
+$ RELIG    &lt;dbl&gt; 1, 1, 1, 1, 0, 2, 2, 2, 2, 0, 5, 5, 2, 2, 2, 2, 3, 0, 0, 0, 8…</code></pre>
+</div>
+</div>
+<p>This new alterlong file has exactly five times the number of observations as the original alter file (288*5 = 1440). That’s because each ego now has five lines, given the potential for having up to five different alters. Alterlong also has much fewer variables, because each of the attributes that used to have five different variables (PARENT1-5) now has only a single variable (PARENT).</p>
+<p>This dataset contains multiple rows with missing information. For example, the first five entries are for ego_id = 3. The NUMGIVEN value of 4 indicates that this person reported 4 alters. The first 4 entries contain valid alter information, but the 5th entry contains 0s or -1s, which are invalid. Therefore, we need to delete all of the rows for alters that do not exist. Then we can remove the NUMGIVEN variable because it is no longer needed.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only rows where ALTERID &lt;= NUMGIVEN</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># these rows refer to alters that do not exist in the data</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then remove NUMGIVEN</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alterlong <span class="sc">|&gt;</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(alter_id <span class="sc">&lt;=</span> NUMGIVEN) <span class="sc">|&gt;</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The next step is to adjust the alter_id variables. At present, those ids (1-5) repeat across the dataset, so they are not unique. A better approach is to create unique identifiers that provide information not only about the number designation for the alter, but also the number of the ego to whom they are attached. The code below does this by multiplying the ego_id by 10 and then adding the alter_id.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct ID values</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> alterlong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> alterlong<span class="sc">$</span>alter_id</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 955
+Columns: 2
+$ ego_id   &lt;dbl&gt; 3, 3, 3, 3, 5, 5, 5, 5, 10, 10, 10, 10, 10, 12, 12, 16, 16, 3…
+$ alter_id &lt;dbl&gt; 31, 32, 33, 34, 51, 52, 53, 54, 101, 102, 103, 104, 105, 121,…</code></pre>
+</div>
+</div>
+<p>Now we can see that ego #10’s 4th alter has an alter_id of 104. This will be very helpful when we visualize these networks later.</p>
+</section>
+<section id="alter-edgelist" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="alter-edgelist"><span class="header-section-number">11.3.3</span> Alter edgelist</h3>
+<p>An edgelist is also needed. For this file, we’ll save the first column (ego_id) and columns 15-24.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save edge data</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 288
+Columns: 11
+$ ego_id  &lt;dbl&gt; 3, 5, 10, 12, 16, 30, 35, 36, 46, 54, 57, 59, 61, 62, 63, 65, …
+$ CLOSE12 &lt;dbl&gt; 2, 1, 3, 3, 3, 2, 2, 2, 2, 3, 1, 1, 1, 2, 2, 3, 2, 1, 2, 3, 1,…
+$ CLOSE13 &lt;dbl&gt; 1, 3, 1, 0, 0, 2, 2, 2, 2, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, 2, 0,…
+$ CLOSE14 &lt;dbl&gt; 3, 1, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
+$ CLOSE15 &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ CLOSE23 &lt;dbl&gt; 1, 1, 2, 0, 0, 2, 3, 2, 2, 0, 2, 2, 0, 0, 1, 0, 0, 1, 0, 2, 0,…
+$ CLOSE24 &lt;dbl&gt; 1, 1, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
+$ CLOSE25 &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ CLOSE34 &lt;dbl&gt; 2, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
+$ CLOSE35 &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ CLOSE45 &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+</div>
+</div>
+<p>These variables measure how close ego thinks that the two alters are to one another. We will examine the specific values later. For now, just note that the numbers indicate which alters are being referenced. For example, CLOSE25 refers to the perceive closeness between alter 2 and alter 5.</p>
+<p>To create the edgelist, we need to pivot_long (like before) so that each line represents a unique relationship between alters.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape edges long</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edges  <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>ego_id,                             </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"tie"</span>,     <span class="co"># Name for the column representing each tie variable</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"weight"</span>  <span class="co"># Name for the tie strength values</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, tie)),  <span class="co"># Extract first alter from tie variable</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, tie))   <span class="co"># Extract second alter from tie variable</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ego_id, from, to, weight) </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,880
+Columns: 4
+$ ego_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10,…
+$ from   &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 1, …
+$ to     &lt;int&gt; 2, 3, 4, 5, 3, 4, 5, 4, 5, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5, 2, …
+$ weight &lt;dbl&gt; 2, 1, 3, 0, 1, 1, 0, 2, 0, 0, 1, 3, 1, 0, 1, 1, 0, 1, 0, 0, 3, …</code></pre>
+</div>
+</div>
+<p>In addition to the ego_id we have “from” and “to” variables which contain the numbers of the alters that are connected. The direction of the tie does not matter as these relationships are assumed to be symmetric.</p>
+<p>The weight variable tells us about the strength of the tie between each alter. Oddly, the GSS coded greater closeness between alters with descending values. It makes more sense to recode closer friends (“especially close”) with higher values, which we do below. Also, “total strangers” indicates that there is no relationship, so those lines are removed from the dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 ESPECIALLY CLOSE; 2 KNOW EACH OTHER; 3  TOTAL STRANGERS</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># recode 1-&gt;2, 2-&gt;1, 3-&gt;0, then remove zeros</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edgeslong <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">recode</span>(weight, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">2</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we need to adjust the id values for the alters so they match with the alter attribute file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># consistent IDs that will link with the alter attribute files</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>from <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>from</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>to <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>to</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,030
+Columns: 4
+$ ego_id &lt;dbl&gt; 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 10, 10, 10, 10, 10, 10, 10, 10, 1…
+$ from   &lt;dbl&gt; 31, 31, 32, 32, 33, 51, 51, 52, 52, 53, 101, 101, 101, 102, 102…
+$ to     &lt;dbl&gt; 32, 33, 33, 34, 34, 52, 54, 53, 54, 54, 103, 104, 105, 103, 104…
+$ weight &lt;dbl&gt; 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, …</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="egor" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="egor"><span class="header-section-number">11.4</span> egor</h2>
+<p>Now that the files are prepped, they can be combined into an “egor” object. egor is a package designed for conducting egocentric network analysis. The code below loads the egor package and combines the various files we just created into an egor object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an egor object</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(egor)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>egor.obj <span class="ot">&lt;-</span> <span class="fu">egor</span>(<span class="at">egos =</span> ego,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alters =</span> alterlong, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">aaties =</span> edgeslong, </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ID.vars =</span> <span class="fu">list</span>(<span class="at">ego =</span> <span class="st">"ego_id"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">alter =</span> <span class="st">"alter_id"</span>, </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">source =</span> <span class="st">"from"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">target =</span> <span class="st">"to"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The next step is to convert the egor object into an igraph object. Then we can examine the object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform into an igraph object</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gr.list <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`3`
+IGRAPH bdea15f UNW- 4 5 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdea15f (vertex names):
+[1] 31--32 31--33 32--33 32--34 33--34
+
+$`5`
+IGRAPH bdea91a UNW- 4 5 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdea91a (vertex names):
+[1] 51--52 51--54 52--53 52--54 53--54
+
+$`10`
+IGRAPH bdeaf16 UNW- 5 9 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdeaf16 (vertex names):
+[1] 101--103 101--104 101--105 102--103 102--104 102--105 103--104 103--105
+[9] 104--105
+
+$`12`
+IGRAPH bdeb4b1 UNW- 2 0 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdeb4b1 (vertex names):
+
+$`16`
+IGRAPH bdebb65 UNW- 2 0 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdebb65 (vertex names):
+
+$`30`
+IGRAPH bdec17a UNW- 3 3 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdec17a (vertex names):
+[1] 301--302 301--303 302--303</code></pre>
+</div>
+</div>
+<p>This new object looks a bit different from the igraph objects we’ve looked at in the past. Embedded in this object is not one single network, but multiple networks, with each element’s name corresponding to the ego ID.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "3"   "5"   "10"  "12"  "16"  "30"  "35"  "36"  "46"  "54"  "57"  "59" 
+ [13] "61"  "62"  "63"  "65"  "66"  "70"  "71"  "72"  "74"  "75"  "80"  "83" 
+ [25] "84"  "90"  "92"  "93"  "94"  "95"  "103" "106" "112" "116" "117" "125"
+ [37] "129" "131" "133" "135" "136" "139" "140" "144" "152" "155" "160" "166"
+ [49] "171" "177" "181" "184" "185" "193" "198" "199" "202" "218" "220" "223"
+ [61] "229" "233" "235" "237" "238" "239" "250" "252" "253" "255" "258" "259"
+ [73] "261" "262" "266" "268" "269" "270" "271" "276" "278" "280" "281" "284"
+ [85] "285" "289" "294" "296" "299" "300" "301" "302" "305" "314" "316" "317"
+ [97] "320" "322" "323" "326" "330" "331" "336" "337" "340" "345" "350" "353"
+[109] "355" "356" "358" "359" "360" "361" "363" "365" "366" "370" "372" "373"
+[121] "375" "377" "378" "381" "382" "391" "392" "393" "394" "396" "397" "401"
+[133] "402" "403" "407" "410" "412" "413" "414" "420" "424" "431" "433" "441"
+[145] "448" "449" "457" "460" "462" "465" "471" "472" "475" "476" "485" "487"
+[157] "489" "490" "501" "511" "522" "523" "530" "539" "542" "544" "554" "555"
+[169] "559" "560" "561" "563" "567" "568" "569" "572" "582" "587" "589" "590"
+[181] "595" "598" "603" "617" "618" "630" "635" "636" "642" "669" "672" "676"
+[193] "683" "686" "688" "690" "691" "694" "699" "708" "710" "713" "714" "715"
+[205] "717" "726" "729" "733" "734" "742" "744" "746" "748" "756" "758" "759"
+[217] "763" "764" "768" "769" "770" "773" "780" "781" "784" "788" "789" "790"
+[229] "794" "797" "801" "803" "805" "808" "811" "813" "816" "821" "828" "829"
+[241] "835" "836" "841" "843" "844" "846" "847" "848" "855" "864" "873" "876"
+[253] "877" "878" "885" "887" "893" "899" "902" "905" "906" "912" "915" "919"
+[265] "920" "921" "927" "936" "939" "941" "942" "944" "945" "950" "952" "957"
+[277] "958" "967" "975" "976" "978" "983" "988" "994" "995" "997" "998" "999"</code></pre>
+</div>
+</div>
+<p>Note that this set of networks only includes the alter-alter ties. We may want to generate another set of networks in which ego is also included. This can be done using the include.ego option.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gr.list.ego <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj, <span class="at">include.ego =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="examining-the-egonet-objects" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="examining-the-egonet-objects"><span class="header-section-number">11.4.1</span> Examining the egonet objects</h3>
+<p>Now let’s take a closer look at the first egonet object. To do this, we can subset the gr.list with a double bracket. Then let’s look at the vertex sequence.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(gr <span class="ot">&lt;-</span> gr.list[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH bdea15f UNW- 4 5 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bdea15f (vertex names):
+[1] 31--32 31--33 32--33 32--34 33--34</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 4/4 vertices, named, from bdea15f:
+[1] 31 32 33 34</code></pre>
+</div>
+</div>
+<p>What if we examined the vertex sequence with ego included? Note the name of the last node.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(gr.ego <span class="ot">&lt;-</span> gr.list.ego[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH bee63aa UNW- 5 9 -- 
++ attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
+| PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
+| MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
+| (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
+| weight (e/n)
++ edges from bee63aa (vertex names):
+[1] 31--32  31--33  32--33  32--34  33--34  31--ego 32--ego 33--ego 34--ego</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr.ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 5/5 vertices, named, from bee63aa:
+[1] 31  32  33  34  ego</code></pre>
+</div>
+</div>
+<p>Now let’s plot out the two versions of this ego network: one without ego and one with ego included.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"No ego"</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr.ego, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"With ego"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="egonet_setup_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the “With ego” graph, can you pick out which node is ego? Remember that ego will always be connected to all nodes in the graph.</p>
+<p>The next step is to add ego ID as a graph attribute in each list element. We will do this for the alter only object and the ego included object. This will be useful when graphing the different ego networks.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs without ego</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list)) {</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  gr.list[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list)[[i]]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs with ego</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list.ego)) {</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  gr.list.ego[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list.ego)[[i]]</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>gr.list[[<span class="st">"10"</span>]]<span class="sc">$</span>ego_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "10"</code></pre>
+</div>
+</div>
+<p>Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I’ve commented this out because the data have already been saved. We will load these objects and examine them in the next tutorial.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save(ego, alterlong, gr.list, gr.list.ego, file="gss_ego.rda")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="references" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="references"><span class="header-section-number">11.5</span> References</h2>
+<p>This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<a href="https://raffaelevacca.github.io/egocentric-r-book/" class="uri">https://raffaelevacca.github.io/egocentric-r-book/</a>) for a more detailed discussion of ego networks.</p>
+<p>If you are interested in some of the substantive issues associated with the GSS “important matters” network data, check out the following resources.</p>
+<p>Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.</p>
+<p>Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.</p>
+<p>McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.</p>
+<p>Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.</p>
+<p>Smith, Jeffrey A., Miller McPherson, and Lynn Smith-Lovin. 2014. “Social Distance in the United States: Sex, Race, Religion, Age, and Education Homophily among Confidants, 1985 to 2004.” American Sociological Review 79(3):432–56.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./netsim.html" class="pagination-link" aria-label="Network Simulations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./egonet_analysis.html" class="pagination-link" aria-label="Ego network analysis">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

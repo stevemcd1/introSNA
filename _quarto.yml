@@ -1,0 +1,52 @@
+project:
+  type: book
+  output-dir: docs 
+book:
+  title: "Introduction to Social Network Analysis"
+  author: "Steve McDonald, Tom R. Leppard, Andrew P. Davis, and Aditi Mallavarapu"
+  date: "2/10/2026"
+  sidebar:
+    search: true
+    title: "Intro to Social Network Analysis"
+    logo: WolfWebs.png
+  cover-image: WolfWebs.png
+  cover-image-alt: |
+    A textbook cover.
+  
+  chapters:
+    - index.qmd
+    - part: "Introduction"
+      chapters:
+        - intro_sna.qmd
+        - networks.qmd
+        - network_viz.qmd
+        - graph_layouts.qmd
+    - part: "Analysis"
+      chapters:
+        - centrality.qmd
+        - connectivity.qmd
+        - communities.qmd
+        - assortitivity.qmd
+        - roles.qmd
+        - netsim.qmd
+    - part: "Extensions"
+      chapters:
+        - egonet_setup.qmd
+        - egonet_analysis.qmd
+        - two_mode.qmd
+        - text.qmd
+        - dynamic.qmd
+       
+  appendices:
+   - r_basics.qmd
+   - data_collect.qmd
+   - interact_vis.qmd
+format:
+  html:
+    theme:
+      - simplex
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
