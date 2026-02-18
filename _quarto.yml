@@ -44,7 +44,7 @@ book:
 format:
   html:
     theme:
-      - simplex
+      - cosmo
       - brand
   pdf:
     documentclass: scrreprt
