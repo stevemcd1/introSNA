@@ -1,14 +1,3 @@
----
-title: "Ego network data setup"
-author: Dr. Steve McDonald
-format: html
-editor: visual
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
 ## Setting up ego network data
 
 Most of the techniques discussed as part of these tutorial use holistic network analysis. Let's initialize the necessary packages.

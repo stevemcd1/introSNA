@@ -1,10 +1,3 @@
----
-title: "Network Simulations"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
 ## Network Simulations
 
 Data simulations are a crucial tool for constructing, sharpening, and testing theories. This is especially true for network data. Below I will present some techniques for simulating different types of networks and examining distributions from network simulations.

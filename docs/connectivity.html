@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Steve McDonald">
 
 <title>6&nbsp; Connectivity – Introduction to Social Network Analysis</title>
 <style>
@@ -70,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./centrality.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-96e8a2c236aee144da7b9dc077376cca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -133,10 +133,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./WolfWebs.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Intro SNA</a> 
+      <a href="./">Intro to Social Network Analysis</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -164,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Social Network Analysis?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -176,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -199,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Central Actors and Centralized Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -246,13 +247,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -278,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendix</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -287,19 +288,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
   </div>
 </li>
       </ul>
@@ -314,16 +315,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#connectivity" id="toc-connectivity" class="nav-link active" data-scroll-target="#connectivity"><span class="header-section-number">6.1</span> Connectivity</a></li>
-  <li><a href="#moreno-data" id="toc-moreno-data" class="nav-link" data-scroll-target="#moreno-data"><span class="header-section-number">6.2</span> Moreno data</a></li>
-  <li><a href="#connected-graphs-and-components" id="toc-connected-graphs-and-components" class="nav-link" data-scroll-target="#connected-graphs-and-components"><span class="header-section-number">6.3</span> Connected graphs and components</a></li>
-  <li><a href="#paths-and-distances" id="toc-paths-and-distances" class="nav-link" data-scroll-target="#paths-and-distances"><span class="header-section-number">6.4</span> Paths and distances</a>
+  <li><a href="#moreno-data" id="toc-moreno-data" class="nav-link active" data-scroll-target="#moreno-data"><span class="header-section-number">6.1</span> Moreno data</a></li>
+  <li><a href="#connected-graphs-and-components" id="toc-connected-graphs-and-components" class="nav-link" data-scroll-target="#connected-graphs-and-components"><span class="header-section-number">6.2</span> Connected graphs and components</a></li>
+  <li><a href="#paths-and-distances" id="toc-paths-and-distances" class="nav-link" data-scroll-target="#paths-and-distances"><span class="header-section-number">6.3</span> Paths and distances</a>
   <ul class="collapse">
-  <li><a href="#node-distance-summaries" id="toc-node-distance-summaries" class="nav-link" data-scroll-target="#node-distance-summaries"><span class="header-section-number">6.4.1</span> Node distance summaries</a></li>
+  <li><a href="#node-distance-summaries" id="toc-node-distance-summaries" class="nav-link" data-scroll-target="#node-distance-summaries"><span class="header-section-number">6.3.1</span> Node distance summaries</a></li>
   </ul></li>
-  <li><a href="#network-distance-summaries" id="toc-network-distance-summaries" class="nav-link" data-scroll-target="#network-distance-summaries"><span class="header-section-number">6.5</span> Network distance summaries</a></li>
-  <li><a href="#visualizing-paths" id="toc-visualizing-paths" class="nav-link" data-scroll-target="#visualizing-paths"><span class="header-section-number">6.6</span> Visualizing paths</a></li>
-  <li><a href="#cutpoints-and-bridges" id="toc-cutpoints-and-bridges" class="nav-link" data-scroll-target="#cutpoints-and-bridges"><span class="header-section-number">6.7</span> Cutpoints and Bridges</a></li>
+  <li><a href="#network-distance-summaries" id="toc-network-distance-summaries" class="nav-link" data-scroll-target="#network-distance-summaries"><span class="header-section-number">6.4</span> Network distance summaries</a></li>
+  <li><a href="#visualizing-paths" id="toc-visualizing-paths" class="nav-link" data-scroll-target="#visualizing-paths"><span class="header-section-number">6.5</span> Visualizing paths</a></li>
+  <li><a href="#cutpoints-and-bridges" id="toc-cutpoints-and-bridges" class="nav-link" data-scroll-target="#cutpoints-and-bridges"><span class="header-section-number">6.6</span> Cutpoints and Bridges</a></li>
   </ul>
 </nav>
     </div>
@@ -339,12 +339,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Steve McDonald </p>
-          </div>
-  </div>
     
   
     
@@ -355,23 +349,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="connectivity" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="connectivity"><span class="header-section-number">6.1</span> Connectivity</h2>
 <p>Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines. This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability.</p>
 <p>Let’s begin by loading the intronets, igraph, ggraph, and tidyverse packages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="moreno-data" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="moreno-data"><span class="header-section-number">6.2</span> Moreno data</h2>
+<section id="moreno-data" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="moreno-data"><span class="header-section-number">6.1</span> Moreno data</h2>
 <p>We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934. In fact, Moreno is credited with being the first person to publish a network graph (or a “sociogram”) to describe network relationships. Let’s load the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"moreno.rda"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>moreno</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"moreno.rda"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>moreno</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>IGRAPH ffcd9c8 U--- 33 46 -- 
 + attr: gender (v/n), na (v/l), vertex.names (v/n), na (e/l)
@@ -385,11 +376,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Examining the features of the data, we can see that the network is undirected (see the “U” on the top line) and contains 33 vertices and 46 edges. Let’s graph the network.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>, <span class="at">width =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"violet"</span>, <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -399,11 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="connected-graphs-and-components" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="connected-graphs-and-components"><span class="header-section-number">6.3</span> Connected graphs and components</h2>
+<section id="connected-graphs-and-components" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="connected-graphs-and-components"><span class="header-section-number">6.2</span> Connected graphs and components</h2>
 <p>A <strong>connected graph</strong> is a graph in which every node can be reached by every other node by following the paths laid out by the edges. Here we can see that the Moreno network is disconnected. For example, student 28 can follow edge paths to nearly all of the other students, but it cannot reach students 32 or 33 because there is no edge path that connects them. Within a disconnected graph such as this, we could identify a set of <strong>components</strong>, which refer to a fully connected subgraph. We can let R identify the components in the Moreno graph by using the components command from igraph.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(comps <span class="ot">&lt;-</span> <span class="fu">components</span>(moreno))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(comps <span class="ot">&lt;-</span> <span class="fu">components</span>(moreno))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$membership
  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2
@@ -418,14 +409,14 @@ $no
 <p>The newly created comps object contains three list elements. The last element (no) tells us that there are 2 components in the network – which of course is easy to see from the graph. The csize element refers to the number of nodes in each component, indicating that we have one large component with 31 nodes and one small component with 2 nodes. Finally, the membership element assigns a value to each node based on which component of which it is a member.</p>
 <p>Let’s apply the membership vector to the igraph object as a vertex attributed and then differentiate the components in the graph by color.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(moreno)<span class="sc">$</span>component <span class="ot">&lt;-</span> comps<span class="sc">$</span>membership</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(moreno)<span class="sc">$</span>component <span class="ot">&lt;-</span> comps<span class="sc">$</span>membership</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>, <span class="at">width =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(component)), <span class="at">size =</span> <span class="dv">8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"lightgreen"</span>,<span class="st">"salmon"</span>)) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -438,18 +429,18 @@ $no
 <p>Identifying components can also be useful for extracting elements of the graph. In this case, let’s say we are only interested in the <strong>reachability</strong> of students who are in the largest component of this network – otherwise known as the “main” component.</p>
 <p>First we’ll identify the largest component. Then we can use the induced_subgraph command to select only that component, creating a new igraph object (moreno2) in which students 32 and 33 are removed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(largest <span class="ot">&lt;-</span> <span class="fu">which.max</span>(comps<span class="sc">$</span>csize))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(largest <span class="ot">&lt;-</span> <span class="fu">which.max</span>(comps<span class="sc">$</span>csize))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>moreno2 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(moreno,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>moreno2 <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(moreno,</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">which</span>(comps<span class="sc">$</span>membership <span class="sc">==</span> largest))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno2, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>, <span class="at">width =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"violet"</span>, <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -459,68 +450,68 @@ $no
 </div>
 </div>
 </section>
-<section id="paths-and-distances" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="paths-and-distances"><span class="header-section-number">6.4</span> Paths and distances</h2>
+<section id="paths-and-distances" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="paths-and-distances"><span class="header-section-number">6.3</span> Paths and distances</h2>
 <p>Network researchers often want to know how close or how far apart different nodes are from one another. We calculate distance by counting the edges between two nodes. The set of edges that one traverses on that journey is referred to as a <strong>path</strong>.</p>
 <p>Let’s look at some examples. Take a look at student 9 and student 1. How close are these two students? The answer depends on the number of edges that it takes to get from 9 to 1. However, that distance depends on which path one takes. Below we obtain a list of those paths.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all_simple_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all_simple_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 5/31 vertices, from 749a32b:
++ 5/31 vertices, from 5a76bad:
 [1] 9 7 3 2 1
 
 [[2]]
-+ 5/31 vertices, from 749a32b:
++ 5/31 vertices, from 5a76bad:
 [1]  9  7  3 16  1
 
 [[3]]
-+ 6/31 vertices, from 749a32b:
++ 6/31 vertices, from 5a76bad:
 [1] 9 7 4 3 2 1
 
 [[4]]
-+ 6/31 vertices, from 749a32b:
++ 6/31 vertices, from 5a76bad:
 [1]  9  7  4  3 16  1
 
 [[5]]
-+ 7/31 vertices, from 749a32b:
++ 7/31 vertices, from 5a76bad:
 [1] 9 7 8 4 3 2 1
 
 [[6]]
-+ 7/31 vertices, from 749a32b:
++ 7/31 vertices, from 5a76bad:
 [1]  9  7  8  4  3 16  1
 
 [[7]]
-+ 4/31 vertices, from 749a32b:
++ 4/31 vertices, from 5a76bad:
 [1]  9 11  5  1
 
 [[8]]
-+ 5/31 vertices, from 749a32b:
++ 5/31 vertices, from 5a76bad:
 [1]  9 11  5  6  1
 
 [[9]]
-+ 5/31 vertices, from 749a32b:
++ 5/31 vertices, from 5a76bad:
 [1]  9 17 11  5  1
 
 [[10]]
-+ 6/31 vertices, from 749a32b:
++ 6/31 vertices, from 5a76bad:
 [1]  9 17 11  5  6  1</code></pre>
 </div>
 </div>
 <p>igraph identifies 10 different paths that student 9 might take to, say, pass a note to student 1. A more circuitous route would involve passing the note to student 7, then 8, 4, 3, 2, and finally to 1. This involves 6 edges and therefore a distance of 6. However, student 9 could choose a more direct route by following the path from student 11 to 5 to 1, for half the distance of that longer path.</p>
 <p>In this way, distances between nodes are defined by the shortest path length between two nodes. This is referred to as the <strong>geodesic distance</strong>. Below we ask for the set of <strong>geodesic paths</strong> between students 9 and 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shortest_9to1 <span class="ot">&lt;-</span> <span class="fu">all_shortest_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>shortest_9to1<span class="sc">$</span>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shortest_9to1 <span class="ot">&lt;-</span> <span class="fu">all_shortest_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>shortest_9to1<span class="sc">$</span>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 4/31 vertices, from 749a32b:
++ 4/31 vertices, from 5a76bad:
 [1]  9 11  5  1</code></pre>
 </div>
 </div>
 <p>In this case, we see that there is only one geodesic path between students 9 and 1: 9 - 11 - 5 - 1. In other instances, we might find several geodesic paths. If we are only interested in the geodesic distance, rather than the specific path, the following command can be used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distances</span>(moreno2, <span class="at">v =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distances</span>(moreno2, <span class="at">v =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]
 [1,]    3</code></pre>
@@ -528,8 +519,8 @@ $no
 </div>
 <p>The distance value (3) is presented as a matrix (a <strong>distance matrix</strong>). Without referencing specific vertices in the command, the function returns a matrix for all i,j combinations within the network.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>distmat <span class="ot">&lt;-</span> <span class="fu">distances</span>(moreno2)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(distmat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>distmat <span class="ot">&lt;-</span> <span class="fu">distances</span>(moreno2)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(distmat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 31 × 31
       V1    V2    V3    V4    V5    V6    V7    V8    V9   V10   V11   V12   V13
@@ -555,8 +546,8 @@ $no
 <p>However, in a directed network, student 3 might be willing to pass a note to student 4, but might not be willing to receive a note from student 4. In that case, student 4 would have to follow an alternate (and longer) path to pass their note to student 1.</p>
 <p>What happens if we attempt to estimate the distance matrix for a disconnected graph? Let’s generate the new matrix and present only the distances between the last 10 students (students 24-33).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>distmat_full <span class="ot">&lt;-</span> <span class="fu">distances</span>(moreno)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(distmat_full[<span class="dv">24</span><span class="sc">:</span><span class="dv">33</span>,<span class="dv">24</span><span class="sc">:</span><span class="dv">33</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>distmat_full <span class="ot">&lt;-</span> <span class="fu">distances</span>(moreno)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(distmat_full[<span class="dv">24</span><span class="sc">:</span><span class="dv">33</span>,<span class="dv">24</span><span class="sc">:</span><span class="dv">33</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 10
       V1    V2    V3    V4    V5    V6    V7    V8    V9   V10
@@ -574,15 +565,15 @@ $no
 </div>
 </div>
 <p>The final two students (32 and 33) are disconnected from the graph. Their distances appear in rows and columns 9 and 10. The “INF” values indicate their distances to others in the graph are infinite and therefore cannot be calculated. The only estimable distances are among themselves.</p>
-<section id="node-distance-summaries" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="node-distance-summaries"><span class="header-section-number">6.4.1</span> Node distance summaries</h3>
+<section id="node-distance-summaries" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="node-distance-summaries"><span class="header-section-number">6.3.1</span> Node distance summaries</h3>
 <p>One might want to compare students in terms of their overall reachability within a network. For this we can examine the average geodesic distance that it would take for a student to pass a note to one of their classmates. For this, let’s return to the distance matrix from the main component of the Moreno graph. Student 1’s average distance can be obtained by taking the sum of the distance values in row 1 and dividing by the number of total students (length(moreno2)) minus 1. We can then compare student 1’s average to that of student 9.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(distmat[<span class="dv">1</span>,])<span class="sc">/</span>(<span class="fu">length</span>(moreno2)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(distmat[<span class="dv">1</span>,])<span class="sc">/</span>(<span class="fu">length</span>(moreno2)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.066667</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(distmat[<span class="dv">9</span>,])<span class="sc">/</span>(<span class="fu">length</span>(moreno2)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(distmat[<span class="dv">9</span>,])<span class="sc">/</span>(<span class="fu">length</span>(moreno2)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.933333</code></pre>
 </div>
@@ -590,16 +581,16 @@ $no
 <p>The results show that student 1 is, on average, closer to the rest of the students than is student 9. Student 1’s average geodesic distance to other students is about 3 edges, compared to nearly 4 edges for student 9.</p>
 <p>Another way to examine this is to estimate the longest path distance that a student would have to travel to get to another student. This is referred to as a node’s <strong>eccentricity</strong>. This can be obtained via the eccentricity command. See how the same estimates can be obtained by selecting the maximum values for the rows in the distance matrix.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eccentricity</span>(moreno2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eccentricity</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  6  6  7  8  6  6  8  9  8  9  7 11 11 11 10  6  8  7  8  8 10 11 11  9  9
 [26]  9  9  9  8  8  9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(distmat[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(distmat[<span class="dv">1</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(distmat[<span class="dv">9</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(distmat[<span class="dv">9</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
@@ -607,11 +598,11 @@ $no
 <p>Not surprisingly, student 1 has a lower eccentricity score (6) than student 9 (8).</p>
 </section>
 </section>
-<section id="network-distance-summaries" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="network-distance-summaries"><span class="header-section-number">6.5</span> Network distance summaries</h2>
+<section id="network-distance-summaries" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="network-distance-summaries"><span class="header-section-number">6.4</span> Network distance summaries</h2>
 <p>The geodesic distances that appear in the matrix provide important information about reachability in the network as a whole. For example, we could calculate the average geodesic distance for the entire network.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_distance</span>(moreno2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_distance</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.417204</code></pre>
 </div>
@@ -619,11 +610,11 @@ $no
 <p>Comparing this result to the earlier node mean results, we can say that both student 1 and student 9 have mean distance scores (3.1 &amp; 3.9, respectively) that are lower than the average score for the network (4.4).</p>
 <p><strong>Diameter</strong> is an important network summary measure. It is, ostensibly, a measure of the distance that it would take to travel from one end of the graph to the opposite end. Technically speaking, it refers to the largest eccentricity in the distance matrix. We obtain this below for the Moreno network’s main component by using the diameter command. Also note that the value is the same as the maximum number from the eccentricity vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(diam <span class="ot">&lt;-</span> <span class="fu">diameter</span>(moreno2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(diam <span class="ot">&lt;-</span> <span class="fu">diameter</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">eccentricity</span>(moreno2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">eccentricity</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
@@ -631,10 +622,10 @@ $no
 <p>The results show that the diameter of the main component is 11.</p>
 <p>How do we know which pair of students is farthest away – i.e., has a geodesic distance of 11? igraph has a command for that</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">farthest_vertices</span>(moreno2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">farthest_vertices</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vertices
-+ 2/31 vertices, from 749a32b:
++ 2/31 vertices, from 5a76bad:
 [1] 12 22
 
 $distance
@@ -643,7 +634,7 @@ $distance
 </div>
 <p>These results show that students 12 and 22 have a path distance that matches the diameter. But is this the only example of a diameter path? Unfortunately, the farthest_vertices command only selects the first diameter pair it comes across. To find out the other possible combinations, we could return to the distance matrix, asking which combinations match the diameter value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(distmat <span class="sc">==</span> diam, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(distmat <span class="sc">==</span> diam, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      row col
  [1,]  22  12
@@ -662,17 +653,17 @@ $distance
 </div>
 <p>Here we can see that there are a dozen diameter paths in this network.</p>
 </section>
-<section id="visualizing-paths" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="visualizing-paths"><span class="header-section-number">6.6</span> Visualizing paths</h2>
+<section id="visualizing-paths" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="visualizing-paths"><span class="header-section-number">6.5</span> Visualizing paths</h2>
 <p>How would one visualize a diameter path in a graph? First, identify and save as an object the diameter path. Second, use that object to create an edgelist that follows the path. We do this by creating a two column diameter_edges object with cbind, with the first column including all vertices in the path sequence except the last vertex (i.e., the “from” column) and the second column including all vertices except for the original vertex (i.e., the “to” column). From there we can apply different colors to the edges depending on whether or not they appear in the edgelist.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(diameter_path <span class="ot">&lt;-</span> <span class="fu">get_diameter</span>(moreno2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(diameter_path <span class="ot">&lt;-</span> <span class="fu">get_diameter</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 12/31 vertices, from 749a32b:
+<pre><code>+ 12/31 vertices, from 5a76bad:
  [1] 12 15 10  9 11  5  1 18 29 31 21 22</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(diameter_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(diameter_path[<span class="sc">-</span><span class="fu">length</span>(diameter_path)], </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                        diameter_path[<span class="sc">-</span><span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(diameter_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(diameter_path[<span class="sc">-</span><span class="fu">length</span>(diameter_path)], </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                        diameter_path[<span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2]
  [1,]   12   15
@@ -687,12 +678,12 @@ $distance
 [10,]   31   21
 [11,]   21   22</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno2, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(moreno2, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">color =</span> (from <span class="sc">%in%</span> diameter_path <span class="sc">&amp;</span> to <span class="sc">%in%</span> diameter_path)), <span class="at">width =</span> <span class="fl">1.25</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>  </span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"violet"</span>, <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"darkred"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"gray"</span>)) <span class="sc">+</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -702,30 +693,30 @@ $distance
 </div>
 </div>
 </section>
-<section id="cutpoints-and-bridges" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="cutpoints-and-bridges"><span class="header-section-number">6.7</span> Cutpoints and Bridges</h2>
+<section id="cutpoints-and-bridges" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="cutpoints-and-bridges"><span class="header-section-number">6.6</span> Cutpoints and Bridges</h2>
 <p>Finally, the study of connectivity often involves examining vulnerable aspects of the network – places that could lead to disconnection if they were to be removed.</p>
 <p>Why might this prove useful? Imagine you are managing a company and you notice in the organizational chart that information flowing from one part of the company to the rest of the company only goes through a single connection. If that edge is compromised, perhaps by one of the two individuals going on extended sick leave, the company will have trouble communicating. You therefore might recommend establishing redundant lines of communication between units. As another example, imagine you are a member of an international terrorism task force. If you notice that one terrorist is central to their coordination efforts, you might focus on apprehending and thus removing that individual from the network to break up their activities.</p>
 <p>These two examples point to the need for identifying network cutpoints and bridges. <strong>Cutpoints</strong> are vertices whose removal will disconnect the graph. Likewise, the removal of edges that are <strong>bridges</strong> will also disconnect the graph. Using the main component of the Moreno network, we can identify the set of cutpoints (also known as “articulation points”) and bridges.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(cutset <span class="ot">&lt;-</span> <span class="fu">articulation_points</span>(moreno2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(cutset <span class="ot">&lt;-</span> <span class="fu">articulation_points</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 7/31 vertices, from 749a32b:
+<pre><code>+ 7/31 vertices, from 5a76bad:
 [1] 15 10  9 29 21 18  1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(bridgeset <span class="ot">&lt;-</span> <span class="fu">bridges</span>(moreno2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(bridgeset <span class="ot">&lt;-</span> <span class="fu">bridges</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 3/45 edges from 749a32b:
+<pre><code>+ 3/45 edges from 5a76bad:
 [1] 10--15  9--10  1--18</code></pre>
 </div>
 </div>
 <p>The network is indeed vulnerable to disconnection, with 7 vertices in the cutset and 3 edges in the bridge set. We can further determine the overall level of vulnerability in the network.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min_cut</span>(moreno2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min_cut</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_connectivity</span>(moreno2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_connectivity</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -733,7 +724,7 @@ $distance
 <p>The results show that it would only take the removal of one vertex or one bridge to disconnect the network.</p>
 <p>Finally, let’s visualize the bridges and cutpoints in the network. To do this, we need to assign logical vectors to the igraph object indicating if the vertex or the edge in question are part of the <strong>cutset</strong> or <strong>bridge set</strong>, Then we can color those vertices and edges differently in the graph.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(moreno2)<span class="sc">$</span>is_cutpoint <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">V</span>(moreno2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(moreno2)<span class="sc">$</span>is_cutpoint <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">V</span>(moreno2)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">%in%</span> cutset, T,F)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(moreno2)<span class="sc">$</span>is_bridge <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">E</span>(moreno2)</span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                                <span class="sc">%in%</span> bridgeset, T,F)</span>
@@ -744,7 +735,7 @@ $distance
 <span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey"</span>,<span class="st">"red"</span>)) <span class="sc">+</span></span>
 <span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"green"</span>,<span class="st">"violet"</span>)) <span class="sc">+</span></span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -810,13 +801,14 @@ $distance
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1160,8 +1152,8 @@ $distance
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./centrality.html" class="pagination-link" aria-label="Centrality and Centralization">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span>
+      <a href="./centrality.html" class="pagination-link" aria-label="Central Actors and Centralized Networks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Central Actors and Centralized Networks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

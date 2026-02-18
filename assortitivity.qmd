@@ -1,15 +1,4 @@
----
-title: "Assortativity"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-# Assortativity
+## Assortativity
 
 Birds of a feather flock together. This is one of the most important insights about social interaction. Time and time again and across the globe, people display a tendency for connecting to others who are like themselves. This tendency for connecting to similar others is called assortativity. And when people actually form relationships or engage in interactions with similar others, we refer to this as homophily. By contrast, connecting with dissimilar others is referred to as heterophily.
 

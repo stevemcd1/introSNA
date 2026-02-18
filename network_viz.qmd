@@ -1,14 +1,3 @@
----
-title: "Network Visualization"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
 ## Visualizing Networks with ggraph
 
 This chapter demonstrates network visualization procedures and strategies using the ggraph package. ggraph was designed to align with the coding principles used for the ggplot set of graphing functions in R.

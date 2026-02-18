@@ -1,14 +1,3 @@
----
-title: "Connectivity"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
 ## Connectivity
 
 Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines. This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability.

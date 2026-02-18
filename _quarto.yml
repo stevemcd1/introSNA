@@ -4,12 +4,12 @@ project:
 book:
   title: "Introduction to Social Network Analysis"
   author: "Steve McDonald, Tom R. Leppard, Andrew P. Davis, and Aditi Mallavarapu"
-  date: "2/10/2026"
+  date: "2/18/2026"
   sidebar:
     search: true
     title: "Intro to Social Network Analysis"
-    logo: WolfWebs.png
-  cover-image: WolfWebs.png
+    logo: darkcover2.png
+  cover-image: darkcover2.png
   cover-image-alt: |
     A textbook cover.
   

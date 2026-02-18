@@ -1,10 +1,3 @@
----
-title: "Introduction to Social Network Analysis"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
 ## What is Social Network Analysis?
 
 Social network analysis (SNA) refers to the study of relationships between people or groups of people. Relationships are important to study for lots of reasons. For example...
@@ -30,4 +23,3 @@ Furthermore, we have created a series of web applications that can be used to pr
 While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also makes explicit reference to the statistics that underlie these procedures. We also point readers to advanced sources for further study.
 
 Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the "R and RStudio setup and resources" chapter in the appendix for details.
-

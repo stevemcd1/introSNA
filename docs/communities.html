@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Steve McDonald">
 
 <title>7&nbsp; Communities – Introduction to Social Network Analysis</title>
 <style>
@@ -70,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./connectivity.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-96e8a2c236aee144da7b9dc077376cca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -133,10 +133,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./WolfWebs.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Intro SNA</a> 
+      <a href="./">Intro to Social Network Analysis</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -164,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Social Network Analysis?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -176,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -199,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Central Actors and Centralized Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -245,20 +246,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./two_mode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">two_mode</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">two_mode</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./text.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">text</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">text</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dynamic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">dynamic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">dynamic</span></span></a>
   </div>
 </li>
       </ul>
@@ -266,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendix</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -275,19 +288,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,14 +315,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#communities" id="toc-communities" class="nav-link active" data-scroll-target="#communities"><span class="header-section-number">7.1</span> Communities</a></li>
-  <li><a href="#load-network-data" id="toc-load-network-data" class="nav-link" data-scroll-target="#load-network-data"><span class="header-section-number">7.2</span> Load network data</a></li>
-  <li><a href="#cliques" id="toc-cliques" class="nav-link" data-scroll-target="#cliques"><span class="header-section-number">7.3</span> Cliques</a></li>
-  <li><a href="#coreness" id="toc-coreness" class="nav-link" data-scroll-target="#coreness"><span class="header-section-number">7.4</span> Coreness</a></li>
-  <li><a href="#modularity-group-attributes" id="toc-modularity-group-attributes" class="nav-link" data-scroll-target="#modularity-group-attributes"><span class="header-section-number">7.5</span> Modularity: Group attributes</a></li>
-  <li><a href="#community-detection" id="toc-community-detection" class="nav-link" data-scroll-target="#community-detection"><span class="header-section-number">7.6</span> Community Detection</a></li>
-  <li><a href="#community-polygons" id="toc-community-polygons" class="nav-link" data-scroll-target="#community-polygons"><span class="header-section-number">7.7</span> Community Polygons</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.8</span> References</a></li>
+  <li><a href="#load-network-data" id="toc-load-network-data" class="nav-link active" data-scroll-target="#load-network-data"><span class="header-section-number">7.1</span> Load network data</a></li>
+  <li><a href="#cliques" id="toc-cliques" class="nav-link" data-scroll-target="#cliques"><span class="header-section-number">7.2</span> Cliques</a></li>
+  <li><a href="#coreness" id="toc-coreness" class="nav-link" data-scroll-target="#coreness"><span class="header-section-number">7.3</span> Coreness</a></li>
+  <li><a href="#modularity-group-attributes" id="toc-modularity-group-attributes" class="nav-link" data-scroll-target="#modularity-group-attributes"><span class="header-section-number">7.4</span> Modularity: Group attributes</a></li>
+  <li><a href="#community-detection" id="toc-community-detection" class="nav-link" data-scroll-target="#community-detection"><span class="header-section-number">7.5</span> Community Detection</a></li>
+  <li><a href="#community-polygons" id="toc-community-polygons" class="nav-link" data-scroll-target="#community-polygons"><span class="header-section-number">7.6</span> Community Polygons</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.7</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -325,12 +337,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Steve McDonald </p>
-          </div>
-  </div>
     
   
     
@@ -341,26 +347,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="communities" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="communities"><span class="header-section-number">7.1</span> Communities</h2>
 <p>When examining a network graph, one of the first things people look for is elements of the graph that comprise <strong>subgroups</strong>. These subgroups are often comprised of nodes that are highly connected relative to the rest of the graph. By noting the different subgroups, we can learn something about how the people in the network see themselves and in interact with one another.</p>
 <p>While the “eye-test” allows us to visually demarcate different subgroups or <strong>communities</strong> within a network, <strong>community detection</strong> can be better deduced through the use of a series of algorithms. We will explore some examples of this below. First it will be necessary to load a few R packages: igraph for conducting network analysis, ggraph for presenting the graphs, dplyr for manipulating the data, patchwork for presenting side-by-side graphs, and ggforce for drawing polygons.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="load-network-data" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="load-network-data"><span class="header-section-number">7.2</span> Load network data</h2>
+<section id="load-network-data" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="load-network-data"><span class="header-section-number">7.1</span> Load network data</h2>
 <p>In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery. He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!</p>
 <p>We will use the network data that Sampson collected to detect clusters and communities among the cloistered. The code below loads the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"sampson.rda"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sampson</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"sampson.rda"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sampson</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>IGRAPH 8399fc3 U--- 18 60 -- 
 + attr: cloisterville (v/l), group (v/c), na (v/l), vertex.names (v/c)
@@ -376,11 +379,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We can see here that this network contains 18 monks and 60 friendship ties among them. Originally, Sampson asked the monks to rank order their friendships; the ties here represent being in the top-three friendships. The network has been coerced such that any top-three nomination is treated as a symmetric friendship relationship.</p>
 <p>Let’s display the monk’s friendships. The graph below shows a fairly dense network with many overlapping friendships among the monks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names), </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> <span class="st">"royalblue"</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -390,12 +393,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="cliques" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="cliques"><span class="header-section-number">7.3</span> Cliques</h2>
+<section id="cliques" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="cliques"><span class="header-section-number">7.2</span> Cliques</h2>
 <p>Subgroups tend to be identified on the basis of <strong>cohesion</strong>, which is determined by dense connections among actors within a network. There are several ways to identify these communities. The most extreme way to define a subgroup is by identifying <strong>cliques</strong> – maximally connected subcomponents of a graph. In other words, a clique is a set of actors in which every subgroup member is directly connected to everyone else in the group. This subgroup therefore represents a complete subgraph. Cliques are comprised of at least three vertices.</p>
 <p>R can provide a list of all cliques in the Sampson network. But because this is a dense network, there are many cliques. Knowing that cliques are at least the size of 3, let’s examine all cliques the size of 5 or more.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cliques</span>(sampson, <span class="at">min =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cliques</span>(sampson, <span class="at">min =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 + 5/18 vertices, from 8399fc3:
@@ -432,17 +435,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The results show 8 different cliques the size of 5 or more. The largest clique includes 6 individuals who are all interconnected. Below we identify those 6 and distinguish them from the others in the network graph. First, we identify the numerical set of monks in the largest clique. Then we assign a logical value as a vertex attribute for monks who are either in (TRUE) or out of (FALSE) the largest clique. That information can then be used to color the labels in the graph.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(max_clique <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">cliques</span>(sampson, <span class="at">min =</span> <span class="dv">6</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(max_clique <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">cliques</span>(sampson, <span class="at">min =</span> <span class="dv">6</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  7 12 15 16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>clique <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(<span class="fu">vcount</span>(sampson)) <span class="sc">%in%</span> max_clique</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>clique <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(<span class="fu">vcount</span>(sampson)) <span class="sc">%in%</span> max_clique</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> clique)) <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -453,13 +456,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Here we can see which monks are part of the largest clique: Winfrid, Mark, Boniface, Albert, Gregory, and John Bosco.</p>
 </section>
-<section id="coreness" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="coreness"><span class="header-section-number">7.4</span> Coreness</h2>
+<section id="coreness" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="coreness"><span class="header-section-number">7.3</span> Coreness</h2>
 <p><strong>Coreness</strong> provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a <strong>k-core</strong> is a maximally connected subgroup in which each node is adjacent to at least k other nodes. Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.</p>
 <p>Below we can use the coreness function to obtain k-core estimates for each node. Then we can examine the frequency of k values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>core <span class="ot">&lt;-</span> <span class="fu">coreness</span>(sampson)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(core)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>core <span class="ot">&lt;-</span> <span class="fu">coreness</span>(sampson)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(core)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>core
  4  5 
@@ -469,14 +472,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Because this is such a dense network, we do not see much variation in coreness. A few monks (4) have a coreness value of 4, whereas the remaining monks (14) have a coreness value of 5, representing the core of this network. Being part of the core means that they belong to a group of students where every member has a degree of at least 5.</p>
 <p>Let’s graph coreness. We assign the core estimate as a vertex attribute. When graphing the network, we can use the coreness attribute to size the node labels, while still showing the clique membership.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>coreness <span class="ot">&lt;-</span> core</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>coreness <span class="ot">&lt;-</span> core</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> clique, </span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">size =</span> <span class="fu">as.factor</span>(coreness))) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using size for a discrete variable is not advised.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -487,49 +493,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The graph shows that the core group of monks includes the largest clique, plus several other monks who are not part of the largest clique. The peripheral monks are Basil, Simplicius, Amand, and Elias.</p>
 </section>
-<section id="modularity-group-attributes" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="modularity-group-attributes"><span class="header-section-number">7.5</span> Modularity: Group attributes</h2>
+<section id="modularity-group-attributes" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="modularity-group-attributes"><span class="header-section-number">7.4</span> Modularity: Group attributes</h2>
 <p>Communities are often defined based on shared personal attributes among group members. Some attributes might be especially salient for forming communities, whereas other attributes may matter very little. Network analysts can use statistics to assess the extent to specific attributes matter more than others for community formation.</p>
 <p>The concept of <strong>modularity</strong> refers to the extent that relationships in a network are defined by group membership. It is an estimate of density among in-group members relative to out-group members. A value of 1 reflects perfect modularity, in that all individuals connect to all other individuals from the same group and not to any out-group members. A value of -1 indicates that people only connect to out-group members. A value of 0 indicates a random mix of ties that is completely unrelated to group membership.</p>
 <p>Some of the monks joined the monastery after participating in a minor seminary (referred to by Sampson as “cloisterville”) prior to joining the monastery. To what extent did this earlier experience shape their friendship relationships in the monastery? We can use the modularity estimate to help answer this question.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>cloisterville</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>cloisterville</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
 [13] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(cloister_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">as.factor</span>(<span class="fu">V</span>(sampson)<span class="sc">$</span>cloisterville)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(cloister_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">as.factor</span>(<span class="fu">V</span>(sampson)<span class="sc">$</span>cloisterville)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.07347222</code></pre>
 </div>
 </div>
 <p>The modularity estimate is negative and close to zero. This suggests that previous shared experiences in cloisterville had little influence on the later friendship relationships of these aspiring monks. This is an interesting – and somewhat surprising – finding that helps us to rule out a reason as to why some monks were expelled and others were not.</p>
 </section>
-<section id="community-detection" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="community-detection"><span class="header-section-number">7.6</span> Community Detection</h2>
+<section id="community-detection" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="community-detection"><span class="header-section-number">7.5</span> Community Detection</h2>
 <p>So far we have addressed modularity in terms of vertex attributes that define shared experiences (attending cloisterville). But one of the most exciting developments within social network analysis is the ability to define group membership on the basis of ties rather than node-level attributes.</p>
 <p>Several different community detection algorithms have been established in order to accomplish this task. While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.</p>
 <p>Let’s consider three different modularity algorithms. First, the <strong>Louvain</strong> algorithm emphasizes modularity optimization. It assigns and reassigns nodes to different groups in order to identify a maximal modularity score. Second, <strong>edge betweenness</strong> identifies distinct groups by iteratively removing from the network edges that constitute bridges between different communities. Third, <strong>random walk</strong> estimates multiple random pathways between nodes across the network, clustering nodes into communities based on the extent to which they frequently appear as part of the same paths.</p>
 <p>Below we estimate these three algorithms, apply the membership vector to the igraph object, and compare the modularity scores to the cloisterville attributes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Louvain</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>louvain <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(sampson)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>louvain <span class="ot">&lt;-</span> <span class="fu">membership</span>(louvain)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>louvain_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>louvain)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">### Edge betweenness</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>edgeb <span class="ot">&lt;-</span> <span class="fu">cluster_edge_betweenness</span>(sampson)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>edgeb <span class="ot">&lt;-</span> <span class="fu">membership</span>(edgeb)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>edgeb_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>edgeb)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">### walktrap</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>walktrap <span class="ot">&lt;-</span> <span class="fu">cluster_walktrap</span>(sampson)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>walktrap <span class="ot">&lt;-</span> <span class="fu">membership</span>(walktrap)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>walktrap_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>walktrap)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="do">## tabulating modularity scores</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(louvain_mod,edgeb_mod,walktrap_mod,cloister_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Louvain</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>louvain <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(sampson)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>louvain <span class="ot">&lt;-</span> <span class="fu">membership</span>(louvain)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>louvain_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>louvain)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">### Edge betweenness</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>edgeb <span class="ot">&lt;-</span> <span class="fu">cluster_edge_betweenness</span>(sampson)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>edgeb <span class="ot">&lt;-</span> <span class="fu">membership</span>(edgeb)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>edgeb_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>edgeb)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">### walktrap</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>walktrap <span class="ot">&lt;-</span> <span class="fu">cluster_walktrap</span>(sampson)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(sampson)<span class="sc">$</span>walktrap <span class="ot">&lt;-</span> <span class="fu">membership</span>(walktrap)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>walktrap_mod <span class="ot">&lt;-</span> <span class="fu">modularity</span>(sampson, <span class="fu">V</span>(sampson)<span class="sc">$</span>walktrap)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## tabulating modularity scores</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(louvain_mod,edgeb_mod,walktrap_mod,cloister_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    [,1]
 louvain_mod   0.28986111
@@ -541,14 +547,14 @@ cloister_mod -0.07347222</code></pre>
 <p>What can we tell from this comparison of modularity scores? Each algorithm does a better job of capturing community clustering than the cloisterville experience. In fact, the values for Louvain, edge betweenness, and walktrap are all identical, suggesting that they do an equally good job of differentiating friendship communities among the monks.</p>
 <p>Let’s visually inspect the community memberships, using Louvain as the prime example. We’ll save this graph so it can be compared later.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> <span class="fu">as.factor</span>(louvain)),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Louvain (modularity ="</span>, <span class="fu">round</span>(louvain_mod, <span class="dv">3</span>), <span class="st">")"</span>)) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>g1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> <span class="fu">as.factor</span>(louvain)),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Louvain (modularity ="</span>, <span class="fu">round</span>(louvain_mod, <span class="dv">3</span>), <span class="st">")"</span>)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -559,7 +565,7 @@ cloister_mod -0.07347222</code></pre>
 </div>
 <p>How do these communities compare to Sampson’s coding of different friendship groups? He identified three groups which are summarized below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">V</span>(sampson)<span class="sc">$</span>group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">V</span>(sampson)<span class="sc">$</span>group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Loyal Outcasts    Turks 
@@ -568,14 +574,14 @@ cloister_mod -0.07347222</code></pre>
 </div>
 <p>The Loyal Opposition entered the monastery first. The Young Turks entered later and questioned existing practices. Several of the monks (“Outcasts”) were expelled from the monastery as a result of the conflict. Let’s compare the community detection groups to the observed groups.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> group)) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Sampson groups"</span>)) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> g2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(sampson, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> vertex.names,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Sampson groups"</span>)) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> g2 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -586,15 +592,15 @@ cloister_mod -0.07347222</code></pre>
 </div>
 <p>As you can see, the Louvain community detection algorithm perfectly predicted membership in each of the groups coded by Sampson. (Just note that the colors are switched across the two graphs, such that the Turks are red in the Louvain graph and blue in the Sampson graph.)</p>
 </section>
-<section id="community-polygons" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="community-polygons"><span class="header-section-number">7.7</span> Community Polygons</h2>
+<section id="community-polygons" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="community-polygons"><span class="header-section-number">7.6</span> Community Polygons</h2>
 <p>Finally, it can sometimes be useful to distinguish between network communities by displaying a polygon that wraps around the groups. Below we apply the polygons to the walktrap results by adding an extra geom_mark_hull layer to the earlier Louvain plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> louvain, </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> <span class="fu">as.factor</span>(louvain)), </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">concavity =</span> <span class="dv">5</span>, <span class="at">expand =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> louvain, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> <span class="fu">as.factor</span>(louvain)), </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">concavity =</span> <span class="dv">5</span>, <span class="at">expand =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -606,8 +612,8 @@ cloister_mod -0.07347222</code></pre>
 <p>This plot shows the distinct friendship communities among the monks.</p>
 <p>Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.</p>
 </section>
-<section id="references" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="references"><span class="header-section-number">7.8</span> References</h2>
+<section id="references" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="references"><span class="header-section-number">7.7</span> References</h2>
 <p>For more on the Sampson Monastery study…</p>
 <ul>
 <li><p>Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.</p></li>
@@ -669,13 +675,14 @@ cloister_mod -0.07347222</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

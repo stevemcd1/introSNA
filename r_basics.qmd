@@ -1,10 +1,3 @@
----
-title: "R Basics and Resources"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
 ## What is R and RStudio?
 
 This textbook teaches social network analysis in R. While R can be challenging for first time users, many excellent resources are available for learning R. This appendix offers links to those more detailed resources, while also providing a brief introduction to the software and the coding, focusing specifically on the coding particularities we rely on in this textbook.
@@ -89,7 +82,7 @@ Some packages are not readily available as part of the standard R and RStudio do
 
 ## intronets
 
-We have created a new package for this textbook called "intronets". This package contains a command, "load_nets", that can be used to load the network data from our GitHub repository. To install intronets, use the following code. After doing this one time, you will be able to access the data files using the load_nets command. 
+We have created a new package for this textbook called "intronets". This package contains a command, "load_nets", that can be used to load the network data from our GitHub repository. To install intronets, use the following code. After doing this one time, you will be able to access the data files using the load_nets command.
 
 ```{r intronets}
 #| warning: false

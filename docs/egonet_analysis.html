@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Steve McDonald">
 
-<title>12&nbsp; Ego network analysis – Introduction to Social Network Analysis</title>
+<title>12&nbsp; Analyzing ego network data – Introduction to Social Network Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-96e8a2c236aee144da7b9dc077376cca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -119,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,11 +133,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./WolfWebs.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./WolfWebs.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Intro SNA</a> 
+      <a href="./">Intro to Social Network Analysis</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -166,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Social Network Analysis?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -178,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -201,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Central Actors and Centralized Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -225,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -248,13 +247,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -280,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendix</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -289,19 +288,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">data_collect</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">interact_vis</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,40 +315,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#analyzing-ego-network-data" id="toc-analyzing-ego-network-data" class="nav-link active" data-scroll-target="#analyzing-ego-network-data"><span class="header-section-number">12.1</span> Analyzing ego network data</a>
+  <li><a href="#adding-ego-attributes" id="toc-adding-ego-attributes" class="nav-link active" data-scroll-target="#adding-ego-attributes"><span class="header-section-number">12.0.1</span> Adding ego attributes</a></li>
+  <li><a href="#visualizing-ego-networks" id="toc-visualizing-ego-networks" class="nav-link" data-scroll-target="#visualizing-ego-networks"><span class="header-section-number">12.0.2</span> Visualizing ego networks</a></li>
+  <li><a href="#adding-network-metrics" id="toc-adding-network-metrics" class="nav-link" data-scroll-target="#adding-network-metrics"><span class="header-section-number">12.1</span> Adding network metrics</a>
   <ul class="collapse">
-  <li><a href="#adding-ego-attributes" id="toc-adding-ego-attributes" class="nav-link" data-scroll-target="#adding-ego-attributes"><span class="header-section-number">12.1.1</span> Adding ego attributes</a></li>
-  <li><a href="#visualizing-ego-networks" id="toc-visualizing-ego-networks" class="nav-link" data-scroll-target="#visualizing-ego-networks"><span class="header-section-number">12.1.2</span> Visualizing ego networks</a></li>
+  <li><a href="#ego-attributes" id="toc-ego-attributes" class="nav-link" data-scroll-target="#ego-attributes"><span class="header-section-number">12.1.1</span> Ego attributes</a></li>
+  <li><a href="#alter-composition" id="toc-alter-composition" class="nav-link" data-scroll-target="#alter-composition"><span class="header-section-number">12.1.2</span> Alter composition</a></li>
+  <li><a href="#edge-structure" id="toc-edge-structure" class="nav-link" data-scroll-target="#edge-structure"><span class="header-section-number">12.1.3</span> Edge structure</a></li>
   </ul></li>
-  <li><a href="#adding-network-metrics" id="toc-adding-network-metrics" class="nav-link" data-scroll-target="#adding-network-metrics"><span class="header-section-number">12.2</span> Adding network metrics</a>
-  <ul class="collapse">
-  <li><a href="#ego-attributes" id="toc-ego-attributes" class="nav-link" data-scroll-target="#ego-attributes"><span class="header-section-number">12.2.1</span> Ego attributes</a></li>
-  <li><a href="#alter-composition" id="toc-alter-composition" class="nav-link" data-scroll-target="#alter-composition"><span class="header-section-number">12.2.2</span> Alter composition</a></li>
-  <li><a href="#edge-structure" id="toc-edge-structure" class="nav-link" data-scroll-target="#edge-structure"><span class="header-section-number">12.2.3</span> Edge structure</a></li>
-  </ul></li>
-  <li><a href="#bivariate-analyses" id="toc-bivariate-analyses" class="nav-link" data-scroll-target="#bivariate-analyses"><span class="header-section-number">12.3</span> Bivariate analyses</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12.4</span> References</a></li>
+  <li><a href="#bivariate-analyses" id="toc-bivariate-analyses" class="nav-link" data-scroll-target="#bivariate-analyses"><span class="header-section-number">12.2</span> Bivariate analyses</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12.3</span> References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Steve McDonald </p>
-          </div>
-  </div>
     
   
     
@@ -360,8 +350,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="analyzing-ego-network-data" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="analyzing-ego-network-data"><span class="header-section-number">12.1</span> Analyzing ego network data</h2>
 <p>Once the egocentric network data files have been constructed, we can turn to analyzing the data. First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.</p>
 <p>The code below installs the relevant packages and loads the egonet data.</p>
 <div class="cell">
@@ -375,8 +363,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"gss_ego.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="adding-ego-attributes" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="adding-ego-attributes"><span class="header-section-number">12.1.1</span> Adding ego attributes</h3>
+<section id="adding-ego-attributes" class="level3" data-number="12.0.1">
+<h3 data-number="12.0.1" class="anchored" data-anchor-id="adding-ego-attributes"><span class="header-section-number">12.0.1</span> Adding ego attributes</h3>
 <p>Let’s begin by examining a single ego network. Below we save new igraph objects – one without ego and one with ego included – for the ego network number 10 in our larger list.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ego-network graph, ego_id = 10</span></span>
@@ -493,8 +481,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Indeed, the NAs have been replaced by the appropriate values.</p>
 </section>
-<section id="visualizing-ego-networks" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="visualizing-ego-networks"><span class="header-section-number">12.1.2</span> Visualizing ego networks</h3>
+<section id="visualizing-ego-networks" class="level3" data-number="12.0.2">
+<h3 data-number="12.0.2" class="anchored" data-anchor-id="visualizing-ego-networks"><span class="header-section-number">12.0.2</span> Visualizing ego networks</h3>
 <p>Now that the correct values are in place, we can add attribute information to the network graphs. We’ll start with a graph of the number 10 network that includes ego, showing the gender of the nodes. Note that the gr.ego.10 object needs to be recreated now that we have added the new attribute information to the orginal list.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gr.ego<span class="fl">.10</span> <span class="ot">&lt;-</span> gr.list.ego[[<span class="st">"10"</span>]]</span>
@@ -550,11 +538,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>These results show two different modular groups. Ego is connected to all of these alters, but the clique between &lt;801,802,803&gt; is not directly connected to &lt;804,805&gt;.</p>
 </section>
-</section>
-<section id="adding-network-metrics" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="adding-network-metrics"><span class="header-section-number">12.2</span> Adding network metrics</h2>
-<section id="ego-attributes" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="ego-attributes"><span class="header-section-number">12.2.1</span> Ego attributes</h3>
+<section id="adding-network-metrics" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="adding-network-metrics"><span class="header-section-number">12.1</span> Adding network metrics</h2>
+<section id="ego-attributes" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="ego-attributes"><span class="header-section-number">12.1.1</span> Ego attributes</h3>
 <p>Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call nested data structures: within each ego is a set of alters and within each group of alters is a set of relationships.</p>
 <p>These three levels can be analyzed separately or combined. Below I present an example of a combined analysis whereby alter composition and edge structures are aggregated to the ego level. In other words, we’ll keep the data file at the ego level (with each row representing a unique ego) and add summary information about alters and alter ties to each row.</p>
 <p>Let’s start by creating a new data matrix called e.attribute. Let’s recode ego attributes for gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).</p>
@@ -578,8 +565,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="alter-composition" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="alter-composition"><span class="header-section-number">12.2.2</span> Alter composition</h3>
+<section id="alter-composition" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="alter-composition"><span class="header-section-number">12.1.2</span> Alter composition</h3>
 <p>Next let’s examine alter attribute summaries for ego number 10. Let’s estimate this ego’s proportion women alters and the average alter education.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the alter information for ego number 10</span></span>
@@ -630,8 +617,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="edge-structure" class="level3" data-number="12.2.3">
-<h3 data-number="12.2.3" class="anchored" data-anchor-id="edge-structure"><span class="header-section-number">12.2.3</span> Edge structure</h3>
+<section id="edge-structure" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="edge-structure"><span class="header-section-number">12.1.3</span> Edge structure</h3>
 <p>Finally, we can summarize network features for each alter based on the edges between alters. Again, we can start with estimates from a single ego network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_density</span>(gr<span class="fl">.10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -705,8 +692,8 @@ $ centralization &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0
 </div>
 </section>
 </section>
-<section id="bivariate-analyses" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="bivariate-analyses"><span class="header-section-number">12.3</span> Bivariate analyses</h2>
+<section id="bivariate-analyses" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="bivariate-analyses"><span class="header-section-number">12.2</span> Bivariate analyses</h2>
 <p>With a dataset like this, it is possible to conduct various statistical analyses. Below I show a simple analysis of variance (ANOVA) test to demonstrate one possibility.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ego.attribute<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="fu">factor</span>(ego.attribute<span class="sc">$</span>female, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
@@ -770,8 +757,8 @@ Residuals   286 2.201e-29 7.697e-32               </code></pre>
 </div>
 <p>These are simple bivariate analyses. More complex analyses based on multivariate and multilevel analyses are also possible with egocentric network data. Please check out the references below for more details and examples of these approaches.</p>
 </section>
-<section id="references" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="references"><span class="header-section-number">12.4</span> References</h2>
+<section id="references" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="references"><span class="header-section-number">12.3</span> References</h2>
 <p>This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<a href="https://raffaelevacca.github.io/egocentric-r-book/" class="uri">https://raffaelevacca.github.io/egocentric-r-book/</a>) for a more detailed discussion of ego networks.</p>
 <p>If you are interested in some of the substantive issues associated with the GSS “important matters” network data, check out the following resources.</p>
 <p>Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.</p>
@@ -1186,8 +1173,8 @@ Residuals   286 2.201e-29 7.697e-32               </code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./egonet_setup.html" class="pagination-link" aria-label="Ego network data setup">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span>
+      <a href="./egonet_setup.html" class="pagination-link" aria-label="Setting up ego network data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

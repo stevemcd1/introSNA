@@ -1,10 +1,3 @@
----
-title: "Ego network analysis"
-author: "Dr. Steve McDonald"
-format: html
-editor: visual
----
-
 ## Analyzing ego network data
 
 Once the egocentric network data files have been constructed, we can turn to analyzing the data. First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.

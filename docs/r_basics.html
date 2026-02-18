@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Steve McDonald">
 
-<title>Appendix A — R Basics and Resources – Introduction to Social Network Analysis</title>
+<title>Appendix A — What is R and RStudio? – Introduction to Social Network Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./dynamic.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-297bbb9ee346cfc22f3ac7b9b80b6d6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-96e8a2c236aee144da7b9dc077376cca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -133,7 +133,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./WolfWebs.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -164,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Social Network Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Social Network Analysis?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -176,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -199,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality and Centralization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Central Actors and Centralized Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -246,13 +247,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego network data setup</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego network analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -287,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r_basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,36 +315,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-r-and-rstudio" id="toc-what-is-r-and-rstudio" class="nav-link active" data-scroll-target="#what-is-r-and-rstudio"><span class="header-section-number">A.1</span> What is R and RStudio?</a></li>
-  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r"><span class="header-section-number">A.2</span> Why R?</a></li>
-  <li><a href="#external-resources-for-r" id="toc-external-resources-for-r" class="nav-link" data-scroll-target="#external-resources-for-r"><span class="header-section-number">A.3</span> External Resources for R</a></li>
-  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio"><span class="header-section-number">A.4</span> Installing R and RStudio</a></li>
-  <li><a href="#interface" id="toc-interface" class="nav-link" data-scroll-target="#interface"><span class="header-section-number">A.5</span> Interface</a></li>
-  <li><a href="#r-coding-basics" id="toc-r-coding-basics" class="nav-link" data-scroll-target="#r-coding-basics"><span class="header-section-number">A.6</span> R Coding Basics</a></li>
-  <li><a href="#functions-and-packages" id="toc-functions-and-packages" class="nav-link" data-scroll-target="#functions-and-packages"><span class="header-section-number">A.7</span> Functions and Packages</a></li>
-  <li><a href="#intronets" id="toc-intronets" class="nav-link" data-scroll-target="#intronets"><span class="header-section-number">A.8</span> intronets</a></li>
-  <li><a href="#creating-and-manipulating-objects" id="toc-creating-and-manipulating-objects" class="nav-link" data-scroll-target="#creating-and-manipulating-objects"><span class="header-section-number">A.9</span> Creating and Manipulating Objects</a></li>
+  <li><a href="#why-r" id="toc-why-r" class="nav-link active" data-scroll-target="#why-r"><span class="header-section-number">A.1</span> Why R?</a></li>
+  <li><a href="#external-resources-for-r" id="toc-external-resources-for-r" class="nav-link" data-scroll-target="#external-resources-for-r"><span class="header-section-number">A.2</span> External Resources for R</a></li>
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio"><span class="header-section-number">A.3</span> Installing R and RStudio</a></li>
+  <li><a href="#interface" id="toc-interface" class="nav-link" data-scroll-target="#interface"><span class="header-section-number">A.4</span> Interface</a></li>
+  <li><a href="#r-coding-basics" id="toc-r-coding-basics" class="nav-link" data-scroll-target="#r-coding-basics"><span class="header-section-number">A.5</span> R Coding Basics</a></li>
+  <li><a href="#functions-and-packages" id="toc-functions-and-packages" class="nav-link" data-scroll-target="#functions-and-packages"><span class="header-section-number">A.6</span> Functions and Packages</a></li>
+  <li><a href="#intronets" id="toc-intronets" class="nav-link" data-scroll-target="#intronets"><span class="header-section-number">A.7</span> intronets</a></li>
+  <li><a href="#creating-and-manipulating-objects" id="toc-creating-and-manipulating-objects" class="nav-link" data-scroll-target="#creating-and-manipulating-objects"><span class="header-section-number">A.8</span> Creating and Manipulating Objects</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R Basics and Resources</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix A — R Basics and Resources</h1>
+<h1 class="title">Appendix A — What is R and RStudio?</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Steve McDonald </p>
-          </div>
-  </div>
     
   
     
@@ -354,19 +348,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="what-is-r-and-rstudio" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="what-is-r-and-rstudio"><span class="header-section-number">A.1</span> What is R and RStudio?</h2>
 <p>This textbook teaches social network analysis in R. While R can be challenging for first time users, many excellent resources are available for learning R. This appendix offers links to those more detailed resources, while also providing a brief introduction to the software and the coding, focusing specifically on the coding particularities we rely on in this textbook.</p>
 <p>R is a statistical software program and coding language. RStudio is a software platform with a graphical user interface (GUI) that makes it easier to run R code and work with R. You can download these two programs and open RStudio and it will run R in the background. R comes with a series of base functions and these are supplemented with user-developed packages that can be downloaded from R’s online repository or directly from user-specific repositories (typically, GitHub repositories).</p>
-</section>
-<section id="why-r" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="why-r"><span class="header-section-number">A.2</span> Why R?</h2>
+<section id="why-r" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="why-r"><span class="header-section-number">A.1</span> Why R?</h2>
 <p>The obvious first question is, why R? Social network analysis can be conducted in lots of different software programs and applications. We believe that R is the ideal program, at this current moment, for gaining extensive introductory training in SNA. First, R is free, so any student can access the program without the need for funds or an institutional affiliation that can provide those funds.</p>
 <p>Second, while RStudio has point-and-click capability and GUI interfaces, coding is essential for running detailed analyses and visualizations. This is a benefit, because any network analyst worth their salt should champion the ability to replicate their work. In other words, coding is a necessity and R offers an ideal platform to learn and apply software coding.</p>
 <p>Third, the decentralized character of R package development provides its users with a vast array of packages that are up to date and allow for an almost limitless font of data management and analysis functions. That is to say, there’s almost nothing statistically you cannot do in R. We will, purposely, only focus on a small number of packages in this textbook. But learning the basics of SNA in R sets you up well for further statistical analyses.</p>
 </section>
-<section id="external-resources-for-r" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="external-resources-for-r"><span class="header-section-number">A.3</span> External Resources for R</h2>
+<section id="external-resources-for-r" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="external-resources-for-r"><span class="header-section-number">A.2</span> External Resources for R</h2>
 <p>There are many excellent guides for learning and using R &amp; RStudio. An excellent introductory guide is Garrett Grolemund’s [Hands-On Programming with R]<a href="https://rstudio-education.github.io/hopr/" class="uri">https://rstudio-education.github.io/hopr/</a>, which I highly recommend for those who are working with R for the first time. I also recommend Hadley Wickham’s [R for Data Science]<a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a> for further topics related to data management and coding workflow strategies. We rely heavily in our textbook on the tidy data principles that Hadley and his colleagues developed.</p>
 <p>The use of ChatGPT and other generative AI applications for assistance with coding has generated much debate in the social sciences. We have found these tools to be helpful when we do our coding work, though there are many reasons to be cautious. First, these tools often hallucinate by offering advice about packages or functions that do not (or no longer) exist. Second, these tools frequently offer complex solutions to relatively simple coding problems. It is better to ask about smaller and more precise tasks than to make broader queries about bigger problems. Third, make sure you understand the code that these applications are offering. They frequently offer to develop elaborate functions for you. When that happens, ask the app to break apart the function into smaller parts. And ask lots of questions about what the code is doing. It will take more time, but it will be time well spent.</p>
 <div class="quarto-figure quarto-figure-left">
@@ -375,8 +366,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="installing-r-and-rstudio" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="installing-r-and-rstudio"><span class="header-section-number">A.4</span> Installing R and RStudio</h2>
+<section id="installing-r-and-rstudio" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="installing-r-and-rstudio"><span class="header-section-number">A.3</span> Installing R and RStudio</h2>
 <p>R is available via the Comprehensive R Archive Network ([CRAN]<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>). Follow the link and select the file that matches your operating system. After installing R, go to the following link and do the same for [RStudio]<a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a>, just be sure to select the free option. R and RStudio are frequently updated, so you will periodically need to install new versions. When you open RStudio and a new update for R or RStudio are available, you’ll be told that it’s time to do so. It’s usually a good idea to keep both programs up to date.</p>
 <p>Running R code requires that you open RStudio. You do not need to open R as well – RStudio runs the R program in the background. Below is an example of what the interface looks like.</p>
 <div class="quarto-figure quarto-figure-left">
@@ -386,19 +377,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="interface" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="interface"><span class="header-section-number">A.5</span> Interface</h2>
+<section id="interface" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="interface"><span class="header-section-number">A.4</span> Interface</h2>
 <p>As you can see, the interface includes 4 boxes. The upper left box is where you write the code. To be clear, <strong>code</strong> refers to the coding language that fits into this box. <strong>Script</strong> refers to the coding files which can be saved to your local or cloud environment. I recommend opening script files directly in RStudio, either by clicking on “File &gt; Open File…” or by using the open file icon at the upper left, instead of opening script files from outside of RStudio.</p>
 <p>To run code, you can highlight the portion of code that you want to run and then click on the “Run” button near the upper middle of the screen. Another option, which we find to be much easier, is to navigate to the line of the code that you want to run and press Ctrl+Enter. After that portion of the code is run, the cursor will move to the next line. This makes it very easy to sequentially run through the code in a script file.</p>
 <p>One other coding shortcut to mention: R makes autofill suggestions as you write your code. This can be a very helpful feature to rely on when you are calling on different objects and variables.</p>
 <p>When you run a command, the code and the corresponding output shows up in the console, which is lower left. You can also run code directly from the console by typing in your code and pressing enter.</p>
 <p>When you load or create an object, it shows up in your global environment (upper right). Graphical displays show up in the lower right box in the “Plots” tab. That lower right box also contains lots of other helpful tabs, including the “Help” tab which can be used to learn more about the various functions you will be using.</p>
 </section>
-<section id="r-coding-basics" class="level2" data-number="A.6">
-<h2 data-number="A.6" class="anchored" data-anchor-id="r-coding-basics"><span class="header-section-number">A.6</span> R Coding Basics</h2>
+<section id="r-coding-basics" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="r-coding-basics"><span class="header-section-number">A.5</span> R Coding Basics</h2>
 <p>At the simplest level, R can be used as a calculator. Just enter an equation and run the code. See below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8675</span><span class="sc">*</span><span class="dv">309</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8675</span><span class="sc">*</span><span class="dv">309</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2680575</code></pre>
 </div>
@@ -406,11 +397,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here we can see the code in the shaded portion of the text above followed by the output. The output shows that the product of 8675 and 309 is 2680575. The [1] indicates that this is the first element of the output. In fact, it is the only element, which makes that information not especially useful. But rest assured it will be more helpful when your output includes multiple elements.</p>
 <p>Important note: if you move your cursor over the upper right hand portion of the shaded area, you’ll see a button that copies the code to the clipboard. We recommend following along with the textbook chapters by copying the code and pasting it into your own script file. That way you can follow along with the various exercises, which will help you learn the material better.</p>
 </section>
-<section id="functions-and-packages" class="level2" data-number="A.7">
-<h2 data-number="A.7" class="anchored" data-anchor-id="functions-and-packages"><span class="header-section-number">A.7</span> Functions and Packages</h2>
+<section id="functions-and-packages" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="functions-and-packages"><span class="header-section-number">A.6</span> Functions and Packages</h2>
 <p>Typically, R is used to apply functions to data. Here’s an illustration.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
@@ -419,49 +410,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To learn more about a function, you can type “?” followed by the name of the function and the details will show up in the “Help” tab in the bottom right box.</p>
 <p>Functions are grouped as part of packages. log is part of R’s “base” package, which is always available when running RStudio. There are, of course, many other packages installed packages that are not immediately available when you open RStudio. To use those packages, they need to be brought into the library. Here’s an example of bringing igraph, the main package we will use in this textbook, into the library.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now the various igraph functions can be run as part of your code. Quick note: bringing packages into libraries invokes a series of warning messages. We suppress warning messages in the output presented here, so you might see something different when you run these commands by yourself.</p>
 <p>Just like with the log function, you can use the Help window to examine the igraph package and its associated functions. You can also check out other installed and available packages in the “Packages” tab in the lower right hand box in RStudio. You can click on the check box in this window to load a package, though we recommend using the library command as part of your code instead.</p>
 <p>Some packages are not readily available as part of the standard R and RStudio downloads. For these types of packages, you need to first install the package (<em>install.packages(“nameofpackage”)</em>), which downloads it from CRAN and stores the file to your local machine. Then you need to bring the package into the library to use the function. You will only need to download the package once – every subsequent time you will only need to bring it into the library. And you will see it appear in the “Packages” window after it is downloaded.</p>
 </section>
-<section id="intronets" class="level2" data-number="A.8">
-<h2 data-number="A.8" class="anchored" data-anchor-id="intronets"><span class="header-section-number">A.8</span> intronets</h2>
+<section id="intronets" class="level2" data-number="A.7">
+<h2 data-number="A.7" class="anchored" data-anchor-id="intronets"><span class="header-section-number">A.7</span> intronets</h2>
 <p>We have created a new package for this textbook called “intronets”. This package contains a command, “load_nets”, that can be used to load the network data from our GitHub repository. To install intronets, use the following code. After doing this one time, you will be able to access the data files using the load_nets command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"stevemcd1/intronets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file 'C:\Users\trleppar\AppData\Local\Temp\RtmpsHTnYm\remotesaffc4ad97835\stevemcd1-intronets-7ff62c2/DESCRIPTION' ... OK
-* preparing 'intronets':
-* checking DESCRIPTION meta-information ... OK
-* checking for LF line-endings in source and make files and shell scripts
-* checking for empty or unneeded directories
-Omitted 'LazyData' from DESCRIPTION
-  NB: this package now depends on R (&gt;= 3.5.0)
-  WARNING: Added dependency on R &gt;= 3.5.0 because serialized objects in
-  serialize/load version 3 cannot be read in older versions of R.
-  File(s) containing such objects:
-    'intronets/inst/extdata/drugnet.rda'
-    'intronets/inst/extdata/github.rda' 'intronets/inst/extdata/gss.rda'
-    'intronets/inst/extdata/gss_ego.rda'
-    'intronets/inst/extdata/hi_tech.rda' 'intronets/inst/extdata/ifm.rda'
-    'intronets/inst/extdata/moreno.rda'
-    'intronets/inst/extdata/sampson.rda'
-    'intronets/inst/extdata/tradenets.rda'
-* building 'intronets_0.1.0.tar.gz'
-</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"stevemcd1/intronets"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="creating-and-manipulating-objects" class="level2" data-number="A.9">
-<h2 data-number="A.9" class="anchored" data-anchor-id="creating-and-manipulating-objects"><span class="header-section-number">A.9</span> Creating and Manipulating Objects</h2>
+<section id="creating-and-manipulating-objects" class="level2" data-number="A.8">
+<h2 data-number="A.8" class="anchored" data-anchor-id="creating-and-manipulating-objects"><span class="header-section-number">A.8</span> Creating and Manipulating Objects</h2>
 <p>A major benefit of R over other statistical software programs is that it is <strong>object-oriented</strong>, rather than <strong>matrix-oriented</strong> like SPSS, Stata, and SAS. Instead of loading and manipulating a matrix, R allows you to create and manipulate a wider array of different types of objects, matrices included.</p>
 <p>Let’s create a very simple object. Then we can “call” that object to print it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">8</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">8</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
@@ -469,82 +438,82 @@ Omitted 'LazyData' from DESCRIPTION
 <p>The arrow (“&lt;-”) serves as the assignment operator, which stores the information (the product of 2 and 8) in an object called x. If you are following along in RStudio, you’ll note that the new object x now appears in the global environment. Note that you can name these objects whatever you want to (so long as the names do not include any spaces). And anytime you want to display an object in the console, you can just type its name and run the line.</p>
 <p>Here is a nifty shortcut for creating and printing objects in one step: wrap the entire line in parentheses.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
 </div>
 <p>Objects can also be created with the use of functions and by using already existing objects.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>These are all single element objects. Multiple elements can be combined into more complex objects called <strong>vectors</strong> or <strong>arrays</strong> by using the “c()” command. Here are some examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>number_vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>number_vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>number_vec1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>number_vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>number_vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>number_vec1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>number_vec2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>number_vec2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>character_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hello"</span>, <span class="st">"from"</span>, <span class="st">"Raleigh"</span>, <span class="st">"NC"</span>, <span class="st">"!"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>character_vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>character_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hello"</span>, <span class="st">"from"</span>, <span class="st">"Raleigh"</span>, <span class="st">"NC"</span>, <span class="st">"!"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>character_vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hello"   "from"    "Raleigh" "NC"      "!"      </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>logical_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>logical_vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>logical_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>logical_vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
 </div>
 </div>
 <p>Here we can see three different types of vectors based on numbers, characters, and logical sequences. Once these objects are created, we might want to call on a specific element within the vector. This is called <strong>subsetting</strong> and involves the use of square brackets: “[]”. See the examples below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>number_vec1[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>number_vec1[<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>character_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>character_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hello" "from" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>logical_vec[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>logical_vec[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE TRUE</code></pre>
 </div>
 </div>
 <p>When these vectors are created, R stores information about the class of the object. You can use the “class” command to find out what type of object it is.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(number_vec1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(number_vec1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(character_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(character_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(logical_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(logical_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
 </div>
 <p>Vectors can be further combined to create more complex objects. We can “bind” vectors as rows (rbind) or as columns (cbind).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(number_vec1, character_vec, logical_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(number_vec1, character_vec, logical_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              [,1]    [,2]    [,3]      [,4]    [,5]  
 number_vec1   "1"     "2"     "3"       "4"     "5"   
 character_vec "Hello" "from"  "Raleigh" "NC"    "!"   
 logical_vec   "TRUE"  "FALSE" "TRUE"    "FALSE" "TRUE"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(number_vec1, character_vec, logical_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(number_vec1, character_vec, logical_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     number_vec1 character_vec logical_vec
 [1,] "1"         "Hello"       "TRUE"     
@@ -556,18 +525,18 @@ logical_vec   "TRUE"  "FALSE" "TRUE"    "FALSE" "TRUE"</code></pre>
 </div>
 <p>These more complex objects have their own classifications. For example, we could create matrices, data frames, or lists (which combine multiple complex objects).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">rbind</span>(number_vec1, character_vec, logical_vec))</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>x_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(number_vec1, character_vec, logical_vec))</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>x_list <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="fu">c</span>(x_mat,x_df))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>x_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">rbind</span>(number_vec1, character_vec, logical_vec))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(number_vec1, character_vec, logical_vec))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>x_list <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="fu">c</span>(x_mat,x_df))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>x_mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              [,1]    [,2]    [,3]      [,4]    [,5]  
 number_vec1   "1"     "2"     "3"       "4"     "5"   
 character_vec "Hello" "from"  "Raleigh" "NC"    "!"   
 logical_vec   "TRUE"  "FALSE" "TRUE"    "FALSE" "TRUE"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  number_vec1 character_vec logical_vec
 1           1         Hello        TRUE
@@ -576,7 +545,7 @@ logical_vec   "TRUE"  "FALSE" "TRUE"    "FALSE" "TRUE"</code></pre>
 4           4            NC       FALSE
 5           5             !        TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x_list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "1"
@@ -635,36 +604,36 @@ $logical_vec
 </div>
 <p>Just like with vectors, we can subset elements within these complex objects. For matrices and data frames, we can call on a row, a column, or specific row and column combinations. We can also call on elements in lists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x_mat[<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x_mat[<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>character_vec 
     "Raleigh" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x_df[,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x_df[,<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TRUE"  "FALSE" "TRUE"  "FALSE" "TRUE" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x_list[[<span class="dv">14</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x_list[[<span class="dv">14</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "!"</code></pre>
 </div>
 </div>
 <p>Data frames are especially useful objects because they allow us to examine and manipulate the columns as variables. We can call on a variable by using the “$”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>number_vec1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>number_vec1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1" "2" "3" "4" "5"</code></pre>
 </div>
 </div>
 <p>You can see that each number in the list is wrapped in quotation marks. That means it is being treated as a character vector. In fact, all of the variables are being treated as character vectors. So let’s change the variables to ensure that they are appropriately classified.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>number_vec1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x_df<span class="sc">$</span>number_vec1)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>logical_vec <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(x_df<span class="sc">$</span>logical_vec)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_df<span class="sc">$</span>number_vec1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>number_vec1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x_df<span class="sc">$</span>number_vec1)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>x_df<span class="sc">$</span>logical_vec <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(x_df<span class="sc">$</span>logical_vec)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_df<span class="sc">$</span>number_vec1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_df<span class="sc">$</span>logical_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_df<span class="sc">$</span>logical_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
@@ -673,10 +642,10 @@ $logical_vec
 <p>Let’s do a quick demonstration. First, we will need to bring dplyr into the library in order to use one of the functions (mutate) from that package. Then we identify our data frame, which we follow with the pipe operator (“|&gt;” or sometimes “%&gt;%”).</p>
 <p>The goal is to create a new variable that is the product of the values in the numeric and logical vectors (TRUEs are treated as 1s and the FALSEs are treated as 0s). The mutate command does that calculation, creating a new variable called “multiply”. Then we can arrange the rows in the data frame in descending order based on the values from the multiply variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>x_df <span class="sc">|&gt;</span> </span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">multiply =</span> number_vec1<span class="sc">*</span>logical_vec) <span class="sc">|&gt;</span> </span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(multiply))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>x_df <span class="sc">|&gt;</span> </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">multiply =</span> number_vec1<span class="sc">*</span>logical_vec) <span class="sc">|&gt;</span> </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(multiply))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  number_vec1 character_vec logical_vec multiply
 1           5             !        TRUE        5
@@ -688,13 +657,13 @@ $logical_vec
 </div>
 <p>This does not make any changes to the data frame object itself – it just makes the change and displays it. To change the data frame, we need to use the assignment operator (“&lt;-”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x_df <span class="ot">&lt;-</span> x_df <span class="sc">|&gt;</span> </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">multiply =</span> number_vec1<span class="sc">*</span>logical_vec) <span class="sc">|&gt;</span> </span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(multiply))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x_df <span class="ot">&lt;-</span> x_df <span class="sc">|&gt;</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">multiply =</span> number_vec1<span class="sc">*</span>logical_vec) <span class="sc">|&gt;</span> </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(multiply))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally, dplyr has a nice function called “glimpse” that allows us to take a quick scan on a data frame. Below we contrast glimpse with “head” from the base package which shows us the first six lines of a data frame. We will alternate between both display strategies in this textbook.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(x_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(x_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5
 Columns: 4
@@ -703,7 +672,7 @@ $ character_vec &lt;chr&gt; "!", "Raleigh", "Hello", "from", "NC"
 $ logical_vec   &lt;lgl&gt; TRUE, TRUE, TRUE, FALSE, FALSE
 $ multiply      &lt;dbl&gt; 5, 3, 1, 0, 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  number_vec1 character_vec logical_vec multiply
 1           5             !        TRUE        5
@@ -770,13 +739,14 @@ $ multiply      &lt;dbl&gt; 5, 3, 1, 0, 0</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
