@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>graph_layouts – Introduction to Social Network Analysis</title>
+<title>4&nbsp; Network Visualization Layouts – Introduction to Social Network Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_sna.html">Introduction</a></li><li class="breadcrumb-item"><a href="./graph_layouts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">graph_layouts.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_sna.html">Introduction</a></li><li class="breadcrumb-item"><a href="./graph_layouts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Network Visualization Layouts</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./graph_layouts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">graph_layouts.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Network Visualization Layouts</span></span></a>
   </div>
 </li>
       </ul>
@@ -275,16 +310,337 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#force-directed-layouts" id="toc-force-directed-layouts" class="nav-link active" data-scroll-target="#force-directed-layouts"><span class="header-section-number">4.1</span> Force Directed Layouts</a></li>
+  <li><a href="#set-layouts" id="toc-set-layouts" class="nav-link" data-scroll-target="#set-layouts"><span class="header-section-number">4.2</span> Set Layouts</a></li>
+  <li><a href="#contour-visualisations" id="toc-contour-visualisations" class="nav-link" data-scroll-target="#contour-visualisations"><span class="header-section-number">4.3</span> Contour Visualisations</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.4</span> References</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_sna.html">Introduction</a></li><li class="breadcrumb-item"><a href="./graph_layouts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">graph_layouts.html</span></a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_sna.html">Introduction</a></li><li class="breadcrumb-item"><a href="./graph_layouts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Network Visualization Layouts</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Network Visualization Layouts</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>Content Coming</p>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>This chapter demonstrates the importance of space and presentation when visualizing network data using the ggraph package. As mentioned before, ggraph follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.</p>
+<p>The layout of a network visual pertains to the location of the nodes and edges within the plotting space. The layout of your data visualization can influence how your reader interprets your data. Here, then, we introduce multiple ways in which you can utilize the space of your network visual through layout options to ensure proper interpretation of your network visualization.</p>
+<p>To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran &amp; Sageman 2008). This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># reading data in</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"bali.rda"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploring the data - 16 nodes with 63 edges and a few characteristics</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>bali</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH 5cb3f84 U--- 17 63 -- 
++ attr: na (v/l), role (v/c), vertex.names (v/c), IC (e/n), na (e/l)
++ edges from 5cb3f84:
+ [1]  1-- 2  1-- 3  1-- 4  1-- 5  1-- 6  1-- 8  1-- 9  1--15  1--17  2-- 4
+[11]  2-- 6  2-- 7  3-- 4  3-- 5  3-- 6  3-- 8  3-- 9  3--15  3--16  3--17
+[21]  4-- 5  4-- 6  4-- 7  4-- 8  4-- 9  4--10  4--11  4--12  4--13  4--14
+[31]  4--15  4--17  5-- 6  5-- 8  5-- 9  5--15  5--16  5--17  6-- 7  6-- 8
+[41]  6-- 9  6--15  6--17  8-- 9  8--15  8--16  8--17  9--15  9--16  9--17
+[51] 10--11 10--12 10--13 10--14 11--12 11--13 11--14 12--13 12--14 13--14
+[61] 15--16 15--17 16--17</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Role characteristic</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">V</span>(bali)<span class="sc">$</span>role)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CT" "OA" "BM" "SB" "TL"</code></pre>
+</div>
+</div>
+<p>Let’s do a quick visualization to see the network with the roles of each node highlighted.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick Vis</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Great! This is already a cool visualization that is pretty straightforward. Due to the nature of these relationships, the network presents very cleanly without much manipulation. Regardless, let’s play around with it so you can see how the various layouts emphasize different aspects of the network. As you cycle through each visualization, pay attention to how the manipulations to the layout we make stresses different aspects of the network structure and draws your attention. Note, some might look cool while actually distracting the viewer from what you are trying to present. Visualization is an art that is best practiced in private before presented!</p>
+<section id="force-directed-layouts" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="force-directed-layouts"><span class="header-section-number">4.1</span> Force Directed Layouts</h2>
+<p>You need to be mindful that humans are naturally inclined to make assumptions about relationships based on space. Proximity of data points in a graph or figure suggest similarity or relation. This is a vital consideration when presenting relational data such as network data.</p>
+<p>We will, therefore, start with what are called force directed layouts. As previously mentioned, these algorithms of visualization cause dissimilar nodes to repel and similarly connected nodes to plot closer to each other. This grouping of nodes aids viewers in their interpretation by leaning into their tendency to assume that proximity = similarity.</p>
+<p>To alter the layout of the ggraph visualization, simply use the ‘layout’ option. We will cycle through these force directed visualisations quickly. This network does not change too much between each. This is because the network itself is already very modular. However, this exposes you to several algorithms. With your data, the visualization may look very different between them all. We won’t go into the specifics for how each works, you can search that yourself. In general, they all work under the same principle - maximizing the proximity of similarly connected nodes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Force directed</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Stress Layout"</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kamada Kawai Layout"</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fruchterman-Reingold Layout"</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Diffie-Hellman Layout"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"graphopt"</span>) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Graphopt Layout"</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-3-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="set-layouts" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="set-layouts"><span class="header-section-number">4.2</span> Set Layouts</h2>
+<p>So far we have let the relationships and their nature guide the way we present the network. Force directed layouts spring nodes away or towards each other. The other option is to arrange the nodes in a specific ordered shape. While this goes against tendencies of perception we have discussed so far, there are some benefits to visualizing networks this way. Each manipulation of the network draws your attention to different aspects of the graph. It is worth learning each style so you can try them as you decide on your presentation.</p>
+<p>The circle layout places the nodes in a ring on the outside of the graph and places the edges within. This style is often used to emphasize the density of the network. The more interconnected the nodes are the more densely filled the ring is. Another nice thing about this layout is that the edges between nodes are easily traceable across the network. With all nodes out of the way, it is straightforward to see which nodes are connected to which. Notice, for this visual, we have increased the node size and made the edges more transparent.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specific Layouts</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"circle"</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, we turn to a grid layout where the nodes are presented in rows left to right from bottom to top. This kind of layout makes it possible for viewers to focus on each node, or a group of nodes and see how many ties connect to them. Note, however, that this style gets very messy when you have networks with many nodes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"grid"</span>) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One final manipulation is to lay each node into one horizontal line and display the edges between them. Note, that instead of geom_edge_link, we use geom_edge_arc. If you use the links then it would just present as one solid line groing through each node.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"linear"</span>) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  <span class="do">## note the change from link to arc!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can also force the nodes as linear and circular at once which, with the arcs, presents a spider web style of network.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"linear"</span>, <span class="at">circular =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  <span class="do">## note the change from link to arc!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>These set layouts are nifty! By placing the notes into a specified order, you emphasize the edges. However, be mindful that some of these may look cool (like the spider web) but might not be as useful.</p>
+</section>
+<section id="contour-visualisations" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="contour-visualisations"><span class="header-section-number">4.3</span> Contour Visualisations</h2>
+<p>There are several other network visualization styles that you can play with. The final one, however, that we suggest learning about is the contour design. This design follows the logic of a contour map showing terrain. On a contour map, the lines displaying the contours designate more dense areas when they are placed closer together. Likewise, the contour maps are designed to demonstrate more compact or dense areas of a graph. Often these are also designated with hotter colors suggesting higher density areas.</p>
+<p>This style is specifically designed for dense, large networks. Again, remember that the design of your visualization is largely informed by the nature of your networks (number of nodes, structure etc.). Here, the contour style is not really necessary since the Bali terror network is small and sparse. However, it serves the purpose of learning the style.</p>
+<p>With ggraph, you can use the stat_density_2d option to calculate the denser areas of the plot (building the aesthetic with the after_stat(level) fill) and place polygons as contour on top. Notice that the contour map doesn’t work perfectly on this network (strands of color beyond the network). As mentioned, this is better used with larger networks.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Contour</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_2d</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"polygon"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">contour =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The challenge with this design is that it only has one use, to demonstrate the regions of the network. However, we can tweak this a little by introducing a color scale and by playing with the labels and transparency a little. This next chunk introduces a more contrasted color scale (dark blue to yellow). This is more accesible for those who struggle to differentiate between hues.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Contour</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> role)) <span class="sc">+</span> <span class="co"># add node labels </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_2d</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"polygon"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">contour =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span>  <span class="co"># make the contours more transparent</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span>  <span class="co"># Color scale for contour levels</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can alter the clour scale of the scale_fill_gradient option. We suggest chosing a high contrast</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## change colors of the contours</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> role)) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_2d</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"polygon"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">contour =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span>  </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">colours =</span> <span class="fu">c</span>(<span class="st">"firebrick"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, <span class="st">"ivory"</span>)) <span class="sc">+</span> <span class="co"># custom scale</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is one final way to create cleaner contour plots and that is to use a slightly different combination of packages. We are going to pull out the layout of the nodes into two data frames. One has the coordinates of the nodes in your plots (the data frame we call layout_df). This also has the names and role characteristics so we can use them. The second makes the contour information based on the coordinates of the nodes (stored in the layout_df).</p>
+<p>To help calculate the contour lines, we will use the MASS package and to create a clean contour plot, we will use the trusty ggplot2 package. Let’s split up the setup and the visualisation.</p>
+<p>As mentioned, we will first construct the layout so ggplot2 knows where to place the individuals in the plot window. This chunk below first creates the dataframe that holds the coordinates and then calculates the contours based on the density of those coordinates. Do not get too lost in the various functions but focus on the key concepts of what we are doing and why.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load new packages </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute layout</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>layout <span class="ot">&lt;-</span> <span class="fu">layout_with_kk</span>(bali)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>layout_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(layout)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(layout_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>layout_df<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="fu">V</span>(bali)<span class="sc">$</span>vertex.names</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>layout_df<span class="sc">$</span>role <span class="ot">&lt;-</span> <span class="fu">V</span>(bali)<span class="sc">$</span>role</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 2D density</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>dens <span class="ot">&lt;-</span> <span class="fu">with</span>(layout_df, <span class="fu">kde2d</span>(x, y, <span class="at">n =</span> <span class="dv">100</span>))</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create contour data frame </span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>contour_df <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> dens<span class="sc">$</span>x, <span class="at">y =</span> dens<span class="sc">$</span>y)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>contour_df<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dens<span class="sc">$</span>z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we are ready to construct the plot. The ggplot2 recipe construction is very similar with ggraph. First we build the aesthetic based on the x and y cordinates we constructed in the layout_df table. Then we build on this based on various other aesthetics (colors and labels). Finally, we build the aesthetic of the geom-contour in a similar way as we have done till now using the after_stat option. We then set the color to black (yes you can change that!).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with ggplot2</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(layout_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> role), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_contour</span>(</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> contour_df,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">z =</span> z, <span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="graph_layouts_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="references" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="references"><span class="header-section-number">4.4</span> References</h2>
+<p>For more information about the dataset we used in this chapter…</p>
+<ul>
+<li><p>Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. <em>Studies in Conflict and Terrorism, 29,</em> 559–575.</p></li>
+<li><p>Magouirk, J., Atran, S., &amp; Sageman, M. (2008). Connecting Terrorist Networks.&nbsp;<em>Studies in Conflict &amp; Terrorism</em>,&nbsp;<em>31</em>(1), 1–16. https://doi.org/10.1080/10576100701759988</p></li>
+</ul>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
