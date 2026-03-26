@@ -1,4 +1,4 @@
-## Visualizing Networks with ggraph
+# Visualizing Networks with ggraph
 
 This chapter demonstrates network visualization procedures and strategies using the ggraph package. ggraph was designed to align with the coding principles used for the ggplot set of graphing functions in R.
 

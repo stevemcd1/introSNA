@@ -1,4 +1,4 @@
-## What is R and RStudio?
+# What is R and RStudio?
 
 This textbook teaches social network analysis in R. While R can be challenging for first time users, many excellent resources are available for learning R. This appendix offers links to those more detailed resources, while also providing a brief introduction to the software and the coding, focusing specifically on the coding particularities we rely on in this textbook.
 

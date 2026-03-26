@@ -1,4 +1,4 @@
-## What is a Network?
+# What is a Network?
 
 One of our favorite TV shows is "Flight of the Conchords," which was a sitcom about a New Zealand folk-rock band living in New York City. Below I will generate a network graph from the friendships shown in season 2 episode 4, "Murray Takes it to the Next Level." Here's a picture of the guys from that episode.
 

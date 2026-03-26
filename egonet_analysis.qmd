@@ -1,4 +1,4 @@
-## Analyzing ego network data
+# Analyzing ego network data
 
 Once the egocentric network data files have been constructed, we can turn to analyzing the data. First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.
 

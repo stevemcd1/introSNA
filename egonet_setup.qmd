@@ -1,4 +1,4 @@
-## Setting up ego network data
+# Setting up ego network data
 
 Most of the techniques discussed as part of these tutorial use holistic network analysis. Let's initialize the necessary packages.
 

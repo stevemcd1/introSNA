@@ -1,2 +1,231 @@
+## Two Mode Network Data
 
-Content coming.
+This chapter introduces you to a slightly different form of network analysis - two mode networks. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of *social* networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types. 
+
+Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. 
+
+To illustrate this we are going to use some data where artists are connected to the songs they have worked on. Rather than direct artist-to-artist collaboration networks, considering artists connected to the songs they create treats songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.  
+
+```{r, WARNING = FALSE}
+library(igraph)
+library(ggraph)
+library(intronets)
+library(tidyverse)
+
+# reading data in
+load("Q:/Shared drives/SAT - The Three Amigos/SNA_BOOK_PACKAGES/intronets/inst/extdata/Artist_Song_TM.rda")
+# load_nets("Artist_Song_TM.rda")
+```
+
+## Two Mode Networks From Edgelists
+
+```{r}
+a_t_g <- graph_from_data_frame(artist_track_edge, directed = F)
+
+# bipartite.mapping(a_t_g) ## let's understand what this does!
+V(a_t_g)$type <- bipartite_mapping(a_t_g)$type
+
+unique(V(a_t_g)$type) # Check if it worked
+
+```
+
+## Two Mode Networks From Adjacency Matrices
+
+```{r}
+class(artist_track_adj)
+
+artist_track_adj ## not the same as the adj we are used to at this point i-g
+
+a_t_g2 <- graph_from_biadjacency_matrix(artist_track_adj)
+
+
+unique(V(a_t_g2)$type)
+```
+
+## Visualising Two Mode Networks
+
+Problem when visualising two mode networks....
+
+```{r}
+ggraph(a_t_g2, layout = "stress") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(size = 0.5) +
+  theme_void()
+```
+
+classic two mode layouts... okay but not great (no hint of the underlying structure)
+
+```{r}
+ggraph(a_t_g2, layout = "bipartite") +
+  geom_edge_link(alpha = 0.1) +
+  geom_node_point(aes(color = type), size = 4) +
+  theme_void()
+
+
+ggraph(a_t_g2, layout = "bipartite") +
+  geom_edge_link(alpha = 0.1) +
+  geom_node_point(aes(color = type), size = 4) +
+  coord_flip() +
+  theme_void()
+  
+```
+
+Exploring force directed algorithms
+
+```{r}
+set.seed(123)
+ggraph(a_t_g2, layout = "kk") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(aes(color = type), size = 1) +
+   labs(title = "Grime Artists Connected to Songs 2008",
+       color = "Node Type") +
+  theme_void()
+```
+
+Adding Shapes too -
+
+```{r}
+set.seed(123)
+ggraph(a_t_g2, layout = "fr") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(aes(shape = type, color = type), size = 1) +
+   labs(title = "Grime Artists Connected to Songs 2008",
+       color = "Node Type", shape = "Node Type") +
+  theme_void()
+```
+
+Playing with the legend and the shapes a little - 16 is the numeric code for circle and 15 for square. Other common shapes triangle (17), diamond (18).
+
+```{r}
+V(a_t_g2)$mode <- ifelse(V(a_t_g2)$type, "Song", "Artist")
+
+
+set.seed(123)
+
+ggraph(a_t_g2, layout = "dh") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(
+    aes(shape = mode, color = mode),
+    size = 1
+  ) +
+  scale_shape_manual(
+    name = "Node Type",
+    values = c("Artist" = 16, "Song" = 15)
+  ) +
+  scale_color_manual(
+    name = "Node Type",
+    values = c("Artist" = "steelblue1", "Song" = "maroon")
+  ) +
+  labs(title = "Grime Artists Connected to Songs 2008") +
+  theme_void()
+```
+
+Now let's turn to some analysis. We have already learned about different measures of centrality, so we won't go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks. For more information on how to interpret other forms of centrality or other network measures, see Borgatti and Everett's (1997) paper on two mode network analysis.
+
+To get going, we are going to make a quick data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.
+
+```{r}
+centrality <- data.frame(
+  degree = degree(a_t_g2),
+  betweenness(a_t_g2),
+  name = V(a_t_g2)$name,
+  type = ifelse(V(a_t_g2)$type == TRUE, "Song", "Artist")
+)
+
+```
+
+## Degree Centrality in Two Mode Networks
+
+Borgatti & Everett (1997) demonstrate that the logic of degree centrality remains the same from one mode to two mode analysis. The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual's prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.
+
+If you are measuring the degree centrality of the individual artists in this network, then what you are actually capturing is the number of songs they are on in 2008.Their maximal degree is the n(songs). While we could still think of this as how prominent an artist is within the world of Grime, it is more appropriate to think of this as a measure of how expansive they are within this two mode world. The chunk below filters the dataframe we created to focus only on the artists and calculates a brief summary of the their degree centrality.
+
+```{r}
+centrality %>%
+  filter(type == "Artist") %>%
+summarize(mean(degree),
+          min = min(degree),
+          max = max(degree),
+          sd = sd(degree),
+          n = length(row_number())
+          )
+```
+
+From this, we can infer that the average Grime artist from our set appeared on 3 songs in 2008. However, we can also see from the max and standard deviation that there is massive variance among these artists' expansiveness in terms of their affiliation to songs. One final thing to note is that the maximum observed degree is much less than the number of possible degree centrality (n songs = 391). This suggests that, while some Grime artists are very expansive (appearing on 146 songs in one year!), there are many more songs than there are expansive individuals!
+
+This visualisation below demonstrates the artists with a degree equal to or higher than the average in red while those with below average are black. We do this by adding a vertex characteristic to our graph only for the artists (type = FALSE, songs are set to NA). Songs are left grey.
+
+```{r}
+V(a_t_g2)$artist_degree_group <- NA
+V(a_t_g2)$artist_degree_group[V(a_t_g2)$type == FALSE] <- 
+  ifelse(degree(a_t_g2, v = V(a_t_g2)[V(a_t_g2)$type == FALSE]) >= 3,
+         "Above Avg", "Below Avg")
+
+set.seed(123)
+
+ggraph(a_t_g2, layout = "dh") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(aes(shape = mode, color = artist_degree_group), size = 2) +
+  scale_shape_manual(
+    name = "Node Type",
+    values = c("Artist" = 16, "Song" = 15)
+  ) +
+  scale_color_manual(
+    name = "Artist Degree Centrality",
+    values = c("Above Avg" = "red", "Below Avg" = "black"),
+    na.value = "grey" 
+  ) +
+  labs(title = "Grime Artists Connected to Songs 2008") +
+  theme_void()
+```
+
+If you are measuring the degree centrality of the second mode, in this case the songs, you are measuring the number of artists that were on each song. As above, the chunk below does the same for songs so that we can compare each.
+
+```{r}
+centrality %>%
+  filter(type == "Song") %>%
+summarize(mean(degree),
+          min = min(degree),
+          max = max(degree),
+          sd = sd(degree),
+          n = length(row_number())
+          )
+```
+
+Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (tpye = TRUE) with a degree above the average.
+
+```{r}
+V(a_t_g2)$song_degree_group <- NA
+V(a_t_g2)$song_degree_group[V(a_t_g2)$type == TRUE] <- 
+  ifelse(degree(a_t_g2, v = V(a_t_g2)[V(a_t_g2)$type == TRUE]) >= 3,
+         "Above Avg", "Below Avg")
+
+set.seed(123)
+
+ggraph(a_t_g2, layout = "dh") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(aes(shape = mode, color = song_degree_group), size = 2) +
+  scale_shape_manual(
+    name = "Node Type",
+    values = c("Artist" = 16, "Song" = 15)
+  ) +
+  scale_color_manual(
+    name = "Song Degree Centrality",
+    values = c("Above Avg" = "red", "Below Avg" = "black"),
+    na.value = "grey" 
+  ) +
+  labs(title = "Grime Artists Connected to Songs 2008") +
+  theme_void()
+```
+
+In summary, in two mode networks, think about the degree centrality of an individual as a measure of expansiveness within the observed world and the degree of an event as a measure of its popularity (counting the attendees).
+
+## Betweenness Centrality in Two Mode Networks
+
+The behind betweenness centrality being considered a measure of influence or bridging remains true in two mode networks, but the paths look a little different. In a one mode network the shortest pathways are calculated person-to-person and betweenness calculates the number of times each node appears on that path (known as the geodesic). However, such pathways do not exist in two mode networks. Since ties can only exist across the modes (person/group ties, not person/person or group/group), the pathways become person-to-group-to-person. As a result, a node’s betweenness in a two-mode network reflects how much it connects otherwise separate parts of the network across the two modes—for example, how an individual links otherwise disconnected groups, or how a group brings together otherwise unconnected individuals. While the measure is calculated in the same way as in one-mode networks, its interpretation emphasizes cross-mode brokerage rather than direct influence among nodes of the same type.
+
+## References
+
+For more on analyzing two mode networks...
+
+-   Borgatti, S. P., & Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2

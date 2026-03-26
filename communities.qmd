@@ -1,4 +1,4 @@
-## Communities
+# Communities
 
 When examining a network graph, one of the first things people look for is elements of the graph that comprise **subgroups**. These subgroups are often comprised of nodes that are highly connected relative to the rest of the graph. By noting the different subgroups, we can learn something about how the people in the network see themselves and in interact with one another.
 

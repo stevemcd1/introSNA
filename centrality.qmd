@@ -1,4 +1,4 @@
-## Central Actors and Centralized Networks
+# Centrality
 
 My interest in social networks was sparked by my fascination with peer group dynamics when I was in middle school. Some of my classmates were very popular in that they had lots of friends, whereas others tended to keep to themselves or had only one or two close friendships. While I never quite fit into either extreme, I was, for a time, quite envious of the popular kids in my school. I was fascinated by how those students could draw the attention and admiration of my classmates, as well as influence their opinions.
 

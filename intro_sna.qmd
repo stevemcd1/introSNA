@@ -1,4 +1,4 @@
-## What is Social Network Analysis?
+# What is Social Network Analysis?
 
 Social network analysis (SNA) refers to the study of relationships between people or groups of people. Relationships are important to study for lots of reasons. For example...
 
@@ -6,7 +6,7 @@ Social network analysis (SNA) refers to the study of relationships between peopl
 -   They can tell us about which people are the most popular, most powerful, and most healthy.
 -   They can reveal how people form subgroups or clusters of individuals.
 
-### Plan for the Book
+## Plan for the Book
 
 This book is designed as an introduction to social network analysis. This is an exciting method, but it can also be very complex statistically and very challenging in terms of software coding. For many years, we have been teaching social network analysis across multiple levels of college coursework -- from first semester college freshmen to advanced PhD students. We think that social network analysis can be easy to understand and apply. It does not require advanced statistical knowledge nor an extensive background in coding. Our goal is to break down the ideas and the procedures into an easily digestible way so that people who are learning about SNA for the first time can quickly understand and gain many useful skills.
 

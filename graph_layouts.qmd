@@ -1,8 +1,4 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-## Network Visualization Layouts
+# Graph Layouts
 
 This chapter demonstrates the importance of space and presentation when visualizing network data using the ggraph package. As mentioned before, ggraph follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.
 
