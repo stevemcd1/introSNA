@@ -1,40 +1,72 @@
-## Two Mode Network Data
+# Two Mode Network Data
 
-This chapter introduces you to a slightly different form of network analysis - two mode networks. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of *social* networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types. 
+This chapter introduces you to a slightly different form of network analysis - two mode networks. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of *social* networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types.
 
-Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. 
+Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g. from people to groups, not people to people or group to group).
 
-To illustrate this we are going to use some data where artists are connected to the songs they have worked on. Rather than direct artist-to-artist collaboration networks, considering artists connected to the songs they create treats songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.  
+To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.
 
-```{r, WARNING = FALSE}
+Let's get the data in an take a look.
+
+```{r load}
+#| warning: false
 library(igraph)
 library(ggraph)
 library(intronets)
 library(tidyverse)
 
 # reading data in
-load("Q:/Shared drives/SAT - The Three Amigos/SNA_BOOK_PACKAGES/intronets/inst/extdata/Artist_Song_TM.rda")
-# load_nets("Artist_Song_TM.rda")
+load_nets("grime.rda")
+
 ```
 
+Like working with one mode networks, two mode data can be stored as either an edgelist or a matrix. There are some suble differences, however, in how they are stored and some major differences in how you convert them into network objects.
+
+In an edgelist, there are not "to" and "from" columns per se. Rather, one set of nodes is in one column and the second in a separate column. Rows still represent connections. These columns must be mutually exclusive. In other words, they must reflect the separate modes. In this case, we have artists (and only artists) in one column and the name of the songs they appeared on (and only those songs) in the second column.
+
+```{r}
+head(artist_track_edge)
+```
+
+Next, our matrix looks a bit different. This is called an affiliation matrix (a.k.a a two mode matrix). In this, the rows are one mode and the columns are the second mode. In our case, artists are in rows and columns are the songs. Just like traditional adjacency matrices, the 1/0 reflect tie/no tie.
+
+```{r}
+glimpse(artist_track_adj)
+```
+
+Now, let's work on converting these datasets into graphs that we can work with.
+
 ## Two Mode Networks From Edgelists
+
+When converting edgelists into graph objects, you use the graph_from_data_frame() function with a few more steps. Notice below that we use our edgelist data and set directed to false. Now, when we look at the summary of the object, we see that we have an undriected network (UN) with 763 nodes and 1143 edges. At this point, R does not recognise this as a two mode network. There is another step we must do.
 
 ```{r}
 a_t_g <- graph_from_data_frame(artist_track_edge, directed = F)
 
-# bipartite.mapping(a_t_g) ## let's understand what this does!
+a_t_g
+```
+
+Below, we use the bipartite_mapping() function which basically scans your network object to determine whether there it is truly a two mode network. It generates an attribute called "type" which is a logic vector of TRUE and FALSE statements. We set that as a node level characteristic in our network. Those with a type == FALSE are one mode (in our case the artists) and TRUE are the second mode (the songs).
+
+```{r}
 V(a_t_g)$type <- bipartite_mapping(a_t_g)$type
 
 unique(V(a_t_g)$type) # Check if it worked
-
 ```
+
+Now when we look at the network we see that it is now a UN-B which means undirected bipartite graph. We also see that the type has been added as a logical vertex characteristic.
+
+```{r}
+a_t_g
+```
+
+Nice one! Before we go any further, lets cover affiliation matrices.
 
 ## Two Mode Networks From Adjacency Matrices
 
-```{r}
-class(artist_track_adj)
+When creating networks from affiliation matrices we use the graph_from_biadjacency_matrix() function. This is a slight permutation of the graph_from_adjacency_matrix() function we've used till now.
 
-artist_track_adj ## not the same as the adj we are used to at this point i-g
+```{r}
 
 a_t_g2 <- graph_from_biadjacency_matrix(artist_track_adj)
 
@@ -42,9 +74,13 @@ a_t_g2 <- graph_from_biadjacency_matrix(artist_track_adj)
 unique(V(a_t_g2)$type)
 ```
 
+The graph_from_adjacency_matrix() automatically generates the type attribute and creates a bipartite network object for you.
+
+Now we are ready to get going with visualising and analysing this network!
+
 ## Visualising Two Mode Networks
 
-Problem when visualising two mode networks....
+We will start with some basic visualisation of this network. In the chunk below, we encounter the pitfall that is common when working with two mode network data. Even though R knows this is a two mode network, the visualisation does not show that there is a difference between the nodes. So, we need to do a few things to make it work!
 
 ```{r}
 ggraph(a_t_g2, layout = "stress") +
@@ -53,7 +89,7 @@ ggraph(a_t_g2, layout = "stress") +
   theme_void()
 ```
 
-classic two mode layouts... okay but not great (no hint of the underlying structure)
+One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the oposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.
 
 ```{r}
 ggraph(a_t_g2, layout = "bipartite") +
@@ -70,7 +106,7 @@ ggraph(a_t_g2, layout = "bipartite") +
   
 ```
 
-Exploring force directed algorithms
+The bipartite visualisations are a classic format. However, you lose the visual cues to the nature of the structure of the network by forcing them into vertical/horizontal ties. Below, we go through a few of our force-directed algorithms and adding a few more options to further clarify the two mode nature of the network.
 
 ```{r}
 set.seed(123)
@@ -82,7 +118,7 @@ ggraph(a_t_g2, layout = "kk") +
   theme_void()
 ```
 
-Adding Shapes too -
+In this next chunk we swap layouts but add shapes to further clarify the two modes. This is particularly important for accessibility since folk may not be able to see color well.
 
 ```{r}
 set.seed(123)
@@ -94,7 +130,7 @@ ggraph(a_t_g2, layout = "fr") +
   theme_void()
 ```
 
-Playing with the legend and the shapes a little - 16 is the numeric code for circle and 15 for square. Other common shapes triangle (17), diamond (18).
+In this last layout, we also clean up the legend a bit. Don't get too overwhelmed with the code since it is quite long. Take it line-by-line and see if you can work out what we are doing.
 
 ```{r}
 V(a_t_g2)$mode <- ifelse(V(a_t_g2)$type, "Song", "Artist")
@@ -120,6 +156,10 @@ ggraph(a_t_g2, layout = "dh") +
   theme_void()
 ```
 
+After the standard options, we go through a series of scale\_ options. If you set the shape scale as the mode and the color to another characterstic, it would generate two legends. However, since we set them both to the mode it collapses into one showing both the shape and color to reflect artist and song.
+
+Nice work!!
+
 Now let's turn to some analysis. We have already learned about different measures of centrality, so we won't go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks. For more information on how to interpret other forms of centrality or other network measures, see Borgatti and Everett's (1997) paper on two mode network analysis.
 
 To get going, we are going to make a quick data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.
@@ -127,7 +167,7 @@ To get going, we are going to make a quick data frame that captures both the deg
 ```{r}
 centrality <- data.frame(
   degree = degree(a_t_g2),
-  betweenness(a_t_g2),
+  between = betweenness(a_t_g2),
   name = V(a_t_g2)$name,
   type = ifelse(V(a_t_g2)$type == TRUE, "Song", "Artist")
 )
@@ -147,11 +187,11 @@ summarize(mean(degree),
           min = min(degree),
           max = max(degree),
           sd = sd(degree),
-          n = length(row_number())
+          n = n()
           )
 ```
 
-From this, we can infer that the average Grime artist from our set appeared on 3 songs in 2008. However, we can also see from the max and standard deviation that there is massive variance among these artists' expansiveness in terms of their affiliation to songs. One final thing to note is that the maximum observed degree is much less than the number of possible degree centrality (n songs = 391). This suggests that, while some Grime artists are very expansive (appearing on 146 songs in one year!), there are many more songs than there are expansive individuals!
+From this, we can infer that the average Grime artist from our set appeared on 3 songs in 2008. However, we can also see from the max and standard deviation that there is massive variance among these artists' expansiveness in terms of their affiliation to songs. One final thing to note is that the maximum observed degree is much less than the number of possible degree centrality (n songs = 391). This suggests that, while some Grime artists are very expansive (appearing on 146 songs in one year!), there are many more songs than there are expansive individuals.
 
 This visualisation below demonstrates the artists with a degree equal to or higher than the average in red while those with below average are black. We do this by adding a vertex characteristic to our graph only for the artists (type = FALSE, songs are set to NA). Songs are left grey.
 
@@ -188,7 +228,7 @@ summarize(mean(degree),
           min = min(degree),
           max = max(degree),
           sd = sd(degree),
-          n = length(row_number())
+          n = n()
           )
 ```
 
@@ -223,6 +263,34 @@ In summary, in two mode networks, think about the degree centrality of an indivi
 ## Betweenness Centrality in Two Mode Networks
 
 The behind betweenness centrality being considered a measure of influence or bridging remains true in two mode networks, but the paths look a little different. In a one mode network the shortest pathways are calculated person-to-person and betweenness calculates the number of times each node appears on that path (known as the geodesic). However, such pathways do not exist in two mode networks. Since ties can only exist across the modes (person/group ties, not person/person or group/group), the pathways become person-to-group-to-person. As a result, a node’s betweenness in a two-mode network reflects how much it connects otherwise separate parts of the network across the two modes—for example, how an individual links otherwise disconnected groups, or how a group brings together otherwise unconnected individuals. While the measure is calculated in the same way as in one-mode networks, its interpretation emphasizes cross-mode brokerage rather than direct influence among nodes of the same type.
+
+```{r}
+centrality %>%
+  filter(type == "Artist") %>%
+summarize(mean(between),
+          min = min(between),
+          max = max(between),
+          sd = sd(between),
+          n = n()
+          )
+```
+
+Remember that this measure captures how much an artist bridges across otherwise disconnected parts of the track–artist structure. This distribution tells a lot about artist bridging across this network! The mean is 442 with a max of over 38,000 and a huge standard deviation. This tells us that most artists have very low betweenness, while a small number act as major bridges in the network. Those with a betweenness score of 0 are embedded in small or redundant parts of the network. Those with higher levels of betweenness are key brokers across the space since they connect otherwise separate parts of the network.
+
+Now let's turn to the song-level betweenness to examine how often a song lies on the shortest paths between pairs of artists in the network.
+
+```{r}
+centrality %>%
+  filter(type == "Song") %>%
+summarize(mean(between),
+          min = min(between),
+          max = max(between),
+          sd = sd(between),
+          n = n()
+          )
+```
+
+The distribution of song betweenness tells a similar story. The mean (416) relative to the max (11454) shows that there are some songs that are highly bridging while others are in more redundant parts of the network. Songs with high betweenness are those that connect otherwise disconnected clusters. Since songs are not agentic, we don't really think of these as brokers, but really as meeting points or shared contexts.
 
 ## References
 
