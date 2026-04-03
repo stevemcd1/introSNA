@@ -320,7 +320,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#visualising-two-mode-networks" id="toc-visualising-two-mode-networks" class="nav-link" data-scroll-target="#visualising-two-mode-networks"><span class="header-section-number">13.3</span> Visualising Two Mode Networks</a></li>
   <li><a href="#degree-centrality-in-two-mode-networks" id="toc-degree-centrality-in-two-mode-networks" class="nav-link" data-scroll-target="#degree-centrality-in-two-mode-networks"><span class="header-section-number">13.4</span> Degree Centrality in Two Mode Networks</a></li>
   <li><a href="#betweenness-centrality-in-two-mode-networks" id="toc-betweenness-centrality-in-two-mode-networks" class="nav-link" data-scroll-target="#betweenness-centrality-in-two-mode-networks"><span class="header-section-number">13.5</span> Betweenness Centrality in Two Mode Networks</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">13.6</span> References</a></li>
+  <li><a href="#projecting-one-mode-networks" id="toc-projecting-one-mode-networks" class="nav-link" data-scroll-target="#projecting-one-mode-networks"><span class="header-section-number">13.6</span> Projecting One Mode Networks</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">13.7</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -394,9 +395,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH f311752 UN-- 763 1143 -- 
+<pre><code>IGRAPH ce0493c UN-- 763 1143 -- 
 + attr: name (v/c)
-+ edges from f311752 (vertex names):
++ edges from ce0493c (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -421,9 +422,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH f311752 UN-B 763 1143 -- 
+<pre><code>IGRAPH ce0493c UN-B 763 1143 -- 
 + attr: name (v/c), type (v/l)
-+ edges from f311752 (vertex names):
++ edges from ce0493c (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -705,11 +706,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The distribution of song betweenness tells a similar story. The mean (416) relative to the max (11454) shows that there are some songs that are highly bridging while others are in more redundant parts of the network. Songs with high betweenness are those that connect otherwise disconnected clusters. Since songs are not agentic, we don’t really think of these as brokers, but really as meeting points or shared contexts.</p>
 </section>
-<section id="references" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="references"><span class="header-section-number">13.6</span> References</h2>
+<section id="projecting-one-mode-networks" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="projecting-one-mode-networks"><span class="header-section-number">13.6</span> Projecting One Mode Networks</h2>
+<p>One of the classic applications of two mode network analysis is to project a one mode network for both sets. In our case, this involves constructing an artist-to-artist network and a song-to-song network. The ties in the artist one mode network represent mutual appearances on songs. The ties are weighted by the total number of songs they co-appear on. Conversely, the ties in the song-to-song network reflect whether they share artists. Again, these ties are weighted, but, this time, the weights are the number of artists they share.</p>
+<p>This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what Breiger (1974) called “the duality of persons and groups.”</p>
+<p>To project these one mode networks, we simply use the bipartite_projection() function. Before we use it, let’s understant it. The output from the chunk below shows that the function produces a list with two network objects. The first (proj1) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes, the node name, its mode, and the edge weight. The second (proj2) is another undirected network of our 392 songs with the same list of attributes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bipartite_projection</span>(a_t_g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$proj1
+IGRAPH 1c18bcc UNW- 372 852 -- 
++ attr: name (v/c), mode (v/c), artist_degree_group (v/c),
+| song_degree_group (v/c), weight (e/n)
++ edges from 1c18bcc (vertex names):
+ [1] Wiley--Kano                Wiley--Scorcher           
+ [3] Wiley--Daniel Merriweather Wiley--Hot Chip           
+ [5] Wiley--Peter Raeburn       Wiley--Larry              
+ [7] Wiley--Rossi B &amp; Luca      Wiley--DVA                
+ [9] Wiley--Flo-Dan             Wiley--Riko               
+[11] Wiley--Mos Wanted          Wiley--Young Dot          
+[13] Wiley--Bless Beats         Wiley--Stickman           
++ ... omitted several edges
+
+$proj2
+IGRAPH 1c18c57 UNW- 391 12312 -- 
++ attr: name (v/c), mode (v/c), artist_degree_group (v/c),
+| song_degree_group (v/c), weight (e/n)
++ edges from 1c18c57 (vertex names):
+[1] See Clear Now (feat. Kano &amp; Scorcher)--Cash in My Pocket (feat. Daniel Merriweather)
+[2] See Clear Now (feat. Kano &amp; Scorcher)--5AM (feat. Scorcher)                         
+[3] See Clear Now (feat. Kano &amp; Scorcher)--Step by Step (feat. Hot Chip)                
+[4] See Clear Now (feat. Kano &amp; Scorcher)--I Am the Sea (feat. Peter Raeburn)           
+[5] See Clear Now (feat. Kano &amp; Scorcher)--Pay Up What You Owe                          
+[6] See Clear Now (feat. Kano &amp; Scorcher)--Music Money                                  
++ ... omitted several edges</code></pre>
+</div>
+</div>
+<p>Now, we can create an object with this which will give us our projected networks that we can now plot and analyse individually. See below for examples.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># so we can do a side by side</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>projections <span class="ot">&lt;-</span> <span class="fu">bipartite_projection</span>(a_t_g2)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(projections<span class="sc">$</span>proj1, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"steelblue1"</span>) <span class="sc">+</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected By The Songs They Worked on 2008"</span>) <span class="sc">+</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggraph</span>(projections<span class="sc">$</span>proj2, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"maroon"</span>) <span class="sc">+</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Songs Connected By The Artists They Feature 2008"</span>) <span class="sc">+</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot together</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">/</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="two_mode_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of seperate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collabroation? Some fun stories could emerge from this!</p>
+<p>In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won’t mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars (Everett &amp; Borgatti 2012). Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!</p>
+</section>
+<section id="references" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="references"><span class="header-section-number">13.7</span> References</h2>
 <p>For more on analyzing two mode networks…</p>
 <ul>
 <li>Borgatti, S. P., &amp; Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2</li>
+<li>Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.</li>
+<li>Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.</li>
 </ul>
 
 

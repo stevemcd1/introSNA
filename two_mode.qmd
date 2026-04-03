@@ -292,8 +292,52 @@ summarize(mean(between),
 
 The distribution of song betweenness tells a similar story. The mean (416) relative to the max (11454) shows that there are some songs that are highly bridging while others are in more redundant parts of the network. Songs with high betweenness are those that connect otherwise disconnected clusters. Since songs are not agentic, we don't really think of these as brokers, but really as meeting points or shared contexts.
 
+## Projecting One Mode Networks
+
+One of the classic applications of two mode network analysis is to project a one mode network for both sets. In our case, this involves constructing an artist-to-artist network and a song-to-song network. The ties in the artist one mode network represent mutual appearances on songs. The ties are weighted by the total number of songs they co-appear on. Conversely, the ties in the song-to-song network reflect whether they share artists. Again, these ties are weighted, but, this time, the weights are the number of artists they share.
+
+This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what Breiger (1974) called "the duality of persons and groups."
+
+To project these one mode networks, we simply use the bipartite_projection() function. Before we use it, let's understant it. The output from the chunk below shows that the function produces a list with two network objects. The first (proj1) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes, the node name, its mode, and the edge weight. The second (proj2) is another undirected network of our 392 songs with the same list of attributes.
+
+```{r}
+bipartite_projection(a_t_g2)
+
+```
+
+Now, we can create an object with this which will give us our projected networks that we can now plot and analyse individually. See below for examples.
+
+```{r}
+library(patchwork) # so we can do a side by side
+
+projections <- bipartite_projection(a_t_g2)
+
+set.seed(123)
+p1 <- ggraph(projections$proj1, layout = "fr") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(size = 1, alpha = 0.2, color = "steelblue1") +
+  labs(title = "Grime Artists Connected By The Songs They Worked on 2008") +
+  theme_void()
+
+set.seed(123)
+p2 <- ggraph(projections$proj2, layout = "fr") +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(size = 1, alpha = 0.2, color = "maroon") +
+  labs(title = "Grime Songs Connected By The Artists They Feature 2008") +
+  theme_void()
+
+# plot together
+p1 / p2
+```
+
+From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of seperate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collabroation? Some fun stories could emerge from this!
+
+In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won't mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars (Everett & Borgatti 2012). Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!
+
 ## References
 
 For more on analyzing two mode networks...
 
 -   Borgatti, S. P., & Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2
+-   Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.
+-   Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.

@@ -1,2 +1,53 @@
-## Dynamic Networks
-Content coming
+# Dynamic Networks
+
+```{r, warning = F}
+library(ndtv)
+library(tsna)
+library(ggplot2)
+```
+
+So far we have thought of networks as static, unchanging. However, the reality of relationships is that they change. A lot! Consider your friendships over the years, as you have grown your interactions with them have likely changed. Maybe some you are no longer friends with. Maybe you still think of them as friends, but you never talk. This reflects, what network scholars refer to, the dynamism of social networks. 
+
+Much of what we have covered extends to a longitudinal approach to social network analysis. For the sake of this chapter, we are going to cover a some basic structural analysis over time and then turn to some visualization techniques. 
+
+In this chapter, we are going to use the classic Newcomb Fraternity study, which examined the friendships between fraternity members at the University of Michigan over the course of the fall semester in 1956. These students provided weekly rankings of their friendships over this period. We recoded these numbers so that each tie represents a top-three friendship nomination during each time period. These ties are are directed, in that student A might nominate student B in their top-3, but student B might not.  
+
+In the chunk below, we load the data in and take a look. the frat_n object is a list of six network objects. Similar to the object we created in [egonet_setup.qmd](Chapter 11), this is a list. Unlike the ego network, however, this is the same group of individuals at different time periods (time points of the semester). 
+
+```{r}
+load("Q:/Shared drives/SAT - The Three Amigos/SNA_BOOK_PACKAGES/intronets/inst/extdata/frat_graphs.rda")
+
+# load_nets(frat.rda)
+
+head(frat_n)
+```
+
+## Network Statistics Over Time
+We have talked about network metrics such as density and transitivity [netsim.qmd](see Chapter 10). Such measures characterize the network in terms of how connected/disconnected the people are or how mutual the relationships are in the group. Measuring these sorts of things over time can tell a story. 
+
+First, we will construct a dataframe with some of the network characteristics overtime. Once we have these, we can plot them and describe the nature of this friendship group over the course of their semester. 
+
+```{r}
+library(dplyr)
+
+net_stats <- data.frame(
+  network      = seq_along(frat_n),
+  density      = sapply(frat_n, gden),
+  transitivity = sapply(frat_n, gtrans),
+  reciprocity  = sapply(frat_n, grecip),
+  v_count      = sapply(frat_n, network.size),
+  e_count      = sapply(frat_n, network.edgecount)
+)
+```
+
+```{r}
+ggplot(net_stats, aes(x = network, y = transitivity)) +
+  geom_line()
+
+ggplot(net_stats, aes(x = network, y = reciprocity)) +
+  geom_line()
+
+ggplot(net_stats, aes(x = network, y = density)) +
+  geom_line()
+```
+
