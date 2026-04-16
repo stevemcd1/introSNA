@@ -6,7 +6,7 @@ The layout of a network visual pertains to the location of the nodes and edges w
 
 To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran & Sageman 2008). This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
 
-```{r}
+```{r, warning = FALSE, message= FALSE}
 library(igraph)
 library(ggraph)
 library(intronets)
