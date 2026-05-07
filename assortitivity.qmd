@@ -125,16 +125,16 @@ Assortativity is a graph-level characteristic revealing the tendency to connect 
 
 For more on the drugnet data...
 
--   Weeks, Margaret R., Scott Clair, Stephen P. Borgatti, Kim Radda, and Jean J. Schensul. 2002. “Social Networks of Drug Users in High-Risk Sites: Finding the Connections.” AIDS and Behavior 6(2):193–206.
+- Weeks, Margaret R., Scott Clair, Stephen P. Borgatti, Kim Radda, and Jean J. Schensul. 2002. “Social Networks of Drug Users in High-Risk Sites: Finding the Connections.” AIDS and Behavior 6(2):193–206.
 
--   Weeks, Margaret R., Mark Convey, Julia Dickson-Gomez, Jianghong Li, Kim Radda, Maria Martinez, and Eduardo Robles. 2009. “Changing Drug Users’ Risk Environments: Peer Health Advocates as Multi-Level Community Change Agents.” American Journal of Community Psychology 43(3):330–44.
+- Weeks, Margaret R., Mark Convey, Julia Dickson-Gomez, Jianghong Li, Kim Radda, Maria Martinez, and Eduardo Robles. 2009. “Changing Drug Users’ Risk Environments: Peer Health Advocates as Multi-Level Community Change Agents.” American Journal of Community Psychology 43(3):330–44.
 
 For more on assortativity and homophily...
 
--   Lada A. Adamic and Eytan Adar. 2003. Friends and neighbors on the Web. Social Networks, 25(3):211-230.
+- Lada A. Adamic and Eytan Adar. 2003. Friends and neighbors on the Web. Social Networks, 25(3):211-230.
 
--   McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” Annual Review of Sociology 27(1):415–44.
+- McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” Annual Review of Sociology 27(1):415–44.
 
--   M. E. J. Newman 2003. Mixing patterns in networks, Phys. Rev. E 67, 026126
+- M. E. J. Newman 2003. Mixing patterns in networks, Phys. Rev. E 67, 026126
 
--   M. E. J. Newman 2002. Assortative mixing in networks, Phys. Rev. Lett. 89, 208701
+- M. E. J. Newman 2002. Assortative mixing in networks, Phys. Rev. Lett. 89, 208701

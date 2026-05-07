@@ -338,6 +338,6 @@ In sum, the projection of two mode to a one mode network is a useful tool. Bewar
 
 For more on analyzing two mode networks...
 
--   Borgatti, S. P., & Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2
--   Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.
--   Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.
+- Borgatti, S. P., & Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2
+- Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.
+- Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.
