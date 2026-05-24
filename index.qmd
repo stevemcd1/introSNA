@@ -1,8 +1,8 @@
 # WELCOME! {.unnumbered}
 
-## Plan for the Book
-
 This book is designed as an introduction to social network analysis. This is an exciting method, but it can also be very complex statistically and very challenging in terms of software coding. For many years, we have been teaching social network analysis across multiple levels of college coursework -- from first semester college freshmen to advanced PhD students. We think that social network analysis can be easy to understand and apply. It does not require advanced statistical knowledge nor an extensive background in coding. Our goal is to break down the ideas and the procedures into an easily digestible way so that people who are learning about SNA for the first time can quickly understand and gain many useful skills.
+
+## Keeping it Simple
 
 How do we accomplish this? By keeping things simple.
 
@@ -12,8 +12,26 @@ How do we accomplish this? By keeping things simple.
 
 3.  We structure the book by first taking a deep dive into standard one mode, holistic networks. That way readers can keep this common form of network data in mind while working through the foundational concepts. Once this knowledge is established, we move on to extensions of the one mode framework, with demonstrations of working with and analyzing two-mode, ego-centric, text, and dynamic networks.
 
+## Web Applications and Datasets
+
 Furthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).
 
-While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also makes explicit reference to the statistics that underlie these procedures. We also point readers to advanced sources for further study.
+Here are links to those applications...
 
-Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the "R and RStudio setup and resources" chapter in the appendix for details.
+- [One mode network app](https://shiny.chass.ncsu.edu/intronets/onemode/)
+
+- [Ego network app](https://shiny.chass.ncsu.edu/intronets/ego/)
+
+- [Two mode network app](https://shiny.chass.ncsu.edu/intronets/twomode/)
+
+- [Text network app](https://shiny.chass.ncsu.edu/intronets/textmode/)
+
+...and in the appendix you can find more information about the datasets.
+
+- [Network data descriptions](https://stevemcd1.github.io/introSNA/datasets.html)
+
+## Advanced Study
+
+While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also comments on the statistics that underlie these procedures. We also point readers to advanced sources for further study.
+
+Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the [R and RStudio chapter](https://stevemcd1.github.io/introSNA/r_basics.html) in the appendix for details.
