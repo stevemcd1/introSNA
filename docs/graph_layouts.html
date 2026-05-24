@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>4&nbsp; Graph Layouts – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./network_viz.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -440,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Diffie-Hellman Layout"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Davidson-Harel Layout"</span>) <span class="sc">+</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -462,6 +458,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Essentially each alrogithm is designed to produce a good layout but each has a specific emphasis of what “good” is. Some seek aesthetically pleasing, or balanced, visualisions while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualisations. Remember, these do not change the network, they just alter the placement of the nodes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 45%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Layout</th>
+<th style="text-align: center;">What it does</th>
+<th style="text-align: center;">Why it is good</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Stress</td>
+<td style="text-align: center;"><ul>
+<li>Minimises the “stress” of the network by reducing distances between nodes in the visual</li>
+</ul></td>
+<td style="text-align: center;"><ul>
+<li><p>Good for large/complex networks</p></li>
+<li><p>Simple, reproducible layouts</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Kamada-Kawai (KK)</td>
+<td style="text-align: center;"><ul>
+<li><p>Nodes are placed based on network distance</p></li>
+<li><p>Shorter geometric distance between nodes is reflected in node proximity</p></li>
+</ul></td>
+<td style="text-align: center;"><ul>
+<li><p>Good for smaller networks</p></li>
+<li><p>Highlights relational distances</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Fruchterman-Reingold (FR)</td>
+<td style="text-align: center;"><ul>
+<li><p>All nodes are repelled from each other</p></li>
+<li><p>Edges act as springs to draw tied nodes closer.</p></li>
+</ul></td>
+<td style="text-align: center;"><ul>
+<li><p>Good for small or medium networks</p></li>
+<li><p>Produces intuitive visuals since connected nodes are placed near each other</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Davidson-Harel (DH)</td>
+<td style="text-align: center;"><ul>
+<li><p>Maintains even spacing between nodes</p></li>
+<li><p>Minimises edge-overlap</p></li>
+</ul></td>
+<td style="text-align: center;"><ul>
+<li><p>Good for medium networks</p></li>
+<li><p>Focuses on aesthetics of networks</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Graphopt</td>
+<td style="text-align: center;"><ul>
+<li><p>Connected nodes are placed close to each other</p></li>
+<li><p>Nodes repel each other if not connected</p></li>
+</ul></td>
+<td style="text-align: center;"><ul>
+<li><p>Good for medium/large networks</p></li>
+<li><p>Conceptually similar to FR but usually quicker</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="set-layouts" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="set-layouts"><span class="header-section-number">4.2</span> Set Layouts</h2>
@@ -644,6 +711,10 @@ after_stat(level)), : Ignoring unknown aesthetics: fill</code></pre>
 <ul>
 <li><p>Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. <em>Studies in Conflict and Terrorism, 29,</em> 559–575.</p></li>
 <li><p>Magouirk, J., Atran, S., &amp; Sageman, M. (2008). Connecting Terrorist Networks.&nbsp;<em>Studies in Conflict &amp; Terrorism</em>,&nbsp;<em>31</em>(1), 1–16. https://doi.org/10.1080/10576100701759988</p></li>
+</ul>
+<p>For more information about graph layouts…</p>
+<ul>
+<li>Light &amp; Moody.</li>
 </ul>
 
 

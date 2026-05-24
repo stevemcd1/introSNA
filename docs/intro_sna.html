@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>1&nbsp; What is Social Network Analysis? – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -258,14 +260,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -280,7 +276,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#plan-for-the-book" id="toc-plan-for-the-book" class="nav-link active" data-scroll-target="#plan-for-the-book"><span class="header-section-number">1.1</span> Plan for the Book</a></li>
+  <li><a href="#papacy-predictions" id="toc-papacy-predictions" class="nav-link active" data-scroll-target="#papacy-predictions"><span class="header-section-number">1.1</span> Papacy Predictions</a></li>
+  <li><a href="#analyzing-social-networks" id="toc-analyzing-social-networks" class="nav-link" data-scroll-target="#analyzing-social-networks"><span class="header-section-number">1.2</span> Analyzing Social Networks</a></li>
+  <li><a href="#power-community-and-change" id="toc-power-community-and-change" class="nav-link" data-scroll-target="#power-community-and-change"><span class="header-section-number">1.3</span> Power, Community, and Change</a>
+  <ul class="collapse">
+  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"><span class="header-section-number">1.3.1</span> Power</a></li>
+  <li><a href="#community" id="toc-community" class="nav-link" data-scroll-target="#community"><span class="header-section-number">1.3.2</span> Community</a></li>
+  <li><a href="#change" id="toc-change" class="nav-link" data-scroll-target="#change"><span class="header-section-number">1.3.3</span> Change</a></li>
+  </ul></li>
+  <li><a href="#moving-forward" id="toc-moving-forward" class="nav-link" data-scroll-target="#moving-forward"><span class="header-section-number">1.4</span> Moving Forward</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.5</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -306,24 +311,71 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Social network analysis (SNA) refers to the study of relationships between people or groups of people. Relationships are important to study for lots of reasons. For example…</p>
+<section id="papacy-predictions" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="papacy-predictions"><span class="header-section-number">1.1</span> Papacy Predictions</h2>
+<p>In May 2025, a new conclave began to replace the recently deceased Pope Francis. The new pope was to be selected from 133 cardinals, which represented the largest and most diverse conclave in history.</p>
+<p>It was also the first conclave to have ever taken place while international digital prediction market platforms were in use. Betting on who the next pope would be was big business, with people spending more than $40 million combined on the Polymarket and Kalshi platforms.</p>
+<p>On May 8, white smoke emerged from the Sistine Chapel and the world soon learned that Cardinal Robert Francis Prevost would become Pope Leo XIV. On the prediction markets, Prevost was not the odds on favorite. In fact, less than 1 percent of the bets had predicted him to be the next pope.</p>
+<p>How did the world get the prediction so wrong? Divine intervention cannot be ruled out, yet there is another intriguing explanation for Prevost’s selection. Much of the media narrative surrounding the enclave discussed the potential pontiffs in terms of their personal attributes, their position within the Catholic organizational hierarchy, or their unique geographic locations. Social scientists took a different approach, exploring the predictive power of the network of relationships among the cardinals.</p>
+<p>Giuseppe Soda, Alessandro Iorio, and Leonardo Rizzo gathered data on the cardinals’ connections to each other based on shared memberships in various collegial bodies and co-consecration groups. These memberships were used to construct a network of connections between the cardinals in the conclave – a network that can be displayed on a graph with the cardinals as points and lines between them as relationships. A simple display of this network graph revealed what the prognosticators could not see: Cardinal Prevost was squarely in the center of the graph.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="prevost.jpg" class="img-fluid figure-img" width="750"></p>
+<figcaption>Stylized representation of cardinal conclave network</figcaption>
+</figure>
+</div>
+</section>
+<section id="analyzing-social-networks" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="analyzing-social-networks"><span class="header-section-number">1.2</span> Analyzing Social Networks</h2>
+<p>Social network analysis (SNA) refers to the study of relationships between people or groups of people. This focus on relationships is distinct from traditional forms of social scientific analysis that examine individual attributes. For example, we might conduct a survey of people and ask them about themselves: What is your age? What is your gender? Are you married? How much money do you earn at your job?</p>
+<p>Information such as this can be organized into a typical data matrix, with individual people along the rows and variables along the columns. Those variables represent the attributes of the people. For example, because Consuela told us that she is married, that means she is a carrier of that attribute. Attribute-based analysis implies that we can explain individual outcomes based on the characteristics of those individuals. For example, an economist might be interested in knowing how attributes like age, gender, and marital status are associated with earnings.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attr_mat.jpg" class="img-fluid figure-img" width="750"></p>
+<figcaption>Attribute data matrix example</figcaption>
+</figure>
+</div>
+<p>Much can be gleaned from the study of individual attributes, but, as we saw from the conclave example, a focus on individual attributes alone can lead to inaccurate predictions. This is because attribute-based approaches treat individuals as independent units – D’Andre’s attributes have no bearing on Consuela’s earnings. In the real world, we know that relationships have a powerful influence on how people behave, how they view themselves, and how they are viewed by others.</p>
+<p>Social network analysis is therefore distinct by relying on a relational approach. Instead of asking people about themselves, we might instead ask people who their friends are. The table below provides a simple example of relational data, whereby people are listed along the rows <em>and</em> the columns. The values in the matrix indicate whether or not a person said that they are friends with someone else. In this example, Consuela said that she is not friends with Annie (row 3, column 1 = 0), but that she is friends with Bill (row 3, column 2 = 1). The data in this matrix tell us about the relationships that people have with others – rather than their individual attributes – and these relationships are incredibly useful for understanding the social world.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="net_mat.jpg" class="img-fluid figure-img" width="750"></p>
+<figcaption>Relational data matrix example</figcaption>
+</figure>
+</div>
+</section>
+<section id="power-community-and-change" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="power-community-and-change"><span class="header-section-number">1.3</span> Power, Community, and Change</h2>
+<p>Relationships are important to study for many reasons. Below are three major issues commonly examined through the use of social network analysis.</p>
+<section id="power" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="power"><span class="header-section-number">1.3.1</span> Power</h3>
+<p>Social network analysis allows us to identify the positioning of individuals within a network, which is helpful for understanding a person’s power, prominence, popularity, and importance within that social system. Central actors (as opposed to peripheral actors) tend to garner advantages in their access to resources and control over those resources.</p>
+<p>Research shows that network centrality is predictive of many positive outcomes for individuals. In the conclave example, Cardinal Prevost’s high level of network centrality enhanced his status and popularity among the other cardinals, contributing to his successful papal candidacy. Identifying central network actors can also be an important tool for organizing. Hana Shepherd, Rebecca Roskill, Suresh Naidu, and Adam Reich (2025) showed that a union organizing campaign at Walmart doubled its recruitment goals by identifying and resourcing the most central actors within workplaces.</p>
+</section>
+<section id="community" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="community"><span class="header-section-number">1.3.2</span> Community</h3>
+<p>SNA also reveals how people form subgroups, clusters, and cliques within networks. Through the use of community detection procedures, we can categorize individuals on the basis of the subgroups to which they belong. Subgroup membership is important to know, as it offers insight into shared identities and access to collective resources.</p>
+<p>Community has been central in research on political party polarization. Waugh, Pei, Fowler, Mucha, &amp; Porter (2009) used community detection to examine subgroups among members of Congress based on co-sponsorship of legislation. They observed a substantial hardening of subgroup boundaries over time. In the late 1950s, it was common to cross the political party spectrum to co-sponsor legislation; by the early 2000s, this practice was exceedingly rare.</p>
+</section>
+<section id="change" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="change"><span class="header-section-number">1.3.3</span> Change</h3>
+<p>SNA is also useful for understanding how change occurs across a social system. The structure of relationships has a big impact on the extent to which things like information, ideas, and diseases spread. Whereas dense and overlapping connections facilitate rapid contagions, sparse and disconnected network components obstruct or impede flow. These processes can be observed and also simulated to generate predictions about potential future outcomes.</p>
+<p>One example comes from the work of Peter Bearman, Jim Moody, and Kate Stovel (2004). They examined the structure of romantic relationship networks among high schoolers. They observed uniquely sprawling “spanning tree” structures that were emerged from romantic relationship norms (specifically, the norm against dating your best friend’s boyfriend). Using network simulations, they showed that these structures are a worst case scenario for the diffusion of sexually transmitted diseases.</p>
+</section>
+</section>
+<section id="moving-forward" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="moving-forward"><span class="header-section-number">1.4</span> Moving Forward</h2>
+<p>The analysis chapters draw on further examples of network data that can be used to address questions of power, community, and change. But before turning to those chapters, we begin at the beginning – with an introduction to network data and visualization techniques.</p>
+</section>
+<section id="references" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="references"><span class="header-section-number">1.5</span> References</h2>
 <ul>
-<li>They can help us to understand how things like information, ideas, and diseases spread across societies.</li>
-<li>They can tell us about which people are the most popular, most powerful, and most healthy.</li>
-<li>They can reveal how people form subgroups or clusters of individuals.</li>
+<li><p>Bearman, Peter S., James Moody, and Katherine Stovel. 2004. “Chains of Affection: The Structure of Adolescent Romantic and Sexual Networks.” American Journal of Sociology 110(1):44–91.</p></li>
+<li><p>Giuffrida, Angela. 2025. “Cardinals begin choosing new pope in largest ever conclave”. The Guardian. May 7.</p></li>
+<li><p>Shepherd, Hana, Rebecca Roskill, Suresh Naidu, and Adam Reich. 2025. “Workplace Networks and the Dynamics of Worker Organizing.” Sociological Science 12:537–71.</p></li>
+<li><p>Soda, Giuseppe, Alessandro Iorio, and Leonardo Rizzo. 2025. “In the Network of the Conclave: Social Connections and the Making of a Pope.” Social Networks 83:215–32.</p></li>
+<li><p>Waugh, A. S., Pei, L., Fowler, J. H., Mucha, P. J., &amp; Porter, M. A. 2009. Party polarization in Congress: A network science approach. arXiv:0907.3509.</p></li>
 </ul>
-<section id="plan-for-the-book" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="plan-for-the-book"><span class="header-section-number">1.1</span> Plan for the Book</h2>
-<p>This book is designed as an introduction to social network analysis. This is an exciting method, but it can also be very complex statistically and very challenging in terms of software coding. For many years, we have been teaching social network analysis across multiple levels of college coursework – from first semester college freshmen to advanced PhD students. We think that social network analysis can be easy to understand and apply. It does not require advanced statistical knowledge nor an extensive background in coding. Our goal is to break down the ideas and the procedures into an easily digestible way so that people who are learning about SNA for the first time can quickly understand and gain many useful skills.</p>
-<p>How do we accomplish this? By keeping things simple.</p>
-<ol type="1">
-<li><p>Rather than utilizing a dizzying array of different packages for conducting SNA, we instead rely almost entirely on igraph. That way, you can focus on working with one set of objects rather than having to move across multiple sets.</p></li>
-<li><p>We make heavy use of network visualizations in order to illustrate the key concepts and procedures. We use, almost exclusively, one set of plotting tools: ggraph. This package is preferred over others because the coding logic is based on the widely used ggplot suite of visualizations, so working in ggraph will be easy for folks who are already familiar with ggplot and will offer highly transferable skills for newcomers.</p></li>
-<li><p>We structure the book by first taking a deep dive into standard one mode, holistic networks. That way readers can keep this common form of network data in mind while working through the foundational concepts. Once this knowledge is established, we move on to extensions of the one mode framework, with demonstrations of working with and analyzing two-mode, ego-centric, text, and dynamic networks.</p></li>
-</ol>
-<p>Furthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).</p>
-<p>While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also makes explicit reference to the statistics that underlie these procedures. We also point readers to advanced sources for further study.</p>
-<p>Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the “R and RStudio setup and resources” chapter in the appendix for details.</p>
 
 
 </section>

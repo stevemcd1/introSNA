@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -35,15 +38,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./intro_sna.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -259,14 +261,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -281,7 +277,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">WELCOME!</a></li>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">WELCOME!</a>
+  <ul class="collapse">
+  <li><a href="#plan-for-the-book" id="toc-plan-for-the-book" class="nav-link" data-scroll-target="#plan-for-the-book">Plan for the Book</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -322,11 +321,21 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">WELCOME!</h1><p><img src="darkcover2.png" title="Introduction to Social Network Analysis" class="quarto-cover-image nolightbox img-fluid" alt="A textbook cover. "></p>
-<p><strong>Why do network analysts never get lost?</strong><br>
-</p>
-<p><em>Because they always follow the shortest path!</em></p>
+<section id="plan-for-the-book" class="level2">
+<h2 class="anchored" data-anchor-id="plan-for-the-book">Plan for the Book</h2>
+<p>This book is designed as an introduction to social network analysis. This is an exciting method, but it can also be very complex statistically and very challenging in terms of software coding. For many years, we have been teaching social network analysis across multiple levels of college coursework – from first semester college freshmen to advanced PhD students. We think that social network analysis can be easy to understand and apply. It does not require advanced statistical knowledge nor an extensive background in coding. Our goal is to break down the ideas and the procedures into an easily digestible way so that people who are learning about SNA for the first time can quickly understand and gain many useful skills.</p>
+<p>How do we accomplish this? By keeping things simple.</p>
+<ol type="1">
+<li><p>Rather than utilizing a dizzying array of different packages for conducting SNA, we instead rely almost entirely on igraph. That way, you can focus on working with one set of objects rather than having to move across multiple sets.</p></li>
+<li><p>We make heavy use of network visualizations in order to illustrate the key concepts and procedures. We use, almost exclusively, one set of plotting tools: ggraph. This package is preferred over others because the coding logic is based on the widely used ggplot suite of visualizations, so working in ggraph will be easy for folks who are already familiar with ggplot and will offer highly transferable skills for newcomers.</p></li>
+<li><p>We structure the book by first taking a deep dive into standard one mode, holistic networks. That way readers can keep this common form of network data in mind while working through the foundational concepts. Once this knowledge is established, we move on to extensions of the one mode framework, with demonstrations of working with and analyzing two-mode, ego-centric, text, and dynamic networks.</p></li>
+</ol>
+<p>Furthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).</p>
+<p>While our main goal is to make SNA accessible to new learners, this book also has much value for more advanced students. In fact, much of the content included here has been used as part of the curriculum for our PhD classes on SNA. So while this book emphasizes the logic of SNA, it also makes explicit reference to the statistics that underlie these procedures. We also point readers to advanced sources for further study.</p>
+<p>Moreover, advanced students will benefit from recreating the analyses directly in R and RStudio. Throughout the book, we present and carefully annotate our code so that you can see and understand how we manipulate the data, generate the visualizations, and conduct the analyses. Our code, along with the data, can be used to reproduce everything that is shown here. You can check out the “R and RStudio setup and resources” chapter in the appendix for details.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
