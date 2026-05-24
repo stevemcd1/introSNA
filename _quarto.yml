@@ -8,8 +8,8 @@ book:
   sidebar:
     search: true
     title: "Intro to Social Network Analysis"
-    logo: darkcover2.png
-  cover-image: darkcover2.png
+    logo: lightcover.jpg
+  cover-image: lightcover.jpg
   cover-image-alt: |
     A textbook cover.
   
