@@ -2,6 +2,7 @@
 
 ```{r, warning = FALSE, message = FALSE}
 library(igraph)
+library(intronets)
 library(threejs) # 3D Networks
 library(visNetwork) # Interactive
 library(htmlwidgets) 
@@ -13,182 +14,142 @@ In this chapter we will learn about how to create engaging network visualisation
 
 ## The Data
 
-For this chapter, we are going to work with a Hollywood movie network. This is an affiliation network that contains information on the ten most popular movies (based on IMDB activity) for each year from 1999 to 2014. For each movie, the first ten actors listed under the IMDB field "Full Cast" are included. Thus, the underlying network data form a bipartite graph, where ties exist between a movie and the top ten actors who starred in that movie.
-
-Note that it is not necessary to use two mode network data for either of the types of visualisations that we cover here. We simply use it to demonstrate that these methods can be used
-
-First, we are going to read in out data and convert it into a network two mode network object. We will follow the basic procedure for mapping the two mode network and creating the vertex attribute denoting which type of node it is, an individual/actor (type = FALSE) or the group/movie (type = TRUE).
+To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran & Sageman 2008) that we used in our chapter on [graph layouts](graph_layouts.qmd). Just a quick refresher on this network, it was constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
 
 ```{r}
-load("Q:/Shared drives/SAT - The Three Amigos/SNA_BOOK_PACKAGES/intronets/inst/extdata/hwd_movies.RData")
-
-hwd_g <- graph_from_data_frame(movies, directed = F)
-
-V(hwd_g)$type <- bipartite_mapping(hwd_g)$type
+load_nets("bali.rda")
 ```
 
 ## 3D Networks with threejs
+If you are working with other data, you will need to create an igraph object from the edgelist or adjacency matrix. Once you have an igraph network object you can then create your 3D network. 
 
-To create the 3D Network we use the grpahjs() function which simply converts your static igraph object into an engaging model. This allows you to scroll in and out to zoom and click and drag to move around the network. It places the network in a spherical shape in the plot window and allows you to move in, out and around it.
+To create the 3D Network we use the grpahjs() function which simply converts your static igraph object into an engaging model. In this visualization you can scroll in and out to zoom and click and drag to move around the network. It places the network in a spherical shape in the plot window and allows you to move in, out and around it.
 
 ```{r}
-graphjs(hwd_g)
+graphjs(bali)
 ```
 
-Now, we can do a little more ere to make the visualisation cleaner and more useful. Like working with igraph, either we can set some attributes to the graph directly (like some color or shape etc.) or we can state the options for the alterations when using the graphjs function. To demonstrate this, we will do a little of both.
+Now, we can do a little more ere to make the visualisation cleaner and more useful. Like working in igraph, either we can set some attributes to the graph directly (like colors etc.) or we can state the options for the alterations when using the graphjs function. To demonstrate this, we will do a little of both.
 
-First, let's leave the network visualisation pretty basic and just play with some of the parameters of graphjs. In this, we are going to change the sizes of the nodes, add a title, and set the labels to show the names of the nodes. In this, as you hover over each node the name of the node will populate.
+First, let's leave the network visualisation pretty basic and just play with some of the parameters of graphjs. In this, we are going to change the sizes of the nodes, add a title, and set the labels to show the names of the nodes. In this, as you hover over each node the role of the node appears at the top. 
 
 ```{r}
-graphjs(hwd_g,   
-  vertex.size = 0.25,
-  vertex.label = V(hwd_g)$name,
+graphjs(bali,   
+  vertex.size = 0.5,
+  vertex.label = V(bali)$role,
   bg = "black",
-  main = "Hollywod Movie Network"
+  main = "Bali Terrorist Network"
 )
 ```
 
-This is much cleaner than the original visualisation. The contrast between the black backgorund and the orange nodes really makes the network pop and reducing the size of the nodes allows you to see the structure much clearer. There is a bit more we can do, however. Since this is a two mode network, let's add some color and shape vertex attributes so our viewers can differentiate between the actors and the movies.
+This is much cleaner than the original visualisation. The contrast between the black backgorund and the orange nodes really makes the network pop and reducing the size of the nodes allows you to see the structure much clearer. There is a bit more we can do, however. 
+
+Let's set a colour for each role that the individual plays in this network. To do this, we are adding a vertex attribute called role_colour using a case_when function from dplyr. The logic is pretty straightforward. Take a look.  
 
 ```{r}
 
-V(hwd_g)$shape <- ifelse(V(hwd_g)$type == TRUE, "square", "circle")
-V(hwd_g)$color <- ifelse(V(hwd_g)$type == TRUE, "maroon", "ivory")
-
-hwd_g_3d <- graphjs(hwd_g,   
-  vertex.size = 0.25,
-  vertex.label = V(hwd_g)$name,
-  bg = "black",
-  main = "Hollywod Movie Network"
+V(bali)$role_colour <- case_when(
+  V(bali)$role == "CT" ~ "gold",
+  V(bali)$role == "OA" ~ "green",
+  V(bali)$role == "BM" ~ "cyan",
+  V(bali)$role == "SB" ~ "purple",
+  V(bali)$role == "TL" ~ "orange"
 )
 
-hwd_g_3d
+graphjs(bali,   
+  vertex.size = 0.5,
+  vertex.label = V(bali)$role,
+  vertex.color = V(bali)$role_colour,
+  edge.color = "white",
+  bg = "black",
+  main = "Bali Terrorist Network"
+)
+
 ```
+
+Finally, for a little bit of fun, let's apply some community detection to this network and change the colour of the nodes to reflect their community memberhsip. To do this, we can run a louvain community detection algorithm and adding the membership as an attribute to the network as a node characteristic we are calling group. 
+
+```{r}
+V(bali)$group <- cluster_louvain(bali)$membership 
+
+graphjs(bali,   
+  vertex.size = 0.5,
+  vertex.label = V(bali)$role,
+  vertex.color = V(bali)$group,
+  bg = "white",
+  main = "Bali Terrorist Network"
+)
+
+```
+
 
 These 3D networks are really fun and a great way to engage viewers with the network. Next, we cover interactive visualisations that are slightly different from the above 3D networks. There are perks to both methods that become apparent as you use them.
 
 ## Interactive Visualisation with VisNetwork
 
-VisNetwork does not just convert your network object into an interactive visualisation. Rather, we need to build a specific dataset that VisNetwork can pull the edge and node attributes from. To do this, we use out edgelist and construct a node characteristics data frame from our edgelist. Since our network is a two mode network we build one for movies and one for actors then merge them into one node-level dataset.
-
-```{r}
-movie <- unique(movies$movie)
-actor <- unique(movies$actor)
-```
+VisNetwork does not convert your network object into an interactive visualisation. Rather, we need to build a specific dataset that VisNetwork can pull the edge and node attributes from. To do this, we use the original network object to construct a node characteristics data frame. 
 
 ```{r}
 nodes <- data.frame(
-  id = movie,
-  label = movie,
-  group = "movie",
-  color = "maroon"
+  id = V(bali)$vertex.names,
+  label = V(bali)$role
 )
 
-nodes2 <- data.frame(
-  id = actor,
-  label = "",
-  group = "actor",
-  color = "green"
-)
+edges <- igraph::as_data_frame(bali, what = "edges") %>%
+  mutate(
+    from = V(bali)$vertex.names[from],
+    to = V(bali)$vertex.names[to]
+  ) %>%
+  select(from, to)
 
-nodes_done <- rbind(nodes, nodes2)
 ```
 
-Now this is done, we need to swap the names of the columns in our edgelist to from and to. VisNetwork requires that the edgelist clearly delineates direction even if the graph (like ours) is undirected.
-
-```{r}
-d_done <- movies %>%
-  rename(from = actor,to = movie)
-```
-
-With this, we can construct our basic interactive network. The basic recipe for this is to use the visNetwork() function and call on the edgelist and node attribute dataset. With this visualisaiton, you can click on and drag nodes selecting them one-by-one.
+With this, we can construct our basic interactive network. The basic recipe for this is to use the visNetwork() function and call on the edgelist and node attribute dataset. With this visualisaiton, you can click on and drag nodes selecting them one-by-one. You will notice that the nodes are "springy." This is a core feature of the package where it introduces some physics to the network to keep nodes that are tied together close together. We can play around with that in just a moment. 
 
 ```{r}
 visNetwork(
-    nodes_done,
-    d_done)
+    nodes,
+    edges)
 ```
 
 There is a lot more that we can do with this visualisation, however. The chunk below creates a much neater visualisation that we can use. It looks like a lot, but this is really just a sequence of small tweaks layered onto a base plot. In short, this process goes from initialising the network, defining the layout, defining groups, improve readability, adding interactivity, to adding legend. Let's break it down by each option we add so you can get a picture of what it all does.
 
 We start with visNetwork, where visNetwork(nodes_done, d_done, width = "100%", height = "800px", background = "white") initializes the network and sets the canvas size and background. Next, visIgraphLayout(layout = "layout_nicely") uses igraph to space nodes in a clean, readable way.
 
-The two visGroups() calls define the two-mode structure—actors as dots and movies as squares—so the node types are visually distinct. Next, visNodes(font = list(size = 30)) simply increases label size to improve readability. visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) adds light interactivity by highlighting connections on click while removing the dropdown selector. visPhysics(enabled = FALSE) freezes the layout so nodes don’t keep moving. You can drag and move the nodes around to place them where you want. Finally, visLegend(...) builds a custom legend, letting you control exactly how each node type is represented and where the legend appears.
+Next, visNodes(font = list(size = 30)) simply increases label size to improve readability. visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) adds light interactivity by highlighting connections on click while removing the dropdown selector. visPhysics(enabled = FALSE) freezes the layout so nodes don’t keep moving. You can drag and move the nodes around to place them where you want. 
 
 ```{r, eval=knitr::is_html_output()}
 visNetwork(
-    nodes_done,
-    d_done,
+    nodes,
+    edges,
     width = "100%",
     height = "800px",
     background = "white") %>%
   visIgraphLayout(layout = "layout_nicely") %>%
-  visGroups(
-    groupname = "actor",
-    shape = "dot") %>%
-  visGroups(
-    groupname = "movie",
-    shape = "square") %>%
   visNodes(
     font = list(size = 30)) %>%
   visOptions(
     highlightNearest = TRUE,
     nodesIdSelection = FALSE) %>%
   visPhysics(
-    enabled = FALSE) %>%
-  visLegend(
-    useGroups = FALSE,
-    addNodes = list(
-      list(
-        label = "Movie",
-        shape = "square",
-        color = "maroon",
-        font = list(size = 10)),
-      list(
-        label = "actor",
-        shape = "dot",
-        color = "green",
-        font = list(size = 10))),
-    width = 0.15,
-    position = "right")
+    enabled = FALSE)
 ```
 
-Now we have that base, we are going to add a few extra cool things to it! We can add some physics to the visualisation, This introduces some repulsion physics that generate a 'springy' effect to the graph as you move the nodes. Rather than being able to place nodes where you want, this new network causes nodes to bound back into place after you drag it.
+Now we have that base, we are going to add a few extra cool things to it! We can add back some physics to the visualisation, This introduces some repulsion back to the nodes reintroducing that 'springy' effect to the graph as you move the nodes. Rather than being able to place nodes where you want, this new network causes nodes to bound back into place after you drag it. However, you will notice that the additional options we introduce make for a little less strong 'spring' than the stock options. 
 
 ```{r}
 visNetwork(
-    nodes_done,
-    d_done,
+    nodes,
+    edges,
     width = "100%",
     height = "800px",
     background = "white") %>%
-  visGroups(
-    groupname = "actor",
-    shape = "dot") %>%
-  visGroups(
-    groupname = "movie",
-    shape = "square") %>%
   visNodes(
     font = list(size = 30)) %>%
   visOptions(
     highlightNearest = TRUE,
     nodesIdSelection = TRUE) %>%
-  visLegend(
-    useGroups = FALSE,
-    addNodes = list(
-      list(
-        label = "Movie",
-        shape = "square",
-        color = "maroon",
-        font = list(size = 10)),
-      list(
-        label = "Actor",
-        shape = "dot",
-        color = "green",
-        font = list(size = 10))),
-    width = 0.15,
-    position = "right") %>%
-visPhysics(
+  visPhysics(
     solver = "repulsion",
     repulsion = list(
       nodeDistance = 100,  
@@ -201,42 +162,30 @@ visPhysics(
   )
 ```
 
-Here is a slightly different alteration of the physics with a slightly different layout, and we can add some control buttons directly to the visualisation so that users can navigate the visualisation by clicking not dragging their mouse.
+Here is a slightly different alteration of the physics with a slightly different layout, and we can add some control buttons directly to the visualisation so that users can navigate the visualisation by clicking not dragging their mouse. Finally, to mimic the community detection visualusation that we did above, we add an grouping attribute to the vertex dataset that pulls the clustering membership from the same louvain method we used in our 3D network. The result, shows a colour for each of the identified clusters in the network. 
 
 ```{r}
+# creating the clustering memberhship
+nodes$group <- as.factor(cluster_louvain(bali)$membership)
+
 visNetwork(
-    nodes_done,
-    d_done,
-    width = "100%",
-    height = "800px",
-    background = "white") %>%
-  visGroups(
-    groupname = "actor",
-    shape = "dot") %>%
-  visGroups(
-    groupname = "movie",
-    shape = "square") %>%
+  nodes,
+  edges,
+  width = "100%",
+  height = "800px",
+  background = "white"
+) %>%
+  visInteraction(
+    navigationButtons = TRUE
+  ) %>%
   visNodes(
-    font = list(size = 30)) %>%
+    font = list(size = 30)
+  ) %>%
   visOptions(
     highlightNearest = TRUE,
-    nodesIdSelection = TRUE) %>%
-  visLegend(
-    useGroups = FALSE,
-    addNodes = list(
-      list(
-        label = "Movie",
-        shape = "square",
-        color = "maroon",
-        font = list(size = 10)),
-      list(
-        label = "Actor",
-        shape = "dot",
-        color = "green",
-        font = list(size = 10))),
-    width = 0.15,
-    position = "right") %>%
-visPhysics(
+    nodesIdSelection = TRUE
+  ) %>%
+  visPhysics(
     solver = "forceAtlas2Based",
     forceAtlas2Based = list(
       gravitationalConstant = -50,
@@ -246,29 +195,42 @@ visPhysics(
       damping = 0.4
     ),
     stabilization = list(enabled = TRUE)
-  ) %>%
-  visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE)%>%
-  visInteraction(navigationButtons = TRUE)
+  )
 ```
 
 ## Saving Advanced Network Visualisations
 
 Since these types of visualisations are not static, we can't simply save them to a jpeg or png file. Instead, they need to be stored in a file that will open and permit the interactivity. As such, we save them to an .html file that you can open in your broswer.
 
-Here we use a combination of functions from a couple of html-friendly packages. Basically, what this does is ensure that the visualisation can be opened in a browser, then saves it to your working directory as a html file and opens it in your default browser.
+Here we use a combination of functions from a couple of html-friendly packages. Note that this process applies for both packages. Basically, what this does is ensure that the visualisation can be opened in a browser, then saves it to your working directory as a html file and opens it in your default browser.
 
 ```{r,eval= FALSE}
-hwd_g_3d <- browsable(hwd_g_3d)
+# Store it
+bali_3d <- graphjs(bali,   
+  vertex.size = 0.5,
+  vertex.label = V(bali)$role,
+  vertex.color = V(bali)$group,
+  bg = "white",
+  main = "Bali Terrorist Network"
+)
 
-saveWidget(hwd_g_3d, file="hwd_movies.html")
-browseURL("hwd_movies.html")
+# Make is browsable
+bali_3d <- browsable(bali_3d)
+
+# Save it
+saveWidget(bali_3d, file="bali_3d.html")
+
+# Open it
+browseURL("bali_3d.html")
 ```
 
 ## References
 
-For more on the Hollywood data...
+For more information about the dataset we used in this chapter...
 
-- 
+- Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. Studies in Conflict and Terrorism, 29, 559–575.
+
+- Magouirk, J., Atran, S., & Sageman, M. (2008). Connecting Terrorist Networks. Studies in Conflict & Terrorism, 31(1), 1–16. https://doi.org/10.1080/10576100701759988
 
 For more on Interactive and 3D Networks...
 

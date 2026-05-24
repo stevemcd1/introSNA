@@ -66,7 +66,7 @@ ggraph(bali, layout = "fr") +
 ggraph(bali, layout = "dh") +
   geom_node_point(size = 5, aes(color = role)) + 
   geom_edge_link(alpha = 0.5) +
-  labs(title = "Diffie-Hellman Layout") +
+  labs(title = "Davidson-Harel Layout") +
   theme_void()
 
 
@@ -76,6 +76,32 @@ ggraph(bali, layout = "graphopt") +
   labs(title = "Graphopt Layout") +
   theme_void()
 ```
+
+Essentially each alrogithm is designed to produce a good layout but each has a specific emphasis of what "good" is. Some seek aesthetically pleasing, or balanced, visualisions while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualisations. Remember, these do not change the network, they just alter the placement of the nodes.
+
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Layout                    | What it does                                                                              | Why it is good                                                                |
++:=========================:+:=========================================================================================:+:=============================================================================:+
+| Stress                    | - Minimises the "stress" of the network by reducing distances between nodes in the visual | - Good for large/complex networks                                             |
+|                           |                                                                                           |                                                                               |
+|                           |                                                                                           | - Simple, reproducible layouts                                                |
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Kamada-Kawai (KK)         | - Nodes are placed based on network distance                                              | - Good for smaller networks                                                   |
+|                           |                                                                                           |                                                                               |
+|                           | - Shorter geometric distance between nodes is reflected in node proximity                 | - Highlights relational distances                                             |
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Fruchterman-Reingold (FR) | - All nodes are repelled from each other                                                  | - Good for small or medium networks                                           |
+|                           |                                                                                           |                                                                               |
+|                           | - Edges act as springs to draw tied nodes closer.                                         | - Produces intuitive visuals since connected nodes are placed near each other |
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Davidson-Harel (DH)       | - Maintains even spacing between nodes                                                    | - Good for medium networks                                                    |
+|                           |                                                                                           |                                                                               |
+|                           | - Minimises edge-overlap                                                                  | - Focuses on aesthetics of networks                                           |
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Graphopt                  | - Connected nodes are placed close to each other                                          | - Good for medium/large networks                                              |
+|                           |                                                                                           |                                                                               |
+|                           | - Nodes repel each other if not connected                                                 | - Conceptually similar to FR but usually quicker                              |
++---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 ## Set Layouts
 
@@ -218,6 +244,10 @@ ggplot(layout_df, aes(x = x, y = y)) +
 
 For more information about the dataset we used in this chapter...
 
--   Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. *Studies in Conflict and Terrorism, 29,* 559–575.
+- Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. *Studies in Conflict and Terrorism, 29,* 559–575.
 
--   Magouirk, J., Atran, S., & Sageman, M. (2008). Connecting Terrorist Networks. *Studies in Conflict & Terrorism*, *31*(1), 1–16. https://doi.org/10.1080/10576100701759988
+- Magouirk, J., Atran, S., & Sageman, M. (2008). Connecting Terrorist Networks. *Studies in Conflict & Terrorism*, *31*(1), 1–16. https://doi.org/10.1080/10576100701759988
+
+For more information about graph layouts...
+
+- Light & Moody.
