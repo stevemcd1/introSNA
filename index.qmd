@@ -26,6 +26,8 @@ Here are links to those applications...
 
 - [Text network app](https://shiny.chass.ncsu.edu/intronets/textmode/)
 
+- [Dynamic network app](https://shiny.chass.ncsu.edu/intronets/dynamic_nets/)
+
 ...and in the appendix you can find more information about the datasets.
 
 - [Network data descriptions](https://stevemcd1.github.io/introSNA/datasets.html)

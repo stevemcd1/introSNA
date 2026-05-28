@@ -1673,7 +1673,7 @@
     "href": "index.html#web-applications-and-datasets",
     "title": "Introduction to Social Network Analysis",
     "section": "Web Applications and Datasets",
-    "text": "Web Applications and Datasets\nFurthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).\nHere are links to those applications…\n\nOne mode network app\nEgo network app\nTwo mode network app\nText network app\n\n…and in the appendix you can find more information about the datasets.\n\nNetwork data descriptions",
+    "text": "Web Applications and Datasets\nFurthermore, we have created a series of web applications that can be used to practice the procedures presented in the book. No coding is required. Just point-and-click to recreate the visualizations and analyses. We have one app for each form of data and we have populated these apps with the example datasets presented in the book (as well as a few others that are not discussed).\nHere are links to those applications…\n\nOne mode network app\nEgo network app\nTwo mode network app\nText network app\nDynamic network app\n\n…and in the appendix you can find more information about the datasets.\n\nNetwork data descriptions",
     "crumbs": [
       "WELCOME!"
     ]
