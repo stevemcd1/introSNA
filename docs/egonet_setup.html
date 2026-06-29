@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Setting up ego network data – Introduction to Social Network Analysis</title>
+<title>11&nbsp; Ego networks: setup – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./netsim.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -133,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -224,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -247,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -333,9 +329,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./egonet_setup.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></h1>
 </div>
 
 
@@ -352,7 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Most of the techniques discussed as part of these tutorial use holistic network analysis. Let’s initialize the necessary packages.</p>
+<p>Most of the techniques discussed as part of these tutorial use holistic network analysis. Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By “bounded,” I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.</p>
+<p>Let’s initialize the necessary packages…</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
@@ -360,15 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By “bounded,” I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.</p>
-<p>In many instances, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let’s say we want to know about the relationships among people who are fans of Manga graphic novels.</p>
-<ul>
-<li><p>How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a “true” fan).</p></li>
-<li><p>Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.</p></li>
-<li><p>Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.</p></li>
-</ul>
-<p>For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.</p>
-<p>So instead of one big network defining all of the relationships within the group (for example)…</p>
+<p>…and then we can generate a familiar example of a holistic network random graph, perhaps of friendships between students in a class.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9035768</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(<span class="dv">40</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span>
@@ -386,49 +375,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>…we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as “egocentric”).</p>
+<p>In many social networks, though, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let’s say we want to know about the relationships among people who are fans of Manga graphic novels.</p>
+<ul>
+<li><p>How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a “true” fan).</p></li>
+<li><p>Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.</p></li>
+<li><p>Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.</p></li>
+</ul>
+<p>For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.</p>
+<p>So instead of one big network defining all of the relationships within the group, we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as “egocentric”).</p>
+<p>Let’s examine an example of what an ego network might look like. We’ll start by assigning values to the number of alters in the network, a case identifier for ego, and case identifiers for each alter (2,3,4,5,6).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_alters <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ego_id <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>alter_ids <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span>(n_alters <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">from =</span> ego_id, <span class="at">to =</span> alter_ids)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>alter_pairs <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">combn</span>(alter_ids, <span class="dv">2</span>))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>n_alter_ties <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(alter_pairs), <span class="dv">3</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>random_alter_edges <span class="ot">&lt;-</span> alter_pairs[n_alter_ties, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(random_alter_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>edges_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges, random_alter_edges)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges_all, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ego"</span>,<span class="st">"alter1"</span>,<span class="st">"alter2"</span>,<span class="st">"alter3"</span>,<span class="st">"alter4"</span>,<span class="st">"alter5"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> label <span class="sc">==</span> <span class="st">"ego"</span>)) <span class="sc">+</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Egocentric network"</span>) <span class="sc">+</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>alter_ids <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span>(n_alters <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>With these data, we can estimate a set of ties between ego and the alters. The first line below creates an edgelist that includes ties between ego and all alters. (This is a requirement. An alter has to be connected to ego in order to be in that ego’s network.) Then we sample all possible combinations of ties between alters, binding those random alter edges with the ego ties in order to complete the ego network edgelist.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">from =</span> ego_id, <span class="at">to =</span> alter_ids)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>alter_pairs <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">combn</span>(alter_ids, <span class="dv">2</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n_alter_ties <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(alter_pairs), <span class="dv">3</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>random_alter_edges <span class="ot">&lt;-</span> alter_pairs[n_alter_ties, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(random_alter_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>edges_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges, random_alter_edges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Finally, we create an igraph object and plot the graph using the ggraph function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges_all, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ego"</span>,<span class="st">"alter1"</span>,<span class="st">"alter2"</span>,<span class="st">"alter3"</span>,<span class="st">"alter4"</span>,<span class="st">"alter5"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> label <span class="sc">==</span> <span class="st">"ego"</span>)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Egocentric network"</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="egonet_setup_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="egonet_setup_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>We will demonstrate egocentric network analysis using data from the General Social Survey. Let’s load the data.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/stevemcd1/intronets/master/inst/extdata/gss.rda"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(url))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <section id="general-social-survey-network-data" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="general-social-survey-network-data"><span class="header-section-number">11.1</span> General Social Survey network data</h2>
-<p>The GSS is a national probability sample of adults in the United States that has been conducted annually or biannually every year since the 1970s. It is an extraordinarily valuable source of information about the attitudes and behaviors of the US population.</p>
-<p>We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as “confidants.” The responses to this initial question are available in the NUMGIVEN variable.</p>
+<p>We will demonstrate egocentric network analysis using data from the General Social Survey. This demonstration is an adaptation from an excellent textbook from Raffaele Vacca devoted to ego network analysis, which we highly recommend to those who are interested in more advanced coding on this topic.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Let’s load the data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gss <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/stevemcd1/intronets/master/inst/extdata/gss.rda"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(url))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The GSS is a national probability sample of adults in the United States that has been conducted annually or biannually every year since the 1970s. It is an extraordinarily valuable source of information about the attitudes and behaviors of the US population.</p>
+<p>We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as “confidants.”<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The responses to this initial question are available in the NUMGIVEN variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gss <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> NUMGIVEN   n    percent
         0 397 0.27062031
@@ -441,12 +443,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The number of confidants is capped at six – respondents could not provide more than that. There is also a surprising number of people who said that they do not confide in anyone (almost 400!) or only confide in a single person (281).</p>
-<p>Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts. If you are interested in this debate, check out some of the sources at the end of this tutorial. Otherwise, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.</p>
+<p>Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> However, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gss2 <span class="ot">&lt;-</span> gss <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NUMGIVEN <span class="sc">&gt;=</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GSSID <span class="sc">!=</span> <span class="st">"NA"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ego_id =</span> GSSID)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gss2 <span class="ot">&lt;-</span> gss <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NUMGIVEN <span class="sc">&gt;=</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GSSID <span class="sc">!=</span> <span class="st">"NA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ego_id =</span> GSSID)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="constructing-the-files" class="level2" data-number="11.2">
@@ -455,9 +457,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="ego-attributes"><span class="header-section-number">11.2.1</span> Ego attributes</h3>
 <p>Three sets of files are essential for conducting egocentric network analysis. First, we need to gather information about all of the egos – those individuals who were surveyed about their confidants. We therefore subset the gss2 file to include the first eight columns of data, which can then be viewed with the glimpse command.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save ego attribute data</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ego <span class="ot">&lt;-</span> gss2[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save ego attribute data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ego <span class="ot">&lt;-</span> gss2[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 288
 Columns: 8
@@ -477,9 +479,9 @@ $ NUMGIVEN &lt;dbl&gt; 4, 4, 6, 2, 2, 3, 3, 6, 3, 2, 3, 4, 2, 2, 3, 2, 2, 4, 2, 
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="alter-attributes"><span class="header-section-number">11.2.2</span> Alter attributes</h3>
 <p>Ego was asked to provide information about each of their confidants, which we refer to as alters. So our next step is to construct an alter attribute file. We need the first column of data which includes the ego id, the eight column which is the NUMGIVEN variable, and then a long list of attributes for each alter.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save alter attribute data</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>alter <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">25</span><span class="sc">:</span><span class="dv">114</span>)]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save alter attribute data</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>alter <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">25</span><span class="sc">:</span><span class="dv">114</span>)]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 288
 Columns: 92
@@ -581,20 +583,20 @@ $ RELIG5   &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 <p>At present, the data are organized by unique egos. But what we really want is for each line to represent a unique alter. In data management speak, the current file is in “wide” format (with the data extending out to the right as variables for separate alters) and needs to be transformed to “long” format (with the data for each alter extending down for each alter). If an ego has three alters, then there should be three rows in the data, one for each alter.</p>
 <p>To accomplish this, use the pivot_longer command. The code below reshapes the existing data from wide to long format, extending down information for each alter (so all columns except for ego_id and NUMGIVEN, which we want to repeat for each ego). The names_ functions tell R how to rename the variables (SPOUSE1 should become SPOUSE) and create an alter id variable (and formatting that variable is numeric).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape alter attributes</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alter <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(ego_id,NUMGIVEN), </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"alter_id"</span>),  <span class="co"># Split names into "base" and "set" parts</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(</span><span class="sc">\\</span><span class="st">D+)(</span><span class="sc">\\</span><span class="st">d+)"</span>  <span class="co"># Separate variable base and set number</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># change alter_id to numeric variable</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(alterlong<span class="sc">$</span>alter_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape alter attributes</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alter <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(ego_id,NUMGIVEN), </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"alter_id"</span>),  <span class="co"># Split names into "base" and "set" parts</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(</span><span class="sc">\\</span><span class="st">D+)(</span><span class="sc">\\</span><span class="st">d+)"</span>  <span class="co"># Separate variable base and set number</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># change alter_id to numeric variable</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(alterlong<span class="sc">$</span>alter_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s inspect this file before making further adjustments.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,440
 Columns: 21
@@ -624,18 +626,18 @@ $ RELIG    &lt;dbl&gt; 1, 1, 1, 1, 0, 2, 2, 2, 2, 0, 5, 5, 2, 2, 2, 2, 3, 0, 0, 
 <p>This new alterlong file has exactly five times the number of observations as the original alter file (288*5 = 1440). That’s because each ego now has five lines, given the potential for having up to five different alters. Alterlong also has much fewer variables, because each of the attributes that used to have five different variables (PARENT1-5) now has only a single variable (PARENT).</p>
 <p>This dataset contains multiple rows with missing information. For example, the first five entries are for ego_id = 3. The NUMGIVEN value of 4 indicates that this person reported 4 alters. The first 4 entries contain valid alter information, but the 5th entry contains 0s or -1s, which are invalid. Therefore, we need to delete all of the rows for alters that do not exist. Then we can remove the NUMGIVEN variable because it is no longer needed.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only rows where ALTERID &lt;= NUMGIVEN</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># these rows refer to alters that do not exist in the data</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then remove NUMGIVEN</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alterlong <span class="sc">|&gt;</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(alter_id <span class="sc">&lt;=</span> NUMGIVEN) <span class="sc">|&gt;</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only rows where ALTERID &lt;= NUMGIVEN</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># these rows refer to alters that do not exist in the data</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then remove NUMGIVEN</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>alterlong <span class="ot">&lt;-</span> alterlong <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(alter_id <span class="sc">&lt;=</span> NUMGIVEN) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>NUMGIVEN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The next step is to adjust the alter_id variables. At present, those ids (1-5) repeat across the dataset, so they are not unique. A better approach is to create unique identifiers that provide information not only about the number designation for the alter, but also the number of the ego to whom they are attached. The code below does this by multiplying the ego_id by 10 and then adding the alter_id.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct ID values</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> alterlong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> alterlong<span class="sc">$</span>alter_id</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct ID values</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>alterlong<span class="sc">$</span>alter_id <span class="ot">&lt;-</span> alterlong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> alterlong<span class="sc">$</span>alter_id</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(alterlong[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 955
 Columns: 2
@@ -649,9 +651,9 @@ $ alter_id &lt;dbl&gt; 31, 32, 33, 34, 51, 52, 53, 54, 101, 102, 103, 104, 105, 
 <h3 data-number="11.2.3" class="anchored" data-anchor-id="alter-edgelist"><span class="header-section-number">11.2.3</span> Alter edgelist</h3>
 <p>An edgelist is also needed. For this file, we’ll save the first column (ego_id) and columns 15-24.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save edge data</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">24</span>)]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save edge data</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> gss2[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 288
 Columns: 11
@@ -671,19 +673,19 @@ $ CLOSE45 &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 <p>These variables measure how close ego thinks that the two alters are to one another. We will examine the specific values later. For now, just note that the numbers indicate which alters are being referenced. For example, CLOSE25 refers to the perceive closeness between alter 2 and alter 5.</p>
 <p>To create the edgelist, we need to pivot_long (like before) so that each line represents a unique relationship between alters.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape edges long</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edges  <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>ego_id,                             </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"tie"</span>,     <span class="co"># Name for the column representing each tie variable</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"weight"</span>  <span class="co"># Name for the tie strength values</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, tie)),  <span class="co"># Extract first alter from tie variable</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, tie))   <span class="co"># Extract second alter from tie variable</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ego_id, from, to, weight) </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape edges long</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edges  <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>ego_id,                             </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"tie"</span>,     <span class="co"># Name for the column representing each tie variable</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"weight"</span>  <span class="co"># Name for the tie strength values</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, tie)),  <span class="co"># Extract first alter from tie variable</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"CLOSE(</span><span class="sc">\\</span><span class="st">d)(</span><span class="sc">\\</span><span class="st">d)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, tie))   <span class="co"># Extract second alter from tie variable</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ego_id, from, to, weight) </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,880
 Columns: 4
@@ -696,18 +698,18 @@ $ weight &lt;dbl&gt; 2, 1, 3, 0, 1, 1, 0, 2, 0, 0, 1, 3, 1, 0, 1, 1, 0, 1, 0, 0,
 <p>In addition to the ego_id we have “from” and “to” variables which contain the numbers of the alters that are connected. The direction of the tie does not matter as these relationships are assumed to be symmetric.</p>
 <p>The weight variable tells us about the strength of the tie between each alter. Oddly, the GSS coded greater closeness between alters with descending values. It makes more sense to recode closer friends (“especially close”) with higher values, which we do below. Also, “total strangers” indicates that there is no relationship, so those lines are removed from the dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 ESPECIALLY CLOSE; 2 KNOW EACH OTHER; 3  TOTAL STRANGERS</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># recode 1-&gt;2, 2-&gt;1, 3-&gt;0, then remove zeros</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edgeslong <span class="sc">|&gt;</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">recode</span>(weight, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">2</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 ESPECIALLY CLOSE; 2 KNOW EACH OTHER; 3  TOTAL STRANGERS</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># recode 1-&gt;2, 2-&gt;1, 3-&gt;0, then remove zeros</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>edgeslong <span class="ot">&lt;-</span> edgeslong <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">recode</span>(weight, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">2</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we need to adjust the id values for the alters so they match with the alter attribute file.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># consistent IDs that will link with the alter attribute files</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>from <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>from</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>to <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>to</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># consistent IDs that will link with the alter attribute files</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>from <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>from</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>edgeslong<span class="sc">$</span>to <span class="ot">&lt;-</span> edgeslong<span class="sc">$</span>ego_id<span class="sc">*</span><span class="dv">10</span> <span class="sc">+</span> edgeslong<span class="sc">$</span>to</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(edgeslong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,030
 Columns: 4
@@ -723,85 +725,85 @@ $ weight &lt;dbl&gt; 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1,
 <h2 data-number="11.3" class="anchored" data-anchor-id="egor"><span class="header-section-number">11.3</span> egor</h2>
 <p>Now that the files are prepped, they can be combined into an “egor” object. egor is a package designed for conducting egocentric network analysis. The code below loads the egor package and combines the various files we just created into an egor object.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an egor object</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(egor)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>egor.obj <span class="ot">&lt;-</span> <span class="fu">egor</span>(<span class="at">egos =</span> ego,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alters =</span> alterlong, </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">aaties =</span> edgeslong, </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ID.vars =</span> <span class="fu">list</span>(<span class="at">ego =</span> <span class="st">"ego_id"</span>,</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">alter =</span> <span class="st">"alter_id"</span>, </span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">source =</span> <span class="st">"from"</span>,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">target =</span> <span class="st">"to"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an egor object</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(egor)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>egor.obj <span class="ot">&lt;-</span> <span class="fu">egor</span>(<span class="at">egos =</span> ego,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alters =</span> alterlong, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">aaties =</span> edgeslong, </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ID.vars =</span> <span class="fu">list</span>(<span class="at">ego =</span> <span class="st">"ego_id"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">alter =</span> <span class="st">"alter_id"</span>, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">source =</span> <span class="st">"from"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">target =</span> <span class="st">"to"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The next step is to convert the egor object into an igraph object. Then we can examine the object.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform into an igraph object</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gr.list <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform into an igraph object</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>gr.list <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`3`
-IGRAPH 901d922 UNW- 4 5 -- 
+IGRAPH f8262e7 UNW- 4 5 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901d922 (vertex names):
++ edges from f8262e7 (vertex names):
 [1] 31--32 31--33 32--33 32--34 33--34
 
 $`5`
-IGRAPH 901e235 UNW- 4 5 -- 
+IGRAPH f826947 UNW- 4 5 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901e235 (vertex names):
++ edges from f826947 (vertex names):
 [1] 51--52 51--54 52--53 52--54 53--54
 
 $`10`
-IGRAPH 901eb26 UNW- 5 9 -- 
+IGRAPH f827058 UNW- 5 9 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901eb26 (vertex names):
++ edges from f827058 (vertex names):
 [1] 101--103 101--104 101--105 102--103 102--104 102--105 103--104 103--105
 [9] 104--105
 
 $`12`
-IGRAPH 901f428 UNW- 2 0 -- 
+IGRAPH f827582 UNW- 2 0 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901f428 (vertex names):
++ edges from f827582 (vertex names):
 
 $`16`
-IGRAPH 901fa90 UNW- 2 0 -- 
+IGRAPH f827a82 UNW- 2 0 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901fa90 (vertex names):
++ edges from f827a82 (vertex names):
 
 $`30`
-IGRAPH 9020330 UNW- 3 3 -- 
+IGRAPH f827f80 UNW- 3 3 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 9020330 (vertex names):
++ edges from f827f80 (vertex names):
 [1] 301--302 301--303 302--303</code></pre>
 </div>
 </div>
 <p>This new object looks a bit different from the igraph objects we’ve looked at in the past. Embedded in this object is not one single network, but multiple networks, with each element’s name corresponding to the ego ID.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gr.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "3"   "5"   "10"  "12"  "16"  "30"  "35"  "36"  "46"  "54"  "57"  "59" 
  [13] "61"  "62"  "63"  "65"  "66"  "70"  "71"  "72"  "74"  "75"  "80"  "83" 
@@ -831,57 +833,57 @@ IGRAPH 9020330 UNW- 3 3 --
 </div>
 <p>Note that this set of networks only includes the alter-alter ties. We may want to generate another set of networks in which ego is also included. This can be done using the include.ego option.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gr.list.ego <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj, <span class="at">include.ego =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>gr.list.ego <span class="ot">&lt;-</span> <span class="fu">as_igraph</span>(egor.obj, <span class="at">include.ego =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="examining-the-egonet-objects" class="level3" data-number="11.3.1">
 <h3 data-number="11.3.1" class="anchored" data-anchor-id="examining-the-egonet-objects"><span class="header-section-number">11.3.1</span> Examining the egonet objects</h3>
 <p>Now let’s take a closer look at the first egonet object. To do this, we can subset the gr.list with a double bracket. Then let’s look at the vertex sequence.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(gr <span class="ot">&lt;-</span> gr.list[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(gr <span class="ot">&lt;-</span> gr.list[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 901d922 UNW- 4 5 -- 
+<pre><code>IGRAPH f8262e7 UNW- 4 5 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 901d922 (vertex names):
++ edges from f8262e7 (vertex names):
 [1] 31--32 31--33 32--33 32--34 33--34</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 4/4 vertices, named, from 901d922:
+<pre><code>+ 4/4 vertices, named, from f8262e7:
 [1] 31 32 33 34</code></pre>
 </div>
 </div>
 <p>What if we examined the vertex sequence with ego included? Note the name of the last node.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(gr.ego <span class="ot">&lt;-</span> gr.list.ego[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(gr.ego <span class="ot">&lt;-</span> gr.list.ego[[<span class="st">"3"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9173c02 UNW- 5 9 -- 
+<pre><code>IGRAPH f91a50f UNW- 5 9 -- 
 + attr: .egoID (g/n), name (v/c), SEX (v/n), RACE (v/n), SPOUSE (v/n),
 | PARENT (v/n), SIBLING (v/n), CHILD (v/n), OTHFAM (v/n), COWORK (v/n),
 | MEMGRP (v/n), NEIGHBR (v/n), FRIEND (v/n), ADVISOR (v/n), OTHER
 | (v/n), TALKTO (v/n), KNOWN (v/n), EDUC (v/n), AGE (v/n), RELIG (v/n),
 | weight (e/n)
-+ edges from 9173c02 (vertex names):
++ edges from f91a50f (vertex names):
 [1] 31--32  31--33  32--33  32--34  33--34  31--ego 32--ego 33--ego 34--ego</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr.ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(gr.ego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 5/5 vertices, named, from 9173c02:
+<pre><code>+ 5/5 vertices, named, from f91a50f:
 [1] 31  32  33  34  ego</code></pre>
 </div>
 </div>
 <p>Now let’s plot out the two versions of this ego network: one without ego and one with ego included.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"No ego"</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr.ego, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"With ego"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"No ego"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gr.ego, <span class="at">vertex.label =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">"With ego"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="egonet_setup_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="egonet_setup_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -889,38 +891,42 @@ IGRAPH 9020330 UNW- 3 3 --
 <p>In the “With ego” graph, can you pick out which node is ego? Remember that ego will always be connected to all nodes in the graph.</p>
 <p>The next step is to add ego ID as a graph attribute in each list element. We will do this for the alter only object and the ego included object. This will be useful when graphing the different ego networks.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs without ego</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list)) {</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  gr.list[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list)[[i]]</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs with ego</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list.ego)) {</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  gr.list.ego[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list.ego)[[i]]</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>gr.list[[<span class="st">"10"</span>]]<span class="sc">$</span>ego_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs without ego</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list)) {</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  gr.list[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list)[[i]]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List of graphs with ego</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gr.list.ego)) {</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  gr.list.ego[[i]]<span class="sc">$</span>ego_id <span class="ot">&lt;-</span> <span class="fu">names</span>(gr.list.ego)[[i]]</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>gr.list[[<span class="st">"10"</span>]]<span class="sc">$</span>ego_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "10"</code></pre>
 </div>
 </div>
-<p>Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I’ve commented this out because the data have already been saved. We will load these objects and examine them in the next tutorial.</p>
+<p>Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I’ve commented this out because the data have already been saved. We will load these objects and examine them in the next chapter.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save(ego, alterlong, gr.list, gr.list.ego, file="gss_ego.rda")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save(ego, alterlong, gr.list, gr.list.ego, file="gss_ego.rda")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>On to ego network analysis…</p>
 </section>
 </section>
 <section id="references" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="references"><span class="header-section-number">11.4</span> References</h2>
-<p>This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<a href="https://raffaelevacca.github.io/egocentric-r-book/" class="uri">https://raffaelevacca.github.io/egocentric-r-book/</a>) for a more detailed discussion of ego networks.</p>
-<p>If you are interested in some of the substantive issues associated with the GSS “important matters” network data, check out the following resources.</p>
-<p>Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.</p>
-<p>Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.</p>
-<p>McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.</p>
-<p>Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.</p>
-<p>Smith, Jeffrey A., Miller McPherson, and Lynn Smith-Lovin. 2014. “Social Distance in the United States: Sex, Race, Religion, Age, and Education Homophily among Confidants, 1985 to 2004.” American Sociological Review 79(3):432–56.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Vacca, Raffaele. 2024. Egocentric network analysis with R. <a href="https://raffaelevacca.github.io/egocentric-r-book/" class="uri">https://raffaelevacca.github.io/egocentric-r-book/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1326,8 +1332,8 @@ IGRAPH 9020330 UNW- 3 3 --
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./netsim.html" class="pagination-link" aria-label="Network Simulations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span>
+      <a href="./netsim.html" class="pagination-link" aria-label="Simulations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

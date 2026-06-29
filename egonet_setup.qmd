@@ -1,6 +1,8 @@
-# Setting up ego network data
+# Ego networks: setup
 
-Most of the techniques discussed as part of these tutorial use holistic network analysis. Let's initialize the necessary packages.
+Most of the techniques discussed as part of these tutorial use holistic network analysis. Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By "bounded," I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.
+
+Let's initialize the necessary packages...
 
 ```{r}
 #| warning: false
@@ -12,19 +14,7 @@ library(janitor)
 
 ```
 
-Holistic network data refer to a complete set of relationships that exist as part of a bounded collective unit. By "bounded," I mean that the boundaries for the group are clear. For example, in a classroom a student either is or is not on the roster. A researcher can identify those boundaries and then survey these students about who they study with. These responses can then be converted to an adjacency matrix of studying relationships between all of these students.
-
-In many instances, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let's say we want to know about the relationships among people who are fans of Manga graphic novels.
-
--   How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a "true" fan).
-
--   Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.
-
--   Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.
-
-For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.
-
-So instead of one big network defining all of the relationships within the group (for example)...
+...and then we can generate a familiar example of a holistic network random graph, perhaps of friendships between students in a class.
 
 ```{r}
 set.seed(9035768)
@@ -38,13 +28,30 @@ ggraph(r1, layout = "fr") +
 
 ```
 
-...we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as "egocentric").
+In many social networks, though, boundaries are either unclearly defined, inaccessible, or too large to study collectively. Let's say we want to know about the relationships among people who are fans of Manga graphic novels.
+
+- How would one define the boundaries of this collective? Perhaps anyone who has read a single novel could be categorized as a fan or, alternatively, we might want to set a threshold for fandom (reading one novel may not be enough to be a "true" fan).
+
+- Even if we are able to derive an agreeable set of boundary criteria, how would we access a roster of people who meet these criteria? Without a roster, it would be difficult to survey people and ask them about their interactions.
+
+- Finally, Manga is a very popular genre of literature with fans in the hundreds of thousands if not millions. It would not be possible to provide a Manga fan with a list of all other fans from which to select other fans that they know.
+
+For these reasons, we might decide to collect egocentric network data, whereby we identify a select number of people from a broader social group, then we interview them about their relationships. It is not necessary to survey all such people, just a subset of the bigger group. The responses from each person results in a separate network.
+
+So instead of one big network defining all of the relationships within the group, we obtain multiple smaller networks that revolve around the relationships of a single focal person, ego (which is why these data are referred to as "egocentric"). 
+
+Let's examine an example of what an ego network might look like. We'll start by assigning values to the number of alters in the network, a case identifier for ego, and case identifiers for each alter (2,3,4,5,6). 
 
 ```{r}
 n_alters <- 5
 ego_id <- 1
 alter_ids <- 2:(n_alters + 1)
 
+```
+
+With these data, we can estimate a set of ties between ego and the alters. The first line below creates an edgelist that includes ties between ego and all alters. (This is a requirement. An alter has to be connected to ego in order to be in that ego's network.) Then we sample all possible combinations of ties between alters, binding those random alter edges with the ego ties in order to complete the ego network edgelist. 
+
+```{r}
 edges <- data.frame(from = ego_id, to = alter_ids)
 alter_pairs <- t(combn(alter_ids, 2))
 n_alter_ties <- sample(1:nrow(alter_pairs), 3)
@@ -52,6 +59,11 @@ random_alter_edges <- alter_pairs[n_alter_ties, , drop = FALSE]
 colnames(random_alter_edges) <- c("from", "to")
 edges_all <- rbind(edges, random_alter_edges)
 
+```
+
+Finally, we create an igraph object and plot the graph using the ggraph function.
+
+```{r}
 g <- graph_from_data_frame(edges_all, directed = FALSE)
 V(g)$label <- c("ego","alter1","alter2","alter3","alter4","alter5")
 
@@ -65,7 +77,13 @@ ggraph(g, layout = "fr") +
 
 ```
 
-We will demonstrate egocentric network analysis using data from the General Social Survey. Let's load the data.
+## General Social Survey network data
+
+We will demonstrate egocentric network analysis using data from the General Social Survey. This demonstration is an adaptation from an excellent textbook from Raffaele Vacca devoted to ego network analysis, which we highly recommend to those who are interested in more advanced coding on this topic.[^egonet_setup-1] 
+
+[^egonet_setup-1]:Vacca, Raffaele. 2024. Egocentric network analysis with R. <https://raffaelevacca.github.io/egocentric-r-book/>
+
+Let's load the data.
 
 ```{r}
 url <- "https://raw.githubusercontent.com/stevemcd1/intronets/master/inst/extdata/gss.rda"
@@ -73,11 +91,11 @@ load(url(url))
 
 ```
 
-## General Social Survey network data
-
 The GSS is a national probability sample of adults in the United States that has been conducted annually or biannually every year since the 1970s. It is an extraordinarily valuable source of information about the attitudes and behaviors of the US population.
 
-We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as "confidants." The responses to this initial question are available in the NUMGIVEN variable.
+We will work with the 2004 dataset because that year included a detailed module of questions asking people to identify the people with whom they discuss important matters, which I will refer to as "confidants."[^egonet_setup-2] The responses to this initial question are available in the NUMGIVEN variable.
+
+[^egonet_setup-2]:McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.
 
 ```{r}
 gss |> 
@@ -87,7 +105,11 @@ gss |>
 
 The number of confidants is capped at six -- respondents could not provide more than that. There is also a surprising number of people who said that they do not confide in anyone (almost 400!) or only confide in a single person (281).
 
-Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts. If you are interested in this debate, check out some of the sources at the end of this tutorial. Otherwise, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.
+Much has been written in the research literature about what this might mean, either in terms of how are friendships are changing over time or whether these estimates are methodological artifacts.[^egonet_setup-3] [^egonet_setup-4] [^egonet_setup-5] However, we are going to sidestep these debates and instead proceed with analysis of ego networks with two or more confidants.
+
+[^egonet_setup-3]:Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.
+[^egonet_setup-4]:Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.
+[^egonet_setup-5]:Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.
 
 ```{r}
 gss2 <- gss |> 
@@ -316,25 +338,14 @@ gr.list[["10"]]$ego_id
 
 ```
 
-Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I've commented this out because the data have already been saved. We will load these objects and examine them in the next tutorial.
+Now that the ego network data have been properly formatted, we can save the objects as an R readable .rda file. I've commented this out because the data have already been saved. We will load these objects and examine them in the next chapter. 
 
 ```{r}
 # save(ego, alterlong, gr.list, gr.list.ego, file="gss_ego.rda")
 
 ```
 
+On to ego network analysis...
+
 ## References
 
-This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<https://raffaelevacca.github.io/egocentric-r-book/>) for a more detailed discussion of ego networks.
-
-If you are interested in some of the substantive issues associated with the GSS "important matters" network data, check out the following resources.
-
-Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.
-
-Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.
-
-McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.
-
-Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.
-
-Smith, Jeffrey A., Miller McPherson, and Lynn Smith-Lovin. 2014. “Social Distance in the United States: Sex, Race, Religion, Age, and Education Homophily among Confidants, 1985 to 2004.” American Sociological Review 79(3):432–56.
