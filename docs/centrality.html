@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>5&nbsp; Centrality – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./graph_layouts.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -133,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -352,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>My interest in social networks was sparked by my fascination with peer group dynamics when I was in middle school. Some of my classmates were very popular in that they had lots of friends, whereas others tended to keep to themselves or had only one or two close friendships. While I never quite fit into either extreme, I was, for a time, quite envious of the popular kids in my school. I was fascinated by how those students could draw the attention and admiration of my classmates, as well as influence their opinions.</p>
-<p>This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their <em>centrality</em> in the network. Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).</p>
+<p>This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their <em>centrality</em> in the network.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>Centrality is a node-level attribute. But entire networks can be defined by their level of <em>centralization</em>, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.</p>
 <p>This chapter will address different ways of measuring centrality and centralization in social networks. We will examine a historical example of centrality and its consequences for power dynamics among prominent families in Renaissance Florence. We will also consider the general tendencies that often produce highly centralized networks and how those tendencies are reflected in modern and even digital social networks.</p>
 <p>First, let’s read in our libraries. We will use intronets to access the data, igraph to manipulate network objects, dplyr for data management, and ggraph to visualize the networks.</p>
@@ -365,7 +361,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="measuring-centrality" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="measuring-centrality"><span class="header-section-number">5.1</span> Measuring Centrality</h2>
 <p>How do we know if one person is more central to a network than another? There are actually several answers to this question and those answers depend on which aspect of centrality is most important. Is a central actor someone who has lots of friends? Someone who is relatively close to all others based on relationship path distances? Or someone who has the ability to control the flow of information that passes through the different relationships?</p>
-<p>Let’s examine these ideas by examining a network of inter-marriage relationships between families in 15th Century Florence, Italy. Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.</p>
+<p>Let’s examine these ideas by examining a network of inter-marriage relationships between families in 15th Century Florence, Italy.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.</p>
 <p>The code below loads in the marriage network data and examines its contents.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"ifm.rda"</span>)</span>
@@ -549,7 +546,7 @@ CASTELLANI          3       3         1        2          0</code></pre>
 <section id="centrality-extensions" class="level3" data-number="5.1.4">
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="centrality-extensions"><span class="header-section-number">5.1.4</span> Centrality Extensions</h3>
 <p>Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: eigenvector centrality. This is an attempt to improve on closeness centrality by weighting a node’s closeness to other nodes based on how central those target nodes are.</p>
-<p>For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.</p>
+<p>For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>eigen <span class="ot">&lt;-</span> <span class="fu">eigen_centrality</span>(ifm)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>cent<span class="sc">$</span>eigen <span class="ot">&lt;-</span> <span class="fu">round</span>(eigen<span class="sc">$</span>vector, <span class="dv">4</span>)</span>
@@ -651,7 +648,7 @@ wealth  0.5589956 0.3511716 0.5365981 0.4216972 1.0000000</code></pre>
 <section id="preferential-attachment" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="preferential-attachment"><span class="header-section-number">5.4</span> Preferential Attachment</h2>
 <p>It is not surprising that the Florentine network leans toward the higher end of the centralization spectrum. Human networks are frequently marked by higher levels of centralization than random networks. Researchers have linked this pattern to a general tendency toward connecting with people who are popular.</p>
-<p>This tendency is referred to as preferential attachment. Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as <em>scale-free</em> in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.</p>
+<p>This tendency is referred to as preferential attachment.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as <em>scale-free</em> in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.</p>
 <p>Consider the Florentine network. Let’s say you are the head of one of the families and you want to form a marriage bond. If you could choose between Medici and Pucci, who would you choose? Forming a tie with Medici (the most central and popular family) is a far better choice if you want to enhance your status, wealth, and power in the city.</p>
 <p>We can simulate a series of preferential attachment networks to see how the centralization of the network changes as the size of the network grows. Here we create 5 networks in which we vary the size from 15 nodes to 300 nodes. We set the tendency to connect to high degree alters (power) to .5, which is the midpoint between no preferential attachment (0) to maximum preferential attachment (1). Then we can visualize the largest of these networks.</p>
 <div class="cell">
@@ -701,22 +698,20 @@ wealth  0.5589956 0.3511716 0.5365981 0.4216972 1.0000000</code></pre>
 </section>
 <section id="references" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="references"><span class="header-section-number">5.5</span> References</h2>
-<p>More reading on the Florentine families data…</p>
-<ul>
-<li><p>Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.</p></li>
-<li><p>Breiger R. and Pattison P. 1986. Cumulated social roles: The duality of persons and their algebras. Social Networks, 8, 215-256.</p></li>
-<li><p>Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.</p></li>
-</ul>
-<p>More reading on centrality and centralization</p>
-<ul>
-<li><p>Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.</p></li>
-<li><p>Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.</p></li>
-<li><p>Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.</p></li>
-<li><p>Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.</p></li>
-<li><p>Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.</p></li>
-</ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

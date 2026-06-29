@@ -1,4 +1,4 @@
-# Roles and relationships
+# Roles
 
 What makes people similar to one another? In the previous chapter, we discussed how people might be similar because they have similar personal characteristics or attributes: for example, the same gender, race/ethnicity, or psychological disposition. In this chapter, we consider how people might be similar because they fulfill the same social role.
 
@@ -34,7 +34,7 @@ V(parents)$group <- ifelse(V(parents)$name %in% c("Tom", "Steve"), "Dads", "Daug
 
 ```
 
-The above code starts by generating an edgelist with the two relationships -- Tom to Eleni and Steve to Marleigh. This edgelist is then converted into an igraph. Then we manually set the layout so that the dads appear on the top of the graph and the daughters appear on the bottom. Finally, we add a vertex attribute called "group" which differentiates between the dads and the daughters. Now let's generate the graph.
+The above code starts by generating an edgelist with the two relationships -- Tom to Eleni and Steve to Marleigh. This edgelist is then converted into an igraph object. Then we manually set the layout so that the dads appear on the top of the graph and the daughters appear on the bottom. Finally, we add a vertex attribute called "group" which differentiates between the dads and the daughters. Now let's generate the graph.
 
 ```{r}
 # Plot
@@ -82,10 +82,10 @@ ggraph(g, layout = "stress") +
 
 How might we group these nodes into equivalent role sets? This depends on whether we want to define our role sets as structurally, automorphically, or regularly equivalent. The most stringent form of equivalence is structural equivalence.
 
--   Structurally equivalent actors have the exact same network metrics (e.g., indegree, outdegree, centrality, eccentricity, etc.)
--   Structurally equivalent as set of nodes with the exact same connections to other nodes
--   Structural equivalence is a local phenomenon - it reveals groups that are in close proximity in social space
--   Structural equivalence results in the largest number of different groups
+- Structurally equivalent actors have the exact same network metrics (e.g., indegree, outdegree, centrality, eccentricity, etc.)
+- Structurally equivalent as set of nodes with the exact same connections to other nodes
+- Structural equivalence is a local phenomenon - it reveals groups that are in close proximity in social space
+- Structural equivalence results in the largest number of different groups
 
 Let's color the nodes based on structural equivalence.
 
@@ -108,10 +108,10 @@ This graph contains very few nodes that are exactly structurally equivalent. In 
 
 Now let's relax the equivalence assumption by turning to automorphic equivalence, which is defined below.
 
--   Automorphically equivalent actors have the exact same network metrics
--   Automorphically equivalent nodes do not have to have the exact same connections to others
--   Automorphic equivalence is a global phenomenon - it reveals groups that do not need to be in close proximity in social space
--   Automorphic equivalence results in a medium number of different groups
+- Automorphically equivalent actors have the exact same network metrics
+- Automorphically equivalent nodes do not have to have the exact same connections to others
+- Automorphic equivalence is a global phenomenon - it reveals groups that do not need to be in close proximity in social space
+- Automorphic equivalence results in a medium number of different groups
 
 Now let's display the automorphic sets in this graph.
 
@@ -134,10 +134,10 @@ B and D are also automorphically equivalent because they have the identical netw
 
 Regular equivalence further relaxes the equivalence criteria...
 
--   Regularly equivalent actors have similar, but not necessarily exact, network metrics
--   Regularly equivalent nodes do not have to have the exact same connections to others
--   Regular equivalence is a global phenomenon
--   Regular equivalence results in the smallest number of different groups
+- Regularly equivalent actors have similar, but not necessarily exact, network metrics
+- Regularly equivalent nodes do not have to have the exact same connections to others
+- Regular equivalence is a global phenomenon
+- Regular equivalence results in the smallest number of different groups
 
 Let's reveal regularly equivalent role sets.
 
@@ -160,11 +160,16 @@ You may have sensed that regular equivalence is not as mathematically precise as
 
 ## Roles of countries in the "world system"
 
-Sociologists and political scientists have had a longstanding debate about how powerful countries may exploit weaker countries through trade relationships. Specifically, Wallerstein (1947) argued that the "world system" is comprised of 1) core countries that maintain trading connections with all other countries in the world, 2) peripheral countries that depend on core countries for access to goods, and 3) semi-periphery countries that are mostly dependent on the core, but maintain a few separate trade relations outside of the core.
+Sociologists and political scientists have had a longstanding debate about how powerful countries may exploit weaker countries through trade relationships. Specifically, Wallerstein[^roles-1] argued that the "world system" is comprised of 1) core countries that maintain trading connections with all other countries in the world, 2) peripheral countries that depend on core countries for access to goods, and 3) semi-periphery countries that are mostly dependent on the core, but maintain a few separate trade relations outside of the core.
+
+[^roles-1]:Wallerstein, Immanuel. 1976. “A World-System Perspective on the Social Sciences.” The British Journal of Sociology 27(3):343–52. doi:10.2307/589620.
 
 This theory implies that countries play roles within the world system based on their trading relationships. Empirically, then, we should be able to observe a core/semi-periphery/periphery structure in trade data.
 
-Let's examine this idea using classic trade data collected by Smith and White in 1988. We will draw on a representative subset of the data reported by Wasserman and Faust in 1994. These data include multiple trade relationships, but to further simplify things, we will focus only on the trade of manufactured goods, which will provide a good test of the world systems thesis.
+Let's examine this idea using classic trade data.[^roles-2] [^roles-3] These data include multiple trade relationships, but to further simplify things, we will focus only on the trade of manufactured goods, which will provide a good test of the world systems thesis.
+
+[^roles-2]:Smith, D., & White, D. (1988). Structure and dynamics of the global economy: Network analysis of international trade 1965–1980. Unpublished manuscript.
+[^roles-3]:Wasserman, S., & Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.
 
 ```{r}
 load_nets("tradenets.rda")
@@ -182,7 +187,9 @@ Based on these patterns, how can we identify different roles played by these tra
 
 Blockmodeling refers to a set of techniques that identifies patterns in network relationships and then groups nodes into "blocks" based on similar relationships. The approach results in a permutation and a partitioning of the adjacency matrix. The permutation step involves a re-ordering of the sequence of nodes (in our case, countries) along the rows and columns of the adjacency matrix. Countries with very similar trade relationships appear next to one another and those with very different trade relationships appear far apart. The partitioning step involves separating the matrix into blocks that contain distinctive relationships. These blocks constitute roles within the network.
 
-Many different statistical approaches have been used for blockmodeling. The original procedure, developed in the 1970s, was called CONCOR because it involved a "concatenation of correlations" to derive at equivalent blockgroups. In short, this procedure iteratively correlated the adjacency matrices to the point where the matrix values revealed perfectly structurally equivalent block groups.
+Many different statistical approaches have been used for blockmodeling. The original procedure, developed in the 1970s, was called CONCOR because it involved a "concatenation of correlations" to derive at equivalent blockgroups.[^roles-4] In short, this procedure iteratively correlated the adjacency matrices to the point where the matrix values revealed perfectly structurally equivalent block groups.
+
+[^roles-4]:White, Harrison C., Scott A. Boorman, and Ronald L. Breiger. 1976. “Social Structure from Multiple Networks. I. Blockmodels of Roles and Positions.” American Journal of Sociology 81(4):730–80. doi:10.1086/226141.
 
 Modern procedures rely on more efficient clustering algorithms to partition the adjacency matrices based on equivalence. Applying fewer partitions results in regularly equivalent block groups, whereas many partitions results in structurally equivalent block groups. The researcher therefore gets to decide how strictly they want to define equivalence.
 
@@ -231,7 +238,9 @@ title("Three Block Partition")
 
 This useful visualization illustrates the presence of trade relations by darkened cells. The countries are ordered (permuted) based on similarity in relations and separated (partitioned) into block groups denoted by the blue lines.
 
-Let's consider the patterns in the the three block group model. The center of the adjacency matrix shows the trade relations between the countries in the middle or second block group. The diagonal is understandably empty, but otherwise the block is nearly a complete graph. The exception is that Yugoslavia does not send manufactured goods to Brazil. Otherwise, all of these countries both send and receive manufactured goods from their fellow block members. To the right and to the left of the center partition, the results show that the second block group sends manufactured goods to many of the countries in the first block (Argentina to Thailand) and the third block (Algeria to Syria). Looking above the center partition, the results show that the second block group receives manufactured goods from many of the countries in the first block group. However, very few of the countries in the third block group send manufactured goods to the second block group. These patterns tell us something about the roles played by these countries. The second block represents the core in the world system. They send manufactured goods throughout the world. Block 3 represents periphery countries. They send manufactured goods to only a small number of countries in the core and otherwise receive manufactured goods from the core and a few other coutries. The first block represents the semi-periphery countries. They are heavily involved in trading manufactured goods with the core countries, with only a modest set of exports to periphery countries.
+Let's consider the patterns in the the three block group model. The center of the adjacency matrix shows the trade relations between the countries in the middle or second block group. The diagonal is understandably empty, but otherwise the block is nearly a complete graph. The exception is that Yugoslavia does not send manufactured goods to Brazil. Otherwise, all of these countries both send and receive manufactured goods from their fellow block members. To the right and to the left of the center partition, the results show that the second block group sends manufactured goods to many of the countries in the first block (Argentina to Thailand) and the third block (Algeria to Syria). Looking above the center partition, the results show that the second block group receives manufactured goods from many of the countries in the first block group. However, very few of the countries in the third block group send manufactured goods to the second block group. 
+
+These patterns tell us something about the roles played by these countries. The second block represents the core in the world system. They send manufactured goods throughout the world. Block 3 represents periphery countries. They send manufactured goods to only a small number of countries in the core and otherwise receive manufactured goods from the core and a few other coutries. The first block represents the semi-periphery countries. They are heavily involved in trading manufactured goods with the core countries, with only a modest set of exports to periphery countries.
 
 Next let's compare the three block partition with a four block partition.
 
@@ -300,3 +309,5 @@ ggraph(mg, layout = "fr") +
 Here we can see the core countries in the green labeling, the semi-periphery countries in the red labeling, and the blue countries on the periphery. These results are largely consistent with Wallerstein's theory of the world system.
 
 Note that our decision to limit the partitioning to a small number partitions and block groups reflects an interest in regularly equivalent roles in the network. Further partitioning would result in a set of blocks that are more identical (and thus structurally equivalent) in their network relations.
+
+## References

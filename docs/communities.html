@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>7&nbsp; Communities – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./connectivity.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -133,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -359,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="load-network-data" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="load-network-data"><span class="header-section-number">7.1</span> Load network data</h2>
-<p>In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery. He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!</p>
+<p>In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!</p>
 <p>We will use the network data that Sampson collected to detect clusters and communities among the cloistered. The code below loads the data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"sampson.rda"</span>)</span>
@@ -458,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="coreness" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="coreness"><span class="header-section-number">7.3</span> Coreness</h2>
-<p><strong>Coreness</strong> provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a <strong>k-core</strong> is a maximally connected subgroup in which each node is adjacent to at least k other nodes. Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.</p>
+<p><strong>Coreness</strong> provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a <strong>k-core</strong> is a maximally connected subgroup in which each node is adjacent to at least k other nodes.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.</p>
 <p>Below we can use the coreness function to obtain k-core estimates for each node. Then we can examine the frequency of k values.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>core <span class="ot">&lt;-</span> <span class="fu">coreness</span>(sampson)</span>
@@ -515,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="community-detection" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="community-detection"><span class="header-section-number">7.5</span> Community Detection</h2>
 <p>So far we have addressed modularity in terms of vertex attributes that define shared experiences (attending cloisterville). But one of the most exciting developments within social network analysis is the ability to define group membership on the basis of ties rather than node-level attributes.</p>
-<p>Several different community detection algorithms have been established in order to accomplish this task. While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.</p>
+<p>Several different community detection algorithms have been established in order to accomplish this task.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.</p>
 <p>Let’s consider three different modularity algorithms. First, the <strong>Louvain</strong> algorithm emphasizes modularity optimization. It assigns and reassigns nodes to different groups in order to identify a maximal modularity score. Second, <strong>edge betweenness</strong> identifies distinct groups by iteratively removing from the network edges that constitute bridges between different communities. Third, <strong>random walk</strong> estimates multiple random pathways between nodes across the network, clustering nodes into communities based on the extent to which they frequently appear as part of the same paths.</p>
 <p>Below we estimate these three algorithms, apply the membership vector to the igraph object, and compare the modularity scores to the cloisterville attributes.</p>
 <div class="cell">
@@ -610,17 +606,21 @@ cloister_mod -0.07347222</code></pre>
 </div>
 </div>
 <p>This plot shows the distinct friendship communities among the monks.</p>
-<p>Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.</p>
+<p>Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </section>
 <section id="references" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="references"><span class="header-section-number">7.7</span> References</h2>
-<p>For more on the Sampson Monastery study…</p>
-<ul>
-<li><p>Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.</p></li>
-<li><p>Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.</p></li>
-</ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Shai, Saray, Natalie Stanley, Clara Granell, Dane Taylor, and Peter J. Mucha. 2021. “Case Studies in Network Community Detection.” The Oxford Handbook of Social Networks.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

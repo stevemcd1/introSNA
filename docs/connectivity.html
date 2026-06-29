@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>6&nbsp; Connectivity – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./centrality.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -133,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -324,6 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#network-distance-summaries" id="toc-network-distance-summaries" class="nav-link" data-scroll-target="#network-distance-summaries"><span class="header-section-number">6.4</span> Network distance summaries</a></li>
   <li><a href="#visualizing-paths" id="toc-visualizing-paths" class="nav-link" data-scroll-target="#visualizing-paths"><span class="header-section-number">6.5</span> Visualizing paths</a></li>
   <li><a href="#cutpoints-and-bridges" id="toc-cutpoints-and-bridges" class="nav-link" data-scroll-target="#cutpoints-and-bridges"><span class="header-section-number">6.6</span> Cutpoints and Bridges</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.7</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -349,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines. This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability.</p>
+<p>Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability?</p>
 <p>Let’s begin by loading the intronets, igraph, ggraph, and tidyverse packages.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
@@ -359,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="moreno-data" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="moreno-data"><span class="header-section-number">6.1</span> Moreno data</h2>
-<p>We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934. In fact, Moreno is credited with being the first person to publish a network graph (or a “sociogram”) to describe network relationships. Let’s load the data.</p>
+<p>We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In fact, Moreno is credited with being the first person to publish a network graph (or a “sociogram”) to describe network relationships. Let’s load the data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"moreno.rda"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>moreno</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -458,43 +455,43 @@ $no
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all_simple_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 5/31 vertices, from 617cad8:
++ 5/31 vertices, from a152161:
 [1] 9 7 3 2 1
 
 [[2]]
-+ 5/31 vertices, from 617cad8:
++ 5/31 vertices, from a152161:
 [1]  9  7  3 16  1
 
 [[3]]
-+ 6/31 vertices, from 617cad8:
++ 6/31 vertices, from a152161:
 [1] 9 7 4 3 2 1
 
 [[4]]
-+ 6/31 vertices, from 617cad8:
++ 6/31 vertices, from a152161:
 [1]  9  7  4  3 16  1
 
 [[5]]
-+ 7/31 vertices, from 617cad8:
++ 7/31 vertices, from a152161:
 [1] 9 7 8 4 3 2 1
 
 [[6]]
-+ 7/31 vertices, from 617cad8:
++ 7/31 vertices, from a152161:
 [1]  9  7  8  4  3 16  1
 
 [[7]]
-+ 4/31 vertices, from 617cad8:
++ 4/31 vertices, from a152161:
 [1]  9 11  5  1
 
 [[8]]
-+ 5/31 vertices, from 617cad8:
++ 5/31 vertices, from a152161:
 [1]  9 11  5  6  1
 
 [[9]]
-+ 5/31 vertices, from 617cad8:
++ 5/31 vertices, from a152161:
 [1]  9 17 11  5  1
 
 [[10]]
-+ 6/31 vertices, from 617cad8:
++ 6/31 vertices, from a152161:
 [1]  9 17 11  5  6  1</code></pre>
 </div>
 </div>
@@ -505,7 +502,7 @@ $no
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>shortest_9to1<span class="sc">$</span>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 4/31 vertices, from 617cad8:
++ 4/31 vertices, from a152161:
 [1]  9 11  5  1</code></pre>
 </div>
 </div>
@@ -625,7 +622,7 @@ $no
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">farthest_vertices</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vertices
-+ 2/31 vertices, from 617cad8:
++ 2/31 vertices, from a152161:
 [1] 12 22
 
 $distance
@@ -659,7 +656,7 @@ $distance
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(diameter_path <span class="ot">&lt;-</span> <span class="fu">get_diameter</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 12/31 vertices, from 617cad8:
+<pre><code>+ 12/31 vertices, from a152161:
  [1] 12 15 10  9 11  5  1 18 29 31 21 22</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(diameter_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(diameter_path[<span class="sc">-</span><span class="fu">length</span>(diameter_path)], </span>
@@ -701,12 +698,12 @@ $distance
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(cutset <span class="ot">&lt;-</span> <span class="fu">articulation_points</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 7/31 vertices, from 617cad8:
+<pre><code>+ 7/31 vertices, from a152161:
 [1] 15 10  9 29 21 18  1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(bridgeset <span class="ot">&lt;-</span> <span class="fu">bridges</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 3/45 edges from 617cad8:
+<pre><code>+ 3/45 edges from a152161:
 [1] 10--15  9--10  1--18</code></pre>
 </div>
 </div>
@@ -745,8 +742,19 @@ $distance
 </div>
 </div>
 <p>Here we have a helpful visualization that allows us to see the vulnerable places in the network. Note how removing any one of those elements would disconnect the graph.</p>
+<p>This chapter clarifies many concepts related to connectivity and reachability in networks. These issues are especially important when we are trying to understand the flow of things (information, resources, diseases) throughout communities, because the structure of the network influences who receives those things and how fast.</p>
+</section>
+<section id="references" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="references"><span class="header-section-number">6.7</span> References</h2>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Moreno, J. L. (1934). Who Shall Survive? Foundations of Sociometry. Nervous and Mental Disease Publishing Company.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

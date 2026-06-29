@@ -1,6 +1,8 @@
 # Connectivity
 
-Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines. This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability.
+Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines.[^connectivity-1] This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability?
+
+[^connectivity-1]:Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
 
 Let's begin by loading the intronets, igraph, ggraph, and tidyverse packages.
 
@@ -15,7 +17,9 @@ library(tidyverse)
 
 ## Moreno data
 
-We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934. In fact, Moreno is credited with being the first person to publish a network graph (or a "sociogram") to describe network relationships. Let's load the data.
+We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934.[^connectivity-2] In fact, Moreno is credited with being the first person to publish a network graph (or a "sociogram") to describe network relationships. Let's load the data.
+
+[^connectivity-2]: Moreno, J. L. (1934). Who Shall Survive? Foundations of Sociometry. Nervous and Mental Disease Publishing Company.
 
 ```{r moreno}
 load_nets("moreno.rda")
@@ -252,3 +256,7 @@ ggraph(moreno2, layout = "stress") +
 ```
 
 Here we have a helpful visualization that allows us to see the vulnerable places in the network. Note how removing any one of those elements would disconnect the graph.
+
+This chapter clarifies many concepts related to connectivity and reachability in networks. These issues are especially important when we are trying to understand the flow of things (information, resources, diseases) throughout communities, because the structure of the network influences who receives those things and how fast.
+
+## References

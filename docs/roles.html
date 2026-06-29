@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Roles and relationships – Introduction to Social Network Analysis</title>
+<title>9&nbsp; Roles – Introduction to Social Network Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./assortitivity.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -133,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -224,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -293,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -321,15 +317,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#roles-of-countries-in-the-world-system" id="toc-roles-of-countries-in-the-world-system" class="nav-link" data-scroll-target="#roles-of-countries-in-the-world-system"><span class="header-section-number">9.2</span> Roles of countries in the “world system”</a></li>
   <li><a href="#blockmodeling" id="toc-blockmodeling" class="nav-link" data-scroll-target="#blockmodeling"><span class="header-section-number">9.3</span> Blockmodeling</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9.4</span> References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./roles.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></h1>
 </div>
 
 
@@ -374,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign groups for coloring</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(parents)<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">V</span>(parents)<span class="sc">$</span>name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Tom"</span>, <span class="st">"Steve"</span>), <span class="st">"Dads"</span>, <span class="st">"Daughters"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The above code starts by generating an edgelist with the two relationships – Tom to Eleni and Steve to Marleigh. This edgelist is then converted into an igraph. Then we manually set the layout so that the dads appear on the top of the graph and the daughters appear on the bottom. Finally, we add a vertex attribute called “group” which differentiates between the dads and the daughters. Now let’s generate the graph.</p>
+<p>The above code starts by generating an edgelist with the two relationships – Tom to Eleni and Steve to Marleigh. This edgelist is then converted into an igraph object. Then we manually set the layout so that the dads appear on the top of the graph and the daughters appear on the bottom. Finally, we add a vertex attribute called “group” which differentiates between the dads and the daughters. Now let’s generate the graph.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(parents, <span class="at">layout =</span> <span class="st">"manual"</span>, <span class="at">x =</span> layout[,<span class="dv">1</span>], <span class="at">y =</span> layout[,<span class="dv">2</span>]) <span class="sc">+</span></span>
@@ -513,9 +510,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="roles-of-countries-in-the-world-system" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="roles-of-countries-in-the-world-system"><span class="header-section-number">9.2</span> Roles of countries in the “world system”</h2>
-<p>Sociologists and political scientists have had a longstanding debate about how powerful countries may exploit weaker countries through trade relationships. Specifically, Wallerstein (1947) argued that the “world system” is comprised of 1) core countries that maintain trading connections with all other countries in the world, 2) peripheral countries that depend on core countries for access to goods, and 3) semi-periphery countries that are mostly dependent on the core, but maintain a few separate trade relations outside of the core.</p>
+<p>Sociologists and political scientists have had a longstanding debate about how powerful countries may exploit weaker countries through trade relationships. Specifically, Wallerstein<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> argued that the “world system” is comprised of 1) core countries that maintain trading connections with all other countries in the world, 2) peripheral countries that depend on core countries for access to goods, and 3) semi-periphery countries that are mostly dependent on the core, but maintain a few separate trade relations outside of the core.</p>
 <p>This theory implies that countries play roles within the world system based on their trading relationships. Empirically, then, we should be able to observe a core/semi-periphery/periphery structure in trade data.</p>
-<p>Let’s examine this idea using classic trade data collected by Smith and White in 1988. We will draw on a representative subset of the data reported by Wasserman and Faust in 1994. These data include multiple trade relationships, but to further simplify things, we will focus only on the trade of manufactured goods, which will provide a good test of the world systems thesis.</p>
+<p>Let’s examine this idea using classic trade data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> These data include multiple trade relationships, but to further simplify things, we will focus only on the trade of manufactured goods, which will provide a good test of the world systems thesis.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"tradenets.rda"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_adjacency_matrix</span>(mg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -560,7 +557,7 @@ YUGOSLAVIA     1 1 . 1 1 . 1 1 1 . 1 1 1 . . 1 1 1 1 1 1 1 1 .</code></pre>
 <section id="blockmodeling" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="blockmodeling"><span class="header-section-number">9.3</span> Blockmodeling</h2>
 <p>Blockmodeling refers to a set of techniques that identifies patterns in network relationships and then groups nodes into “blocks” based on similar relationships. The approach results in a permutation and a partitioning of the adjacency matrix. The permutation step involves a re-ordering of the sequence of nodes (in our case, countries) along the rows and columns of the adjacency matrix. Countries with very similar trade relationships appear next to one another and those with very different trade relationships appear far apart. The partitioning step involves separating the matrix into blocks that contain distinctive relationships. These blocks constitute roles within the network.</p>
-<p>Many different statistical approaches have been used for blockmodeling. The original procedure, developed in the 1970s, was called CONCOR because it involved a “concatenation of correlations” to derive at equivalent blockgroups. In short, this procedure iteratively correlated the adjacency matrices to the point where the matrix values revealed perfectly structurally equivalent block groups.</p>
+<p>Many different statistical approaches have been used for blockmodeling. The original procedure, developed in the 1970s, was called CONCOR because it involved a “concatenation of correlations” to derive at equivalent blockgroups.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In short, this procedure iteratively correlated the adjacency matrices to the point where the matrix values revealed perfectly structurally equivalent block groups.</p>
 <p>Modern procedures rely on more efficient clustering algorithms to partition the adjacency matrices based on equivalence. Applying fewer partitions results in regularly equivalent block groups, whereas many partitions results in structurally equivalent block groups. The researcher therefore gets to decide how strictly they want to define equivalence.</p>
 <p>Let’s apply the clustering procedures from the blockmodeling package to demonstrate how this works.</p>
 <div class="cell">
@@ -579,63 +576,63 @@ YUGOSLAVIA     1 1 . 1 1 . 1 1 1 . 1 1 1 . . 1 1 1 1 1 1 1 1 .</code></pre>
 <pre><code>
 
 Starting optimization of the partiton 1 of 10 partitions.
-Starting partition: 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 
+Starting partition: 3 3 3 3 3 3 3 3 3 2 3 3 3 3 3 1 3 3 3 3 3 3 3 3 
 Final error: 51.86916 
-Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+Final partition:    2 3 1 1 1 2 3 2 1 2 3 3 1 2 2 3 3 1 1 2 3 1 1 1 
 
 
 Starting optimization of the partiton 2 of 10 partitions.
-Starting partition: 3 2 3 1 3 1 1 1 2 3 1 3 1 1 3 2 2 3 3 1 2 2 2 2 
-Final error: 51.86916 
-Final partition:    1 3 2 2 2 1 3 1 2 1 3 3 2 1 1 3 3 2 2 1 3 2 2 2 
-
-
-Starting optimization of the partiton 3 of 10 partitions.
-Starting partition: 3 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 1 3 3 3 
+Starting partition: 2 3 1 2 2 1 1 1 1 2 3 1 2 2 3 3 2 3 1 3 1 2 3 2 
 Final error: 51.86916 
 Final partition:    1 2 3 3 3 1 2 1 3 1 2 2 3 1 1 2 2 3 3 1 2 3 3 3 
 
 
-Starting optimization of the partiton 4 of 10 partitions.
-Starting partition: 2 1 3 1 3 1 1 1 1 2 2 2 1 1 2 3 3 1 1 3 1 2 2 1 
+Starting optimization of the partiton 3 of 10 partitions.
+Starting partition: 2 2 2 2 2 2 2 2 2 2 3 2 1 2 2 2 2 2 2 2 2 2 2 2 
 Final error: 51.86916 
-Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
+Final partition:    1 3 2 2 2 1 3 1 2 1 3 3 2 1 1 3 3 2 2 1 3 2 2 2 
+
+
+Starting optimization of the partiton 4 of 10 partitions.
+Starting partition: 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 
+Final error: 51.86916 
+Final partition:    1 3 2 2 2 1 3 1 2 1 3 3 2 1 1 3 3 2 2 1 3 2 2 2 
 
 
 Starting optimization of the partiton 5 of 10 partitions.
-Starting partition: 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 
+Starting partition: 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 1 2 2 2 
 Final error: 51.86916 
 Final partition:    3 1 2 2 2 3 1 3 2 3 1 1 2 3 3 1 1 2 2 3 1 2 2 2 
 
 
 Starting optimization of the partiton 6 of 10 partitions.
-Starting partition: 3 3 3 3 3 3 3 3 2 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 
+Starting partition: 3 2 3 1 3 1 3 3 2 2 3 1 3 3 3 1 3 3 1 1 3 2 1 1 
+Final error: 51.86916 
+Final partition:    2 3 1 1 1 2 3 2 1 2 3 3 1 2 2 3 3 1 1 2 3 1 1 1 
+
+
+Starting optimization of the partiton 7 of 10 partitions.
+Starting partition: 2 1 3 2 1 1 3 2 2 2 3 2 1 3 3 3 1 3 3 2 1 1 1 2 
+Final error: 51.86916 
+Final partition:    3 1 2 2 2 3 1 3 2 3 1 1 2 3 3 1 1 2 2 3 1 2 2 2 
+
+
+Starting optimization of the partiton 8 of 10 partitions.
+Starting partition: 2 2 3 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+Final error: 51.86916 
+Final partition:    1 2 3 3 3 1 2 1 3 1 2 2 3 1 1 2 2 3 3 1 2 3 3 3 
+
+
+Starting optimization of the partiton 9 of 10 partitions.
+Starting partition: 2 2 2 1 1 1 3 1 3 3 1 3 3 1 3 3 2 2 3 2 1 2 1 2 
 Final error: 51.86916 
 Final partition:    2 1 3 3 3 2 1 2 3 2 1 1 3 2 2 1 1 3 3 2 1 3 3 3 
 
 
-Starting optimization of the partiton 7 of 10 partitions.
-Starting partition: 3 1 1 2 2 1 2 1 3 3 2 3 3 2 3 3 3 1 3 3 3 2 2 3 
-Final error: 51.86916 
-Final partition:    1 3 2 2 2 1 3 1 2 1 3 3 2 1 1 3 3 2 2 1 3 2 2 2 
-
-
-Starting optimization of the partiton 8 of 10 partitions.
-Starting partition: 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 
+Starting optimization of the partiton 10 of 10 partitions.
+Starting partition: 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 
 Final error: 51.86916 
 Final partition:    3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1 
-
-
-Starting optimization of the partiton 9 of 10 partitions.
-Starting partition: 1 3 2 2 3 2 1 3 1 1 1 3 3 2 3 3 2 2 2 2 2 2 1 1 
-Final error: 51.86916 
-Final partition:    3 1 2 2 2 3 1 3 2 3 1 1 2 3 3 1 1 2 2 3 1 2 2 2 
-
-
-Starting optimization of the partiton 10 of 10 partitions.
-Starting partition: 2 1 1 1 1 2 2 2 2 3 3 1 3 3 3 3 1 2 3 1 3 1 2 2 
-Final error: 51.86916 
-Final partition:    3 1 2 2 2 3 1 3 2 3 1 1 2 3 3 1 1 2 2 3 1 2 2 2 
 
 
 Optimization of all partitions completed
@@ -652,63 +649,63 @@ All 10 solutions have err 51.86916 </code></pre>
 <pre><code>
 
 Starting optimization of the partiton 1 of 10 partitions.
-Starting partition: 2 2 2 2 2 2 2 4 2 3 2 2 2 2 2 1 2 2 2 2 2 2 2 2 
-Final error: 50.44484 
-Final partition:    1 4 2 2 2 3 4 1 2 3 4 4 2 3 3 4 4 2 2 1 4 2 2 2 
+Starting partition: 2 3 2 3 2 2 3 3 1 4 2 4 4 4 1 2 1 2 3 2 4 4 1 4 
+Final error: 47.64365 
+Final partition:    4 2 1 1 1 4 2 4 1 4 3 2 1 4 4 3 3 1 1 4 3 1 1 1 
 
 
 Starting optimization of the partiton 2 of 10 partitions.
-Starting partition: 3 3 2 3 3 1 3 3 2 3 3 3 4 4 1 4 2 4 2 4 3 2 2 2 
+Starting partition: 1 1 1 2 3 2 2 4 3 1 3 1 4 3 4 3 2 4 3 3 2 4 3 1 
+Final error: 48.16667 
+Final partition:    2 1 3 4 3 2 1 2 4 2 1 1 4 2 2 1 1 4 4 2 1 4 4 3 
+
+
+Starting optimization of the partiton 3 of 10 partitions.
+Starting partition: 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 4 2 2 2 2 2 2 3 
+Final error: 48.16667 
+Final partition:    4 2 3 1 3 4 2 4 1 4 2 2 1 4 4 2 2 1 1 4 2 1 1 3 
+
+
+Starting optimization of the partiton 4 of 10 partitions.
+Starting partition: 3 2 2 2 2 2 2 2 4 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 
+Final error: 48.16667 
+Final partition:    1 2 3 4 3 1 2 1 4 1 2 2 4 1 1 2 2 4 4 1 2 4 4 3 
+
+
+Starting optimization of the partiton 5 of 10 partitions.
+Starting partition: 4 4 4 4 1 4 4 4 4 4 4 4 4 4 3 4 4 4 4 4 4 2 4 4 
+Final error: 48.16667 
+Final partition:    3 4 1 2 1 3 4 3 2 3 4 4 2 3 3 4 4 2 2 3 4 2 2 1 
+
+
+Starting optimization of the partiton 6 of 10 partitions.
+Starting partition: 2 3 2 1 4 1 3 4 3 2 2 2 3 3 4 1 3 2 1 4 1 4 4 1 
+Final error: 48.56111 
+Final partition:    2 1 3 3 3 4 2 4 3 4 1 1 3 4 4 1 1 3 3 4 1 3 3 3 
+
+
+Starting optimization of the partiton 7 of 10 partitions.
+Starting partition: 1 4 4 4 1 2 3 1 3 2 2 4 2 1 2 4 1 3 1 3 3 3 2 4 
+Final error: 48.74259 
+Final partition:    3 4 2 2 2 1 3 1 2 1 4 3 2 1 1 4 3 2 2 1 4 2 2 4 
+
+
+Starting optimization of the partiton 8 of 10 partitions.
+Starting partition: 3 4 4 3 2 3 1 4 1 4 4 3 3 1 1 4 4 2 2 1 4 1 4 2 
 Final error: 48.16667 
 Final partition:    1 3 4 2 4 1 3 1 2 1 3 3 2 1 1 3 3 2 2 1 3 2 2 4 
 
 
-Starting optimization of the partiton 3 of 10 partitions.
-Starting partition: 4 1 2 2 4 4 4 1 1 4 2 3 2 2 2 1 3 4 4 3 1 4 4 3 
-Final error: 48.56111 
-Final partition:    3 1 4 4 4 2 3 2 4 2 1 1 4 2 2 1 1 4 4 2 1 4 4 4 
-
-
-Starting optimization of the partiton 4 of 10 partitions.
-Starting partition: 1 1 2 3 1 3 4 1 3 3 2 2 4 4 2 2 2 3 1 3 4 4 4 1 
-Final error: 47.64365 
-Final partition:    3 2 4 4 4 3 2 3 4 3 1 2 4 3 3 1 1 4 4 3 1 4 4 4 
-
-
-Starting optimization of the partiton 5 of 10 partitions.
-Starting partition: 2 1 2 2 3 1 1 1 4 3 4 1 2 3 3 3 3 1 1 1 2 4 4 1 
-Final error: 50.44484 
-Final partition:    2 1 4 4 4 3 1 2 4 3 1 1 4 3 3 1 1 4 4 2 1 4 4 4 
-
-
-Starting optimization of the partiton 6 of 10 partitions.
-Starting partition: 2 2 2 2 2 2 2 2 2 2 2 3 4 2 2 1 2 2 2 2 2 2 2 2 
-Final error: 47.64365 
-Final partition:    2 1 4 4 4 2 1 2 4 2 3 1 4 2 2 3 3 4 4 2 3 4 4 4 
-
-
-Starting optimization of the partiton 7 of 10 partitions.
-Starting partition: 1 2 3 3 4 1 2 2 4 3 3 3 4 1 4 1 4 2 1 2 4 2 3 1 
-Final error: 48.16667 
-Final partition:    2 3 1 4 1 2 3 2 4 2 3 3 4 2 2 3 3 4 4 2 3 4 4 1 
-
-
-Starting optimization of the partiton 8 of 10 partitions.
-Starting partition: 2 4 2 3 1 2 2 4 4 1 1 4 1 1 3 3 1 3 3 2 4 3 2 4 
-Final error: 47.64365 
-Final partition:    2 1 3 3 3 2 1 2 3 2 4 1 3 2 2 4 4 3 3 2 4 3 3 3 
-
-
 Starting optimization of the partiton 9 of 10 partitions.
-Starting partition: 2 1 3 1 4 1 2 4 1 4 3 2 1 1 3 1 1 2 3 2 1 1 3 2 
-Final error: 47.64365 
-Final partition:    4 2 3 3 3 4 2 4 3 4 1 2 3 4 4 1 1 3 3 4 1 3 3 3 
+Starting partition: 4 1 4 1 2 1 4 3 4 3 4 4 2 2 1 4 1 3 3 2 2 2 1 2 
+Final error: 48.16667 
+Final partition:    3 2 4 1 4 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 4 
 
 
 Starting optimization of the partiton 10 of 10 partitions.
-Starting partition: 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 4 1 1 1 1 1 2 
-Final error: 48.56111 
-Final partition:    3 1 2 2 2 4 3 4 2 4 1 1 2 4 4 1 1 2 2 4 1 2 2 2 
+Starting partition: 1 1 2 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 4 
+Final error: 48.16667 
+Final partition:    2 1 4 3 4 2 1 2 3 2 1 1 3 2 2 1 1 3 3 2 1 3 3 4 
 
 
 Optimization of all partitions completed
@@ -728,7 +725,8 @@ Optimization of all partitions completed
 </div>
 </div>
 <p>This useful visualization illustrates the presence of trade relations by darkened cells. The countries are ordered (permuted) based on similarity in relations and separated (partitioned) into block groups denoted by the blue lines.</p>
-<p>Let’s consider the patterns in the the three block group model. The center of the adjacency matrix shows the trade relations between the countries in the middle or second block group. The diagonal is understandably empty, but otherwise the block is nearly a complete graph. The exception is that Yugoslavia does not send manufactured goods to Brazil. Otherwise, all of these countries both send and receive manufactured goods from their fellow block members. To the right and to the left of the center partition, the results show that the second block group sends manufactured goods to many of the countries in the first block (Argentina to Thailand) and the third block (Algeria to Syria). Looking above the center partition, the results show that the second block group receives manufactured goods from many of the countries in the first block group. However, very few of the countries in the third block group send manufactured goods to the second block group. These patterns tell us something about the roles played by these countries. The second block represents the core in the world system. They send manufactured goods throughout the world. Block 3 represents periphery countries. They send manufactured goods to only a small number of countries in the core and otherwise receive manufactured goods from the core and a few other coutries. The first block represents the semi-periphery countries. They are heavily involved in trading manufactured goods with the core countries, with only a modest set of exports to periphery countries.</p>
+<p>Let’s consider the patterns in the the three block group model. The center of the adjacency matrix shows the trade relations between the countries in the middle or second block group. The diagonal is understandably empty, but otherwise the block is nearly a complete graph. The exception is that Yugoslavia does not send manufactured goods to Brazil. Otherwise, all of these countries both send and receive manufactured goods from their fellow block members. To the right and to the left of the center partition, the results show that the second block group sends manufactured goods to many of the countries in the first block (Argentina to Thailand) and the third block (Algeria to Syria). Looking above the center partition, the results show that the second block group receives manufactured goods from many of the countries in the first block group. However, very few of the countries in the third block group send manufactured goods to the second block group.</p>
+<p>These patterns tell us something about the roles played by these countries. The second block represents the core in the world system. They send manufactured goods throughout the world. Block 3 represents periphery countries. They send manufactured goods to only a small number of countries in the core and otherwise receive manufactured goods from the core and a few other coutries. The first block represents the semi-periphery countries. They are heavily involved in trading manufactured goods with the core countries, with only a modest set of exports to periphery countries.</p>
 <p>Next let’s compare the three block partition with a four block partition.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
@@ -780,7 +778,7 @@ Optimization of all partitions completed
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>class3<span class="sc">$</span>best<span class="sc">$</span>best1<span class="sc">$</span>clu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 2 1 1 1 3 2 3 1 3 2 2 1 3 3 2 2 1 1 3 2 1 1 1</code></pre>
+<pre><code> [1] 2 3 1 1 1 2 3 2 1 2 3 3 1 2 2 3 3 1 1 2 3 1 1 1</code></pre>
 </div>
 </div>
 <p>We can therefore attach these values as a vertex attribute in the igraph object. Then we can color the labels in a network graph to denote the countries in the three different block groups.</p>
@@ -802,8 +800,20 @@ Optimization of all partitions completed
 </div>
 <p>Here we can see the core countries in the green labeling, the semi-periphery countries in the red labeling, and the blue countries on the periphery. These results are largely consistent with Wallerstein’s theory of the world system.</p>
 <p>Note that our decision to limit the partitioning to a small number partitions and block groups reflects an interest in regularly equivalent roles in the network. Further partitioning would result in a set of blocks that are more identical (and thus structurally equivalent) in their network relations.</p>
+</section>
+<section id="references" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="references"><span class="header-section-number">9.4</span> References</h2>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Wallerstein, Immanuel. 1976. “A World-System Perspective on the Social Sciences.” The British Journal of Sociology 27(3):343–52. doi:10.2307/589620.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Smith, D., &amp; White, D. (1988). Structure and dynamics of the global economy: Network analysis of international trade 1965–1980. Unpublished manuscript.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Wasserman, S., &amp; Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>White, Harrison C., Scott A. Boorman, and Ronald L. Breiger. 1976. “Social Structure from Multiple Networks. I. Blockmodels of Roles and Positions.” American Journal of Sociology 81(4):730–80. doi:10.1086/226141.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

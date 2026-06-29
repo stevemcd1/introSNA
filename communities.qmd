@@ -17,7 +17,9 @@ library(ggforce)
 
 ## Load network data
 
-In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery. He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!
+In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery.[^communities-1] He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!
+
+[^communities-1]:Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.
 
 We will use the network data that Sampson collected to detect clusters and communities among the cloistered. The code below loads the data.
 
@@ -69,7 +71,9 @@ Here we can see which monks are part of the largest clique: Winfrid, Mark, Bonif
 
 ## Coreness
 
-**Coreness** provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a **k-core** is a maximally connected subgroup in which each node is adjacent to at least k other nodes. Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.
+**Coreness** provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a **k-core** is a maximally connected subgroup in which each node is adjacent to at least k other nodes.[^communities-2] Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.
+
+[^communities-2]:Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
 
 Below we can use the coreness function to obtain k-core estimates for each node. Then we can examine the frequency of k values.
 
@@ -118,7 +122,9 @@ The modularity estimate is negative and close to zero. This suggests that previo
 
 So far we have addressed modularity in terms of vertex attributes that define shared experiences (attending cloisterville). But one of the most exciting developments within social network analysis is the ability to define group membership on the basis of ties rather than node-level attributes.
 
-Several different community detection algorithms have been established in order to accomplish this task. While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.
+Several different community detection algorithms have been established in order to accomplish this task.[^communities-3] While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.
+
+[^communities-3]:Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.
 
 Let's consider three different modularity algorithms. First, the **Louvain** algorithm emphasizes modularity optimization. It assigns and reassigns nodes to different groups in order to identify a maximal modularity score. Second, **edge betweenness** identifies distinct groups by iteratively removing from the network edges that constitute bridges between different communities. Third, **random walk** estimates multiple random pathways between nodes across the network, clustering nodes into communities based on the extent to which they frequently appear as part of the same paths.
 
@@ -200,12 +206,8 @@ g1 + geom_mark_hull(aes(x = x, y = y,
 
 This plot shows the distinct friendship communities among the monks.
 
-Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.
+Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.[^communities-4]
+
+[^communities-4]:Shai, Saray, Natalie Stanley, Clara Granell, Dane Taylor, and Peter J. Mucha. 2021. "Case Studies in Network Community Detection." The Oxford Handbook of Social Networks.
 
 ## References
-
-For more on the Sampson Monastery study...
-
--   Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.
-
--   Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.

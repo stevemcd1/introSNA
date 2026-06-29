@@ -2,7 +2,11 @@
 
 My interest in social networks was sparked by my fascination with peer group dynamics when I was in middle school. Some of my classmates were very popular in that they had lots of friends, whereas others tended to keep to themselves or had only one or two close friendships. While I never quite fit into either extreme, I was, for a time, quite envious of the popular kids in my school. I was fascinated by how those students could draw the attention and admiration of my classmates, as well as influence their opinions.
 
-This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their *centrality* in the network. Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).
+This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their *centrality* in the network.[^centrality-1] [^centrality-2] Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).[^centrality-3]
+
+[^centrality-1]:Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.
+[^centrality-2]:Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.
+[^centrality-3]:Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.
 
 Centrality is a node-level attribute. But entire networks can be defined by their level of *centralization*, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.
 
@@ -23,7 +27,12 @@ library(ggraph)
 
 How do we know if one person is more central to a network than another? There are actually several answers to this question and those answers depend on which aspect of centrality is most important. Is a central actor someone who has lots of friends? Someone who is relatively close to all others based on relationship path distances? Or someone who has the ability to control the flow of information that passes through the different relationships?
 
-Let's examine these ideas by examining a network of inter-marriage relationships between families in 15th Century Florence, Italy. Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.
+Let's examine these ideas by examining a network of inter-marriage relationships between families in 15th Century Florence, Italy.[^centrality-4] [^centrality-5]
+
+Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.
+
+[^centrality-4]:Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.
+[^centrality-5]:Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.
 
 The code below loads in the marriage network data and examines its contents.
 
@@ -148,7 +157,10 @@ Medici is on nearly all of the geodesic paths that involve Acciaiuoli, Salviati,
 
 Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: eigenvector centrality. This is an attempt to improve on closeness centrality by weighting a node's closeness to other nodes based on how central those target nodes are.
 
-For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.
+For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.[^centrality-6]
+
+[^centrality-6]:Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.
+
 
 ```{r eigen}
 eigen <- eigen_centrality(ifm)
@@ -216,7 +228,9 @@ These simulated networks represent centralization extremes. Every node in the ri
 
 It is not surprising that the Florentine network leans toward the higher end of the centralization spectrum. Human networks are frequently marked by higher levels of centralization than random networks. Researchers have linked this pattern to a general tendency toward connecting with people who are popular.
 
-This tendency is referred to as preferential attachment. Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as *scale-free* in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.
+This tendency is referred to as preferential attachment.[^centrality-7] Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as *scale-free* in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.
+
+[^centrality-7]:Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.
 
 Consider the Florentine network. Let's say you are the head of one of the families and you want to form a marriage bond. If you could choose between Medici and Pucci, who would you choose? Forming a tie with Medici (the most central and popular family) is a far better choice if you want to enhance your status, wealth, and power in the city.
 
@@ -258,26 +272,6 @@ plot(pa_n, pa_cent)
 
 The graph reveals an exponential increase in graph centralization as more and more actors enter the network, quickly becoming maximally centralized. Now imagine networks based on social media connections and it is easy to see how content on those platforms can become dominated by a small number of highly central superstar connectors!
 
-Centrality and centralization are crucial aspects of social networks, whether historical family relations or modern social media relations. Centrality helps us to understand who the most prominent and powerful actors are in the network and to explain how those individuals shape the flow and distribution of valuable resources in those contexts. The different centrality measures allow us to assess distinct mechanisms by which central actors affect the network. Centralization captures the extent of hierarchy in networks, telling us how dominant central actors are within and across different social contexts.
+Centrality and centralization are crucial aspects of social networks, whether historical family relations or modern social media relations. Centrality helps us to understand who the most prominent and powerful actors are in the network and to explain how those individuals shape the flow and distribution of valuable resources in those contexts. The different centrality measures allow us to assess distinct mechanisms by which central actors affect the network. Centralization captures the extent of hierarchy in networks, telling us how dominant central actors are within and across different social contexts. 
 
 ## References
-
-More reading on the Florentine families data...
-
--   Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.
-
--   Breiger R. and Pattison P. 1986. Cumulated social roles: The duality of persons and their algebras. Social Networks, 8, 215-256.
-
--   Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.
-
-More reading on centrality and centralization
-
--   Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.
-
--   Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.
-
--   Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.
-
--   Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.
-
--   Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.
