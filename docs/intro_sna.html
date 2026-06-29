@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -100,8 +100,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -311,13 +311,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>To illustrate the benefits of social network analysis, let’s begin with an example: the recent election of Pope Leo XIV to the papacy.</p>
 <section id="papacy-predictions" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="papacy-predictions"><span class="header-section-number">1.1</span> Papacy Predictions</h2>
-<p>In May 2025, a new conclave began to replace the recently deceased Pope Francis. The new pope was to be selected from 133 cardinals, which represented the largest and most diverse conclave in history.</p>
-<p>It was also the first conclave to have ever taken place while international digital prediction market platforms were in use. Betting on who the next pope would be was big business, with people spending more than $40 million combined on the Polymarket and Kalshi platforms.</p>
+<p>In May 2025, a new conclave began to replace the recently deceased Pope Francis. The new pope was to be selected from 133 cardinals, which represented the largest and most diverse conclave in history.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>It was also the first conclave to have ever taken place while international digital prediction market platforms were in use. Betting on who the next pope would be was big business, with people spending more than $40 million combined on the Polymarket and Kalshi platforms.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>On May 8, white smoke emerged from the Sistine Chapel and the world soon learned that Cardinal Robert Francis Prevost would become Pope Leo XIV. On the prediction markets, Prevost was not the odds on favorite. In fact, less than 1 percent of the bets had predicted him to be the next pope.</p>
 <p>How did the world get the prediction so wrong? Divine intervention cannot be ruled out, yet there is another intriguing explanation for Prevost’s selection. Much of the media narrative surrounding the enclave discussed the potential pontiffs in terms of their personal attributes, their position within the Catholic organizational hierarchy, or their unique geographic locations. Social scientists took a different approach, exploring the predictive power of the network of relationships among the cardinals.</p>
-<p>Giuseppe Soda, Alessandro Iorio, and Leonardo Rizzo gathered data on the cardinals’ connections to each other based on shared memberships in various collegial bodies and co-consecration groups. These memberships were used to construct a network of connections between the cardinals in the conclave – a network that can be displayed on a graph with the cardinals as points and lines between them as relationships. A simple display of this network graph revealed what the prognosticators could not see: Cardinal Prevost was squarely in the center of the graph.</p>
+<p>Giuseppe Soda, Alessandro Iorio, and Leonardo Rizzo gathered data on the cardinals’ connections to each other based on shared memberships in various collegial bodies and co-consecration groups.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> These memberships were used to construct a network of connections between the cardinals in the conclave – a network that can be displayed on a graph with the cardinals as points and lines between them as relationships. A simple display of this network graph revealed what the prognosticators could not see: Cardinal Prevost was squarely in the center of the graph.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="prevost.jpg" class="img-fluid figure-img" width="750"></p>
@@ -331,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Information such as this can be organized into a typical data matrix, with individual people along the rows and variables along the columns. Those variables represent the attributes of the people. For example, because Consuela told us that she is married, that means she is a carrier of that attribute. Attribute-based analysis implies that we can explain individual outcomes based on the characteristics of those individuals. For example, an economist might be interested in knowing how attributes like age, gender, and marital status are associated with earnings.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="attr_mat.jpg" class="img-fluid figure-img" width="750"></p>
+<p><img src="attr_mat.jpg" class="img-fluid figure-img" width="350"></p>
 <figcaption>Attribute data matrix example</figcaption>
 </figure>
 </div>
@@ -339,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Social network analysis is therefore distinct by relying on a relational approach. Instead of asking people about themselves, we might instead ask people who their friends are. The table below provides a simple example of relational data, whereby people are listed along the rows <em>and</em> the columns. The values in the matrix indicate whether or not a person said that they are friends with someone else. In this example, Consuela said that she is not friends with Annie (row 3, column 1 = 0), but that she is friends with Bill (row 3, column 2 = 1). The data in this matrix tell us about the relationships that people have with others – rather than their individual attributes – and these relationships are incredibly useful for understanding the social world.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="net_mat.jpg" class="img-fluid figure-img" width="750"></p>
+<p><img src="net_mat.jpg" class="img-fluid figure-img" width="350"></p>
 <figcaption>Relational data matrix example</figcaption>
 </figure>
 </div>
@@ -350,17 +351,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="power" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="power"><span class="header-section-number">1.3.1</span> Power</h3>
 <p>Social network analysis allows us to identify the positioning of individuals within a network, which is helpful for understanding a person’s power, prominence, popularity, and importance within that social system. Central actors (as opposed to peripheral actors) tend to garner advantages in their access to resources and control over those resources.</p>
-<p>Research shows that network centrality is predictive of many positive outcomes for individuals. In the conclave example, Cardinal Prevost’s high level of network centrality enhanced his status and popularity among the other cardinals, contributing to his successful papal candidacy. Identifying central network actors can also be an important tool for organizing. Hana Shepherd, Rebecca Roskill, Suresh Naidu, and Adam Reich (2025) showed that a union organizing campaign at Walmart doubled its recruitment goals by identifying and resourcing the most central actors within workplaces.</p>
+<p>Research shows that network centrality is predictive of many positive outcomes for individuals. In the conclave example, Cardinal Prevost’s high level of network centrality enhanced his status and popularity among the other cardinals, contributing to his successful papal candidacy. Identifying central network actors can also be an important tool for organizing. Hana Shepherd, Rebecca Roskill, Suresh Naidu, and Adam Reich showed that a union organizing campaign at Walmart doubled its recruitment goals by identifying and resourcing the most central actors within workplaces.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </section>
 <section id="community" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="community"><span class="header-section-number">1.3.2</span> Community</h3>
 <p>SNA also reveals how people form subgroups, clusters, and cliques within networks. Through the use of community detection procedures, we can categorize individuals on the basis of the subgroups to which they belong. Subgroup membership is important to know, as it offers insight into shared identities and access to collective resources.</p>
-<p>Community has been central in research on political party polarization. Waugh, Pei, Fowler, Mucha, &amp; Porter (2009) used community detection to examine subgroups among members of Congress based on co-sponsorship of legislation. They observed a substantial hardening of subgroup boundaries over time. In the late 1950s, it was common to cross the political party spectrum to co-sponsor legislation; by the early 2000s, this practice was exceedingly rare.</p>
+<p>Community has been central in research on political party polarization. Waugh, Pei, Fowler, Mucha, &amp; Porter used community detection to examine subgroups among members of Congress based on co-sponsorship of legislation.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> They observed a substantial hardening of subgroup boundaries over time. In the late 1950s, it was common to cross the political party spectrum to co-sponsor legislation; by the early 2000s, this practice was exceedingly rare.</p>
 </section>
 <section id="change" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="change"><span class="header-section-number">1.3.3</span> Change</h3>
 <p>SNA is also useful for understanding how change occurs across a social system. The structure of relationships has a big impact on the extent to which things like information, ideas, and diseases spread. Whereas dense and overlapping connections facilitate rapid contagions, sparse and disconnected network components obstruct or impede flow. These processes can be observed and also simulated to generate predictions about potential future outcomes.</p>
-<p>One example comes from the work of Peter Bearman, Jim Moody, and Kate Stovel (2004). They examined the structure of romantic relationship networks among high schoolers. They observed uniquely sprawling “spanning tree” structures that were emerged from romantic relationship norms (specifically, the norm against dating your best friend’s boyfriend). Using network simulations, they showed that these structures are a worst case scenario for the diffusion of sexually transmitted diseases.</p>
+<p>One example comes from the work of Peter Bearman, Jim Moody, and Kate Stovel.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> They examined the structure of romantic relationship networks among high schoolers. They observed uniquely sprawling “spanning tree” structures that were emerged from romantic relationship norms (specifically, the norm against dating your best friend’s boyfriend). Using network simulations, they showed that these structures are a worst case scenario for the diffusion of sexually transmitted diseases.</p>
 </section>
 </section>
 <section id="moving-forward" class="level2" data-number="1.4">
@@ -369,15 +370,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="references" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="references"><span class="header-section-number">1.5</span> References</h2>
-<ul>
-<li><p>Bearman, Peter S., James Moody, and Katherine Stovel. 2004. “Chains of Affection: The Structure of Adolescent Romantic and Sexual Networks.” American Journal of Sociology 110(1):44–91.</p></li>
-<li><p>Giuffrida, Angela. 2025. “Cardinals begin choosing new pope in largest ever conclave”. The Guardian. May 7.</p></li>
-<li><p>Shepherd, Hana, Rebecca Roskill, Suresh Naidu, and Adam Reich. 2025. “Workplace Networks and the Dynamics of Worker Organizing.” Sociological Science 12:537–71.</p></li>
-<li><p>Soda, Giuseppe, Alessandro Iorio, and Leonardo Rizzo. 2025. “In the Network of the Conclave: Social Connections and the Making of a Pope.” Social Networks 83:215–32.</p></li>
-<li><p>Waugh, A. S., Pei, L., Fowler, J. H., Mucha, P. J., &amp; Porter, M. A. 2009. Party polarization in Congress: A network science approach. arXiv:0907.3509.</p></li>
-</ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Giuffrida, Angela. 2025. “Cardinals begin choosing new pope in largest ever conclave”. The Guardian. May 7.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Soda, Giuseppe, Alessandro Iorio, and Leonardo Rizzo. 2025. “In the Network of the Conclave: Social Connections and the Making of a Pope.” Social Networks 83:215–32.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Soda, Giuseppe, Alessandro Iorio, and Leonardo Rizzo. 2025. “In the Network of the Conclave: Social Connections and the Making of a Pope.” Social Networks 83:215–32.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Shepherd, Hana, Rebecca Roskill, Suresh Naidu, and Adam Reich. 2025. “Workplace Networks and the Dynamics of Worker Organizing.” Sociological Science 12:537–71.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Waugh, A. S., Pei, L., Fowler, J. H., Mucha, P. J., &amp; Porter, M. A. 2009. Party polarization in Congress: A network science approach. arXiv:0907.3509.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Bearman, Peter S., James Moody, and Katherine Stovel. 2004. “Chains of Affection: The Structure of Adolescent Romantic and Sexual Networks.” American Journal of Sociology 110(1):44–91.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

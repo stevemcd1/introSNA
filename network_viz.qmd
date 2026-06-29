@@ -14,7 +14,9 @@ library(intronets)
 
 ## Loading the high tech managers data
 
-Now let's load and examine the high tech managers data. These data were collected by David Krackhardt in the mid-1980s by surveying the managers of a small technology firm in California. (The CEO of the company is also included as one of the managers.) This dataset is especially good to illustrate network visualization because it is small and contains many vertex attributes.
+Now let's load and examine the high tech managers data. These data were collected by David Krackhardt in the mid-1980s by surveying the managers of a small technology firm in California.[^network_viz-1] (The CEO of the company is also included as one of the managers.) This dataset is especially good to illustrate network visualization because it is small and contains many vertex attributes.
+
+[^network_viz-1]:Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
 
 ```{r hitech}
 load_nets("hi_tech.rda")
@@ -363,6 +365,3 @@ There are many more options for customizing your network visualizations, but her
 
 ## References
 
-For more information on the high tech managers network...
-
--   Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
