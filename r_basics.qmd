@@ -14,19 +14,21 @@ Third, the decentralized character of R package development provides its users w
 
 ## External Resources for R
 
-There are many excellent guides for learning and using R & RStudio. An excellent introductory guide is Garrett Grolemund's \[Hands-On Programming with R\]<https://rstudio-education.github.io/hopr/>, which I highly recommend for those who are working with R for the first time. I also recommend Hadley Wickham's \[R for Data Science\]<https://r4ds.hadley.nz/> for further topics related to data management and coding workflow strategies. We rely heavily in our textbook on the tidy data principles that Hadley and his colleagues developed.
+There are many excellent guides for learning and using R & RStudio. An introductory guide is Garrett Grolemund's [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), which I highly recommend for those who are working with R for the first time. I also recommend Hadley Wickham's [R for Data Science](https://r4ds.hadley.nz/) for further topics related to data management and coding workflow strategies. We rely heavily in our textbook on the tidy data principles that Hadley and his colleagues developed.
 
 The use of ChatGPT and other generative AI applications for assistance with coding has generated much debate in the social sciences. We have found these tools to be helpful when we do our coding work, though there are many reasons to be cautious. First, these tools often hallucinate by offering advice about packages or functions that do not (or no longer) exist. Second, these tools frequently offer complex solutions to relatively simple coding problems. It is better to ask about smaller and more precise tasks than to make broader queries about bigger problems. Third, make sure you understand the code that these applications are offering. They frequently offer to develop elaborate functions for you. When that happens, ask the app to break apart the function into smaller parts. And ask lots of questions about what the code is doing. It will take more time, but it will be time well spent.
 
-![](AI%20coding.jpg){fig-align="left"}
+Put more succintly... :)
+
+![](AI coding.jpg){fig-align="center" width="350"}
 
 ## Installing R and RStudio
 
-R is available via the Comprehensive R Archive Network (\[CRAN\]<https://cran.r-project.org/>). Follow the link and select the file that matches your operating system. After installing R, go to the following link and do the same for \[RStudio\]<https://posit.co/downloads/>, just be sure to select the free option. R and RStudio are frequently updated, so you will periodically need to install new versions. When you open RStudio and a new update for R or RStudio are available, you'll be told that it's time to do so. It's usually a good idea to keep both programs up to date.
+R is available via the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)). Follow the link and select the file that matches your operating system. After installing R, go to the following link and do the same for [RStudio](https://posit.co/downloads/), just be sure to select the free option. R and RStudio are frequently updated, so you will periodically need to install new versions. When you open RStudio and a new update for R or RStudio are available, you'll be told that it's time to do so. It's usually a good idea to keep both programs up to date.
 
 Running R code requires that you open RStudio. You do not need to open R as well -- RStudio runs the R program in the background. Below is an example of what the interface looks like.
 
-![RStudio interface](Rstudio.png){fig-align="left"}
+![RStudio interface](Rstudio.png){fig-align="center"}
 
 ## Interface
 

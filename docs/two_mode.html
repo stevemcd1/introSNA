@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -135,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -295,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -351,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This chapter introduces you to a slightly different form of network analysis - two mode networks. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of <em>social</em> networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types.</p>
 <p>Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g.&nbsp;from people to groups, not people to people or group to group).</p>
-<p>To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.</p>
+<p>To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Specifically, we will use a dataset on Grime music, which is a UK-based rap genre that emerged from the east London reggae and Garage scene in the early 2000s.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.</p>
 <p>Let’s get the data in an take a look.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
@@ -397,9 +391,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 287db47 UN-- 763 1143 -- 
+<pre><code>IGRAPH 0b40ef0 UN-- 763 1143 -- 
 + attr: name (v/c)
-+ edges from 287db47 (vertex names):
++ edges from 0b40ef0 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -424,9 +418,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 287db47 UN-B 763 1143 -- 
+<pre><code>IGRAPH 0b40ef0 UN-B 763 1143 -- 
 + attr: name (v/c), type (v/l)
-+ edges from 287db47 (vertex names):
++ edges from 0b40ef0 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -471,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the oposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.</p>
+<p>One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the opposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"bipartite"</span>) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
@@ -564,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>After the standard options, we go through a series of scale_ options. If you set the shape scale as the mode and the color to another characterstic, it would generate two legends. However, since we set them both to the mode it collapses into one showing both the shape and color to reflect artist and song.</p>
 <p>Nice work!!</p>
-<p>Now let’s turn to some analysis. We have already learned about different measures of centrality, so we won’t go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks. For more information on how to interpret other forms of centrality or other network measures, see Borgatti and Everett’s (1997) paper on two mode network analysis.</p>
+<p>Now let’s turn to some analysis. We have already learned about different measures of centrality, so we won’t go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks.</p>
 <p>To get going, we are going to make a quick data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -577,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="degree-centrality-in-two-mode-networks" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="degree-centrality-in-two-mode-networks"><span class="header-section-number">13.4</span> Degree Centrality in Two Mode Networks</h2>
-<p>Borgatti &amp; Everett (1997) demonstrate that the logic of degree centrality remains the same from one mode to two mode analysis. The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual’s prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.</p>
+<p>The logic of degree centrality remains the same from one mode to two mode analysis.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual’s prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.</p>
 <p>If you are measuring the degree centrality of the individual artists in this network, then what you are actually capturing is the number of songs they are on in 2008.Their maximal degree is the n(songs). While we could still think of this as how prominent an artist is within the world of Grime, it is more appropriate to think of this as a measure of how expansive they are within this two mode world. The chunk below filters the dataframe we created to focus only on the artists and calculates a brief summary of the their degree centrality.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">%&gt;%</span></span>
@@ -640,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1     2.923274   2   9 1.298617 391</code></pre>
 </div>
 </div>
-<p>Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (tpye = TRUE) with a degree above the average.</p>
+<p>Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (type = TRUE) with a degree above the average.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>song_degree_group <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>song_degree_group[<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type <span class="sc">==</span> <span class="cn">TRUE</span>] <span class="ot">&lt;-</span> </span>
@@ -711,16 +705,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="projecting-one-mode-networks" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="projecting-one-mode-networks"><span class="header-section-number">13.6</span> Projecting One Mode Networks</h2>
 <p>One of the classic applications of two mode network analysis is to project a one mode network for both sets. In our case, this involves constructing an artist-to-artist network and a song-to-song network. The ties in the artist one mode network represent mutual appearances on songs. The ties are weighted by the total number of songs they co-appear on. Conversely, the ties in the song-to-song network reflect whether they share artists. Again, these ties are weighted, but, this time, the weights are the number of artists they share.</p>
-<p>This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what Breiger (1974) called “the duality of persons and groups.”</p>
+<p>This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what is called “the duality of persons and groups.”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>To project these one mode networks, we simply use the bipartite_projection() function. Before we use it, let’s understant it. The output from the chunk below shows that the function produces a list with two network objects. The first (proj1) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes, the node name, its mode, and the edge weight. The second (proj2) is another undirected network of our 392 songs with the same list of attributes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bipartite_projection</span>(a_t_g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$proj1
-IGRAPH 769028b UNW- 372 852 -- 
+IGRAPH 6602a69 UNW- 372 852 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from 769028b (vertex names):
++ edges from 6602a69 (vertex names):
  [1] Wiley--Kano                Wiley--Scorcher           
  [3] Wiley--Daniel Merriweather Wiley--Hot Chip           
  [5] Wiley--Peter Raeburn       Wiley--Larry              
@@ -731,10 +725,10 @@ IGRAPH 769028b UNW- 372 852 --
 + ... omitted several edges
 
 $proj2
-IGRAPH 7690314 UNW- 391 12312 -- 
+IGRAPH 6602b98 UNW- 391 12312 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from 7690314 (vertex names):
++ edges from 6602b98 (vertex names):
 [1] See Clear Now (feat. Kano &amp; Scorcher)--Cash in My Pocket (feat. Daniel Merriweather)
 [2] See Clear Now (feat. Kano &amp; Scorcher)--5AM (feat. Scorcher)                         
 [3] See Clear Now (feat. Kano &amp; Scorcher)--Step by Step (feat. Hot Chip)                
@@ -774,19 +768,22 @@ IGRAPH 7690314 UNW- 391 12312 --
 </div>
 </div>
 </div>
-<p>From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of seperate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collabroation? Some fun stories could emerge from this!</p>
-<p>In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won’t mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars (Everett &amp; Borgatti 2012). Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!</p>
+<p>From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of separate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collaboration? Some fun stories could emerge from this!</p>
+<p>In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won’t mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!</p>
 </section>
 <section id="references" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="references"><span class="header-section-number">13.7</span> References</h2>
-<p>For more on analyzing two mode networks…</p>
-<ul>
-<li>Borgatti, S. P., &amp; Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2</li>
-<li>Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.</li>
-<li>Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.</li>
-</ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Borgatti, S. P., &amp; Everett, M. G. 1997. Network analysis of 2-mode data. Social Networks, 19(3), 243–269.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1192,8 +1189,8 @@ IGRAPH 7690314 UNW- 391 12312 --
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./egonet_analysis.html" class="pagination-link" aria-label="Analyzing ego network data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span>
+      <a href="./egonet_analysis.html" class="pagination-link" aria-label="Ego networks: analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

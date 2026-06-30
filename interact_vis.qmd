@@ -14,16 +14,20 @@ In this chapter we will learn about how to create engaging network visualisation
 
 ## The Data
 
-To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran & Sageman 2008) that we used in our chapter on [graph layouts](graph_layouts.qmd). Just a quick refresher on this network, it was constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
+To do this, we are going to use the terrorism data [^interact_vis-1] [^interact_vis-2] that we used in our chapter on [graph layouts](graph_layouts.qmd). Just a quick refresher on this network, it was constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
+
+[^interact_vis-1]:Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. Studies in Conflict and Terrorism, 29, 559–575.
+[^interact_vis-2]:Magouirk, J., Atran, S., & Sageman, M. (2008). Connecting Terrorist Networks. Studies in Conflict & Terrorism, 31(1), 1–16.
 
 ```{r}
 load_nets("bali.rda")
 ```
 
 ## 3D Networks with threejs
-If you are working with other data, you will need to create an igraph object from the edgelist or adjacency matrix. Once you have an igraph network object you can then create your 3D network. 
 
-To create the 3D Network we use the grpahjs() function which simply converts your static igraph object into an engaging model. In this visualization you can scroll in and out to zoom and click and drag to move around the network. It places the network in a spherical shape in the plot window and allows you to move in, out and around it.
+If you are working with other data, you will need to create an igraph object from the edgelist or adjacency matrix. Once you have an igraph network object you can then create your 3D network.
+
+To create the 3D Network we use the graphjs() function which simply converts your static igraph object into an engaging model. In this visualization you can scroll in and out to zoom and click and drag to move around the network. It places the network in a spherical shape in the plot window and allows you to move in, out and around it.
 
 ```{r}
 graphjs(bali)
@@ -31,7 +35,7 @@ graphjs(bali)
 
 Now, we can do a little more ere to make the visualisation cleaner and more useful. Like working in igraph, either we can set some attributes to the graph directly (like colors etc.) or we can state the options for the alterations when using the graphjs function. To demonstrate this, we will do a little of both.
 
-First, let's leave the network visualisation pretty basic and just play with some of the parameters of graphjs. In this, we are going to change the sizes of the nodes, add a title, and set the labels to show the names of the nodes. In this, as you hover over each node the role of the node appears at the top. 
+First, let's leave the network visualisation pretty basic and just play with some of the parameters of graphjs. In this, we are going to change the sizes of the nodes, add a title, and set the labels to show the names of the nodes. In this, as you hover over each node the role of the node appears at the top.
 
 ```{r}
 graphjs(bali,   
@@ -42,9 +46,9 @@ graphjs(bali,
 )
 ```
 
-This is much cleaner than the original visualisation. The contrast between the black backgorund and the orange nodes really makes the network pop and reducing the size of the nodes allows you to see the structure much clearer. There is a bit more we can do, however. 
+This is much cleaner than the original visualisation. The contrast between the black backgorund and the orange nodes really makes the network pop and reducing the size of the nodes allows you to see the structure much clearer. There is a bit more we can do, however.
 
-Let's set a colour for each role that the individual plays in this network. To do this, we are adding a vertex attribute called role_colour using a case_when function from dplyr. The logic is pretty straightforward. Take a look.  
+Let's set a colour for each role that the individual plays in this network. To do this, we are adding a vertex attribute called role_colour using a case_when function from dplyr. The logic is pretty straightforward. Take a look.
 
 ```{r}
 
@@ -67,7 +71,7 @@ graphjs(bali,
 
 ```
 
-Finally, for a little bit of fun, let's apply some community detection to this network and change the colour of the nodes to reflect their community memberhsip. To do this, we can run a louvain community detection algorithm and adding the membership as an attribute to the network as a node characteristic we are calling group. 
+Finally, for a little bit of fun, let's apply some community detection to this network and change the colour of the nodes to reflect their community memberhsip. To do this, we can run a louvain community detection algorithm and adding the membership as an attribute to the network as a node characteristic we are calling group.
 
 ```{r}
 V(bali)$group <- cluster_louvain(bali)$membership 
@@ -82,12 +86,13 @@ graphjs(bali,
 
 ```
 
+These 3D networks are really fun and a great way to engage viewers with the network. For more, see <https://bwlewis.github.io/rthreejs/>.
 
-These 3D networks are really fun and a great way to engage viewers with the network. Next, we cover interactive visualisations that are slightly different from the above 3D networks. There are perks to both methods that become apparent as you use them.
+Next, we cover interactive visualisations that are slightly different from the above 3D networks. There are perks to both methods that become apparent as you use them.
 
 ## Interactive Visualisation with VisNetwork
 
-VisNetwork does not convert your network object into an interactive visualisation. Rather, we need to build a specific dataset that VisNetwork can pull the edge and node attributes from. To do this, we use the original network object to construct a node characteristics data frame. 
+VisNetwork does not convert your network object into an interactive visualisation. Rather, we need to build a specific dataset that VisNetwork can pull the edge and node attributes from. To do this, we use the original network object to construct a node characteristics data frame.
 
 ```{r}
 nodes <- data.frame(
@@ -104,7 +109,7 @@ edges <- igraph::as_data_frame(bali, what = "edges") %>%
 
 ```
 
-With this, we can construct our basic interactive network. The basic recipe for this is to use the visNetwork() function and call on the edgelist and node attribute dataset. With this visualisaiton, you can click on and drag nodes selecting them one-by-one. You will notice that the nodes are "springy." This is a core feature of the package where it introduces some physics to the network to keep nodes that are tied together close together. We can play around with that in just a moment. 
+With this, we can construct our basic interactive network. The basic recipe for this is to use the visNetwork() function and call on the edgelist and node attribute dataset. With this visualisaiton, you can click on and drag nodes selecting them one-by-one. You will notice that the nodes are "springy." This is a core feature of the package where it introduces some physics to the network to keep nodes that are tied together close together. We can play around with that in just a moment.
 
 ```{r}
 visNetwork(
@@ -116,7 +121,7 @@ There is a lot more that we can do with this visualisation, however. The chunk b
 
 We start with visNetwork, where visNetwork(nodes_done, d_done, width = "100%", height = "800px", background = "white") initializes the network and sets the canvas size and background. Next, visIgraphLayout(layout = "layout_nicely") uses igraph to space nodes in a clean, readable way.
 
-Next, visNodes(font = list(size = 30)) simply increases label size to improve readability. visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) adds light interactivity by highlighting connections on click while removing the dropdown selector. visPhysics(enabled = FALSE) freezes the layout so nodes don’t keep moving. You can drag and move the nodes around to place them where you want. 
+Next, visNodes(font = list(size = 30)) simply increases label size to improve readability. visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) adds light interactivity by highlighting connections on click while removing the dropdown selector. visPhysics(enabled = FALSE) freezes the layout so nodes don’t keep moving. You can drag and move the nodes around to place them where you want.
 
 ```{r, eval=knitr::is_html_output()}
 visNetwork(
@@ -135,7 +140,7 @@ visNetwork(
     enabled = FALSE)
 ```
 
-Now we have that base, we are going to add a few extra cool things to it! We can add back some physics to the visualisation, This introduces some repulsion back to the nodes reintroducing that 'springy' effect to the graph as you move the nodes. Rather than being able to place nodes where you want, this new network causes nodes to bound back into place after you drag it. However, you will notice that the additional options we introduce make for a little less strong 'spring' than the stock options. 
+Now we have that base, we are going to add a few extra cool things to it! We can add back some physics to the visualisation, This introduces some repulsion back to the nodes reintroducing that 'springy' effect to the graph as you move the nodes. Rather than being able to place nodes where you want, this new network causes nodes to bound back into place after you drag it. However, you will notice that the additional options we introduce make for a little less strong 'spring' than the stock options.
 
 ```{r}
 visNetwork(
@@ -162,7 +167,7 @@ visNetwork(
   )
 ```
 
-Here is a slightly different alteration of the physics with a slightly different layout, and we can add some control buttons directly to the visualisation so that users can navigate the visualisation by clicking not dragging their mouse. Finally, to mimic the community detection visualusation that we did above, we add an grouping attribute to the vertex dataset that pulls the clustering membership from the same louvain method we used in our 3D network. The result, shows a colour for each of the identified clusters in the network. 
+Here is a slightly different alteration of the physics with a slightly different layout, and we can add some control buttons directly to the visualisation so that users can navigate the visualisation by clicking not dragging their mouse. Finally, to mimic the community detection visualusation that we did above, we add an grouping attribute to the vertex dataset that pulls the clustering membership from the same louvain method we used in our 3D network. The result, shows a colour for each of the identified clusters in the network.
 
 ```{r}
 # creating the clustering memberhship
@@ -224,16 +229,6 @@ saveWidget(bali_3d, file="bali_3d.html")
 browseURL("bali_3d.html")
 ```
 
+For a more detailed tutorial on visNetwork, see <https://cran.r-project.org/web/packages/visNetwork/vignettes/Introduction-to-visNetwork.html>.
+
 ## References
-
-For more information about the dataset we used in this chapter...
-
-- Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. Studies in Conflict and Terrorism, 29, 559–575.
-
-- Magouirk, J., Atran, S., & Sageman, M. (2008). Connecting Terrorist Networks. Studies in Conflict & Terrorism, 31(1), 1–16. https://doi.org/10.1080/10576100701759988
-
-For more on Interactive and 3D Networks...
-
-- <https://bwlewis.github.io/rthreejs/>
-
-- <https://cran.r-project.org/web/packages/visNetwork/vignettes/Introduction-to-visNetwork.html>

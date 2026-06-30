@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Andrew P. Davis">
 
 <title>14&nbsp; Text Networks – Introduction to Social Network Analysis</title>
 <style>
@@ -77,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -136,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./darkcover2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Intro to Social Network Analysis</a> 
@@ -227,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -250,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -296,14 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_collect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Collecting Network Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,26 +311,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#text-networks" id="toc-text-networks" class="nav-link active" data-scroll-target="#text-networks"><span class="header-section-number">15</span> Text Networks</a>
+  <li><a href="#text-networks-as-relational-objects" id="toc-text-networks-as-relational-objects" class="nav-link active" data-scroll-target="#text-networks-as-relational-objects"><span class="header-section-number">14.1</span> Text Networks as Relational Objects</a></li>
+  <li><a href="#why-this-chapter-uses-a-step-by-step-example" id="toc-why-this-chapter-uses-a-step-by-step-example" class="nav-link" data-scroll-target="#why-this-chapter-uses-a-step-by-step-example"><span class="header-section-number">14.2</span> Why This Chapter Uses a Step-by-Step Example</a></li>
+  <li><a href="#what-a-text-network-represents" id="toc-what-a-text-network-represents" class="nav-link" data-scroll-target="#what-a-text-network-represents"><span class="header-section-number">14.3</span> What a Text Network Represents</a></li>
+  <li><a href="#example-text-the-declaration-of-independence" id="toc-example-text-the-declaration-of-independence" class="nav-link" data-scroll-target="#example-text-the-declaration-of-independence"><span class="header-section-number">14.4</span> Example Text: The Declaration of Independence</a>
   <ul class="collapse">
-  <li><a href="#texts-as-relational-objects" id="toc-texts-as-relational-objects" class="nav-link" data-scroll-target="#texts-as-relational-objects"><span class="header-section-number">15.1</span> Texts as Relational Objects</a></li>
-  <li><a href="#why-this-chapter-uses-a-step-by-step-example" id="toc-why-this-chapter-uses-a-step-by-step-example" class="nav-link" data-scroll-target="#why-this-chapter-uses-a-step-by-step-example"><span class="header-section-number">15.2</span> Why This Chapter Uses a Step-by-Step Example</a></li>
-  <li><a href="#what-a-text-network-represents" id="toc-what-a-text-network-represents" class="nav-link" data-scroll-target="#what-a-text-network-represents"><span class="header-section-number">15.3</span> What a Text Network Represents</a></li>
-  <li><a href="#example-text-the-declaration-of-independence" id="toc-example-text-the-declaration-of-independence" class="nav-link" data-scroll-target="#example-text-the-declaration-of-independence"><span class="header-section-number">15.4</span> Example Text: The Declaration of Independence</a></li>
-  <li><a href="#step-1-load-packages-and-the-text" id="toc-step-1-load-packages-and-the-text" class="nav-link" data-scroll-target="#step-1-load-packages-and-the-text"><span class="header-section-number">15.5</span> Step 1: Load Packages and the Text</a></li>
-  <li><a href="#step-2-split-the-text-into-sentences" id="toc-step-2-split-the-text-into-sentences" class="nav-link" data-scroll-target="#step-2-split-the-text-into-sentences"><span class="header-section-number">15.6</span> Step 2: Split the Text into Sentences</a></li>
-  <li><a href="#step-3-tokenize-into-words" id="toc-step-3-tokenize-into-words" class="nav-link" data-scroll-target="#step-3-tokenize-into-words"><span class="header-section-number">15.7</span> Step 3: Tokenize into Words</a></li>
-  <li><a href="#step-4-clean-the-words" id="toc-step-4-clean-the-words" class="nav-link" data-scroll-target="#step-4-clean-the-words"><span class="header-section-number">15.8</span> Step 4: Clean the Words</a></li>
-  <li><a href="#step-5-count-co-occurring-word-pairs" id="toc-step-5-count-co-occurring-word-pairs" class="nav-link" data-scroll-target="#step-5-count-co-occurring-word-pairs"><span class="header-section-number">15.9</span> Step 5: Count Co-Occurring Word Pairs</a></li>
-  <li><a href="#step-6-filter-for-readability" id="toc-step-6-filter-for-readability" class="nav-link" data-scroll-target="#step-6-filter-for-readability"><span class="header-section-number">15.10</span> Step 6: Filter for Readability</a></li>
-  <li><a href="#step-7-turn-the-pairs-into-a-graph" id="toc-step-7-turn-the-pairs-into-a-graph" class="nav-link" data-scroll-target="#step-7-turn-the-pairs-into-a-graph"><span class="header-section-number">15.11</span> Step 7: Turn the Pairs into a Graph</a></li>
-  <li><a href="#step-8-examine-the-most-connected-words" id="toc-step-8-examine-the-most-connected-words" class="nav-link" data-scroll-target="#step-8-examine-the-most-connected-words"><span class="header-section-number">15.12</span> Step 8: Examine the Most Connected Words</a></li>
-  <li><a href="#step-9-visualize-the-network" id="toc-step-9-visualize-the-network" class="nav-link" data-scroll-target="#step-9-visualize-the-network"><span class="header-section-number">15.13</span> Step 9: Visualize the Network</a></li>
-  <li><a href="#step-10-identify-clusters" id="toc-step-10-identify-clusters" class="nav-link" data-scroll-target="#step-10-identify-clusters"><span class="header-section-number">15.14</span> Step 10: Identify Clusters</a></li>
-  <li><a href="#what-the-example-shows" id="toc-what-the-example-shows" class="nav-link" data-scroll-target="#what-the-example-shows"><span class="header-section-number">15.15</span> What the Example Shows</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">15.16</span> Conclusion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">15.17</span> References</a></li>
+  <li><a href="#load-packages-and-the-text" id="toc-load-packages-and-the-text" class="nav-link" data-scroll-target="#load-packages-and-the-text"><span class="header-section-number">14.4.1</span> Load Packages and the Text</a></li>
+  <li><a href="#split-the-text-into-sentences" id="toc-split-the-text-into-sentences" class="nav-link" data-scroll-target="#split-the-text-into-sentences"><span class="header-section-number">14.4.2</span> Split the Text into Sentences</a></li>
+  <li><a href="#tokenize-into-words" id="toc-tokenize-into-words" class="nav-link" data-scroll-target="#tokenize-into-words"><span class="header-section-number">14.4.3</span> Tokenize into Words</a></li>
+  <li><a href="#clean-the-words" id="toc-clean-the-words" class="nav-link" data-scroll-target="#clean-the-words"><span class="header-section-number">14.4.4</span> Clean the Words</a></li>
+  <li><a href="#count-co-occurring-word-pairs" id="toc-count-co-occurring-word-pairs" class="nav-link" data-scroll-target="#count-co-occurring-word-pairs"><span class="header-section-number">14.4.5</span> Count Co-Occurring Word Pairs</a></li>
+  <li><a href="#filter-for-readability" id="toc-filter-for-readability" class="nav-link" data-scroll-target="#filter-for-readability"><span class="header-section-number">14.4.6</span> Filter for Readability</a></li>
+  <li><a href="#turn-the-pairs-into-a-graph" id="toc-turn-the-pairs-into-a-graph" class="nav-link" data-scroll-target="#turn-the-pairs-into-a-graph"><span class="header-section-number">14.4.7</span> Turn the Pairs into a Graph</a></li>
+  <li><a href="#examine-the-most-connected-words" id="toc-examine-the-most-connected-words" class="nav-link" data-scroll-target="#examine-the-most-connected-words"><span class="header-section-number">14.4.8</span> Examine the Most Connected Words</a></li>
+  <li><a href="#visualize-the-network" id="toc-visualize-the-network" class="nav-link" data-scroll-target="#visualize-the-network"><span class="header-section-number">14.4.9</span> Visualize the Network</a></li>
+  <li><a href="#identify-clusters" id="toc-identify-clusters" class="nav-link" data-scroll-target="#identify-clusters"><span class="header-section-number">14.4.10</span> Identify Clusters</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">14.5</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -353,12 +343,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Andrew P. Davis </p>
-          </div>
-  </div>
     
   
     
@@ -369,33 +353,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="text-networks" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Text Networks</h1>
-<section id="texts-as-relational-objects" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="texts-as-relational-objects"><span class="header-section-number">15.1</span> Texts as Relational Objects</h2>
-<p>Text networks offer a way to study discourse as a relational object. That is their central value, and it is what keeps them useful even as computational text analysis has expanded into increasingly elaborate forms. In many research settings, the key issue is not simply that certain words appear frequently or that a corpus can be partitioned into latent topics. The more important question concerns how meanings are organized. Words derive part of their significance from the terms that surround them, the concepts they connect, and the larger semantic regions in which they recur. A text network provides one way to represent this organization formally. In that respect, it belongs to a longer sociological effort to measure meaning structures rather than treating culture as something that can only be approached impressionistically (Mohr 1998; Mohr and Duquenne 1997). Texts have structure, and part of that structure lies in the pattern of associations among words. Text networks are the key to unlocking this structure.</p>
-<p>At a general level, a text network is a graph in which nodes represent units of textual material and edges represent relations among those units. The nodes may be words, phrases, named entities, concepts, documents, or speakers. The ties may represent co-occurrence, adjacency, shared appearance in the same text, or more complex relations such as semantic similarity. What matters is that text is no longer being treated as a mere inventory. Instead, it is represented as a structured set of associations. This move fits well with relational sociology and cultural sociology, where classification, symbolic boundaries, and the organization of meaning have long been central concerns. Breiger’s (1974) classic argument about duality remains relevant here because it shows how relations among elements can be understood through shared participation in larger structures. Later work in cultural sociology and computational text analysis has extended this insight by showing how meanings can be mapped, compared, and measured across texts, fields, and publics (Bail 2014; Goldberg 2024). Recent sociological work has also used semantic network analysis to track shifts in institutional meaning across texts over time, as in Puetz, Davis, and Kinney’s (2021) analysis of human rights language in peace agreements.</p>
-<p>This makes text networks especially useful for sociological research on rhetoric, politics, institutions, and culture. Terms such as <em>rights</em>, <em>people</em>, <em>freedom</em>, <em>order</em>, <em>threat</em>, or <em>justice</em> rarely operate as isolated lexical items. Their force depends on the clusters in which they appear, the contrasts they imply, and the broader discursive arrangements in which they are embedded. If one wants to know how a discourse is organized, then frequency alone is rarely enough. A list of common terms can tell us what appears often, but not how concepts hold together or what bridges otherwise separate vocabularies. Text networks are attractive because they make these relations visible in a comparatively direct way. Recent methodological work in sociology has been especially helpful on this point, emphasizing that computational text analysis is most valuable when the relations under study remain theoretically interpretable rather than being surrendered entirely to opaque latent representations (Stoltz and Taylor 2024). What matters is that a text network gives us a way to see and discuss how discourse is organized.</p>
+<section id="text-networks-as-relational-objects" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="text-networks-as-relational-objects"><span class="header-section-number">14.1</span> Text Networks as Relational Objects</h2>
+<p>Text networks offer a way to study discourse as a relational object. That is their central value, and it is what keeps them useful even as computational text analysis has expanded into increasingly elaborate forms. In many research settings, the key issue is not simply that certain words appear frequently or that a corpus can be partitioned into latent topics. The more important question concerns how meanings are organized. Words derive part of their significance from the terms that surround them, the concepts they connect, and the larger semantic regions in which they recur. A text network provides one way to represent this organization formally. In that respect, it belongs to a longer sociological effort to measure meaning structures rather than treating culture as something that can only be approached impressionistically.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Texts have structure, and part of that structure lies in the pattern of associations among words. Text networks are the key to unlocking this structure.</p>
+<p>At a general level, a text network is a graph in which nodes represent units of textual material and edges represent relations among those units. The nodes may be words, phrases, named entities, concepts, documents, or speakers. The ties may represent co-occurrence, adjacency, shared appearance in the same text, or more complex relations such as semantic similarity. What matters is that text is no longer being treated as a mere inventory. Instead, it is represented as a structured set of associations. This move fits well with relational sociology and cultural sociology, where classification, symbolic boundaries, and the organization of meaning have long been central concerns. Breiger’s<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> classic argument about duality remains relevant here because it shows how relations among elements can be understood through shared participation in larger structures. Later work in cultural sociology and computational text analysis has extended this insight by showing how meanings can be mapped, compared, and measured across texts, fields, and publics.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Recent sociological work has also used semantic network analysis to track shifts in institutional meaning across texts over time, as in Puetz, Davis, and Kinney’s analysis of human rights language in peace agreements.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>This makes text networks especially useful for sociological research on rhetoric, politics, institutions, and culture. Terms such as <em>rights</em>, <em>people</em>, <em>freedom</em>, <em>order</em>, <em>threat</em>, or <em>justice</em> rarely operate as isolated lexical items. Their force depends on the clusters in which they appear, the contrasts they imply, and the broader discursive arrangements in which they are embedded. If one wants to know how a discourse is organized, then frequency alone is rarely enough. A list of common terms can tell us what appears often, but not how concepts hold together or what bridges otherwise separate vocabularies. Text networks are attractive because they make these relations visible in a comparatively direct way. Recent methodological work in sociology has been especially helpful on this point, emphasizing that computational text analysis is most valuable when the relations under study remain theoretically interpretable rather than being surrendered entirely to opaque latent representations.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> What matters is that a text network gives us a way to see and discuss how discourse is organized.</p>
 </section>
-<section id="why-this-chapter-uses-a-step-by-step-example" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="why-this-chapter-uses-a-step-by-step-example"><span class="header-section-number">15.2</span> Why This Chapter Uses a Step-by-Step Example</h2>
+<section id="why-this-chapter-uses-a-step-by-step-example" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="why-this-chapter-uses-a-step-by-step-example"><span class="header-section-number">14.2</span> Why This Chapter Uses a Step-by-Step Example</h2>
 <p>The discussion that follows begins with a comparatively simple representation, that is, a sentence-level word co-occurrence network constructed in R. This choice is partly practical, though not only practical. It keeps the relation under analysis close to the text and therefore makes the logic of the network easier to inspect. A document is broken into sentences, sentences are reduced to words, common terms are removed, co-occurring pairs are counted, and those pairings are then rendered as a graph. The process is elementary enough to follow in detail, but already sufficient to show how a text can be converted into a relational object.</p>
 <p>Other representations are possible, and in many cases desirable. One may build document-term bipartite networks, semantic networks based on embeddings, or socio-semantic networks linking actors and concepts. These alternatives raise important questions of their own. But they are easier to assess once the more basic workflow is in view. Sentence-level co-occurrence provides a good starting point because the tie remains interpretable at every stage. Here, words are related because they recur together within a bounded local context. That is enough to make the broader logic of text network analysis visible without prematurely complicating it.</p>
 </section>
-<section id="what-a-text-network-represents" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="what-a-text-network-represents"><span class="header-section-number">15.3</span> What a Text Network Represents</h2>
+<section id="what-a-text-network-represents" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="what-a-text-network-represents"><span class="header-section-number">14.3</span> What a Text Network Represents</h2>
 <p>There is no single emergent and “natural” text network hidden inside a text, waiting to be extracted by a sufficiently clever algorithm. Every text network is constructed. The network one obtains depends on what one treats as a node, what relation is taken to matter, how ties are weighted, and what level of language is being represented. That point deserves emphasis because network diagrams can create the impression that structure has simply been revealed. In practice, the resulting graph is a representation of one aspect of discourse, produced through a chain of theoretical and methodological decisions. What matters, then, is whether the resulting network is justified by the analytic question</p>
 <p>The most common form is the word co-occurrence network. In this representation, two words are connected if they appear within the same textual context. That context may be a sentence, paragraph, document, or moving window of tokens. The edge may be binary, indicating simple co-presence, or weighted by the number of co-occurrences. This form remains popular because it is intuitive, relatively easy to construct, and often easy to explain. If a text repeatedly places <em>rights</em> near <em>liberty</em>, <em>government</em>, and <em>people</em>, while placing <em>king</em> near <em>injuries</em>, <em>laws</em>, and <em>tyranny</em>, the resulting network can reveal that organization in a compact way. For many chapter-length analyses, and especially for teaching, this is the best place to begin because the analytic logic remains close to the text itself.</p>
-<p>A second common form is the document-term bipartite network. Here one set of nodes consists of documents and the other of terms or concepts. A tie indicates that a term appears in a document, sometimes weighted by frequency or by a measure such as tf-idf. This representation preserves the original relation between texts and vocabularies more directly than a one-mode word network. It is useful when the analyst wants to compare documents, trace the distribution of meanings across texts, or project later into a word-word or document-document network. In sociological terms, this bipartite structure is often attractive because it keeps the analyst closer to the duality of texts and concepts rather than collapsing everything immediately into pairwise term associations (Breiger 1974). For present purposes, however, the simpler sentence-level co-occurrence network is a more transparent entry point.</p>
+<p>A second common form is the document-term bipartite network. Here one set of nodes consists of documents and the other of terms or concepts. A tie indicates that a term appears in a document, sometimes weighted by frequency or by a measure such as tf-idf. This representation preserves the original relation between texts and vocabularies more directly than a one-mode word network. It is useful when the analyst wants to compare documents, trace the distribution of meanings across texts, or project later into a word-word or document-document network. In sociological terms, this bipartite structure is often attractive because it keeps the analyst closer to the duality of texts and concepts rather than collapsing everything immediately into pairwise term associations. For present purposes, however, the simpler sentence-level co-occurrence network is a more transparent entry point.</p>
 <p>More specialized forms are also possible. One may construct syntactic networks in which words are linked by grammatical dependency, semantic networks in which terms are tied through embedding-based similarity, or socio-semantic networks in which social actors and meanings are analyzed together. The latter is particularly promising in sociology because it makes it possible to analyze how social relations and semantic relations interact, rather than treating them as separate domains. But the choice among these alternatives should be driven by the underlying problem, not by the mere availability of a method. If the analyst is interested in local rhetorical construction, sentence-level co-occurrence may be sufficient. If the focus is on how organizations or publics distribute meanings across texts, a bipartite or socio-semantic representation may be more appropriate. The chapter therefore stays with the simpler case while keeping the broader range of possibilities in view for further study down the road.</p>
 </section>
-<section id="example-text-the-declaration-of-independence" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="example-text-the-declaration-of-independence"><span class="header-section-number">15.4</span> Example Text: The Declaration of Independence</h2>
-<p>A useful teaching example is the Declaration of Independence (United States, 1776). The document is especially well suited to text network analysis because it has a clear rhetorical architecture. Thomas Jefferson opens the document with an abstract statement of political principle, rooted in enlightenment era liberal political philosophy, but then moves into a long list of grievances against the British crown, and concludes with a declaration of sovereign separation from Great Britain. These are not just different sections of the text where introductory matter is followed by a more substantive component, for example. They are organized around somewhat distinct vocabularies that remain linked to one another. That makes the document especially suitable for showing what a text network can reveal even in the case of a single, relatively short text.</p>
+<section id="example-text-the-declaration-of-independence" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="example-text-the-declaration-of-independence"><span class="header-section-number">14.4</span> Example Text: The Declaration of Independence</h2>
+<p>A useful teaching example is the Declaration of Independence.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> The document is especially well suited to text network analysis because it has a clear rhetorical architecture. Thomas Jefferson opens the document with an abstract statement of political principle, rooted in enlightenment era liberal political philosophy, but then moves into a long list of grievances against the British crown, and concludes with a declaration of sovereign separation from Great Britain. These are not just different sections of the text where introductory matter is followed by a more substantive component, for example. They are organized around somewhat distinct vocabularies that remain linked to one another. That makes the document especially suitable for showing what a text network can reveal even in the case of a single, relatively short text.</p>
 <p>This example also has a practical advantage for beginners. First, it is an important document worth serious scholarly analysis. Second, the Declaration is short enough that the reader can plausibly keep the whole text in mind while working through the code. One reason text analysis can feel alienating at first is that the object under study disappears behind the workflow. Here, that risk is reduced. The reader can compare the network output to a familiar document and judge whether the graph is capturing something recognizable about the text’s structure. The point is to give a more explicit account of how the document is organized.</p>
-</section>
-<section id="step-1-load-packages-and-the-text" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="step-1-load-packages-and-the-text"><span class="header-section-number">15.5</span> Step 1: Load Packages and the Text</h2>
+<section id="load-packages-and-the-text" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="load-packages-and-the-text"><span class="header-section-number">14.4.1</span> Load Packages and the Text</h3>
 <p>The first step is to load the R packages that will help us tokenize the text, count co-occurrences, and draw a graph. We use <code>tidyverse</code> for data handling, <code>tidytext</code> for tokenization and stopword removal, <code>widyr</code> for pairwise counting, <code>igraph</code> for graph construction, <code>ggraph</code> for visualization, and <code>stringr</code> for splitting the text into sentences. Even this early stage is worth pausing over, because beginners are often unsure what the packages are doing. The easiest way to think about them is division of labor: one package helps us tidy the text, another helps us count word pairs, and another helps us turn those counts into a network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -427,8 +408,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="step-2-split-the-text-into-sentences" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="step-2-split-the-text-into-sentences"><span class="header-section-number">15.6</span> Step 2: Split the Text into Sentences</h2>
+<section id="split-the-text-into-sentences" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="split-the-text-into-sentences"><span class="header-section-number">14.4.2</span> Split the Text into Sentences</h3>
 <p>Because we want a sentence-level co-occurrence network, we first divide the text into sentences. You could make other choices, like paragraph level division, or many others, but sentence-level structure gives us the local context within which words will be considered related for a document like the Declaration of Independence. If two words appear in the same sentence, we will later count that as a tie. This is one of the most important choices in the workflow. The network depends on how the text is broken into units, and beginners should get in the habit of treating that as a substantive decision rather than as a background technicality.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sentences <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">text =</span> declaration_text) <span class="sc">|&gt;</span></span>
@@ -460,8 +441,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>At this stage, we still have the text, but it is now arranged with one sentence per row. That matters because the sentence is going to become the context unit for co-occurrence. In more advanced work, the analyst might use paragraphs, clauses, or moving windows instead. For a beginner’s example, sentence-level context works well because it is easy to explain and tends to capture a reasonably local rhetorical relation.</p>
 </section>
-<section id="step-3-tokenize-into-words" class="level2" data-number="15.7">
-<h2 data-number="15.7" class="anchored" data-anchor-id="step-3-tokenize-into-words"><span class="header-section-number">15.7</span> Step 3: Tokenize into Words</h2>
+<section id="tokenize-into-words" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="tokenize-into-words"><span class="header-section-number">14.4.3</span> Tokenize into Words</h3>
 <p>Next, we tokenize the sentences, which means we split each sentence into individual words. The <code>unnest_tokens()</code> function from <code>tidytext</code> turns the data into a one-word-per-row format that is especially convenient for further processing. Again, this is worth inspecting rather than treating as a magical step. Once the text has been tokenized, the analyst can see exactly what the data look like before any network exists.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> sentences <span class="sc">|&gt;</span></span>
@@ -487,8 +468,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This output is not yet ready for analysis. It still includes many very common words, and it has not yet been cleaned for substantive use. But it is the essential intermediate form. Every row now shows a word and the sentence in which it appeared. Text network analysis often becomes easier to understand once one sees that the graph will ultimately be built from a table like this.</p>
 </section>
-<section id="step-4-clean-the-words" class="level2" data-number="15.8">
-<h2 data-number="15.8" class="anchored" data-anchor-id="step-4-clean-the-words"><span class="header-section-number">15.8</span> Step 4: Clean the Words</h2>
+<section id="clean-the-words" class="level3" data-number="14.4.4">
+<h3 data-number="14.4.4" class="anchored" data-anchor-id="clean-the-words"><span class="header-section-number">14.4.4</span> Clean the Words</h3>
 <p>Now we do a first round of cleaning. We remove common stopwords such as <em>the</em>, <em>and</em>, and <em>of</em>. These words are crucial for grammar, but they are usually not very useful for a basic semantic network because they connect almost everything to everything else. We also keep only alphabetic tokens so that odd fragments do not clutter the graph.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>words_clean <span class="ot">&lt;-</span> words <span class="sc">|&gt;</span></span>
@@ -540,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="step-5-count-co-occurring-word-pairs" class="level2" data-number="15.9">
-<h2 data-number="15.9" class="anchored" data-anchor-id="step-5-count-co-occurring-word-pairs"><span class="header-section-number">15.9</span> Step 5: Count Co-Occurring Word Pairs</h2>
+<section id="count-co-occurring-word-pairs" class="level3" data-number="14.4.5">
+<h3 data-number="14.4.5" class="anchored" data-anchor-id="count-co-occurring-word-pairs"><span class="header-section-number">14.4.5</span> Count Co-Occurring Word Pairs</h3>
 <p>Now we are ready to define the relation that will become the edge in the network. Here, two words are connected if they appear in the same sentence. The <code>pairwise_count()</code> function counts how often each pair of words appears together across all sentences. This is the moment where the text begins to turn into a relational object.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pairs <span class="ot">&lt;-</span> words_clean <span class="sc">|&gt;</span></span>
@@ -598,8 +579,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Even without a visualization, this output gives a first sense of the local semantic structure of the text. One can begin to see which terms repeatedly travel together.</p>
 </section>
-<section id="step-6-filter-for-readability" class="level2" data-number="15.10">
-<h2 data-number="15.10" class="anchored" data-anchor-id="step-6-filter-for-readability"><span class="header-section-number">15.10</span> Step 6: Filter for Readability</h2>
+<section id="filter-for-readability" class="level3" data-number="14.4.6">
+<h3 data-number="14.4.6" class="anchored" data-anchor-id="filter-for-readability"><span class="header-section-number">14.4.6</span> Filter for Readability</h3>
 <p>If we graph every pair, the network will usually be too dense to read. For teaching and exploratory work, it is common to keep only stronger ties. For this example, I keep the fifty strongest ties so the graph remains readable.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pairs_filtered <span class="ot">&lt;-</span> pairs <span class="sc">|&gt;</span></span>
@@ -607,17 +588,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This step is important to discuss explicitly because it teaches a general lesson: network visualizations are often simplified representations. The graph one sees is not the totality of all possible relations in the text. It is a more legible version that emphasizes stronger or more frequent ties. That is not a flaw. It is usually necessary. The important thing is to know what has been filtered out and why.</p>
 </section>
-<section id="step-7-turn-the-pairs-into-a-graph" class="level2" data-number="15.11">
-<h2 data-number="15.11" class="anchored" data-anchor-id="step-7-turn-the-pairs-into-a-graph"><span class="header-section-number">15.11</span> Step 7: Turn the Pairs into a Graph</h2>
+<section id="turn-the-pairs-into-a-graph" class="level3" data-number="14.4.7">
+<h3 data-number="14.4.7" class="anchored" data-anchor-id="turn-the-pairs-into-a-graph"><span class="header-section-number">14.4.7</span> Turn the Pairs into a Graph</h3>
 <p>Once we have a table of filtered word pairs, we can convert it into a graph object using <code>igraph</code>. This is the step where the data change form. Up to this point, the analysis has proceeded through tables. Now the pair list becomes a network that can be summarized and visualized.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>word_graph <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(pairs_filtered, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>word_graph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 10eba72 UN-- 120 994 -- 
+<pre><code>IGRAPH 3670f4a UN-- 120 994 -- 
 + attr: name (v/c), n (e/n)
-+ edges from 10eba72 (vertex names):
++ edges from 3670f4a (vertex names):
  [1] political--declare   human    --events    human    --people   
  [4] events   --people    human    --dissolve  events   --dissolve 
  [7] people   --dissolve  political--human     political--events   
@@ -631,8 +612,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>For beginners, it helps to understand that the graph object is not mysterious either. It is simply another way of storing the same relational information, one that is especially useful for network analysis and plotting.</p>
 </section>
-<section id="step-8-examine-the-most-connected-words" class="level2" data-number="15.12">
-<h2 data-number="15.12" class="anchored" data-anchor-id="step-8-examine-the-most-connected-words"><span class="header-section-number">15.12</span> Step 8: Examine the Most Connected Words</h2>
+<section id="examine-the-most-connected-words" class="level3" data-number="14.4.8">
+<h3 data-number="14.4.8" class="anchored" data-anchor-id="examine-the-most-connected-words"><span class="header-section-number">14.4.8</span> Examine the Most Connected Words</h3>
 <p>Before plotting the network, it is useful to identify the most connected terms. This helps show that network analysis is not only about pictures. The graph can also be summarized numerically. Here, I compute degree, weighted degree, and betweenness centrality. These measures are common in network analysis and can provide a quick sense of which words sit near the center of the document’s semantic structure.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>centrality_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -667,8 +648,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In a document such as the Declaration, one would expect words tied to principle, grievance, and sovereignty to appear prominently. And we do see a pattern that reflects this prior, with terms like “political,” “people,” “declare,” and “dissolved” being some of the best connected in the graph. Looking at this table first can also make the later visualization easier to interpret because the reader already has a sense of which terms are likely to occupy central positions.</p>
 </section>
-<section id="step-9-visualize-the-network" class="level2" data-number="15.13">
-<h2 data-number="15.13" class="anchored" data-anchor-id="step-9-visualize-the-network"><span class="header-section-number">15.13</span> Step 9: Visualize the Network</h2>
+<section id="visualize-the-network" class="level3" data-number="14.4.9">
+<h3 data-number="14.4.9" class="anchored" data-anchor-id="visualize-the-network"><span class="header-section-number">14.4.9</span> Visualize the Network</h3>
 <p>Now we can draw the network. This is the step many beginners are waiting for, but it works much better once the earlier stages have been made clear. The graph is not an isolated product. It is the visual consequence of all the choices that came before it.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1776</span>)</span>
@@ -692,8 +673,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This plot gives a visual map of the strongest word relationships in the text. Words that appear together often are connected by thicker edges. Words with many connections tend to occupy more central positions. Clusters of connected words often correspond to different semantic regions of the document. In this case, one would expect some separation among the language of principle, the language of grievance, and the language of sovereignty. The precise appearance of the graph depends on the layout algorithm, but the broad structure should still be interpretable.</p>
 </section>
-<section id="step-10-identify-clusters" class="level2" data-number="15.14">
-<h2 data-number="15.14" class="anchored" data-anchor-id="step-10-identify-clusters"><span class="header-section-number">15.14</span> Step 10: Identify Clusters</h2>
+<section id="identify-clusters" class="level3" data-number="14.4.10">
+<h3 data-number="14.4.10" class="anchored" data-anchor-id="identify-clusters"><span class="header-section-number">14.4.10</span> Identify Clusters</h3>
 <p>A final beginner-friendly step is to identify clusters or communities in the graph. These are groups of words that are more densely connected to each other than to the rest of the network. This is helpful because it moves the analysis beyond visualization alone. The graph becomes something that can be summarized as well as seen.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>communities <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(word_graph)</span>
@@ -751,29 +732,28 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="what-the-example-shows" class="level2" data-number="15.15">
-<h2 data-number="15.15" class="anchored" data-anchor-id="what-the-example-shows"><span class="header-section-number">15.15</span> What the Example Shows</h2>
 <p>This simple example already demonstrates the main value of a text network. The Declaration of Independence is not a text where an understanding requires vast computational analysis. The broad structure is already familiar - this is a text many of us have read many times. Still, the network formalizes that structure in a useful way. It shows how words related to political principle, grievances against the crown, and political separation are organized into distinguishable but connected regions. While broader gestures toward liberal governance (such as “constitution” “subject” “jurisdiction”) inhabit a different community. What the network gives us, in other words, is a more explicit view of how the discourse is organized.</p>
 <p>For beginners, the larger lesson is methodological. A text network is not produced in a single magical step. It emerges from a sequence of ordinary operations: 1.) choose a text, 2.) define a context (sentence, paragraph, etc..), tokenize, clean, count co-occurrences, filter, graph, and interpret. Once that sequence is understood, more advanced forms of text analysis become much easier to approach. The conceptual point and the coding point therefore come together. For present purposes, the advantage is that the network is built step by step, and each step can be investigated.</p>
-</section>
-<section id="conclusion" class="level2" data-number="15.16">
-<h2 data-number="15.16" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">15.16</span> Conclusion</h2>
 <p>Text networks are useful because they force the analyst to specify what kind of relation is being claimed, what level of language matters, and how textual structure should be represented in the first place. That is part of what makes them valuable for sociology. They fit well with a relational understanding of culture and discourse, while also imposing a welcome discipline on that understanding. Rather than speaking loosely about themes or meanings, the analyst must specify units, ties, and principles of construction. Used carefully, text networks provide not only a way to visualize text, but a framework for asking clearer questions about how discourse is organized.</p>
 </section>
-<section id="references" class="level2" data-number="15.17">
-<h2 data-number="15.17" class="anchored" data-anchor-id="references"><span class="header-section-number">15.17</span> References</h2>
-<p>Bail, Christopher A. 2014. “The Cultural Environment: Measuring Culture with Big Data.” Theory and Society 43(3-4):465-82.</p>
-<p>Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181-90.</p>
-<p>Goldberg, Amir. 2024. “The Sociology of Interpretation.” Annual Review of Sociology 50:241-59.</p>
-<p>Mohr, John W. 1998. “Measuring Meaning Structures.” Annual Review of Sociology 24:345-70.</p>
-<p>Mohr, John W., and Vincent Duquenne. 1997. “The Duality of Culture and Practice: Poverty Relief in New York City, 1888-1917.” Theory and Society 26(2-3):305-56.</p>
-<p>Puetz, Kyle, Andrew P. Davis, and Alexander B. Kinney. 2021. “Meaning Structures in the World Polity: A Semantic Network Analysis of Human Rights Terminology in the World’s Peace Agreements.” Poetics.</p>
-<p>Stoltz, Dustin S., and Marshall A. Taylor. 2024. Mapping Texts: Computational Text Analysis for the Social Sciences. New York: Oxford University Press.</p>
-<p>United States. 1776. The Declaration of Independence. Washington, DC: National Archives.</p>
+</section>
+<section id="references" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="references"><span class="header-section-number">14.5</span> References</h2>
 
 
 </section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Mohr, John W. 1998. “Measuring Meaning Structures.” Annual Review of Sociology 24:345-70.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Mohr, John W., and Vincent Duquenne. 1997. “The Duality of Culture and Practice: Poverty Relief in New York City, 1888-1917.” Theory and Society 26(2-3):305-56.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181-90.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Bail, Christopher A. 2014. “The Cultural Environment: Measuring Culture with Big Data.” Theory and Society 43(3-4):465-82.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Goldberg, Amir. 2024. “The Sociology of Interpretation.” Annual Review of Sociology 50:241-59.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Puetz, Kyle, Andrew P. Davis, and Alexander B. Kinney. 2021. “Meaning Structures in the World Polity: A Semantic Network Analysis of Human Rights Terminology in the World’s Peace Agreements.” Poetics.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Stoltz, Dustin S., and Marshall A. Taylor. 2024. Mapping Texts: Computational Text Analysis for the Social Sciences. New York: Oxford University Press.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>United States. 1776. The Declaration of Independence. Washington, DC: National Archives.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

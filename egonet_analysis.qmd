@@ -1,6 +1,10 @@
-# Analyzing ego network data
+# Ego networks: analysis
 
-Once the egocentric network data files have been constructed, we can turn to analyzing the data. First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.
+Once the egocentric network data files have been constructed, we can turn to analyzing the data. As a reminder, this demonstration is an adaptation from Raffaele Vacca's highly recommended textbook devoted to ego network analysis.[^egonet_setup-1]
+
+[^egonet_setup-1]: Vacca, Raffaele. 2024. Egocentric network analysis with R. <https://raffaelevacca.github.io/egocentric-r-book/>
+
+First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.
 
 The code below installs the relevant packages and loads the egonet data.
 
@@ -166,7 +170,7 @@ ggraph(gr.10, layout = "kk") +
 
 Ego is not represented in the graph, only relationships among alters. Thicker lines indicate especially close relationships, whereas thinner lines represent simply knowing one another.
 
-One final representation to show is communities, which relies on algorithms to detect optimal groups based on modularity (if this is unfamiliar to you, check out my tutorial on community detection). Below I use the Louvain algorithm to identify modular groups. But this time, I will present the network for ego number 80.
+One final representation to show is communities, which relies on algorithms to detect optimal groups based on modularity (if this is unfamiliar to you, check out the chapter on community detection). Below we use the Louvain algorithm to identify modular groups. But this time, we will present the network for ego number 80.
 
 ```{r}
 gr.80 <- gr.list[["80"]]
@@ -189,7 +193,7 @@ These results show two different modular groups. Ego is connected to all of thes
 
 Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call nested data structures: within each ego is a set of alters and within each group of alters is a set of relationships.
 
-These three levels can be analyzed separately or combined. Below I present an example of a combined analysis whereby alter composition and edge structures are aggregated to the ego level. In other words, we'll keep the data file at the ego level (with each row representing a unique ego) and add summary information about alters and alter ties to each row.
+These three levels can be analyzed separately or combined. Below we present an example of a combined analysis whereby alter composition and edge structures are aggregated to the ego level. In other words, we'll keep the data file at the ego level (with each row representing a unique ego) and add summary information about alters and alter ties to each row.
 
 Let's start by creating a new data matrix called e.attribute. Let's recode ego attributes for gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).
 
@@ -255,7 +259,7 @@ centr_degree(gr.10)$centralization
 
 Density in this ego network is equal to .9, which indicates that 90% of all possible ties are present. The components indicates that there is one single connected component among the alters. (Running this on the network for ego number 80 would reveal two different components. See above.) Finally, the degree centralization score is .1, which suggests that this graph lacks hierarchy (it is not centered around a "star" alter).
 
-For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of the map function. Below I demonstrate how this is achieved for a single metric (edge_density).
+For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of the map function. Below we demonstrate how this is achieved for a single metric (edge_density).
 
 ```{r}
 head(map_dbl(gr.list, edge_density))
@@ -302,7 +306,7 @@ glimpse(ego.attribute)
 
 ## Bivariate analyses
 
-With a dataset like this, it is possible to conduct various statistical analyses. Below I show a simple analysis of variance (ANOVA) test to demonstrate one possibility.
+With a dataset like this, it is possible to conduct various statistical analyses. Below we show a simple analysis of variance (ANOVA) test to demonstrate one possibility.
 
 ```{r}
 ego.attribute$female <- factor(ego.attribute$female, labels = c("Male", "Female"))
@@ -334,20 +338,10 @@ boxplot(prop.fem ~ female, data = ego.attribute,
 
 ```
 
-These are simple bivariate analyses. More complex analyses based on multivariate and multilevel analyses are also possible with egocentric network data. Please check out the references below for more details and examples of these approaches.
+These are simple bivariate analyses. More complex analyses based on multivariate and multilevel analyses are also possible with egocentric network data using multilevel regression modeling (see <https://raffaelevacca.github.io/egocentric-r-book/multilevel.html>). 
+
+This chapter and the previous one presented a unique form of social network analysis that focuses on the personal relationships that surround individuals. This is a very useful approach to take especially when sampling large groups of people and in contexts that lack clear group boundaries.[^egonet_analysis-2] 
+
+[^egonet_analysis-2]:McCarty, C., Lubbers, M. J., Vacca, R., & Molina, J. L. 2019. Conducting personal network research: A practical guide. The Guilford Press.
 
 ## References
-
-This tutorial was built on insights and code from Raffaele Vacca. Please see his textbook (<https://raffaelevacca.github.io/egocentric-r-book/>) for a more detailed discussion of ego networks.
-
-If you are interested in some of the substantive issues associated with the GSS "important matters" network data, check out the following resources.
-
-Bearman, Peter, and Paolo Parigi. 2004. “Cloning Headless Frogs and Other Important Matters: Conversation Topics and Network Structure.” Social Forces 83(2):535–57.
-
-Fischer, Claude S. 2009. “The 2004 GSS Finding of Shrunken Social Networks: An Artifact?” American Sociological Review 74(4):657–69.
-
-McPherson, Miller, Lynn Smith-Lovin, and Matthew E. Brashears. 2006. “Social Isolation in America: Changes in Core Discussion Networks over Two Decades.” American Sociological Review 71(3):353–75.
-
-Small, Mario Luis. 2017. Someone to Talk To. Oxford University Press.
-
-Smith, Jeffrey A., Miller McPherson, and Lynn Smith-Lovin. 2014. “Social Distance in the United States: Sex, Race, Religion, Age, and Education Homophily among Confidants, 1985 to 2004.” American Sociological Review 79(3):432–56.

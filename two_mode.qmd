@@ -4,7 +4,10 @@ This chapter introduces you to a slightly different form of network analysis - t
 
 Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g. from people to groups, not people to people or group to group).
 
-To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.
+To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Specifically, we will use a dataset on Grime music, which is a UK-based rap genre that emerged from the east London reggae and Garage scene in the early 2000s.[^two_mode-1] Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.
+
+[^two_mode-1]:Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime
+Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087
 
 Let's get the data in an take a look.
 
@@ -89,7 +92,7 @@ ggraph(a_t_g2, layout = "stress") +
   theme_void()
 ```
 
-One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the oposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.
+One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the opposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.
 
 ```{r}
 ggraph(a_t_g2, layout = "bipartite") +
@@ -160,7 +163,7 @@ After the standard options, we go through a series of scale\_ options. If you se
 
 Nice work!!
 
-Now let's turn to some analysis. We have already learned about different measures of centrality, so we won't go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks. For more information on how to interpret other forms of centrality or other network measures, see Borgatti and Everett's (1997) paper on two mode network analysis.
+Now let's turn to some analysis. We have already learned about different measures of centrality, so we won't go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks. 
 
 To get going, we are going to make a quick data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.
 
@@ -176,7 +179,9 @@ centrality <- data.frame(
 
 ## Degree Centrality in Two Mode Networks
 
-Borgatti & Everett (1997) demonstrate that the logic of degree centrality remains the same from one mode to two mode analysis. The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual's prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.
+The logic of degree centrality remains the same from one mode to two mode analysis.[^two_mode-2] The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual's prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.
+
+[^two_mode-2]:Borgatti, S. P., & Everett, M. G. 1997. Network analysis of 2-mode data. Social Networks, 19(3), 243–269. 
 
 If you are measuring the degree centrality of the individual artists in this network, then what you are actually capturing is the number of songs they are on in 2008.Their maximal degree is the n(songs). While we could still think of this as how prominent an artist is within the world of Grime, it is more appropriate to think of this as a measure of how expansive they are within this two mode world. The chunk below filters the dataframe we created to focus only on the artists and calculates a brief summary of the their degree centrality.
 
@@ -232,7 +237,7 @@ summarize(mean(degree),
           )
 ```
 
-Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (tpye = TRUE) with a degree above the average.
+Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (type = TRUE) with a degree above the average.
 
 ```{r}
 V(a_t_g2)$song_degree_group <- NA
@@ -296,7 +301,9 @@ The distribution of song betweenness tells a similar story. The mean (416) relat
 
 One of the classic applications of two mode network analysis is to project a one mode network for both sets. In our case, this involves constructing an artist-to-artist network and a song-to-song network. The ties in the artist one mode network represent mutual appearances on songs. The ties are weighted by the total number of songs they co-appear on. Conversely, the ties in the song-to-song network reflect whether they share artists. Again, these ties are weighted, but, this time, the weights are the number of artists they share.
 
-This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what Breiger (1974) called "the duality of persons and groups."
+This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what is called "the duality of persons and groups."[^two_mode-3]
+
+[^two_mode-3]:Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90.
 
 To project these one mode networks, we simply use the bipartite_projection() function. Before we use it, let's understant it. The output from the chunk below shows that the function produces a list with two network objects. The first (proj1) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes, the node name, its mode, and the edge weight. The second (proj2) is another undirected network of our 392 songs with the same list of attributes.
 
@@ -330,14 +337,10 @@ p2 <- ggraph(projections$proj2, layout = "fr") +
 p1 / p2
 ```
 
-From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of seperate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collabroation? Some fun stories could emerge from this!
+From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of separate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collaboration? Some fun stories could emerge from this!
 
-In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won't mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars (Everett & Borgatti 2012). Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!
+In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won't mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars.[^two_mode-4] Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!
+
+[^two_mode-4]:Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10.
 
 ## References
-
-For more on analyzing two mode networks...
-
-- Borgatti, S. P., & Everett, M. G. (1997). Network analysis of 2-mode data. Social Networks, 19(3), 243–269. https://doi.org/10.1016/S0378-8733(96)00301-2
-- Breiger, Ronald L. 1974. “The Duality of Persons and Groups.” Social Forces 53(2):181–90. doi:10.2307/2576011.
-- Everett, M. G., and S. P. Borgatti. 2013. “The Dual-Projection Approach for Two-Mode Networks.” Social Networks 35(2):204–10. doi:10.1016/j.socnet.2012.05.004.

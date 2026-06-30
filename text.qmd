@@ -1,19 +1,26 @@
----
-title: "Text Networks"
-author: "Dr. Andrew P. Davis"
-format: html
-editor: visual
----
-
 # Text Networks
 
-## Texts as Relational Objects
+## Text Networks as Relational Objects
 
-Text networks offer a way to study discourse as a relational object. That is their central value, and it is what keeps them useful even as computational text analysis has expanded into increasingly elaborate forms. In many research settings, the key issue is not simply that certain words appear frequently or that a corpus can be partitioned into latent topics. The more important question concerns how meanings are organized. Words derive part of their significance from the terms that surround them, the concepts they connect, and the larger semantic regions in which they recur. A text network provides one way to represent this organization formally. In that respect, it belongs to a longer sociological effort to measure meaning structures rather than treating culture as something that can only be approached impressionistically (Mohr 1998; Mohr and Duquenne 1997). Texts have structure, and part of that structure lies in the pattern of associations among words. Text networks are the key to unlocking this structure.
+Text networks offer a way to study discourse as a relational object. That is their central value, and it is what keeps them useful even as computational text analysis has expanded into increasingly elaborate forms. In many research settings, the key issue is not simply that certain words appear frequently or that a corpus can be partitioned into latent topics. The more important question concerns how meanings are organized. Words derive part of their significance from the terms that surround them, the concepts they connect, and the larger semantic regions in which they recur. A text network provides one way to represent this organization formally. In that respect, it belongs to a longer sociological effort to measure meaning structures rather than treating culture as something that can only be approached impressionistically.[^text-1] [^text-2] Texts have structure, and part of that structure lies in the pattern of associations among words. Text networks are the key to unlocking this structure.
 
-At a general level, a text network is a graph in which nodes represent units of textual material and edges represent relations among those units. The nodes may be words, phrases, named entities, concepts, documents, or speakers. The ties may represent co-occurrence, adjacency, shared appearance in the same text, or more complex relations such as semantic similarity. What matters is that text is no longer being treated as a mere inventory. Instead, it is represented as a structured set of associations. This move fits well with relational sociology and cultural sociology, where classification, symbolic boundaries, and the organization of meaning have long been central concerns. Breiger's (1974) classic argument about duality remains relevant here because it shows how relations among elements can be understood through shared participation in larger structures. Later work in cultural sociology and computational text analysis has extended this insight by showing how meanings can be mapped, compared, and measured across texts, fields, and publics (Bail 2014; Goldberg 2024). Recent sociological work has also used semantic network analysis to track shifts in institutional meaning across texts over time, as in Puetz, Davis, and Kinney’s (2021) analysis of human rights language in peace agreements.
+[^text-1]: Mohr, John W. 1998. "Measuring Meaning Structures." Annual Review of Sociology 24:345-70.
 
-This makes text networks especially useful for sociological research on rhetoric, politics, institutions, and culture. Terms such as *rights*, *people*, *freedom*, *order*, *threat*, or *justice* rarely operate as isolated lexical items. Their force depends on the clusters in which they appear, the contrasts they imply, and the broader discursive arrangements in which they are embedded. If one wants to know how a discourse is organized, then frequency alone is rarely enough. A list of common terms can tell us what appears often, but not how concepts hold together or what bridges otherwise separate vocabularies. Text networks are attractive because they make these relations visible in a comparatively direct way. Recent methodological work in sociology has been especially helpful on this point, emphasizing that computational text analysis is most valuable when the relations under study remain theoretically interpretable rather than being surrendered entirely to opaque latent representations (Stoltz and Taylor 2024). What matters is that a text network gives us a way to see and discuss how discourse is organized.
+[^text-2]: Mohr, John W., and Vincent Duquenne. 1997. "The Duality of Culture and Practice: Poverty Relief in New York City, 1888-1917." Theory and Society 26(2-3):305-56.
+
+At a general level, a text network is a graph in which nodes represent units of textual material and edges represent relations among those units. The nodes may be words, phrases, named entities, concepts, documents, or speakers. The ties may represent co-occurrence, adjacency, shared appearance in the same text, or more complex relations such as semantic similarity. What matters is that text is no longer being treated as a mere inventory. Instead, it is represented as a structured set of associations. This move fits well with relational sociology and cultural sociology, where classification, symbolic boundaries, and the organization of meaning have long been central concerns. Breiger's[^text-3] classic argument about duality remains relevant here because it shows how relations among elements can be understood through shared participation in larger structures. Later work in cultural sociology and computational text analysis has extended this insight by showing how meanings can be mapped, compared, and measured across texts, fields, and publics.[^text-4] [^text-5] Recent sociological work has also used semantic network analysis to track shifts in institutional meaning across texts over time, as in Puetz, Davis, and Kinney’s analysis of human rights language in peace agreements.[^text-6]
+
+[^text-3]: Breiger, Ronald L. 1974. "The Duality of Persons and Groups." Social Forces 53(2):181-90.
+
+[^text-4]: Bail, Christopher A. 2014. "The Cultural Environment: Measuring Culture with Big Data." Theory and Society 43(3-4):465-82.
+
+[^text-5]: Goldberg, Amir. 2024. "The Sociology of Interpretation." Annual Review of Sociology 50:241-59.
+
+[^text-6]: Puetz, Kyle, Andrew P. Davis, and Alexander B. Kinney. 2021. “Meaning Structures in the World Polity: A Semantic Network Analysis of Human Rights Terminology in the World’s Peace Agreements.” Poetics.
+
+This makes text networks especially useful for sociological research on rhetoric, politics, institutions, and culture. Terms such as *rights*, *people*, *freedom*, *order*, *threat*, or *justice* rarely operate as isolated lexical items. Their force depends on the clusters in which they appear, the contrasts they imply, and the broader discursive arrangements in which they are embedded. If one wants to know how a discourse is organized, then frequency alone is rarely enough. A list of common terms can tell us what appears often, but not how concepts hold together or what bridges otherwise separate vocabularies. Text networks are attractive because they make these relations visible in a comparatively direct way. Recent methodological work in sociology has been especially helpful on this point, emphasizing that computational text analysis is most valuable when the relations under study remain theoretically interpretable rather than being surrendered entirely to opaque latent representations.[^text-7] What matters is that a text network gives us a way to see and discuss how discourse is organized.
+
+[^text-7]: Stoltz, Dustin S., and Marshall A. Taylor. 2024. Mapping Texts: Computational Text Analysis for the Social Sciences. New York: Oxford University Press.
 
 ## Why This Chapter Uses a Step-by-Step Example
 
@@ -27,17 +34,19 @@ There is no single emergent and "natural" text network hidden inside a text, wai
 
 The most common form is the word co-occurrence network. In this representation, two words are connected if they appear within the same textual context. That context may be a sentence, paragraph, document, or moving window of tokens. The edge may be binary, indicating simple co-presence, or weighted by the number of co-occurrences. This form remains popular because it is intuitive, relatively easy to construct, and often easy to explain. If a text repeatedly places *rights* near *liberty*, *government*, and *people*, while placing *king* near *injuries*, *laws*, and *tyranny*, the resulting network can reveal that organization in a compact way. For many chapter-length analyses, and especially for teaching, this is the best place to begin because the analytic logic remains close to the text itself.
 
-A second common form is the document-term bipartite network. Here one set of nodes consists of documents and the other of terms or concepts. A tie indicates that a term appears in a document, sometimes weighted by frequency or by a measure such as tf-idf. This representation preserves the original relation between texts and vocabularies more directly than a one-mode word network. It is useful when the analyst wants to compare documents, trace the distribution of meanings across texts, or project later into a word-word or document-document network. In sociological terms, this bipartite structure is often attractive because it keeps the analyst closer to the duality of texts and concepts rather than collapsing everything immediately into pairwise term associations (Breiger 1974). For present purposes, however, the simpler sentence-level co-occurrence network is a more transparent entry point.
+A second common form is the document-term bipartite network. Here one set of nodes consists of documents and the other of terms or concepts. A tie indicates that a term appears in a document, sometimes weighted by frequency or by a measure such as tf-idf. This representation preserves the original relation between texts and vocabularies more directly than a one-mode word network. It is useful when the analyst wants to compare documents, trace the distribution of meanings across texts, or project later into a word-word or document-document network. In sociological terms, this bipartite structure is often attractive because it keeps the analyst closer to the duality of texts and concepts rather than collapsing everything immediately into pairwise term associations. For present purposes, however, the simpler sentence-level co-occurrence network is a more transparent entry point.
 
 More specialized forms are also possible. One may construct syntactic networks in which words are linked by grammatical dependency, semantic networks in which terms are tied through embedding-based similarity, or socio-semantic networks in which social actors and meanings are analyzed together. The latter is particularly promising in sociology because it makes it possible to analyze how social relations and semantic relations interact, rather than treating them as separate domains. But the choice among these alternatives should be driven by the underlying problem, not by the mere availability of a method. If the analyst is interested in local rhetorical construction, sentence-level co-occurrence may be sufficient. If the focus is on how organizations or publics distribute meanings across texts, a bipartite or socio-semantic representation may be more appropriate. The chapter therefore stays with the simpler case while keeping the broader range of possibilities in view for further study down the road.
 
 ## Example Text: The Declaration of Independence
 
-A useful teaching example is the Declaration of Independence (United States, 1776). The document is especially well suited to text network analysis because it has a clear rhetorical architecture. Thomas Jefferson opens the document with an abstract statement of political principle, rooted in enlightenment era liberal political philosophy, but then moves into a long list of grievances against the British crown, and concludes with a declaration of sovereign separation from Great Britain. These are not just different sections of the text where introductory matter is followed by a more substantive component, for example. They are organized around somewhat distinct vocabularies that remain linked to one another. That makes the document especially suitable for showing what a text network can reveal even in the case of a single, relatively short text.
+A useful teaching example is the Declaration of Independence.[^text-8] The document is especially well suited to text network analysis because it has a clear rhetorical architecture. Thomas Jefferson opens the document with an abstract statement of political principle, rooted in enlightenment era liberal political philosophy, but then moves into a long list of grievances against the British crown, and concludes with a declaration of sovereign separation from Great Britain. These are not just different sections of the text where introductory matter is followed by a more substantive component, for example. They are organized around somewhat distinct vocabularies that remain linked to one another. That makes the document especially suitable for showing what a text network can reveal even in the case of a single, relatively short text.
+
+[^text-8]: United States. 1776. The Declaration of Independence. Washington, DC: National Archives.
 
 This example also has a practical advantage for beginners. First, it is an important document worth serious scholarly analysis. Second, the Declaration is short enough that the reader can plausibly keep the whole text in mind while working through the code. One reason text analysis can feel alienating at first is that the object under study disappears behind the workflow. Here, that risk is reduced. The reader can compare the network output to a familiar document and judge whether the graph is capturing something recognizable about the text's structure. The point is to give a more explicit account of how the document is organized.
 
-## Step 1: Load Packages and the Text
+### Load Packages and the Text
 
 The first step is to load the R packages that will help us tokenize the text, count co-occurrences, and draw a graph. We use `tidyverse` for data handling, `tidytext` for tokenization and stopword removal, `widyr` for pairwise counting, `igraph` for graph construction, `ggraph` for visualization, and `stringr` for splitting the text into sentences. Even this early stage is worth pausing over, because beginners are often unsure what the packages are doing. The easiest way to think about them is division of labor: one package helps us tidy the text, another helps us count word pairs, and another helps us turn those counts into a network.
 
@@ -75,7 +84,7 @@ We, therefore, the Representatives of the united States of America, in General C
 "
 ```
 
-## Step 2: Split the Text into Sentences
+### Split the Text into Sentences
 
 Because we want a sentence-level co-occurrence network, we first divide the text into sentences. You could make other choices, like paragraph level division, or many others, but sentence-level structure gives us the local context within which words will be considered related for a document like the Declaration of Independence. If two words appear in the same sentence, we will later count that as a tie. This is one of the most important choices in the workflow. The network depends on how the text is broken into units, and beginners should get in the habit of treating that as a substantive decision rather than as a background technicality.
 
@@ -91,7 +100,7 @@ sentences
 
 At this stage, we still have the text, but it is now arranged with one sentence per row. That matters because the sentence is going to become the context unit for co-occurrence. In more advanced work, the analyst might use paragraphs, clauses, or moving windows instead. For a beginner's example, sentence-level context works well because it is easy to explain and tends to capture a reasonably local rhetorical relation.
 
-## Step 3: Tokenize into Words
+### Tokenize into Words
 
 Next, we tokenize the sentences, which means we split each sentence into individual words. The `unnest_tokens()` function from `tidytext` turns the data into a one-word-per-row format that is especially convenient for further processing. Again, this is worth inspecting rather than treating as a magical step. Once the text has been tokenized, the analyst can see exactly what the data look like before any network exists.
 
@@ -104,7 +113,7 @@ words
 
 This output is not yet ready for analysis. It still includes many very common words, and it has not yet been cleaned for substantive use. But it is the essential intermediate form. Every row now shows a word and the sentence in which it appeared. Text network analysis often becomes easier to understand once one sees that the graph will ultimately be built from a table like this.
 
-## Step 4: Clean the Words
+### Clean the Words
 
 Now we do a first round of cleaning. We remove common stopwords such as *the*, *and*, and *of*. These words are crucial for grammar, but they are usually not very useful for a basic semantic network because they connect almost everything to everything else. We also keep only alphabetic tokens so that odd fragments do not clutter the graph.
 
@@ -129,7 +138,7 @@ words_clean <- words_clean |>
 words_clean
 ```
 
-## Step 5: Count Co-Occurring Word Pairs
+### Count Co-Occurring Word Pairs
 
 Now we are ready to define the relation that will become the edge in the network. Here, two words are connected if they appear in the same sentence. The `pairwise_count()` function counts how often each pair of words appears together across all sentences. This is the moment where the text begins to turn into a relational object.
 
@@ -151,7 +160,7 @@ pairs |>
 
 Even without a visualization, this output gives a first sense of the local semantic structure of the text. One can begin to see which terms repeatedly travel together.
 
-## Step 6: Filter for Readability
+### Filter for Readability
 
 If we graph every pair, the network will usually be too dense to read. For teaching and exploratory work, it is common to keep only stronger ties. For this example, I keep the fifty strongest ties so the graph remains readable.
 
@@ -162,7 +171,7 @@ pairs_filtered <- pairs |>
 
 This step is important to discuss explicitly because it teaches a general lesson: network visualizations are often simplified representations. The graph one sees is not the totality of all possible relations in the text. It is a more legible version that emphasizes stronger or more frequent ties. That is not a flaw. It is usually necessary. The important thing is to know what has been filtered out and why.
 
-## Step 7: Turn the Pairs into a Graph
+### Turn the Pairs into a Graph
 
 Once we have a table of filtered word pairs, we can convert it into a graph object using `igraph`. This is the step where the data change form. Up to this point, the analysis has proceeded through tables. Now the pair list becomes a network that can be summarized and visualized.
 
@@ -174,7 +183,7 @@ word_graph
 
 For beginners, it helps to understand that the graph object is not mysterious either. It is simply another way of storing the same relational information, one that is especially useful for network analysis and plotting.
 
-## Step 8: Examine the Most Connected Words
+### Examine the Most Connected Words
 
 Before plotting the network, it is useful to identify the most connected terms. This helps show that network analysis is not only about pictures. The graph can also be summarized numerically. Here, I compute degree, weighted degree, and betweenness centrality. These measures are common in network analysis and can provide a quick sense of which words sit near the center of the document's semantic structure.
 
@@ -192,7 +201,7 @@ centrality_tbl |> slice_head(n = 15)
 
 In a document such as the Declaration, one would expect words tied to principle, grievance, and sovereignty to appear prominently. And we do see a pattern that reflects this prior, with terms like "political," "people," "declare," and "dissolved" being some of the best connected in the graph. Looking at this table first can also make the later visualization easier to interpret because the reader already has a sense of which terms are likely to occupy central positions.
 
-## Step 9: Visualize the Network
+### Visualize the Network
 
 Now we can draw the network. This is the step many beginners are waiting for, but it works much better once the earlier stages have been made clear. The graph is not an isolated product. It is the visual consequence of all the choices that came before it.
 
@@ -212,7 +221,7 @@ ggraph(word_graph, layout = "fr") +
 
 This plot gives a visual map of the strongest word relationships in the text. Words that appear together often are connected by thicker edges. Words with many connections tend to occupy more central positions. Clusters of connected words often correspond to different semantic regions of the document. In this case, one would expect some separation among the language of principle, the language of grievance, and the language of sovereignty. The precise appearance of the graph depends on the layout algorithm, but the broad structure should still be interpretable.
 
-## Step 10: Identify Clusters
+### Identify Clusters
 
 A final beginner-friendly step is to identify clusters or communities in the graph. These are groups of words that are more densely connected to each other than to the rest of the network. This is helpful because it moves the analysis beyond visualization alone. The graph becomes something that can be summarized as well as seen.
 
@@ -249,30 +258,10 @@ ggraph(word_graph, layout = "fr") +
   )
 ```
 
-## What the Example Shows
-
 This simple example already demonstrates the main value of a text network. The Declaration of Independence is not a text where an understanding requires vast computational analysis. The broad structure is already familiar - this is a text many of us have read many times. Still, the network formalizes that structure in a useful way. It shows how words related to political principle, grievances against the crown, and political separation are organized into distinguishable but connected regions. While broader gestures toward liberal governance (such as "constitution" "subject" "jurisdiction") inhabit a different community. What the network gives us, in other words, is a more explicit view of how the discourse is organized.
 
 For beginners, the larger lesson is methodological. A text network is not produced in a single magical step. It emerges from a sequence of ordinary operations: 1.) choose a text, 2.) define a context (sentence, paragraph, etc..), tokenize, clean, count co-occurrences, filter, graph, and interpret. Once that sequence is understood, more advanced forms of text analysis become much easier to approach. The conceptual point and the coding point therefore come together. For present purposes, the advantage is that the network is built step by step, and each step can be investigated.
 
-## Conclusion
-
 Text networks are useful because they force the analyst to specify what kind of relation is being claimed, what level of language matters, and how textual structure should be represented in the first place. That is part of what makes them valuable for sociology. They fit well with a relational understanding of culture and discourse, while also imposing a welcome discipline on that understanding. Rather than speaking loosely about themes or meanings, the analyst must specify units, ties, and principles of construction. Used carefully, text networks provide not only a way to visualize text, but a framework for asking clearer questions about how discourse is organized.
 
 ## References
-
-Bail, Christopher A. 2014. "The Cultural Environment: Measuring Culture with Big Data." Theory and Society 43(3-4):465-82.
-
-Breiger, Ronald L. 1974. "The Duality of Persons and Groups." Social Forces 53(2):181-90.
-
-Goldberg, Amir. 2024. "The Sociology of Interpretation." Annual Review of Sociology 50:241-59.
-
-Mohr, John W. 1998. "Measuring Meaning Structures." Annual Review of Sociology 24:345-70.
-
-Mohr, John W., and Vincent Duquenne. 1997. "The Duality of Culture and Practice: Poverty Relief in New York City, 1888-1917." Theory and Society 26(2-3):305-56.
-
-Puetz, Kyle, Andrew P. Davis, and Alexander B. Kinney. 2021. “Meaning Structures in the World Polity: A Semantic Network Analysis of Human Rights Terminology in the World’s Peace Agreements.” Poetics.
-
-Stoltz, Dustin S., and Marshall A. Taylor. 2024. Mapping Texts: Computational Text Analysis for the Social Sciences. New York: Oxford University Press.
-
-United States. 1776. The Declaration of Independence. Washington, DC: National Archives.
