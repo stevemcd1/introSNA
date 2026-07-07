@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -340,9 +340,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This chapter demonstrates the importance of space and presentation when visualizing network data using the ggraph package. As mentioned before, ggraph follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.</p>
+<p>This chapter demonstrates the importance of space and presentation when visualizing network data using <code>ggraph</code>. As mentioned before, <code>ggraph</code> follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.</p>
 <p>The layout of a network visual pertains to the location of the nodes and edges within the plotting space. The layout of your data visualization can influence how your reader interprets your data. Here, then, we introduce multiple ways in which you can utilize the space of your network visual through layout options to ensure proper interpretation of your network visualization.</p>
-<p>To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran &amp; Sageman 2008).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.</p>
+<p>To do this, we are going to use the terrorism data.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
@@ -384,12 +384,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Great! This is already a cool visualization that is pretty straightforward. Due to the nature of these relationships, the network presents very cleanly without much manipulation. Regardless, let’s play around with it so you can see how the various layouts emphasize different aspects of the network. As you cycle through each visualization, pay attention to how the manipulations to the layout we make stresses different aspects of the network structure and draws your attention. Note, some might look cool while actually distracting the viewer from what you are trying to present. Visualization is an art that is best practiced in private before presented!</p>
+<p>Great! This is already a cool visualization that is pretty straightforward. Due to the nature of these relationships, the network presents very cleanly without much manipulation. Regardless, let’s play around with it so you can see how the various layouts emphasize different aspects of the network. As you cycle through each visualization, pay attention to how the manipulations to the layout we make highlights different aspects of the network structure and draws your attention. Note, some might look cool while actually distracting the viewer from what you are trying to present. Visualization is an art that is best practiced in private before presented!</p>
 <section id="force-directed-layouts" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="force-directed-layouts"><span class="header-section-number">4.1</span> Force Directed Layouts</h2>
 <p>You need to be mindful that humans are naturally inclined to make assumptions about relationships based on space. Proximity of data points in a graph or figure suggest similarity or relation. This is a vital consideration when presenting relational data such as network data.</p>
 <p>We will, therefore, start with what are called force directed layouts. As previously mentioned, these algorithms of visualization cause dissimilar nodes to repel and similarly connected nodes to plot closer to each other. This grouping of nodes aids viewers in their interpretation by leaning into their tendency to assume that proximity = similarity.</p>
-<p>To alter the layout of the ggraph visualization, simply use the ‘layout’ option. We will cycle through these force directed visualisations quickly. This network does not change too much between each. This is because the network itself is already very modular. However, this exposes you to several algorithms. With your data, the visualization may look very different between them all. We won’t go into the specifics for how each works, you can search that yourself. In general, they all work under the same principle - maximizing the proximity of similarly connected nodes.</p>
+<p>To alter the layout of the <code>ggraph</code> visualization, simply use the ‘layout’ option. We will cycle through these force directed visualizations quickly. This network does not change too much between each. This is because the network itself is already very modular. However, this exposes you to several algorithms. With your data, the visualization may look very different between them all. In general, they all work under the same principle - maximizing the proximity of similarly connected nodes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
@@ -452,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Essentially each algorithm is designed to produce a good layout but each has a specific emphasis of what “good” is. Some seek aesthetically pleasing, or balanced, visualisions while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualisations. Remember, these do not change the network, they just alter the placement of the nodes.</p>
+<p>Essentially each algorithm is designed to produce a good layout but each has a specific emphasis of what “good” is. Some seek aesthetically pleasing, or balanced, visualizations while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualizations. Remember, these do not change the network, they just alter the placement of the nodes.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
@@ -527,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="set-layouts" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="set-layouts"><span class="header-section-number">4.2</span> Set Layouts</h2>
 <p>So far we have let the relationships and their nature guide the way we present the network. Force directed layouts spring nodes away or towards each other. The other option is to arrange the nodes in a specific ordered shape. While this goes against tendencies of perception we have discussed so far, there are some benefits to visualizing networks this way. Each manipulation of the network draws your attention to different aspects of the graph. It is worth learning each style so you can try them as you decide on your presentation.</p>
-<p>The circle layout places the nodes in a ring on the outside of the graph and places the edges within. This style is often used to emphasize the density of the network. The more interconnected the nodes are the more densely filled the ring is. Another nice thing about this layout is that the edges between nodes are easily traceable across the network. With all nodes out of the way, it is straightforward to see which nodes are connected to which. Notice, for this visual, we have increased the node size and made the edges more transparent.</p>
+<p>The “circle” layout places the nodes in a ring on the outside of the graph and places the edges within. This style is often used to emphasize the density of the network. The more interconnected the nodes are the more densely filled the ring is. Another nice thing about this layout is that the edges between nodes are easily traceable across the network. With all nodes out of the way, it is straightforward to see which nodes are connected to which. Notice, for this visual, we have increased the node size and made the edges more transparent.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"circle"</span>) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -541,7 +541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Next, we turn to a grid layout where the nodes are presented in rows left to right from bottom to top. This kind of layout makes it possible for viewers to focus on each node, or a group of nodes and see how many ties connect to them. Note, however, that this style gets very messy when you have networks with many nodes.</p>
+<p>Next, we turn to a “grid” layout where the nodes are presented in rows left to right from bottom to top. This kind of layout makes it possible for viewers to focus on each node, or a group of nodes and see how many ties connect to them. Note, however, that this style gets very messy when you have networks with many nodes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"grid"</span>) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
@@ -555,12 +555,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>One final manipulation is to lay each node into one horizontal line and display the edges between them. Note, that instead of geom_edge_link, we use geom_edge_arc. If you use the links then it would just present as one solid line groing through each node.</p>
+<p>One final manipulation is to lay each node into one horizontal line (“linear”) and display the edges between them. Note, that instead of <code>geom_edge_link()</code>, we use <code>geom_edge_arc()</code>. If you use link, then it would just present as one solid line going through each node.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"linear"</span>) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  <span class="do">## note the change from link to arc!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"linear"</span>, <span class="at">circular =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> role)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  <span class="do">## note the change from link to arc!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -583,13 +583,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>These set layouts are nifty! By placing the notes into a specified order, you emphasize the edges. However, be mindful that some of these may look cool (like the spider web) but might not be as useful.</p>
+<p>These layouts are nifty! By placing the notes into a specified order, you emphasize the edges. However, be mindful that some of these may look cool (like the spider web) but might not be as useful.</p>
 </section>
 <section id="contour-visualisations" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="contour-visualisations"><span class="header-section-number">4.3</span> Contour Visualisations</h2>
-<p>There are several other network visualization styles that you can play with. The final one, however, that we suggest learning about is the contour design. This design follows the logic of a contour map showing terrain. On a contour map, the lines displaying the contours designate more dense areas when they are placed closer together. Likewise, the contour maps are designed to demonstrate more compact or dense areas of a graph. Often these are also designated with hotter colors suggesting higher density areas.</p>
-<p>This style is specifically designed for dense, large networks. Again, remember that the design of your visualization is largely informed by the nature of your networks (number of nodes, structure etc.). Here, the contour style is not really necessary since the Bali terror network is small and sparse. However, it serves the purpose of learning the style.</p>
-<p>With ggraph, you can use the stat_density_2d option to calculate the denser areas of the plot (building the aesthetic with the after_stat(level) fill) and place polygons as contour on top. Notice that the contour map doesn’t work perfectly on this network (strands of color beyond the network). As mentioned, this is better used with larger networks.</p>
+<p>There are several other network visualization styles that you can play with. The final one, however, that we suggest learning about is the “contour” design. This design follows the logic of a contour map showing terrain. On a contour map, the lines displaying the contours designate more dense areas when they are placed closer together. Likewise, the contour maps are designed to demonstrate more compact or dense areas of a graph. Often these are also designated with hotter colors suggesting higher density areas.</p>
+<p>This style is specifically designed for dense, large networks. Again, remember that the design of your visualization is largely informed by the nature of your networks (number of nodes, structure etc.). Here, the contour style is not necessary since the Bali terror network is small and sparse. However, it serves the purpose of learning the style.</p>
+<p>With <code>ggraph</code>, you can use the <code>stat_density_2d()</code> option to calculate the denser areas of the plot (building the aesthetic with the <code>after_stat(level)</code> fill) and place polygons as contour on top. Notice that the contour map doesn’t work perfectly on this network (strands of color beyond the network). As mentioned, this is better used with larger networks.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
@@ -626,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>You can alter the colour scale of the scale_fill_gradient option. We suggest choosing a high contrast.</p>
+<p>You can alter the color scale of the <code>scale_fill_gradient</code> option. We suggest choosing a high contrast.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(bali, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -637,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">contour =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span>  </span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colours =</span> <span class="fu">c</span>(<span class="st">"firebrick"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, <span class="st">"ivory"</span>)) <span class="sc">+</span> <span class="co"># custom scale</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"firebrick"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, <span class="st">"ivory"</span>)) <span class="sc">+</span> <span class="co"># custom scale</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -649,8 +649,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>There is one final way to create cleaner contour plots and that is to use a slightly different combination of packages. We are going to pull out the layout of the nodes into two data frames. One has the coordinates of the nodes in your plots (the data frame we call layout_df). This also has the names and role characteristics so we can use them. The second makes the contour information based on the coordinates of the nodes (stored in the layout_df).</p>
-<p>To help calculate the contour lines, we will use the MASS package and to create a clean contour plot, we will use the trusty ggplot2 package. Let’s split up the setup and the visualisation.</p>
-<p>As mentioned, we will first construct the layout so ggplot2 knows where to place the individuals in the plot window. This chunk below first creates the dataframe that holds the coordinates and then calculates the contours based on the density of those coordinates. Do not get too lost in the various functions but focus on the key concepts of what we are doing and why.</p>
+<p>To help calculate the contour lines, we will use the <code>MASS</code> package and to create a clean contour plot, we will use the trusty <code>ggplot2</code> package. Let’s split up the setup and the visualization.</p>
+<p>As mentioned, we will first construct the layout so <code>ggplot2</code> knows where to place the individuals in the plot window. This chunk below first creates the data frame that holds the coordinates and then calculates the contours based on the density of those coordinates. Do not get too lost in the various functions but focus on the key concepts of what we are doing and why.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -669,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>contour_df <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> dens<span class="sc">$</span>x, <span class="at">y =</span> dens<span class="sc">$</span>y)</span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>contour_df<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dens<span class="sc">$</span>z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now we are ready to construct the plot. The ggplot2 recipe construction is very similar with ggraph. First we build the aesthetic based on the x and y cordinates we constructed in the layout_df table. Then we build on this based on various other aesthetics (colors and labels). Finally, we build the aesthetic of the geom-contour in a similar way as we have done till now using the after_stat option. We then set the color to black (yes you can change that!).</p>
+<p>Now we are ready to construct the plot. The <code>ggplot2</code> recipe construction is very similar with <code>ggraph</code>. First we build the aesthetic based on the x and y coordinates we constructed in the layout_df table. Then we build on this based on various other aesthetics (colors and labels). Finally, we build the aesthetic of the <code>geom_contour()</code> in a similar way as we have done till now using the <code>after_stat()</code> option. We then set the color to black (yes you can change that!).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(layout_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
@@ -680,10 +680,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_contour(data = contour_df, aes(x = x, y = y, z = z, fill =
-after_stat(level)), : Ignoring unknown aesthetics: fill</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

@@ -1,8 +1,8 @@
 # Assortativity
 
-Birds of a feather flock together. This is one of the most important insights about social interaction. Time and time again and across the globe, people display a tendency for connecting to others who are like themselves.[^assortativity-1] This tendency for connecting to similar others is called assortativity. And when people actually form relationships or engage in interactions with similar others, we refer to this as homophily. By contrast, connecting with dissimilar others is referred to as heterophily.
+Birds of a feather flock together. This is one of the most important insights about social interaction. Time and time again and across the globe, people display a tendency for connecting to others who are like themselves.[^assortitivity-1] This tendency for connecting to similar others is called **assortativity**. And when people actually form relationships or engage in interactions with similar others, we refer to this as **homophily**. By contrast, connecting with dissimilar others is referred to as **heterophily**.
 
-[^assortativity-1]:McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” Annual Review of Sociology 27(1):415–44.
+[^assortitivity-1]: McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” *Annual Review of Sociology* 27(1):415–44.
 
 Assortative tendencies may be the rule, but the study of different types of social contexts and relationships reveals variation in assortativity. For example, romantic relations in the United States tend to be racially and educationally homophilous, but also gender heterophilous. Furthermore, a social context might begin with strong assortative tendencies, only for those tendencies to weaken over time. An important goal of social science research is therefore to better understand the extent and dynamics of assortativity.
 
@@ -17,10 +17,11 @@ library(dplyr)
 
 ```
 
-Then we can load and inspect the drugnet data. The data are derived from a series of interviews and ethnographic observations with individuals who engaged in the use of illicit drugs.[^assortativity-2] [^assortativity-3] The connections represent close relationships among the users.
+Then we can load and inspect the drugnet data. The data are derived from a series of interviews and ethnographic observations with individuals who engaged in the use of illicit drugs.[^assortitivity-2] [^assortitivity-3] The connections represent close relationships among the users.
 
-[^assortativity-2]:Weeks, Margaret R., Scott Clair, Stephen P. Borgatti, Kim Radda, and Jean J. Schensul. 2002. “Social Networks of Drug Users in High-Risk Sites: Finding the Connections.” AIDS and Behavior 6(2):193–206.
-[^assortativity-3]:Weeks, Margaret R., Mark Convey, Julia Dickson-Gomez, Jianghong Li, Kim Radda, Maria Martinez, and Eduardo Robles. 2009. “Changing Drug Users’ Risk Environments: Peer Health Advocates as Multi-Level Community Change Agents.” American Journal of Community Psychology 43(3):330–44.
+[^assortitivity-2]: Weeks, Margaret R., Scott Clair, Stephen P. Borgatti, Kim Radda, and Jean J. Schensul. 2002. “Social Networks of Drug Users in High-Risk Sites: Finding the Connections.” AIDS and Behavior 6(2):193–206.
+
+[^assortitivity-3]: Weeks, Margaret R., Mark Convey, Julia Dickson-Gomez, Jianghong Li, Kim Radda, Maria Martinez, and Eduardo Robles. 2009. “Changing Drug Users’ Risk Environments: Peer Health Advocates as Multi-Level Community Change Agents.” American Journal of Community Psychology 43(3):330–44.
 
 ```{r drugnet}
 #| warning: false
@@ -29,7 +30,7 @@ drug_connect
 
 ```
 
-The drug_connect object contains the largest connected component of the network. Note that we have information about ethnicity and gender for each individual. This information can be used to explore the role of assortativity in network relationships among drug users. Let's visualize the network, highlighting the ethnic and gender attributes of the individuals.
+The "drug_connect" object contains the largest connected component of the network. Note that we have information about ethnicity and gender for each individual. This information can be used to explore the role of assortativity in network relationships among drug users. Let's visualize the network, highlighting the ethnic and gender attributes of the individuals.
 
 ```{r graph}
 ggraph(drug_connect, layout = "fr") +
@@ -47,18 +48,18 @@ A few things stand out from the visualization. First two distinct groups are app
 
 ## Estimating assortativity
 
-Assortativity can be calculated by evaluating the number of ties between actors who share the same attribute (for example, both are women) relative to the number of ties between actors who have different attributes (for example, one is a woman and one is a man). This is referred to as a nominal form of assortativity. It measures ties based on homophilous matches on attributes. We can start by estimating assortativity based on gender.
+Assortativity can be calculated by evaluating the number of ties between actors who share the same attribute (for example, both are women) relative to the number of ties between actors who have different attributes (for example, one is a woman and one is a man). This is referred to as a "nominal" form of assortativity. It measures ties based on homophilous matches on attributes. We can start by estimating nominal assortativity based on gender.
 
 ```{r gender_assort}
 assortativity_nominal(drug_connect, (as.factor(V(drug_connect)$gender)))
 
 ```
 
-The results produce an assortativity coefficient that ranges between -1 and 1.[^assortativity-4] [^assortativity-5] A value of 1 indicates that all ties are homophilous. A value of -1 indicates that all ties are heterophilous. A value of zero tells us that there is an equal mix of homophilous and heterophilous connections. Here we can see a positive coefficient (0.24), which reveals a tendency toward relationships between individuals from the same gender. As such, we can say that gender assortativity is apparent in this network.
+The results produce an assortativity coefficient that ranges between -1 and 1.[^assortitivity-4] [^assortitivity-5] A value of 1 indicates that all ties are homophilous. A value of -1 indicates that all ties are heterophilous. A value of zero tells us that there is an equal mix of homophilous and heterophilous connections. Here we can see a positive coefficient (0.24), which reveals a tendency toward relationships between individuals from the same gender. As such, we can say that gender assortativity is apparent in this network.
 
-[^assortativity-4]:M. E. J. Newman 2003. Mixing patterns in networks, Phys. Rev. E 67, 026126
-[^assortativity-5]:M. E. J. Newman 2002. Assortative mixing in networks, Phys. Rev. Lett. 89, 208701
+[^assortitivity-4]: M. E. J. Newman 2003. Mixing patterns in networks, Phys. Rev. E 67, 026126
 
+[^assortitivity-5]: M. E. J. Newman 2002. Assortative mixing in networks, Phys. Rev. Lett. 89, 208701
 
 Now let's examine ethnic assortativity.
 
@@ -94,7 +95,7 @@ head(edge_df)
 
 ```
 
-We can see that the homophilous values are true when the ethnicity values for ego and alter are the same and are false when they are not. To see how homophily varies by ethnicity, we can collapse or aggregate this table to obtain the proportion of homophilous ties for each ethnic group (based on the column for ego). Before doing this, I will add a variable that indicate what ethnicity each number refers to.
+The homophilous values are true when the ethnicity values for ego and alter are the same and are false when they are not. To see how homophily varies by ethnicity, we can collapse or aggregate this table to obtain the proportion of homophilous ties for each ethnic group (based on the column for ego). Before doing this, I will add a variable that indicates what ethnicity each number refers to.
 
 ```{r homophily}
 edge_df <- edge_df |> 
@@ -116,7 +117,7 @@ The results show that assortativity is especially strong among African American 
 
 ## Assortativity for continuous attributes
 
-We can also conceive of assortativity based on continuous variables. In these instances, individuals might not have a tendency to exactly match with an alter attribute, but instead to connect with an attribute that is close to their own attribute. For example, age is a continuous attribute that is often subject to homophily, especially when it comes to marriage. When people get married, they are often close in age, not necessarily the exact same age. The continuous measurement of age allows us to evaluate assortativity by its intensity. For example, a marriage to someone who is within two years of your own age is certainly more homophilous than marrying someone who is twenty years older!
+We can also conceive of assortativity based on continuous variables. In these instances, individuals might not have a tendency to exactly match with an alter attribute, but instead to connect with an attribute that is close to their own attribute. For example, age is a continuous attribute that is often subject to homophily, especially when it comes to marriage. When people get married, they are often close in age, but not necessarily the exact same age. The continuous measurement of age allows us to evaluate assortativity by its intensity. For example, a marriage to someone who is within two years of your own age is certainly more homophilous than marrying someone who is twenty years older!
 
 While the drug users network does not contain any continuous attribute variables, we can estimate one in order to demonstrate the calculation of continuous assortativity. Below we will identify the degree for each individual in the network and assign that score as a vertex attribute. Then we can assess the extent to which people in this network prefer to connect with others who have similar degree scores.
 
@@ -128,10 +129,8 @@ assortativity(drug_connect, V(drug_connect)$degree)
 
 Here we can see that the value is close to zero, which indicates that assortativity based on degree is not a defining feature of this network. People in this network sometimes connect with others who have similar degree values and sometimes they do not.
 
-Assortativity is a graph-level characteristic revealing the tendency to connect with similar others. We have shown how to estimate this feature, which can be used to examine the tie formation mechanisms -- in this case, ethnic homophily matters more for tie formation than gender or degree homophily. It also can be applied across contexts to see how assortativity varies across different types of social networks. There are more powerful statistical tools for assessing assortativity while also conditioning on other network features. While we won't cover those procedures here, those who are interested in these advanced techniques should explore other resources on exponential random graph models (or ERGMs).[^assortativity-6]
+Assortativity is a graph-level characteristic revealing the tendency to connect with similar others. We have shown how to estimate this feature, which can be used to examine the tie formation mechanisms -- in this case, ethnic homophily matters more for tie formation than gender or degree homophily. It also can be applied across contexts to see how assortativity varies across different types of social networks. There are more powerful statistical tools for assessing assortativity while also conditioning on other network features. While we won't cover those procedures here, those who are interested in these advanced techniques should explore other resources on exponential random graph models (or ERGMs).[^assortitivity-6]
 
-[^assortativity-6]:Rawlings, Craig M., Jeffrey A. Smith, James Moody, and Daniel A. McFarland 2023. "Part 1. Cross-Sectional Network Models: ERGM" in Network Analysis: Integrating Social Network Theory, Method, and Application with R. New York: Cambridge University Press. https://inarwhal.github.io/NetworkAnalysisR-book/ch13-Cross-Sectional-Network-Models-ERGM-R.html
+[^assortitivity-6]: Rawlings, Craig M., Jeffrey A. Smith, James Moody, and Daniel A. McFarland 2023. "Part 1. Cross-Sectional Network Models: ERGM" in Network Analysis: Integrating Social Network Theory, Method, and Application with R. New York: Cambridge University Press. https://inarwhal.github.io/NetworkAnalysisR-book/ch13-Cross-Sectional-Network-Models-ERGM-R.html
 
 ## References
-
-

@@ -1,8 +1,8 @@
 # Visualizing Networks with ggraph
 
-This chapter demonstrates network visualization procedures and strategies using the ggraph package. ggraph was designed to align with the coding principles used for the ggplot set of graphing functions in R.
+This chapter demonstrates network visualization procedures and strategies using the `ggraph` package. `ggraph` was designed to align with the coding principles used for the `ggplot` set of graphing functions in R.
 
-As an illustration, we will use network data from the high tech managers study. Let's begin by bringing igraph, ggraph, and intronets into our library.
+As an illustration, we will use network data from the high tech managers study. Let's begin by bringing `igraph`, `ggraph`, and `intronets` into our library.
 
 ```{r library}
 #| warning: false
@@ -16,7 +16,7 @@ library(intronets)
 
 Now let's load and examine the high tech managers data. These data were collected by David Krackhardt in the mid-1980s by surveying the managers of a small technology firm in California.[^network_viz-1] (The CEO of the company is also included as one of the managers.) This dataset is especially good to illustrate network visualization because it is small and contains many vertex attributes.
 
-[^network_viz-1]:Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
+[^network_viz-1]: Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
 
 ```{r hitech}
 load_nets("hi_tech.rda")
@@ -36,7 +36,7 @@ The numbers after the "DN" tell us that there are 21 vertices and 102 edges. We 
 
 ## Baseline visualization with ggraph
 
-One of the main benefits of the ggraph package (as well as the ggplot package from which it was derived) is that it allows one to build complex graphs by adding multiple simple layers. The first portion of the command identifies the network object to graph. Then each subsequent line adds an element to the graph. In the code below, we will start by placing the nodes only.
+One of the main benefits of the `ggraph` package (as well as the `ggplot` package from which it was derived) is that it allows one to build complex graphs by adding multiple simple layers. The first portion of the command identifies the network object to graph. Then each subsequent line adds an element to the graph. In the code below, we will start by placing the nodes only.
 
 ```{r nodes}
 ggraph(htf) +
@@ -85,7 +85,7 @@ The next chapter will offer other examples of network layouts, force-directed an
 
 ## Common node and edge features
 
-Without adding options to the geom_node_point and geom_edge_link layers, ggraph relies on the default display features. But we can make adjustments to many of those features. For example, the code below alters the size, color, and shape of the nodes, as well as the width, color, and transparency (alpha) of the edges.
+Without adding options to the `geom_node_point()` and `geom_edge_link()` layers, `ggraph` relies on the default display features. But we can make adjustments to many of those features. For example, the code below alters the size, color, and shape of the nodes, as well as the width, color, and transparency (alpha) of the edges.
 
 ```{r global}
 ggraph(htf, layout = "stress") +
@@ -119,7 +119,7 @@ ggraph(htf, layout = "stress") +
 
 ```
 
-Now the node colors are colored from darker blue to lighter blue as the department for each manager gets larger. ggraph treats, by default, numeric variables such as department as continuous, but in this case it would be better to view departments as categorical (or distinct units). To do that, we will need to tell R to treat department as a factor variable.
+Now the node colors are colored from darker blue to lighter blue as the department for each manager gets larger. `ggraph` treats, by default, numeric variables such as department as continuous, but in this case it would be better to view departments as categorical (or distinct units). To do that, we will need to tell R to treat department as a factor variable.
 
 ```{r dept_factor}
 ggraph(htf, layout = "stress") +
@@ -131,7 +131,7 @@ ggraph(htf, layout = "stress") +
 
 Now the visualizations show the department colors not as gradients, but as distinct. This seems helpful in this context, because this gives us a sense of the extent to which people in different departments share distinct friendship space (like the green nodes from department 2) or are more integrated with other departments (like the yellowish nodes from level 1).
 
-Whenever we add an aesthetic feature from the igraph object, ggraph defaults to displaying a legend for that element. To remove that feature, which we do below, we can add a "show.legend = FALSE" option at the end of the layer. And when the layer line gets too long, we can drop each feature down a line, make the code easier to read.
+Whenever we add an aesthetic feature from the igraph object, `ggraph` defaults to displaying a legend for that element. To remove that feature, which we do below, we can add a `show.legend = FALSE` option at the end of the layer. And when the layer line gets too long, we can drop each feature down a line, make the code easier to read.
 
 ```{r remove_legend}
 ggraph(htf, layout = "stress") +
@@ -146,7 +146,7 @@ ggraph(htf, layout = "stress") +
 
 ```
 
-R automatically sets the color scheme. To manually set colors for the nodes, we can add a scale_color_manual layer to the code. See below.
+R automatically sets the color scheme. To manually set colors for the nodes, we can add a `scale_color_manual` layer to the code. See below.
 
 ```{r set_colors}
 ggraph(htf, layout = "stress") +
@@ -162,7 +162,7 @@ ggraph(htf, layout = "stress") +
 
 ```
 
-Let's add other node attributes to the graph. Let's base the shapes on the supervisory levels and the size based on their tenure. And now that we are displaying multiple attributes, let's add the legend back in.
+Let's add other node attributes to the graph. We can base the shapes on the supervisory levels and the size based on their tenure. And now that we are displaying multiple attributes, the legend cab be added back in.
 
 ```{r node_max}
 ggraph(htf, layout = "stress") +
@@ -176,7 +176,7 @@ ggraph(htf, layout = "stress") +
 
 ```
 
-Now let's clean up the labels in the legend. For this we need to add a separate "labs" layer. To that layer, we can also add a title for the figure.
+Now let's clean up the labels in the legend. For this we need to add a separate `labs()` layer. To that layer, we can also add a title for the figure.
 
 ```{r labs}
 ggraph(htf, layout = "stress") +
@@ -196,7 +196,7 @@ ggraph(htf, layout = "stress") +
 
 ## Node Labeling
 
-Another common node feature to add is to label the node by its name. For this we also add another layer for "geom_node_text". Add this after the geom_node_point layer to make sure it is not covered up by the point.
+Another common node feature to add is to label the node by its name. For this we also add another layer for `geom_node_text()`. Add this after the `geom_node_point()` layer to make sure it is not covered up by the point.
 
 ```{r label}
 ggraph(htf, layout = "stress") +
@@ -215,7 +215,7 @@ ggraph(htf, layout = "stress") +
 
 ```
 
-Alternatively, we can replace the geom_node_point and geom_node_text lines with a single line for geom_node_label, which we do below. This makes it much easier to see the labels, but it does eliminate our ability to manipulate the shape of the node.
+Alternatively, we can replace the `geom_node_point()` and `geom_node_text()` lines with a single line for `geom_node_label()`, which we do below. This makes it much easier to see the labels, but it does eliminate our ability to manipulate the shape of the node.
 
 ```{r text}
 ggraph(htf, layout = "stress") +
@@ -234,7 +234,7 @@ ggraph(htf, layout = "stress") +
 
 ## Arcs
 
-As noted earlier, technically these ties are arcs, not edges. The direction of the ties can be shown by using the geom_edge_arc layer.
+As noted earlier, technically these ties are arcs, not edges. The direction of the ties can be shown by using the `geom_edge_arc()` layer.
 
 ```{r arcs}
 ggraph(htf, layout = "stress") +
@@ -318,7 +318,7 @@ table(E(htf_undirected)$weight)
 
 ```
 
-These results show that there are 56 non-reciprocated edges, compared with 23 reciprocated edges. Armed with this new edge attribute, we can return to the geom_edge_link layer and adjust the width based on this distinction.
+These results show that there are 56 non-reciprocated edges, compared with 23 reciprocated edges. Armed with this new edge attribute, we can return to the `geom_edge_link()` layer and adjust the width based on this distinction.
 
 ```{r weight}
 #| warning: false
@@ -364,4 +364,3 @@ ggraph(htf_undirected, layout = "stress") +
 There are many more options for customizing your network visualizations, but here we've covered the basics, emphasizing how to layer edge, node, and label features, as well as adding various options for incorporating node and edge attributes into the visualizations. In the next chapter, we will explore various network layouts and other more advanced customizations.
 
 ## References
-

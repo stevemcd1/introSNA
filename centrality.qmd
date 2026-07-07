@@ -2,17 +2,19 @@
 
 My interest in social networks was sparked by my fascination with peer group dynamics when I was in middle school. Some of my classmates were very popular in that they had lots of friends, whereas others tended to keep to themselves or had only one or two close friendships. While I never quite fit into either extreme, I was, for a time, quite envious of the popular kids in my school. I was fascinated by how those students could draw the attention and admiration of my classmates, as well as influence their opinions.
 
-This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their *centrality* in the network.[^centrality-1] [^centrality-2] Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).[^centrality-3]
+This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their **centrality** in the network.[^centrality-1] [^centrality-2] Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).[^centrality-3]
 
-[^centrality-1]:Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.
-[^centrality-2]:Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.
-[^centrality-3]:Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.
+[^centrality-1]: Borgatti, Stephen P., and Martin G. Everett. 2006. “A Graph-Theoretic Perspective on Centrality.” Social Networks 28(4):466–84.
 
-Centrality is a node-level attribute. But entire networks can be defined by their level of *centralization*, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.
+[^centrality-2]: Everett, M. G., and S. P. Borgatti. 1999. “The Centrality of Groups and Classes.” The Journal of Mathematical Sociology 23(3):181–201.
+
+[^centrality-3]: Burt, Ronald S. 1992. Structural Holes: The Social Structure of Competition. Cambridge, MA: Harvard University Press.
+
+Centrality is a node-level attribute. But entire networks can be defined by their level of **centralization**, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.
 
 This chapter will address different ways of measuring centrality and centralization in social networks. We will examine a historical example of centrality and its consequences for power dynamics among prominent families in Renaissance Florence. We will also consider the general tendencies that often produce highly centralized networks and how those tendencies are reflected in modern and even digital social networks.
 
-First, let's read in our libraries. We will use intronets to access the data, igraph to manipulate network objects, dplyr for data management, and ggraph to visualize the networks.
+First, let's read in our libraries. We will use `intronets` to access the data, `igraph` to manipulate network objects, `dplyr` for data management, and `ggraph` to visualize the networks.
 
 ```{r library}
 #| warning: false
@@ -29,10 +31,11 @@ How do we know if one person is more central to a network than another? There ar
 
 Let's examine these ideas by examining a network of inter-marriage relationships between families in 15th Century Florence, Italy.[^centrality-4] [^centrality-5]
 
-Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.
+[^centrality-4]: Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.
 
-[^centrality-4]:Kent D. 1978. The rise of the Medici: Faction in Florence, 1426-1434. Oxford: Oxford University Press.
-[^centrality-5]:Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.
+[^centrality-5]: Padgett, John F., and Christopher K. Ansell. 1993. “Robust Action and the Rise of the Medici, 1400-1434.” American Journal of Sociology 98(6):1259–1319.
+
+Constructed based on historical marriage records, these families were prominent merchants and financiers during the Renaissance. At this time and place in history, marriage bonds were important because allowed families to ally together to support their business interests and their political aspirations.
 
 The code below loads in the marriage network data and examines its contents.
 
@@ -56,7 +59,7 @@ ggraph(ifm, layout = "fr") +
 
 ### Degree centrality
 
-Which of these families is most central? The simplest way to answer this question is to rank the families by the number of ties that they have to other families. This number is their degree, which is why this is referred to as *degree centrality*. The idea is that a family is central to the network if it maintains many ties.
+Which of these families is most central? The simplest way to answer this question is to rank the families by the number of ties that they have to other families. This number is their degree, which is why this is referred to as **degree** centrality. The idea is that a family is central to the network if it maintains many ties.
 
 The following code obtains the degree values for each family and assigns those values to the graph as vertex attributes. Then we can create a separate data frame to compare the degree scores for each family.
 
@@ -82,13 +85,13 @@ summary(deg_cent)
 
 ```
 
-One final thing to note about degree centrality: this network is undirected because we are treating marriages as mutually agreed upon relationships. In directed networks, one can estimate separate indegree and outdegree centrality scores.
+One final thing to note about degree centrality: this network is undirected because we are treating marriages as mutually agreed upon relationships. In directed networks, one can estimate separate "indegree" and "outdegree" centrality scores.
 
 ### Closeness centrality
 
-Another way to think about centrality is based on the notion of closeness. We can think about distance in a network graph based on the number of paths (along the network edges) it would take to get from one node to the next. For example, Albizzi has to travel a distance of two paths to reach Barbadori (Albizzi -- Medici, Medici -- Barbadori), compared to a distance of one path for Castellani to reach Barbadori (Castellani -- Barbadori). In this way, Castellani is one path length closer to Barbadori than is Albizzi.
+Another way to think about centrality is based on the notion of **closeness**. We can think about distance in a network graph based on the number of paths (along the network edges) it would take to get from one node to the next. For example, Albizzi has to travel a distance of two paths to reach Barbadori (Albizzi -- Medici, Medici -- Barbadori), compared to a distance of one path for Castellani to reach Barbadori (Castellani -- Barbadori). In this way, Castellani is one path length closer to Barbadori than is Albizzi.
 
-To estimate each family's closeness centrality to the entire network, we would need to calculate the average geodesic (shortest path length) for every combination of families in the graph. The code below generates a distance matrix that displays these values. Here I will show only the distances between the first five families in the matrix. Note that it shows the correct path distances, as described above, between Albizzi and Barbadori (2), as well as Castellani and Barbadori (1).
+To estimate each family's closeness centrality to the entire network, we would need to calculate the average **geodesic** (shortest path length) for every combination of families in the graph. The code below generates a distance matrix that displays these values. Here I will show only the distances between the first five families in the matrix. Note that it shows the correct path distances, as described above, between Albizzi and Barbadori (2), as well as Castellani and Barbadori (1).
 
 ```{r distance}
 dist_mat <- distances(ifm)
@@ -98,7 +101,7 @@ dist_mat[1:5,1:5]
 
 ```
 
-To estimate closeness centrality, one starts by averaging the values from this distance matrix for each family. Then we take the inverse (1 divided by the average distance) to obtain the closeness estimate. The closeness command in igraph does this calculation for us.
+To estimate closeness centrality, one starts by averaging the values from this distance matrix for each family. Then we take the inverse (1 divided by the average distance) to obtain the closeness estimate. The `closeness()` command does this calculation for us.
 
 ```{r closeness}
 close <- closeness(ifm)
@@ -109,13 +112,13 @@ cent |>
 
 ```
 
-Again the Medici family shows up as the most central family in the network, indicating that it has the lowest average path distance to all other families. Note that Pucci does not receive a closeness centrality score. This is because Pucci is an isolate and cannot reach any of the other families.
+Again the Medici family shows up as the most central family in the network, indicating that it has the lowest average path distance to all other families. Note that Pucci does not receive a closeness centrality score. This is because Pucci is an **isolate** and cannot reach any of the other families.
 
 ### Betweenness Centrality
 
 One final way to evaluate centrality is to assess the extent to which a node is a central hub in the network, such that knowledge or information might frequently travel through the node. In this way, a central hub is a node that is *between* other nodes.
 
-Again we can return to the idea of geodesic (shortest path) distances between nodes. To the extent that families are frequently on these geodesic paths, they have high betweenness centrality. Let's look at an example. The following code obtains the geodesic path from Albizzi (vertex #2) to Pazzi (vertex #10).
+Again we can return to the idea of geodesic (shortest path) distances between nodes. To the extent that families are frequently on these geodesic paths, they have high **betweenness** centrality. Let's look at an example. The following code obtains the geodesic path from Albizzi (vertex #2) to Pazzi (vertex #10).
 
 ```{r geodesic}
 geodesic_2to10 <- all_shortest_paths(ifm, from = "2", to = "10")
@@ -137,7 +140,9 @@ cent |>
 
 ```
 
-Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici's betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why. Below we highlight all of the direct paths to Medici.
+Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici's betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why. 
+
+Below we highlight all of the direct paths to Medici. The first line of code identifies the numeric value associated with Medici. The next line assigns an edge attribute named "medici_edge" to indicate lines that are next to (or "incident" with) Medici. Then the `geom_node_link()` layer applies a separate color to those lines. 
 
 ```{r medici}
 medici_id <- as.numeric(which(V(ifm)$vertex.names == "MEDICI"))
@@ -153,14 +158,13 @@ ggraph(ifm, layout = "fr") +
 
 Medici is on nearly all of the geodesic paths that involve Acciaiuoli, Salviati, and Pazzi (the only exception is for the geodesic between Salviati and Pazzi). That puts Medici in a strong position to broker deals between those families and all others in the network.
 
-### Centrality Extensions
+### Centrality extensions
 
-Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: eigenvector centrality. This is an attempt to improve on closeness centrality by weighting a node's closeness to other nodes based on how central those target nodes are.
+Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: **eigenvector** centrality. This is an attempt to improve on closeness centrality by weighting a node's closeness to other nodes based on how central those target nodes are.
 
 For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.[^centrality-6]
 
-[^centrality-6]:Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.
-
+[^centrality-6]: Bonacich, Phillip. 2007. “Some Unique Properties of Eigenvector Centrality.” Social Networks 29(4):555–64.
 
 ```{r eigen}
 eigen <- eigen_centrality(ifm)
@@ -175,7 +179,7 @@ Medici is again the most central family using this metric. Note that this proced
 
 ## The Benefits of Centrality
 
-How might centrality in the marriage ties network benefit these Florentine families? To address this question, let's attach the political and economic vertex attributes to our centrality dataset. Then we can correlate the two sets of scores. Before running the correlation, I have to remove the column for the names of the families because it is not numeric. I also remove the closeness variable, which returns no correlation results due to the missing score for the isolate, Pucci. (This is okay because the eigenvector score provides a similar estimate.)
+How might centrality in the marriage ties network benefit these Florentine families? To address this question, let's attach the political and economic vertex attributes to our centrality data set. Then we can correlate the two sets of scores. Before running the correlation, I have to remove the column for the names of the families because it is not numeric. I also remove the closeness variable, which returns no correlation results due to the missing score for the isolate, Pucci. (This is okay because the eigenvector score provides a similar estimate.)
 
 ```{r correlate}
 cent$seats <- V(ifm)$seats
@@ -228,9 +232,9 @@ These simulated networks represent centralization extremes. Every node in the ri
 
 It is not surprising that the Florentine network leans toward the higher end of the centralization spectrum. Human networks are frequently marked by higher levels of centralization than random networks. Researchers have linked this pattern to a general tendency toward connecting with people who are popular.
 
-This tendency is referred to as preferential attachment.[^centrality-7] Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as *scale-free* in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.
+This tendency is referred to as **preferential attachment**.[^centrality-7] Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as *scale-free* in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.
 
-[^centrality-7]:Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.
+[^centrality-7]: Barabási, Albert-László, and Réka Albert. 1999. “Emergence of Scaling in Random Networks.” Science 286(5439):509–12.
 
 Consider the Florentine network. Let's say you are the head of one of the families and you want to form a marriage bond. If you could choose between Medici and Pucci, who would you choose? Forming a tie with Medici (the most central and popular family) is a far better choice if you want to enhance your status, wealth, and power in the city.
 
@@ -253,7 +257,7 @@ ggraph(pa300, layout = "fr") +
 
 ```
 
-The graph sizes the nodes by degree and highlights the high degree nodes (degree \> 5). The visualization reveals numerous hubs that are popular targets for connection. What we end up with is a hierarchically structured network focused on these central nodes.
+The graph sizes the nodes by degree and highlights the high degree nodes (degree \> 5). The visualization reveals numerous **hubs** that are popular targets for connection. What we end up with is a hierarchically structured network focused on these central nodes.
 
 What does this mean for centralization? Let's observe the changes in the centralization scores as the size of the network increases. The code below calculates eigenvector centralization scores and plots them.
 
@@ -272,6 +276,6 @@ plot(pa_n, pa_cent)
 
 The graph reveals an exponential increase in graph centralization as more and more actors enter the network, quickly becoming maximally centralized. Now imagine networks based on social media connections and it is easy to see how content on those platforms can become dominated by a small number of highly central superstar connectors!
 
-Centrality and centralization are crucial aspects of social networks, whether historical family relations or modern social media relations. Centrality helps us to understand who the most prominent and powerful actors are in the network and to explain how those individuals shape the flow and distribution of valuable resources in those contexts. The different centrality measures allow us to assess distinct mechanisms by which central actors affect the network. Centralization captures the extent of hierarchy in networks, telling us how dominant central actors are within and across different social contexts. 
+Centrality and centralization are crucial aspects of social networks, whether historical family relations or modern social media relations. Centrality helps us to understand who the most prominent and powerful actors are in the network and to explain how those individuals shape the flow and distribution of valuable resources in those contexts. The different centrality measures allow us to assess distinct mechanisms by which central actors affect the network. Centralization captures the extent of hierarchy in networks, telling us how dominant central actors are within and across different social contexts.
 
 ## References

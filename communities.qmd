@@ -2,7 +2,7 @@
 
 When examining a network graph, one of the first things people look for is elements of the graph that comprise **subgroups**. These subgroups are often comprised of nodes that are highly connected relative to the rest of the graph. By noting the different subgroups, we can learn something about how the people in the network see themselves and in interact with one another.
 
-While the "eye-test" allows us to visually demarcate different subgroups or **communities** within a network, **community detection** can be better deduced through the use of a series of algorithms. We will explore some examples of this below. First it will be necessary to load a few R packages: igraph for conducting network analysis, ggraph for presenting the graphs, dplyr for manipulating the data, patchwork for presenting side-by-side graphs, and ggforce for drawing polygons.
+While the "eye-test" allows us to visually demarcate different subgroups or **communities** within a network, **community detection** can be better deduced through the use of a series of algorithms. We will explore some examples of this below. First it will be necessary to load a few R packages: `igraph` for conducting network analysis, `ggraph` for presenting the graphs, `dplyr` for manipulating the data, `patchwork` for presenting side-by-side graphs, and `ggforce` for drawing community polygons.
 
 ```{r library}
 #| warning: false
@@ -19,7 +19,7 @@ library(ggforce)
 
 In the 1960s, a Cornell University PhD student, Samuel Franklin Sampson decided to conduct his dissertation research through the ethnographic study of monks in a Northeastern US monastery.[^communities-1] He was interested in understanding and reporting on the social interactions among the monks. Interestingly enough, the monks had a falling out during his data collection period which resulted in several monks being expelled from the monastery!
 
-[^communities-1]:Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.
+[^communities-1]: Sampson, S. F. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.
 
 We will use the network data that Sampson collected to detect clusters and communities among the cloistered. The code below loads the data.
 
@@ -29,9 +29,9 @@ sampson
 
 ```
 
-We can see here that this network contains 18 monks and 60 friendship ties among them. Originally, Sampson asked the monks to rank order their friendships; the ties here represent being in the top-three friendships. The network has been coerced such that any top-three nomination is treated as a symmetric friendship relationship.
+This network contains 18 monks and 60 friendship ties among them. Originally, Sampson asked the monks to rank order their friendships; the ties here represent being in the top-three friendships. The network has been coerced such that any top-three nomination is treated as a symmetric friendship relationship.
 
-Let's display the monk's friendships. The graph below shows a fairly dense network with many overlapping friendships among the monks.
+Let's display the monk's friendships. The graph below shows a dense network with many overlapping friendships among the monks.
 
 ```{r display}
 ggraph(sampson, layout = "fr") + 
@@ -53,7 +53,7 @@ cliques(sampson, min = 5)
 
 ```
 
-The results show 8 different cliques the size of 5 or more. The largest clique includes 6 individuals who are all interconnected. Below we identify those 6 and distinguish them from the others in the network graph. First, we identify the numerical set of monks in the largest clique. Then we assign a logical value as a vertex attribute for monks who are either in (TRUE) or out of (FALSE) the largest clique. That information can then be used to color the labels in the graph.
+The results show 8 different cliques the size of 5 or more. The largest clique includes 6 monks who are all interconnected. Below we identify those 6 monks and distinguish them from the others in the graph. First, we identify the numerical set of monks in the largest clique. Then we assign a logical value ("TRUE" or "FALSE") as a vertex attribute ("V(sampson)$clique") for monks who are either in or out of the largest clique. That information can then be used to color the labels in the graph.
 
 ```{r clique_graph}
 (max_clique <- as.numeric(unlist(cliques(sampson, min = 6))))
@@ -73,9 +73,9 @@ Here we can see which monks are part of the largest clique: Winfrid, Mark, Bonif
 
 **Coreness** provides another way to identify cohesive subgroups in social networks. It is more relaxed in that group members do not need to all be directly connected to one another as with a clique. Instead, group membership is defined by their degree value. Specifically, a **k-core** is a maximally connected subgroup in which each node is adjacent to at least k other nodes.[^communities-2] Nodes with lower k values tend to be on the periphery of a graph, whereas nodes with higher k values constitute a dense core.
 
-[^communities-2]:Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
+[^communities-2]: Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
 
-Below we can use the coreness function to obtain k-core estimates for each node. Then we can examine the frequency of k values.
+Below we can use the `coreness()` function to obtain k-core estimates for each node. Then we can examine the frequency of k values.
 
 ```{r coreness1}
 core <- coreness(sampson)
@@ -85,7 +85,7 @@ table(core)
 
 Because this is such a dense network, we do not see much variation in coreness. A few monks (4) have a coreness value of 4, whereas the remaining monks (14) have a coreness value of 5, representing the core of this network. Being part of the core means that they belong to a group of students where every member has a degree of at least 5.
 
-Let's graph coreness. We assign the core estimate as a vertex attribute. When graphing the network, we can use the coreness attribute to size the node labels, while still showing the clique membership.
+Let's graph coreness. We assign the core estimate as a vertex attribute. When graphing the network, we can use the coreness attribute to size the node labels, while still showing the clique membership as a color.
 
 ```{r gcore}
 V(sampson)$coreness <- core
@@ -107,7 +107,7 @@ Communities are often defined based on shared personal attributes among group me
 
 The concept of **modularity** refers to the extent that relationships in a network are defined by group membership. It is an estimate of density among in-group members relative to out-group members. A value of 1 reflects perfect modularity, in that all individuals connect to all other individuals from the same group and not to any out-group members. A value of -1 indicates that people only connect to out-group members. A value of 0 indicates a random mix of ties that is completely unrelated to group membership.
 
-Some of the monks joined the monastery after participating in a minor seminary (referred to by Sampson as "cloisterville") prior to joining the monastery. To what extent did this earlier experience shape their friendship relationships in the monastery? We can use the modularity estimate to help answer this question.
+Some of the monks joined the monastery after participating in a minor seminary (referred to by Sampson as "cloisterville") prior to joining the monastery. To what extent did this earlier experience shape their friendship relationships in the monastery? We can use the `modularity()` function to help answer this question.
 
 ```{r mod}
 V(sampson)$cloisterville
@@ -124,11 +124,11 @@ So far we have addressed modularity in terms of vertex attributes that define sh
 
 Several different community detection algorithms have been established in order to accomplish this task.[^communities-3] While there are many different types of algorithms, each with their own approach to assigning nodes to groups, they all share a general goal of identifying subgroups that maintain relatively high levels of group modularity.
 
-[^communities-3]:Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.
+[^communities-3]: Breiger R., Boorman S. and Arabie P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328-383.
 
 Let's consider three different modularity algorithms. First, the **Louvain** algorithm emphasizes modularity optimization. It assigns and reassigns nodes to different groups in order to identify a maximal modularity score. Second, **edge betweenness** identifies distinct groups by iteratively removing from the network edges that constitute bridges between different communities. Third, **random walk** estimates multiple random pathways between nodes across the network, clustering nodes into communities based on the extent to which they frequently appear as part of the same paths.
 
-Below we estimate these three algorithms, apply the membership vector to the igraph object, and compare the modularity scores to the cloisterville attributes.
+Below we apply these three algorithms, assign the membership vectors to the `igraph` object, and compare the modularity scores to the cloisterville attributes.
 
 ```{r detect}
 ### Louvain
@@ -206,8 +206,8 @@ g1 + geom_mark_hull(aes(x = x, y = y,
 
 This plot shows the distinct friendship communities among the monks.
 
-Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are proposing, and the micro-interactional processes that are central to the formation and maintenance of network ties.[^communities-4]
+Community detection algorithms are very useful for identifying subgroups within social networks. That said, there is not one best community detection algorithm to use for all analyses. Your decision depends on the type of network you are examining, the questions you are posing, and the micro-interactional processes that are central to the formation and maintenance of network ties.[^communities-4]
 
-[^communities-4]:Shai, Saray, Natalie Stanley, Clara Granell, Dane Taylor, and Peter J. Mucha. 2021. "Case Studies in Network Community Detection." The Oxford Handbook of Social Networks.
+[^communities-4]: Shai, Saray, Natalie Stanley, Clara Granell, Dane Taylor, and Peter J. Mucha. 2021. "Case Studies in Network Community Detection." The Oxford Handbook of Social Networks.
 
 ## References

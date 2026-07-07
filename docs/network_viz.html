@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -345,8 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This chapter demonstrates network visualization procedures and strategies using the ggraph package. ggraph was designed to align with the coding principles used for the ggplot set of graphing functions in R.</p>
-<p>As an illustration, we will use network data from the high tech managers study. Let’s begin by bringing igraph, ggraph, and intronets into our library.</p>
+<p>This chapter demonstrates network visualization procedures and strategies using the <code>ggraph</code> package. <code>ggraph</code> was designed to align with the coding principles used for the <code>ggplot</code> set of graphing functions in R.</p>
+<p>As an illustration, we will use network data from the high tech managers study. Let’s begin by bringing <code>igraph</code>, <code>ggraph</code>, and <code>intronets</code> into our library.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
@@ -381,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="baseline-visualization-with-ggraph" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="baseline-visualization-with-ggraph"><span class="header-section-number">3.2</span> Baseline visualization with ggraph</h2>
-<p>One of the main benefits of the ggraph package (as well as the ggplot package from which it was derived) is that it allows one to build complex graphs by adding multiple simple layers. The first portion of the command identifies the network object to graph. Then each subsequent line adds an element to the graph. In the code below, we will start by placing the nodes only.</p>
+<p>One of the main benefits of the <code>ggraph</code> package (as well as the <code>ggplot</code> package from which it was derived) is that it allows one to build complex graphs by adding multiple simple layers. The first portion of the command identifies the network object to graph. Then each subsequent line adds an element to the graph. In the code below, we will start by placing the nodes only.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -453,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="common-node-and-edge-features" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="common-node-and-edge-features"><span class="header-section-number">3.4</span> Common node and edge features</h2>
-<p>Without adding options to the geom_node_point and geom_edge_link layers, ggraph relies on the default display features. But we can make adjustments to many of those features. For example, the code below alters the size, color, and shape of the nodes, as well as the width, color, and transparency (alpha) of the edges.</p>
+<p>Without adding options to the <code>geom_node_point()</code> and <code>geom_edge_link()</code> layers, <code>ggraph</code> relies on the default display features. But we can make adjustments to many of those features. For example, the code below alters the size, color, and shape of the nodes, as well as the width, color, and transparency (alpha) of the edges.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">shape =</span> <span class="st">"square"</span>) <span class="sc">+</span> </span>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Now the node colors are colored from darker blue to lighter blue as the department for each manager gets larger. ggraph treats, by default, numeric variables such as department as continuous, but in this case it would be better to view departments as categorical (or distinct units). To do that, we will need to tell R to treat department as a factor variable.</p>
+<p>Now the node colors are colored from darker blue to lighter blue as the department for each manager gets larger. <code>ggraph</code> treats, by default, numeric variables such as department as continuous, but in this case it would be better to view departments as categorical (or distinct units). To do that, we will need to tell R to treat department as a factor variable.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
@@ -514,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now the visualizations show the department colors not as gradients, but as distinct. This seems helpful in this context, because this gives us a sense of the extent to which people in different departments share distinct friendship space (like the green nodes from department 2) or are more integrated with other departments (like the yellowish nodes from level 1).</p>
-<p>Whenever we add an aesthetic feature from the igraph object, ggraph defaults to displaying a legend for that element. To remove that feature, which we do below, we can add a “show.legend = FALSE” option at the end of the layer. And when the layer line gets too long, we can drop each feature down a line, make the code easier to read.</p>
+<p>Whenever we add an aesthetic feature from the igraph object, <code>ggraph</code> defaults to displaying a legend for that element. To remove that feature, which we do below, we can add a <code>show.legend = FALSE</code> option at the end of the layer. And when the layer line gets too long, we can drop each feature down a line, make the code easier to read.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>R automatically sets the color scheme. To manually set colors for the nodes, we can add a scale_color_manual layer to the code. See below.</p>
+<p>R automatically sets the color scheme. To manually set colors for the nodes, we can add a <code>scale_color_manual</code> layer to the code. See below.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -553,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Let’s add other node attributes to the graph. Let’s base the shapes on the supervisory levels and the size based on their tenure. And now that we are displaying multiple attributes, let’s add the legend back in.</p>
+<p>Let’s add other node attributes to the graph. We can base the shapes on the supervisory levels and the size based on their tenure. And now that we are displaying multiple attributes, the legend cab be added back in.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Now let’s clean up the labels in the legend. For this we need to add a separate “labs” layer. To that layer, we can also add a title for the figure.</p>
+<p>Now let’s clean up the labels in the legend. For this we need to add a separate <code>labs()</code> layer. To that layer, we can also add a title for the figure.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -596,7 +596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="node-labeling" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="node-labeling"><span class="header-section-number">3.6</span> Node Labeling</h2>
-<p>Another common node feature to add is to label the node by its name. For this we also add another layer for “geom_node_text”. Add this after the geom_node_point layer to make sure it is not covered up by the point.</p>
+<p>Another common node feature to add is to label the node by its name. For this we also add another layer for <code>geom_node_text()</code>. Add this after the <code>geom_node_point()</code> layer to make sure it is not covered up by the point.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -619,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Alternatively, we can replace the geom_node_point and geom_node_text lines with a single line for geom_node_label, which we do below. This makes it much easier to see the labels, but it does eliminate our ability to manipulate the shape of the node.</p>
+<p>Alternatively, we can replace the <code>geom_node_point()</code> and <code>geom_node_text()</code> lines with a single line for <code>geom_node_label()</code>, which we do below. This makes it much easier to see the labels, but it does eliminate our ability to manipulate the shape of the node.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> <span class="dv">2</span>, </span>
@@ -643,7 +643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="arcs" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="arcs"><span class="header-section-number">3.7</span> Arcs</h2>
-<p>As noted earlier, technically these ties are arcs, not edges. The direction of the ties can be shown by using the geom_edge_arc layer.</p>
+<p>As noted earlier, technically these ties are arcs, not edges. The direction of the ties can be shown by using the <code>geom_edge_arc()</code> layer.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_arc</span>() <span class="sc">+</span></span>
@@ -745,7 +745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 56 23 </code></pre>
 </div>
 </div>
-<p>These results show that there are 56 non-reciprocated edges, compared with 23 reciprocated edges. Armed with this new edge attribute, we can return to the geom_edge_link layer and adjust the width based on this distinction.</p>
+<p>These results show that there are 56 non-reciprocated edges, compared with 23 reciprocated edges. Armed with this new edge attribute, we can return to the <code>geom_edge_link()</code> layer and adjust the width based on this distinction.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(htf_undirected, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">width =</span> weight), </span>

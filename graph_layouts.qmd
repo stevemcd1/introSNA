@@ -1,12 +1,12 @@
 # Graph Layouts
 
-This chapter demonstrates the importance of space and presentation when visualizing network data using the ggraph package. As mentioned before, ggraph follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.
+This chapter demonstrates the importance of space and presentation when visualizing network data using `ggraph`. As mentioned before, `ggraph` follows the coding recipes commonly used with other data visualizations that help build the aesthetic of your presentation. One of the most crucial elements of this aesthetic is the layout.
 
 The layout of a network visual pertains to the location of the nodes and edges within the plotting space. The layout of your data visualization can influence how your reader interprets your data. Here, then, we introduce multiple ways in which you can utilize the space of your network visual through layout options to ensure proper interpretation of your network visualization.
 
-To do this, we are going to use the terrorism data (Koschade 2006; Magouirk, Atran & Sageman 2008).[^graph_layouts-1] [^graph_layouts-2] This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
+To do this, we are going to use the terrorism data.[^graph_layouts-1] [^graph_layouts-2] This is a network constructed based on the Jemaah Islamiyah cell that was responsible for the 2002 bombings in Bali. Ties are constructed through interactions between individuals within the terror organization. The roles are recorded for each individual as bomb maker (BM), command team (CT), operation assistant (OA), team lima (TL), and suicide bombers (SB). Below we read in the data and explore it a little.
 
-[^graph_layouts-1]:Koschade, S. 2006. A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. Studies in Conflict and Terrorism, 29, 559–575.
+[^graph_layouts-1]: Koschade, S. 2006. A social network analysis of Jemaah Islamiyah: The applications to counter-terrorism and intelligence. Studies in Conflict and Terrorism, 29, 559–575.
 
 [^graph_layouts-2]: Magouirk, J., Atran, S., & Sageman, M. 2008. Connecting Terrorist Networks. Studies in Conflict & Terrorism, 31(1), 1–16.
 
@@ -32,7 +32,7 @@ ggraph(bali) +
 
 ```
 
-Great! This is already a cool visualization that is pretty straightforward. Due to the nature of these relationships, the network presents very cleanly without much manipulation. Regardless, let's play around with it so you can see how the various layouts emphasize different aspects of the network. As you cycle through each visualization, pay attention to how the manipulations to the layout we make stresses different aspects of the network structure and draws your attention. Note, some might look cool while actually distracting the viewer from what you are trying to present. Visualization is an art that is best practiced in private before presented!
+Great! This is already a cool visualization that is pretty straightforward. Due to the nature of these relationships, the network presents very cleanly without much manipulation. Regardless, let's play around with it so you can see how the various layouts emphasize different aspects of the network. As you cycle through each visualization, pay attention to how the manipulations to the layout we make highlights different aspects of the network structure and draws your attention. Note, some might look cool while actually distracting the viewer from what you are trying to present. Visualization is an art that is best practiced in private before presented!
 
 ## Force Directed Layouts
 
@@ -40,7 +40,7 @@ You need to be mindful that humans are naturally inclined to make assumptions ab
 
 We will, therefore, start with what are called force directed layouts. As previously mentioned, these algorithms of visualization cause dissimilar nodes to repel and similarly connected nodes to plot closer to each other. This grouping of nodes aids viewers in their interpretation by leaning into their tendency to assume that proximity = similarity.
 
-To alter the layout of the ggraph visualization, simply use the 'layout' option. We will cycle through these force directed visualisations quickly. This network does not change too much between each. This is because the network itself is already very modular. However, this exposes you to several algorithms. With your data, the visualization may look very different between them all. We won't go into the specifics for how each works, you can search that yourself. In general, they all work under the same principle - maximizing the proximity of similarly connected nodes.
+To alter the layout of the `ggraph` visualization, simply use the 'layout' option. We will cycle through these force directed visualizations quickly. This network does not change too much between each. This is because the network itself is already very modular. However, this exposes you to several algorithms. With your data, the visualization may look very different between them all. In general, they all work under the same principle - maximizing the proximity of similarly connected nodes.
 
 ```{r}
 ggraph(bali, layout = "stress") +
@@ -75,7 +75,7 @@ ggraph(bali, layout = "graphopt") +
 
 ```
 
-Essentially each algorithm is designed to produce a good layout but each has a specific emphasis of what "good" is. Some seek aesthetically pleasing, or balanced, visualisions while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualisations. Remember, these do not change the network, they just alter the placement of the nodes.
+Essentially each algorithm is designed to produce a good layout but each has a specific emphasis of what "good" is. Some seek aesthetically pleasing, or balanced, visualizations while others seek to present the nodes true to the relational structure of the network. Here is a brief summary of how each of these force directed algorithms work and why they generate different network visualizations. Remember, these do not change the network, they just alter the placement of the nodes.
 
 +---------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | Layout                    | What it does                                                                              | Why it is good                                                                |
@@ -105,7 +105,7 @@ Essentially each algorithm is designed to produce a good layout but each has a s
 
 So far we have let the relationships and their nature guide the way we present the network. Force directed layouts spring nodes away or towards each other. The other option is to arrange the nodes in a specific ordered shape. While this goes against tendencies of perception we have discussed so far, there are some benefits to visualizing networks this way. Each manipulation of the network draws your attention to different aspects of the graph. It is worth learning each style so you can try them as you decide on your presentation.
 
-The circle layout places the nodes in a ring on the outside of the graph and places the edges within. This style is often used to emphasize the density of the network. The more interconnected the nodes are the more densely filled the ring is. Another nice thing about this layout is that the edges between nodes are easily traceable across the network. With all nodes out of the way, it is straightforward to see which nodes are connected to which. Notice, for this visual, we have increased the node size and made the edges more transparent.
+The "circle" layout places the nodes in a ring on the outside of the graph and places the edges within. This style is often used to emphasize the density of the network. The more interconnected the nodes are the more densely filled the ring is. Another nice thing about this layout is that the edges between nodes are easily traceable across the network. With all nodes out of the way, it is straightforward to see which nodes are connected to which. Notice, for this visual, we have increased the node size and made the edges more transparent.
 
 ```{r}
 ggraph(bali, layout = "circle") +
@@ -115,7 +115,7 @@ ggraph(bali, layout = "circle") +
 
 ```
 
-Next, we turn to a grid layout where the nodes are presented in rows left to right from bottom to top. This kind of layout makes it possible for viewers to focus on each node, or a group of nodes and see how many ties connect to them. Note, however, that this style gets very messy when you have networks with many nodes.
+Next, we turn to a "grid" layout where the nodes are presented in rows left to right from bottom to top. This kind of layout makes it possible for viewers to focus on each node, or a group of nodes and see how many ties connect to them. Note, however, that this style gets very messy when you have networks with many nodes.
 
 ```{r}
 ggraph(bali, layout = "grid") +
@@ -125,13 +125,13 @@ ggraph(bali, layout = "grid") +
 
 ```
 
-One final manipulation is to lay each node into one horizontal line and display the edges between them. Note, that instead of geom_edge_link, we use geom_edge_arc. If you use the links then it would just present as one solid line groing through each node.
+One final manipulation is to lay each node into one horizontal line ("linear") and display the edges between them. Note, that instead of `geom_edge_link()`, we use `geom_edge_arc()`. If you use link, then it would just present as one solid line going through each node.
 
 ```{r}
 ggraph(bali, layout = "linear") +
   geom_edge_arc(alpha = 0.5) +
   geom_node_point(size = 5, aes(color = role)) + 
-  theme_void()  ## note the change from link to arc!
+  theme_void()  
 
 ```
 
@@ -141,19 +141,19 @@ You can also force the nodes as linear and circular at once which, with the arcs
 ggraph(bali, layout = "linear", circular = TRUE) +
   geom_edge_arc(alpha = 0.5) +
   geom_node_point(size = 5, aes(color = role)) + 
-  theme_void()  ## note the change from link to arc!
+  theme_void()  
 
 ```
 
-These set layouts are nifty! By placing the notes into a specified order, you emphasize the edges. However, be mindful that some of these may look cool (like the spider web) but might not be as useful.
+These layouts are nifty! By placing the notes into a specified order, you emphasize the edges. However, be mindful that some of these may look cool (like the spider web) but might not be as useful.
 
 ## Contour Visualisations
 
-There are several other network visualization styles that you can play with. The final one, however, that we suggest learning about is the contour design. This design follows the logic of a contour map showing terrain. On a contour map, the lines displaying the contours designate more dense areas when they are placed closer together. Likewise, the contour maps are designed to demonstrate more compact or dense areas of a graph. Often these are also designated with hotter colors suggesting higher density areas.
+There are several other network visualization styles that you can play with. The final one, however, that we suggest learning about is the "contour" design. This design follows the logic of a contour map showing terrain. On a contour map, the lines displaying the contours designate more dense areas when they are placed closer together. Likewise, the contour maps are designed to demonstrate more compact or dense areas of a graph. Often these are also designated with hotter colors suggesting higher density areas.
 
-This style is specifically designed for dense, large networks. Again, remember that the design of your visualization is largely informed by the nature of your networks (number of nodes, structure etc.). Here, the contour style is not really necessary since the Bali terror network is small and sparse. However, it serves the purpose of learning the style.
+This style is specifically designed for dense, large networks. Again, remember that the design of your visualization is largely informed by the nature of your networks (number of nodes, structure etc.). Here, the contour style is not necessary since the Bali terror network is small and sparse. However, it serves the purpose of learning the style.
 
-With ggraph, you can use the stat_density_2d option to calculate the denser areas of the plot (building the aesthetic with the after_stat(level) fill) and place polygons as contour on top. Notice that the contour map doesn't work perfectly on this network (strands of color beyond the network). As mentioned, this is better used with larger networks.
+With `ggraph`, you can use the `stat_density_2d()` option to calculate the denser areas of the plot (building the aesthetic with the `after_stat(level)` fill) and place polygons as contour on top. Notice that the contour map doesn't work perfectly on this network (strands of color beyond the network). As mentioned, this is better used with larger networks.
 
 ```{r}
 ggraph(bali, layout = "kk") +
@@ -182,7 +182,7 @@ ggraph(bali, layout = "kk") +
 
 ```
 
-You can alter the colour scale of the scale_fill_gradient option. We suggest choosing a high contrast.
+You can alter the color scale of the `scale_fill_gradient` option. We suggest choosing a high contrast.
 
 ```{r}
 ggraph(bali, layout = "kk") +
@@ -194,7 +194,7 @@ ggraph(bali, layout = "kk") +
     contour = TRUE,
     alpha = 0.2) +  
   scale_fill_gradientn(
-    colours = c("firebrick", "orange", "yellow", "ivory")) + # custom scale
+    colors = c("firebrick", "orange", "yellow", "ivory")) + # custom scale
   theme_void() +
   theme(legend.position = "none") 
 
@@ -202,9 +202,9 @@ ggraph(bali, layout = "kk") +
 
 There is one final way to create cleaner contour plots and that is to use a slightly different combination of packages. We are going to pull out the layout of the nodes into two data frames. One has the coordinates of the nodes in your plots (the data frame we call layout_df). This also has the names and role characteristics so we can use them. The second makes the contour information based on the coordinates of the nodes (stored in the layout_df).
 
-To help calculate the contour lines, we will use the MASS package and to create a clean contour plot, we will use the trusty ggplot2 package. Let's split up the setup and the visualisation.
+To help calculate the contour lines, we will use the `MASS` package and to create a clean contour plot, we will use the trusty `ggplot2` package. Let's split up the setup and the visualization.
 
-As mentioned, we will first construct the layout so ggplot2 knows where to place the individuals in the plot window. This chunk below first creates the dataframe that holds the coordinates and then calculates the contours based on the density of those coordinates. Do not get too lost in the various functions but focus on the key concepts of what we are doing and why.
+As mentioned, we will first construct the layout so `ggplot2` knows where to place the individuals in the plot window. This chunk below first creates the data frame that holds the coordinates and then calculates the contours based on the density of those coordinates. Do not get too lost in the various functions but focus on the key concepts of what we are doing and why.
 
 ```{r}
 library(MASS)
@@ -226,9 +226,9 @@ contour_df$z <- as.vector(dens$z)
 
 ```
 
-Now we are ready to construct the plot. The ggplot2 recipe construction is very similar with ggraph. First we build the aesthetic based on the x and y cordinates we constructed in the layout_df table. Then we build on this based on various other aesthetics (colors and labels). Finally, we build the aesthetic of the geom-contour in a similar way as we have done till now using the after_stat option. We then set the color to black (yes you can change that!).
+Now we are ready to construct the plot. The `ggplot2` recipe construction is very similar with `ggraph`. First we build the aesthetic based on the x and y coordinates we constructed in the layout_df table. Then we build on this based on various other aesthetics (colors and labels). Finally, we build the aesthetic of the `geom_contour()` in a similar way as we have done till now using the `after_stat()` option. We then set the color to black (yes you can change that!).
 
-```{r}
+```{r, warning = FALSE, message= FALSE}
 ggplot(layout_df, aes(x = x, y = y)) +
   geom_point(color = "grey") +
   geom_text(aes(label = role), vjust = -0.7, size = 3) +
@@ -243,7 +243,6 @@ ggplot(layout_df, aes(x = x, y = y)) +
 
 This chapter examined the different types of layouts that can be used to create network graphs. Many other excellent resources are available if you would like to know more about graph layouts.[^graph_layouts-3]
 
-[^graph_layouts-3]:Moody, James and Ryan Light. 2021. "Network Visualization." The Oxford Handbook of Social Networks. 
+[^graph_layouts-3]: Moody, James and Ryan Light. 2021. "Network Visualization." The Oxford Handbook of Social Networks.
 
 ## References
-

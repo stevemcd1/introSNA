@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -353,15 +353,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Flight of the Conchords friends Jemaine, Brett, Murray, and Jim [Not shown: Greg]</figcaption>
 </figure>
 </div>
-<p>To begin with, I will load the igraph package into the library. If this is your first time using igraph, you will have to install it first by typing <em>install.packages(“igraph”)</em>.</p>
+<p>To begin with, I will load the <code>igraph</code> package into the library. If this is your first time using <code>igraph</code>, you will have to install it first by typing <code>install.packages("igraph")</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="networks-as-edgelists" class="level3" data-number="2.0.1">
 <h3 data-number="2.0.1" class="anchored" data-anchor-id="networks-as-edgelists"><span class="header-section-number">2.0.1</span> Networks as Edgelists</h3>
 <p>A network is a series of dots or points in a graph, along with a series of lines that connect those dots. In social network analysis, the dots are often considered to be people, but they could also refer to various products of people, like books or corporations or events. The lines represent relationships. Often we are speaking of friendships, but they could represent marriages or mergers or memberships. Throughout the book, we will refer to the dots interchangeably as <strong>nodes</strong> or <strong>vertices</strong> and the lines as <strong>edges</strong>.</p>
-<p>Now let’s make a network. One easy way to do so is to create an edgelist, which shows a set of relationships between pairs of nodes in a network. The code below uses the make_graph function to create an igraph object. Each pair indicates a friendship. The first pair is “Brett”,“Jemaine”, so that means these two individuals are friends.</p>
-<p>Note also the “directed = FALSE” option. We need to include this option because while this is an <strong>undirected</strong> network, sometimes the lines in a graph are <strong>directed</strong>. For example, Brett might say that Jemaine is his friend, but Jemaine might not say that Brett is his friend. In that case, the graph would include a line from Brett to Jemaine, but no line from Jemaine to Brett. In the current case, we will treat this relationship as undirected (thus, “directed = FALSE”) and assume that any friendship is reciprocated.</p>
+<p>Now let’s make a network. One easy way to do so is to create an edgelist, which shows a set of relationships between pairs of nodes in a network. The code below uses the <code>make_graph</code> function to create an igraph object. Each pair indicates a friendship. The first pair is “Brett”,“Jemaine”, so that means these two individuals are friends.</p>
+<p>Note also the <code>"directed = FALSE"</code> option. We need to include this option because while this is an <strong>undirected</strong> network, sometimes the lines in a graph are <strong>directed</strong>. For example, Brett might say that Jemaine is his friend, but Jemaine might not say that Brett is his friend. In that case, the graph would include a line from Brett to Jemaine, but no line from Jemaine to Brett. In the current case, we will treat this relationship as undirected (thus, <code>"directed = FALSE"</code>) and assume that any friendship is reciprocated.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>conchords <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Brett"</span>,<span class="st">"Jemaine"</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Brett"</span>,<span class="st">"Murray"</span>, </span>
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Murray"</span>,<span class="st">"Jim"</span>, </span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Greg"</span>,<span class="st">"Greg"</span>), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>You may have noticed that the last line show a tie between Greg and himself. We included this because Greg is actually an isolate with no friends. (Sorry, Greg.) If we don’t include this self-tie (called a <strong>loop</strong>), then Greg won’t be included as a node in the network. To appropriately include Greg as an isolate, we can “simplify” the graph to remove the loop.</p>
+<p>You may have noticed that the last line show a tie between Greg and himself. We included this because Greg is actually an isolate with no friends. (Sorry, Greg.) If we don’t include this self-tie (called a <strong>loop</strong>), then Greg won’t be included as a node in the network. To appropriately include Greg as an isolate, we can <code>simplify()</code> the graph to remove the loop.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>conchords <span class="ot">&lt;-</span> <span class="fu">simplify</span>(conchords, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">remove.loops =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="networks-as-graphs" class="level3" data-number="2.0.2">
 <h3 data-number="2.0.2" class="anchored" data-anchor-id="networks-as-graphs"><span class="header-section-number">2.0.2</span> Networks as Graphs</h3>
-<p>Now let’s plot out the network. For now, we will use R’s base plot function. In the next chapter we can work with ggraph to develop more detailed visualizations.</p>
+<p>Now let’s plot out the network. For now, we will use R’s base <code>plot</code> function. In the next chapter we can work with <code>ggraph</code> to develop more detailed visualizations.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(conchords)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -399,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="network-density" class="level3" data-number="2.0.3">
 <h3 data-number="2.0.3" class="anchored" data-anchor-id="network-density"><span class="header-section-number">2.0.3</span> Network density</h3>
 <p>Another important feature of networks is their <strong>density</strong>. Mathematically, density is the proportion of ties present in the graph divided by all possible ties. An <strong>empty graph</strong> is when there are no ties between individuals in the network, which results in a density score of zero. A <strong>complete graph</strong> is when all possible ties are present, which results in a density score of one.</p>
-<p>This network contains 4 ties. The number of possible ties in this network is calculated as (n*(n-1))/2, with n referring to the number of vertices. This translates to (5*(5-1))/2, or (5*4)/2, or 20/2, which equals 10. Therefore, the density of this network is equal to 4/10 = 0.4. This tells us that 40 percent of the total possible ties are present in this network. We can check this result below by using the density command from igraph to estimate this for us.</p>
+<p>This network contains 4 ties. The number of possible ties in this network is calculated as (n*(n-1))/2, with n referring to the number of vertices. This translates to (5*(5-1))/2, or (5*4)/2, or 20/2, which equals 10. Therefore, the density of this network is equal to 4/10 = 0.4. This tells us that 40 percent of the total possible ties are present in this network. We can check this result below by using the <code>edge_density</code> command to estimate this for us.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">*</span>(<span class="dv">5-1</span>)<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Remember that this is a undirected network. If this was a directed network, density would be calculated differently. That’s because each pair of nodes (or <strong>dyads</strong>) would have the potential for two ties rather than just one (with each node potentially nominating the other as a friend). That effectively doubles the potential ties for the network. In that case, the denominator (all possible ties) for the density equation is n*(n-1), without being divided by 2 afterward.</p>
-<p>Let’s illustrate this by constructing a directed network. In the show, Murray asks Greg if he thinks they are friends. Greg says, “I like to think so, Murray.” To this, Murray responds: “We’re not. We’re workmates.” We can take this as evidence that Greg nominates Murray as a friend (or sends Murray a directed friendship tie), whereas Murray does not nominate Greg as a friend. Armed with this information, let’s recreate the network as directed, with all ties reciprocated except for the Greg to Murray friendship. (Note that we don’t need to simplify this network because there are no more loops. Greg is incorporated into the network by virtue of his directed tie to Murray.)</p>
+<p>Let’s illustrate this by constructing a directed network. In the show, Murray asks Greg if he thinks they are friends. Greg says, “I like to think so, Murray.” To this, Murray responds: “We’re not. We’re workmates.” We can take this as evidence that Greg nominates Murray as a friend (or sends Murray a directed friendship tie), whereas Murray does not nominate Greg as a friend. Armed with this information, let’s recreate the network as directed, with all ties reciprocated except for the Greg to Murray friendship. (Note that we don’t need to <code>simplify()</code> this network because there are no more loops. Greg is incorporated into the network by virtue of his directed tie to Murray.)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>conchords_dir <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Brett"</span>,<span class="st">"Jemaine"</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Jemaine"</span>,<span class="st">"Brett"</span>,</span>
@@ -437,17 +437,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="igraph-objects" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="igraph-objects"><span class="header-section-number">2.1</span> igraph objects</h2>
-<p>Now let’s examine the elements of the igraph object we created for the undirected conchords network.</p>
+<p>Now let’s examine the elements of the object we created for the undirected conchords network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>conchords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9aaf5cb UN-- 5 4 -- 
+<pre><code>IGRAPH 111afe1 UN-- 5 4 -- 
 + attr: name (v/c)
-+ edges from 9aaf5cb (vertex names):
++ edges from 111afe1 (vertex names):
 [1] Brett  --Jemaine Brett  --Murray  Jemaine--Murray  Murray --Jim    </code></pre>
 </div>
 </div>
-<p>Right away we can see important information on the top line. This is an IGRAPH object. The “UN” tells us this is an undirected network. The 5 and 4 indicate that there are 5 nodes and 4 edges (remember, we removed the loop, so it’s only 4 edges).</p>
+<p>Right away we can see important information on the top line. This is an <code>igraph</code> object. The “UN” tells us this is an undirected network. The 5 and 4 indicate that there are 5 nodes and 4 edges (remember, we removed the loop, so it’s only 4 edges).</p>
 <p>The second line lists the attributes. The only attribute is name. In the parenthesis after name, the “v” tells us this is a vertex attribute. This makes sense because each name is a characteristic of a node. To examine an attribute, we can use the following code. This is similar to the way one might request information from a variable in a data frame, which is done by naming the data frame, followed by the dollar sign ($), and then naming the variable. In this case, the call is preceded by a “V” to indicate that we are requesting a vertex attribute.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(conchords)<span class="sc">$</span>name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -460,9 +460,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>conchords_dir</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9ac8056 DN-- 5 9 -- 
+<pre><code>IGRAPH 11338a3 DN-- 5 9 -- 
 + attr: name (v/c)
-+ edges from 9ac8056 (vertex names):
++ edges from 11338a3 (vertex names):
 [1] Brett  -&gt;Jemaine Jemaine-&gt;Brett   Brett  -&gt;Murray  Murray -&gt;Brett  
 [5] Jemaine-&gt;Murray  Murray -&gt;Jemaine Murray -&gt;Jim     Jim    -&gt;Murray 
 [9] Greg   -&gt;Murray </code></pre>
@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This object tells us that the network is directed (“DN”) and still contains the same number of vertices (5), but has more ties (9) because it includes reciprocated friendships plus Greg’s unreciprocated tie. Note, too, that the list of edges shows the direction of the friendship nominations represented by arrows (“-&gt;”) between each dyad. In the undirected network, the edges were separated by “–”.</p>
 <section id="networks-as-matrices" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="networks-as-matrices"><span class="header-section-number">2.1.1</span> Networks as Matrices</h3>
-<p>Networks can also be presented as matrices. We can view the matrix for this network by applying the as.matrix command to the conchords object.</p>
+<p>Networks can also be presented as matrices. We can view the matrix for this network by applying the <code>as.matrix</code> command to the conchords object.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(conchords)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -510,9 +510,9 @@ Greg        .       .      1   .    .</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>conchords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9aaf5cb UN-- 5 4 -- 
+<pre><code>IGRAPH 111afe1 UN-- 5 4 -- 
 + attr: name (v/c)
-+ edges from 9aaf5cb (vertex names):
++ edges from 111afe1 (vertex names):
 [1] Brett  --Jemaine Brett  --Murray  Jemaine--Murray  Murray --Jim    </code></pre>
 </div>
 </div>
@@ -521,9 +521,9 @@ Greg        .       .      1   .    .</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(conchords)<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>conchords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9aaf5cb UNW- 5 4 -- 
+<pre><code>IGRAPH 111afe1 UNW- 5 4 -- 
 + attr: name (v/c), weight (e/n)
-+ edges from 9aaf5cb (vertex names):
++ edges from 111afe1 (vertex names):
 [1] Brett  --Jemaine Brett  --Murray  Jemaine--Murray  Murray --Jim    </code></pre>
 </div>
 </div>
@@ -540,7 +540,7 @@ Jim         .       .      1   .    .
 Greg        .       .      .   .    .</code></pre>
 </div>
 </div>
-<p>Hmm…this does not show the new values, only the binary ones. We have to extract the matrix using an igraph function and include an option to apply the weighted values.</p>
+<p>Hmm…this does not show the new values, only the binary ones. We have to extract the matrix using the <code>as_adjacency_matrix</code> function and include an option to apply the weighted values.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_adjacency_matrix</span>(conchords, <span class="at">attr =</span> <span class="st">"weight"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -558,7 +558,7 @@ Greg        .       .      .   .    .</code></pre>
 </section>
 <section id="creating-a-graph-from-an-adjacency-matrix-and-a-data-frame" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="creating-a-graph-from-an-adjacency-matrix-and-a-data-frame"><span class="header-section-number">2.1.3</span> Creating a Graph from an Adjacency Matrix and a Data Frame</h3>
-<p>Earlier we demonstrated how to create an igraph object from an edgelist. However, you might have network data in other formats. For example, how can we create an igraph object by starting with an adjacency matrix? Below we will extract the adjacency matrix from the conchords network and then use the graph_from_adjacency_matrix command to create a new (duplicated) igraph object. We need to point out the adjacency matrix object and indicate whether the graph is directed or undirected, as well as if it is weighted or not.</p>
+<p>Earlier we demonstrated how to create an <code>igraph</code> object from an edgelist. However, you might have network data in other formats. For example, how can we create an <code>igraph</code> object by starting with an adjacency matrix? Below we will extract the adjacency matrix from the conchords network and then use the <code>graph_from_adjacency_matrix</code> command to create a new (duplicated) <code>igraph</code> object. We need to point out the adjacency matrix object and indicate whether the graph is directed or undirected, as well as if it is weighted or not.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>conchord_mat <span class="ot">&lt;-</span> <span class="fu">as_adjacency_matrix</span>(conchords, <span class="at">attr =</span> <span class="st">"weight"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>conchord2 <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(</span>
@@ -567,13 +567,13 @@ Greg        .       .      .   .    .</code></pre>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>conchord2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9b2ff30 UNW- 5 4 -- 
+<pre><code>IGRAPH 119c776 UNW- 5 4 -- 
 + attr: name (v/c), weight (e/n)
-+ edges from 9b2ff30 (vertex names):
++ edges from 119c776 (vertex names):
 [1] Brett  --Jemaine Brett  --Murray  Jemaine--Murray  Murray --Jim    </code></pre>
 </div>
 </div>
-<p>Here you can see that the conchord igraph object was effectively duplicated.</p>
+<p>Here you can see that the conchord object was effectively duplicated.</p>
 <p>Finally, you might have network data in the form of data frames, which are data matrices that include a set of cases in the rows and variables in the columns. There are two main pieces of network information that could be contained in a data frame: 1) the vertex attributes and 2) the edge attributes.</p>
 <p>Let’s create two separate data frames with this information for the conchords network, starting with the vertex attributes. In the code below, we include the names of the people in the network, plus let’s add two other attributes. In the show, Brett and Jemaine are both musicians, so we will give them a value of 1 for a musician variable. Also, Brett, Jemaine, and Murray are originally from New Zealand, so they will receive a value of 1 for a nz variable.</p>
 <div class="cell">
@@ -606,7 +606,7 @@ Greg        .       .      .   .    .</code></pre>
 4  Murray     Jim      2</code></pre>
 </div>
 </div>
-<p>Using these two data frames, we can create a new igraph object. We first need to assign the edge_df as “d”, then indicate that those edges are undirected, and finally add the vertex attributes.</p>
+<p>Using these two data frames, we can create a new <code>igraph</code> object using the ‘graph_from_data_frame’ function. We first need to assign the edge_df as “d”, then indicate that those edges are undirected, and finally add the vertex attributes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>conchord3 <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> edge_df,</span>
@@ -614,14 +614,14 @@ Greg        .       .      .   .    .</code></pre>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertices =</span> vertex_df)</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>conchord3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 9b3ba7d UNW- 5 4 -- 
+<pre><code>IGRAPH 11a753f UNW- 5 4 -- 
 + attr: name (v/c), musician (v/n), nz (v/n), weight (e/n)
-+ edges from 9b3ba7d (vertex names):
++ edges from 11a753f (vertex names):
 [1] Brett  --Jemaine Brett  --Murray  Jemaine--Murray  Murray --Jim    </code></pre>
 </div>
 </div>
-<p>As you can see, this creates a new igraph object named conchord3. This object is the same as the earlier ones we created, except that it now includes new vertex attributes for musician and for New Zealand.</p>
-<p>In addition to covering basic terminology, this chapter showed how to view networks in different formats (as an edgelist, as a graph, and as a matrix), how to identify and manipulate igraph objects, and how to create igraph objects from different starting points (an edgelist, an adjacency matrix, and a data frame). The next chapter will get into more details about visualizing igraph networks in ggraph.</p>
+<p>As you can see, this creates a new object named conchord3. This object is the same as the earlier ones we created, except that it now includes new vertex attributes for musician and for New Zealand.</p>
+<p>In addition to covering basic terminology, this chapter showed how to view networks in different formats (as an edgelist, as a graph, and as a matrix), how to identify and manipulate igraph objects, and how to create igraph objects from different starting points (an edgelist, an adjacency matrix, and a data frame). The next chapter will get into more details about visualizing networks in <code>ggraph</code>.</p>
 </section>
 </section>
 <section id="references" class="level2" data-number="2.2">

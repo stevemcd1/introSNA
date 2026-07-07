@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#degree-centrality" id="toc-degree-centrality" class="nav-link" data-scroll-target="#degree-centrality"><span class="header-section-number">5.1.1</span> Degree centrality</a></li>
   <li><a href="#closeness-centrality" id="toc-closeness-centrality" class="nav-link" data-scroll-target="#closeness-centrality"><span class="header-section-number">5.1.2</span> Closeness centrality</a></li>
   <li><a href="#betweenness-centrality" id="toc-betweenness-centrality" class="nav-link" data-scroll-target="#betweenness-centrality"><span class="header-section-number">5.1.3</span> Betweenness Centrality</a></li>
-  <li><a href="#centrality-extensions" id="toc-centrality-extensions" class="nav-link" data-scroll-target="#centrality-extensions"><span class="header-section-number">5.1.4</span> Centrality Extensions</a></li>
+  <li><a href="#centrality-extensions" id="toc-centrality-extensions" class="nav-link" data-scroll-target="#centrality-extensions"><span class="header-section-number">5.1.4</span> Centrality extensions</a></li>
   </ul></li>
   <li><a href="#the-benefits-of-centrality" id="toc-the-benefits-of-centrality" class="nav-link" data-scroll-target="#the-benefits-of-centrality"><span class="header-section-number">5.2</span> The Benefits of Centrality</a></li>
   <li><a href="#centralization" id="toc-centralization" class="nav-link" data-scroll-target="#centralization"><span class="header-section-number">5.3</span> Centralization</a></li>
@@ -348,10 +348,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>My interest in social networks was sparked by my fascination with peer group dynamics when I was in middle school. Some of my classmates were very popular in that they had lots of friends, whereas others tended to keep to themselves or had only one or two close friendships. While I never quite fit into either extreme, I was, for a time, quite envious of the popular kids in my school. I was fascinated by how those students could draw the attention and admiration of my classmates, as well as influence their opinions.</p>
-<p>This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their <em>centrality</em> in the network.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>Centrality is a node-level attribute. But entire networks can be defined by their level of <em>centralization</em>, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.</p>
+<p>This is a common fascination about social networks. Some actors play an especially important role in social networks by virtue of their <strong>centrality</strong> in the network.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Being central in a network tends to provide people with prominence (they are easy to identify), prestige (they have higher status), and power (they have the ability to influence others).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Centrality is a node-level attribute. But entire networks can be defined by their level of <strong>centralization</strong>, which refers to the extent that a network is dominated by a central actor. It is easy to imagine a situation whereby the social relationships for one grade level might be centralized around a singularly popular individual, whereas the relationships in another grade level might be less focused on a single person. Variation in centralization across graphs is likely to have important implications for learning, mental health, and many other outcomes across those different contexts.</p>
 <p>This chapter will address different ways of measuring centrality and centralization in social networks. We will examine a historical example of centrality and its consequences for power dynamics among prominent families in Renaissance Florence. We will also consider the general tendencies that often produce highly centralized networks and how those tendencies are reflected in modern and even digital social networks.</p>
-<p>First, let’s read in our libraries. We will use intronets to access the data, igraph to manipulate network objects, dplyr for data management, and ggraph to visualize the networks.</p>
+<p>First, let’s read in our libraries. We will use <code>intronets</code> to access the data, <code>igraph</code> to manipulate network objects, <code>dplyr</code> for data management, and <code>ggraph</code> to visualize the networks.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(intronets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="degree-centrality" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="degree-centrality"><span class="header-section-number">5.1.1</span> Degree centrality</h3>
-<p>Which of these families is most central? The simplest way to answer this question is to rank the families by the number of ties that they have to other families. This number is their degree, which is why this is referred to as <em>degree centrality</em>. The idea is that a family is central to the network if it maintains many ties.</p>
+<p>Which of these families is most central? The simplest way to answer this question is to rank the families by the number of ties that they have to other families. This number is their degree, which is why this is referred to as <strong>degree</strong> centrality. The idea is that a family is central to the network if it maintains many ties.</p>
 <p>The following code obtains the degree values for each family and assigns those values to the graph as vertex attributes. Then we can create a separate data frame to compare the degree scores for each family.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(ifm)<span class="sc">$</span>deg <span class="ot">&lt;-</span> <span class="fu">degree</span>(ifm)</span>
@@ -434,12 +434,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 0.00000 0.06667 0.20000 0.16667 0.20000 0.40000 </code></pre>
 </div>
 </div>
-<p>One final thing to note about degree centrality: this network is undirected because we are treating marriages as mutually agreed upon relationships. In directed networks, one can estimate separate indegree and outdegree centrality scores.</p>
+<p>One final thing to note about degree centrality: this network is undirected because we are treating marriages as mutually agreed upon relationships. In directed networks, one can estimate separate “indegree” and “outdegree” centrality scores.</p>
 </section>
 <section id="closeness-centrality" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="closeness-centrality"><span class="header-section-number">5.1.2</span> Closeness centrality</h3>
-<p>Another way to think about centrality is based on the notion of closeness. We can think about distance in a network graph based on the number of paths (along the network edges) it would take to get from one node to the next. For example, Albizzi has to travel a distance of two paths to reach Barbadori (Albizzi – Medici, Medici – Barbadori), compared to a distance of one path for Castellani to reach Barbadori (Castellani – Barbadori). In this way, Castellani is one path length closer to Barbadori than is Albizzi.</p>
-<p>To estimate each family’s closeness centrality to the entire network, we would need to calculate the average geodesic (shortest path length) for every combination of families in the graph. The code below generates a distance matrix that displays these values. Here I will show only the distances between the first five families in the matrix. Note that it shows the correct path distances, as described above, between Albizzi and Barbadori (2), as well as Castellani and Barbadori (1).</p>
+<p>Another way to think about centrality is based on the notion of <strong>closeness</strong>. We can think about distance in a network graph based on the number of paths (along the network edges) it would take to get from one node to the next. For example, Albizzi has to travel a distance of two paths to reach Barbadori (Albizzi – Medici, Medici – Barbadori), compared to a distance of one path for Castellani to reach Barbadori (Castellani – Barbadori). In this way, Castellani is one path length closer to Barbadori than is Albizzi.</p>
+<p>To estimate each family’s closeness centrality to the entire network, we would need to calculate the average <strong>geodesic</strong> (shortest path length) for every combination of families in the graph. The code below generates a distance matrix that displays these values. Here I will show only the distances between the first five families in the matrix. Note that it shows the correct path distances, as described above, between Albizzi and Barbadori (2), as well as Castellani and Barbadori (1).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">distances</span>(ifm)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dist_mat) <span class="ot">&lt;-</span> <span class="fu">V</span>(ifm)<span class="sc">$</span>vertex.names</span>
@@ -454,7 +454,7 @@ BISCHERI            4       2         3        0          2
 CASTELLANI          3       3         1        2          0</code></pre>
 </div>
 </div>
-<p>To estimate closeness centrality, one starts by averaging the values from this distance matrix for each family. Then we take the inverse (1 divided by the average distance) to obtain the closeness estimate. The closeness command in igraph does this calculation for us.</p>
+<p>To estimate closeness centrality, one starts by averaging the values from this distance matrix for each family. Then we take the inverse (1 divided by the average distance) to obtain the closeness estimate. The <code>closeness()</code> command does this calculation for us.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>close <span class="ot">&lt;-</span> <span class="fu">closeness</span>(ifm)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cent<span class="sc">$</span>close <span class="ot">&lt;-</span> close</span>
@@ -481,12 +481,12 @@ CASTELLANI          3       3         1        2          0</code></pre>
 16        PUCCI        NaN</code></pre>
 </div>
 </div>
-<p>Again the Medici family shows up as the most central family in the network, indicating that it has the lowest average path distance to all other families. Note that Pucci does not receive a closeness centrality score. This is because Pucci is an isolate and cannot reach any of the other families.</p>
+<p>Again the Medici family shows up as the most central family in the network, indicating that it has the lowest average path distance to all other families. Note that Pucci does not receive a closeness centrality score. This is because Pucci is an <strong>isolate</strong> and cannot reach any of the other families.</p>
 </section>
 <section id="betweenness-centrality" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="betweenness-centrality"><span class="header-section-number">5.1.3</span> Betweenness Centrality</h3>
 <p>One final way to evaluate centrality is to assess the extent to which a node is a central hub in the network, such that knowledge or information might frequently travel through the node. In this way, a central hub is a node that is <em>between</em> other nodes.</p>
-<p>Again we can return to the idea of geodesic (shortest path) distances between nodes. To the extent that families are frequently on these geodesic paths, they have high betweenness centrality. Let’s look at an example. The following code obtains the geodesic path from Albizzi (vertex #2) to Pazzi (vertex #10).</p>
+<p>Again we can return to the idea of geodesic (shortest path) distances between nodes. To the extent that families are frequently on these geodesic paths, they have high <strong>betweenness</strong> centrality. Let’s look at an example. The following code obtains the geodesic path from Albizzi (vertex #2) to Pazzi (vertex #10).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>geodesic_2to10 <span class="ot">&lt;-</span> <span class="fu">all_shortest_paths</span>(ifm, <span class="at">from =</span> <span class="st">"2"</span>, <span class="at">to =</span> <span class="st">"10"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>vec_2to10 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(geodesic_2to10<span class="sc">$</span>res[[<span class="dv">1</span>]])</span>
@@ -523,7 +523,8 @@ CASTELLANI          3       3         1        2          0</code></pre>
 16        PUCCI 0.00000000</code></pre>
 </div>
 </div>
-<p>Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici’s betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why. Below we highlight all of the direct paths to Medici.</p>
+<p>Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici’s betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why.</p>
+<p>Below we highlight all of the direct paths to Medici. The first line of code identifies the numeric value associated with Medici. The next line assigns an edge attribute named “medici_edge” to indicate lines that are next to (or “incident” with) Medici. Then the <code>geom_node_link()</code> layer applies a separate color to those lines.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>medici_id <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">which</span>(<span class="fu">V</span>(ifm)<span class="sc">$</span>vertex.names <span class="sc">==</span> <span class="st">"MEDICI"</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(ifm)<span class="sc">$</span>medici_edge <span class="ot">&lt;-</span> <span class="fu">E</span>(ifm) <span class="sc">%in%</span> <span class="fu">incident</span>(ifm, medici_id, <span class="at">mode =</span> <span class="st">"all"</span>)</span>
@@ -544,8 +545,8 @@ CASTELLANI          3       3         1        2          0</code></pre>
 <p>Medici is on nearly all of the geodesic paths that involve Acciaiuoli, Salviati, and Pazzi (the only exception is for the geodesic between Salviati and Pazzi). That puts Medici in a strong position to broker deals between those families and all others in the network.</p>
 </section>
 <section id="centrality-extensions" class="level3" data-number="5.1.4">
-<h3 data-number="5.1.4" class="anchored" data-anchor-id="centrality-extensions"><span class="header-section-number">5.1.4</span> Centrality Extensions</h3>
-<p>Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: eigenvector centrality. This is an attempt to improve on closeness centrality by weighting a node’s closeness to other nodes based on how central those target nodes are.</p>
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="centrality-extensions"><span class="header-section-number">5.1.4</span> Centrality extensions</h3>
+<p>Researchers and statisticians have developed many other ways to measure centrality in networks. The reference section includes further citations to explore. But I wanted to mention one commonly used measure: <strong>eigenvector</strong> centrality. This is an attempt to improve on closeness centrality by weighting a node’s closeness to other nodes based on how central those target nodes are.</p>
 <p>For example, the closeness centrality score treats the distance between a family and Ginori as being as important as the distance to Medici. The eigenvector centrality score gives greater weight to path distances that target Medici because Medici is the most central family. In this way, eigenvector centrality measures the extent to which families are close to families that are highly central.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>eigen <span class="ot">&lt;-</span> <span class="fu">eigen_centrality</span>(ifm)</span>
@@ -578,7 +579,7 @@ CASTELLANI          3       3         1        2          0</code></pre>
 </section>
 <section id="the-benefits-of-centrality" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="the-benefits-of-centrality"><span class="header-section-number">5.2</span> The Benefits of Centrality</h2>
-<p>How might centrality in the marriage ties network benefit these Florentine families? To address this question, let’s attach the political and economic vertex attributes to our centrality dataset. Then we can correlate the two sets of scores. Before running the correlation, I have to remove the column for the names of the families because it is not numeric. I also remove the closeness variable, which returns no correlation results due to the missing score for the isolate, Pucci. (This is okay because the eigenvector score provides a similar estimate.)</p>
+<p>How might centrality in the marriage ties network benefit these Florentine families? To address this question, let’s attach the political and economic vertex attributes to our centrality data set. Then we can correlate the two sets of scores. Before running the correlation, I have to remove the column for the names of the families because it is not numeric. I also remove the closeness variable, which returns no correlation results due to the missing score for the isolate, Pucci. (This is okay because the eigenvector score provides a similar estimate.)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cent<span class="sc">$</span>seats <span class="ot">&lt;-</span> <span class="fu">V</span>(ifm)<span class="sc">$</span>seats</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cent<span class="sc">$</span>wealth <span class="ot">&lt;-</span> <span class="fu">V</span>(ifm)<span class="sc">$</span>wealth</span>
@@ -648,7 +649,7 @@ wealth  0.5589956 0.3511716 0.5365981 0.4216972 1.0000000</code></pre>
 <section id="preferential-attachment" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="preferential-attachment"><span class="header-section-number">5.4</span> Preferential Attachment</h2>
 <p>It is not surprising that the Florentine network leans toward the higher end of the centralization spectrum. Human networks are frequently marked by higher levels of centralization than random networks. Researchers have linked this pattern to a general tendency toward connecting with people who are popular.</p>
-<p>This tendency is referred to as preferential attachment.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as <em>scale-free</em> in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.</p>
+<p>This tendency is referred to as <strong>preferential attachment</strong>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Instead of thinking about a social network as an already existing set of people in a bounded unit (like students assigned to a class), the preferential attachment model theorizes networks as <em>scale-free</em> in that they involve a constant influx of new people into the network. These new people make choices about whom they want to form ties with. And those choices are influenced by popularity.</p>
 <p>Consider the Florentine network. Let’s say you are the head of one of the families and you want to form a marriage bond. If you could choose between Medici and Pucci, who would you choose? Forming a tie with Medici (the most central and popular family) is a far better choice if you want to enhance your status, wealth, and power in the city.</p>
 <p>We can simulate a series of preferential attachment networks to see how the centralization of the network changes as the size of the network grows. Here we create 5 networks in which we vary the size from 15 nodes to 300 nodes. We set the tendency to connect to high degree alters (power) to .5, which is the midpoint between no preferential attachment (0) to maximum preferential attachment (1). Then we can visualize the largest of these networks.</p>
 <div class="cell">
@@ -673,7 +674,7 @@ wealth  0.5589956 0.3511716 0.5365981 0.4216972 1.0000000</code></pre>
 </div>
 </div>
 </div>
-<p>The graph sizes the nodes by degree and highlights the high degree nodes (degree &gt; 5). The visualization reveals numerous hubs that are popular targets for connection. What we end up with is a hierarchically structured network focused on these central nodes.</p>
+<p>The graph sizes the nodes by degree and highlights the high degree nodes (degree &gt; 5). The visualization reveals numerous <strong>hubs</strong> that are popular targets for connection. What we end up with is a hierarchically structured network focused on these central nodes.</p>
 <p>What does this mean for centralization? Let’s observe the changes in the centralization scores as the size of the network increases. The code below calculates eigenvector centralization scores and plots them.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>cent15 <span class="ot">&lt;-</span> <span class="fu">centr_eigen</span>(pa15, <span class="at">directed =</span> F)<span class="sc">$</span>centralization</span>

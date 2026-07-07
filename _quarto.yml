@@ -23,8 +23,8 @@ book:
         - graph_layouts.qmd
     - part: "Analysis"
       chapters:
-        - centrality.qmd
         - connectivity.qmd
+        - centrality.qmd
         - communities.qmd
         - assortitivity.qmd
         - roles.qmd

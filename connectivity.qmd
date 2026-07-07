@@ -1,10 +1,10 @@
 # Connectivity
 
-Connectivity is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines.[^connectivity-1] This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect reachability?
+**Connectivity** is one of the foundational concepts in social network analysis. It refers to whether and how nodes in a graph are connected to one another via lines.[^connectivity-1] This is important to consider especially in instances where various elements (like information, resources, or disease) flow across networks. In these instances, we can consider which nodes are easiest or hardest to reach. Also, how do different network structures affect **reachability**?
 
-[^connectivity-1]:Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
+[^connectivity-1]: Wasserman, Stanley and Katherine Faust. 1994. Social Network Analysis. Cambridge.
 
-Let's begin by loading the intronets, igraph, ggraph, and tidyverse packages.
+Let's begin by loading the `intronets`, `igraph`, `ggraph`, and `tidyverse` packages.
 
 ```{r library}
 #| warning: false
@@ -40,7 +40,7 @@ ggraph(moreno, layout = "stress") +
 
 ## Connected graphs and components
 
-A **connected graph** is a graph in which every node can be reached by every other node by following the paths laid out by the edges. Here we can see that the Moreno network is disconnected. For example, student 28 can follow edge paths to nearly all of the other students, but it cannot reach students 32 or 33 because there is no edge path that connects them. Within a disconnected graph such as this, we could identify a set of **components**, which refer to a fully connected subgraph. We can let R identify the components in the Moreno graph by using the components command from igraph.
+A **connected graph** is a graph in which every node can be reached by every other node by following the paths laid out by the edges. Here we can see that the Moreno network is disconnected. For example, student 28 can follow edge paths to nearly all of the other students, but it cannot reach students 32 or 33 because there is no edge path that connects them. Within a disconnected graph such as this, we could identify a set of **components**, which refer to a fully connected subgraph. We can let R identify the components in the Moreno graph by using the `components()` function.
 
 ```{r components}
 (comps <- components(moreno))
@@ -49,7 +49,7 @@ A **connected graph** is a graph in which every node can be reached by every oth
 
 The newly created comps object contains three list elements. The last element (no) tells us that there are 2 components in the network -- which of course is easy to see from the graph. The csize element refers to the number of nodes in each component, indicating that we have one large component with 31 nodes and one small component with 2 nodes. Finally, the membership element assigns a value to each node based on which component of which it is a member.
 
-Let's apply the membership vector to the igraph object as a vertex attributed and then differentiate the components in the graph by color.
+Let's apply the membership vector to the `igraph` object as a vertex attribute and then differentiate the components in the graph by color.
 
 ```{r compgraph}
 V(moreno)$component <- comps$membership
@@ -63,11 +63,11 @@ ggraph(moreno, layout = "stress") +
 
 ```
 
-Note the changes to this ggraph command. In the geom_node_point command, we called for the aes option, which tells ggraph to look for values that are part of the igraph object. We colored the nodes based on the values in the component vertex attribute vector, treating that vector as a factor to note that the numbers are discrete units rather than part of a continuum. At the end of that line, we told ggraph not to include a legend for the graph. The scale_color_manual function sets the colors: light green for component 1 and salmon for component 2.
+Note the changes to this `ggraph` command. In the `geom_node_point()` layer, we called for the "aes" option, which tells `ggraph` to look for values that are part of the graph. We colored the nodes based on the values in the component vertex attribute vector, treating that vector as a "factor" to note that the numbers are discrete units rather than part of a continuum. At the end of that line, we told `ggraph` not to include a legend for the graph. The `scale_color_manual()` sets the colors: light green for component 1 and salmon for component 2.
 
-Identifying components can also be useful for extracting elements of the graph. In this case, let's say we are only interested in the **reachability** of students who are in the largest component of this network -- otherwise known as the "main" component.
+Identifying components can also be useful for extracting elements of the graph. In this case, let's say we are only interested in the **reachability** of students who are in the largest component of this network -- otherwise known as the **main component**.
 
-First we'll identify the largest component. Then we can use the induced_subgraph command to select only that component, creating a new igraph object (moreno2) in which students 32 and 33 are removed.
+First we'll identify the largest component. Then we can use the `induced_subgraph()` function to select only that component, creating a new `igraph` object (moreno2) in which students 32 and 33 are removed.
 
 ```{r subgraph}
 (largest <- which.max(comps$csize))
@@ -94,7 +94,7 @@ all_simple_paths(moreno2, from = "9", to = "1")
 
 ```
 
-igraph identifies 10 different paths that student 9 might take to, say, pass a note to student 1. A more circuitous route would involve passing the note to student 7, then 8, 4, 3, 2, and finally to 1. This involves 6 edges and therefore a distance of 6. However, student 9 could choose a more direct route by following the path from student 11 to 5 to 1, for half the distance of that longer path.
+There are 10 different paths that student 9 might take to, say, pass a note to student 1. A more circuitous route would involve passing the note to student 7, then 8, 4, 3, 2, and finally to 1. This involves 6 edges and therefore a distance of 6. However, student 9 could choose a more direct route by following the path from student 11 to 5 to 1, for half the distance of that longer path.
 
 In this way, distances between nodes are defined by the shortest path length between two nodes. This is referred to as the **geodesic distance**. Below we ask for the set of **geodesic paths** between students 9 and 1.
 
@@ -104,7 +104,7 @@ shortest_9to1$res
 
 ```
 
-In this case, we see that there is only one geodesic path between students 9 and 1: 9 - 11 - 5 - 1. In other instances, we might find several geodesic paths. If we are only interested in the geodesic distance, rather than the specific path, the following command can be used.
+In this case, we see that there is only one geodesic path between students 9 and 1: 9 - 11 - 5 - 1. In other instances, we might find several geodesic paths. If we are only interested in the geodesic distance, rather than the specific path, the `distances()` function can be used.
 
 ```{r distances91}
 distances(moreno2, v = "9", to = "1")
@@ -137,7 +137,7 @@ The final two students (32 and 33) are disconnected from the graph. Their distan
 
 ### Node distance summaries
 
-One might want to compare students in terms of their overall reachability within a network. For this we can examine the average geodesic distance that it would take for a student to pass a note to one of their classmates. For this, let's return to the distance matrix from the main component of the Moreno graph. Student 1's average distance can be obtained by taking the sum of the distance values in row 1 and dividing by the number of total students (length(moreno2)) minus 1. We can then compare student 1's average to that of student 9.
+One might want to compare students in terms of their overall reachability within a network. For this we can examine the average geodesic distance that it would take for a student to pass a note to one of their classmates. For this, let's return to the distance matrix from the main component of the Moreno graph. Student 1's average distance can be obtained by taking the sum of the distance values in row 1 and dividing by the number of total students (that is, "length(moreno2)") minus 1. We can then compare student 1's average to that of student 9.
 
 ```{r nodemean}
 sum(distmat[1,])/(length(moreno2)-1)
@@ -147,7 +147,7 @@ sum(distmat[9,])/(length(moreno2)-1)
 
 The results show that student 1 is, on average, closer to the rest of the students than is student 9. Student 1's average geodesic distance to other students is about 3 edges, compared to nearly 4 edges for student 9.
 
-Another way to examine this is to estimate the longest path distance that a student would have to travel to get to another student. This is referred to as a node's **eccentricity**. This can be obtained via the eccentricity command. See how the same estimates can be obtained by selecting the maximum values for the rows in the distance matrix.
+Another way to examine this is to estimate the longest path distance that a student would have to travel to get to another student. This is referred to as a student's **eccentricity**. This can be obtained via the `eccentricity()` function. See how the same estimates are obtained by selecting the maximum values for the rows in the distance matrix.
 
 ```{r ecc}
 eccentricity(moreno2)
@@ -179,14 +179,14 @@ max(eccentricity(moreno2))
 
 The results show that the diameter of the main component is 11.
 
-How do we know which pair of students is farthest away -- i.e., has a geodesic distance of 11? igraph has a command for that
+How do we know which pair of students is farthest away -- i.e., has a geodesic distance of 11? This can be obtained through the `farthest_vertices()` function.
 
 ```{r farthest}
 farthest_vertices(moreno2)
 
 ```
 
-These results show that students 12 and 22 have a path distance that matches the diameter. But is this the only example of a diameter path? Unfortunately, the farthest_vertices command only selects the first diameter pair it comes across. To find out the other possible combinations, we could return to the distance matrix, asking which combinations match the diameter value.
+These results show that students 12 and 22 have a path distance that matches the diameter. But is this the only example of a diameter path? Unfortunately, this function only selects the first diameter pair it comes across. To find out the other possible combinations, we could return to the distance matrix, asking which combinations match the diameter value.
 
 ```{r allfarthest}
 which(distmat == diam, arr.ind = TRUE)
@@ -197,7 +197,7 @@ Here we can see that there are a dozen diameter paths in this network.
 
 ## Visualizing paths
 
-How would one visualize a diameter path in a graph? First, identify and save as an object the diameter path. Second, use that object to create an edgelist that follows the path. We do this by creating a two column diameter_edges object with cbind, with the first column including all vertices in the path sequence except the last vertex (i.e., the "from" column) and the second column including all vertices except for the original vertex (i.e., the "to" column). From there we can apply different colors to the edges depending on whether or not they appear in the edgelist.
+How would one visualize a diameter path in a graph? First, identify and save as an object the diameter path. Second, use that object to create an edgelist that follows the path. We do this by creating a two column diameter_edges object with `cbind()`, with the first column including all vertices in the path sequence except the last vertex (i.e., the "from" column) and the second column including all vertices except for the original vertex (i.e., the "to" column). From there we can apply different colors to the edges depending on whether or not they appear in the edgelist.
 
 ```{r vizpath}
 (diameter_path <- get_diameter(moreno2))

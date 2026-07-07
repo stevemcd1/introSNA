@@ -6,7 +6,7 @@ One of our favorite TV shows is "Flight of the Conchords," which was a sitcom ab
 
 ![Flight of the Conchords friends Jemaine, Brett, Murray, and Jim \[Not shown: Greg\]](conchords_photo.png){fig-align="left"}
 
-To begin with, I will load the igraph package into the library. If this is your first time using igraph, you will have to install it first by typing *install.packages("igraph")*.
+To begin with, I will load the `igraph` package into the library. If this is your first time using `igraph`, you will have to install it first by typing `install.packages("igraph")`.
 
 ```{r library}
 #| warning: false
@@ -18,9 +18,9 @@ library(igraph)
 
 A network is a series of dots or points in a graph, along with a series of lines that connect those dots. In social network analysis, the dots are often considered to be people, but they could also refer to various products of people, like books or corporations or events. The lines represent relationships. Often we are speaking of friendships, but they could represent marriages or mergers or memberships. Throughout the book, we will refer to the dots interchangeably as **nodes** or **vertices** and the lines as **edges**.
 
-Now let's make a network. One easy way to do so is to create an edgelist, which shows a set of relationships between pairs of nodes in a network. The code below uses the make_graph function to create an igraph object. Each pair indicates a friendship. The first pair is "Brett","Jemaine", so that means these two individuals are friends.
+Now let's make a network. One easy way to do so is to create an edgelist, which shows a set of relationships between pairs of nodes in a network. The code below uses the `make_graph` function to create an igraph object. Each pair indicates a friendship. The first pair is "Brett","Jemaine", so that means these two individuals are friends.
 
-Note also the "directed = FALSE" option. We need to include this option because while this is an **undirected** network, sometimes the lines in a graph are **directed**. For example, Brett might say that Jemaine is his friend, but Jemaine might not say that Brett is his friend. In that case, the graph would include a line from Brett to Jemaine, but no line from Jemaine to Brett. In the current case, we will treat this relationship as undirected (thus, "directed = FALSE") and assume that any friendship is reciprocated.
+Note also the `"directed = FALSE"` option. We need to include this option because while this is an **undirected** network, sometimes the lines in a graph are **directed**. For example, Brett might say that Jemaine is his friend, but Jemaine might not say that Brett is his friend. In that case, the graph would include a line from Brett to Jemaine, but no line from Jemaine to Brett. In the current case, we will treat this relationship as undirected (thus, `"directed = FALSE"`) and assume that any friendship is reciprocated.
 
 ```{r graph}
 conchords <- make_graph(edges=c("Brett","Jemaine", 
@@ -31,7 +31,7 @@ conchords <- make_graph(edges=c("Brett","Jemaine",
 
 ```
 
-You may have noticed that the last line show a tie between Greg and himself. We included this because Greg is actually an isolate with no friends. (Sorry, Greg.) If we don't include this self-tie (called a **loop**), then Greg won't be included as a node in the network. To appropriately include Greg as an isolate, we can "simplify" the graph to remove the loop.
+You may have noticed that the last line show a tie between Greg and himself. We included this because Greg is actually an isolate with no friends. (Sorry, Greg.) If we don't include this self-tie (called a **loop**), then Greg won't be included as a node in the network. To appropriately include Greg as an isolate, we can `simplify()` the graph to remove the loop.
 
 ```{r loop}
 conchords <- simplify(conchords, 
@@ -41,7 +41,7 @@ conchords <- simplify(conchords,
 
 ### Networks as Graphs
 
-Now let's plot out the network. For now, we will use R's base plot function. In the next chapter we can work with ggraph to develop more detailed visualizations.
+Now let's plot out the network. For now, we will use R's base `plot` function. In the next chapter we can work with `ggraph` to develop more detailed visualizations.
 
 ```{r plot}
 plot(conchords)
@@ -59,7 +59,7 @@ These visualizations are referred to as network **graphs** or **sociograms**. Th
 
 Another important feature of networks is their **density**. Mathematically, density is the proportion of ties present in the graph divided by all possible ties. An **empty graph** is when there are no ties between individuals in the network, which results in a density score of zero. A **complete graph** is when all possible ties are present, which results in a density score of one.
 
-This network contains 4 ties. The number of possible ties in this network is calculated as (n\*(n-1))/2, with n referring to the number of vertices. This translates to (5\*(5-1))/2, or (5\*4)/2, or 20/2, which equals 10. Therefore, the density of this network is equal to 4/10 = 0.4. This tells us that 40 percent of the total possible ties are present in this network. We can check this result below by using the density command from igraph to estimate this for us.
+This network contains 4 ties. The number of possible ties in this network is calculated as (n\*(n-1))/2, with n referring to the number of vertices. This translates to (5\*(5-1))/2, or (5\*4)/2, or 20/2, which equals 10. Therefore, the density of this network is equal to 4/10 = 0.4. This tells us that 40 percent of the total possible ties are present in this network. We can check this result below by using the `edge_density` command to estimate this for us.
 
 ```{r density}
 4/(5*(5-1)/2)
@@ -69,7 +69,7 @@ edge_density(conchords)
 
 Remember that this is a undirected network. If this was a directed network, density would be calculated differently. That's because each pair of nodes (or **dyads**) would have the potential for two ties rather than just one (with each node potentially nominating the other as a friend). That effectively doubles the potential ties for the network. In that case, the denominator (all possible ties) for the density equation is n\*(n-1), without being divided by 2 afterward.
 
-Let's illustrate this by constructing a directed network. In the show, Murray asks Greg if he thinks they are friends. Greg says, "I like to think so, Murray." To this, Murray responds: "We're not. We're workmates." We can take this as evidence that Greg nominates Murray as a friend (or sends Murray a directed friendship tie), whereas Murray does not nominate Greg as a friend. Armed with this information, let's recreate the network as directed, with all ties reciprocated except for the Greg to Murray friendship. (Note that we don't need to simplify this network because there are no more loops. Greg is incorporated into the network by virtue of his directed tie to Murray.)
+Let's illustrate this by constructing a directed network. In the show, Murray asks Greg if he thinks they are friends. Greg says, "I like to think so, Murray." To this, Murray responds: "We're not. We're workmates." We can take this as evidence that Greg nominates Murray as a friend (or sends Murray a directed friendship tie), whereas Murray does not nominate Greg as a friend. Armed with this information, let's recreate the network as directed, with all ties reciprocated except for the Greg to Murray friendship. (Note that we don't need to `simplify()` this network because there are no more loops. Greg is incorporated into the network by virtue of his directed tie to Murray.)
 
 ```{r directed}
 conchords_dir <- make_graph(edges=c("Brett","Jemaine",
@@ -94,14 +94,14 @@ edge_density(conchords_dir)
 
 ## igraph objects
 
-Now let's examine the elements of the igraph object we created for the undirected conchords network.
+Now let's examine the elements of the object we created for the undirected conchords network.
 
 ```{r object}
 conchords
 
 ```
 
-Right away we can see important information on the top line. This is an IGRAPH object. The "UN" tells us this is an undirected network. The 5 and 4 indicate that there are 5 nodes and 4 edges (remember, we removed the loop, so it's only 4 edges).
+Right away we can see important information on the top line. This is an `igraph` object. The "UN" tells us this is an undirected network. The 5 and 4 indicate that there are 5 nodes and 4 edges (remember, we removed the loop, so it's only 4 edges).
 
 The second line lists the attributes. The only attribute is name. In the parenthesis after name, the "v" tells us this is a vertex attribute. This makes sense because each name is a characteristic of a node. To examine an attribute, we can use the following code. This is similar to the way one might request information from a variable in a data frame, which is done by naming the data frame, followed by the dollar sign (\$), and then naming the variable. In this case, the call is preceded by a "V" to indicate that we are requesting a vertex attribute.
 
@@ -123,7 +123,7 @@ This object tells us that the network is directed ("DN") and still contains the 
 
 ### Networks as Matrices
 
-Networks can also be presented as matrices. We can view the matrix for this network by applying the as.matrix command to the conchords object.
+Networks can also be presented as matrices. We can view the matrix for this network by applying the `as.matrix` command to the conchords object.
 
 ```{r matrix}
 as.matrix(conchords)
@@ -173,7 +173,7 @@ as.matrix(conchords)
 
 ```
 
-Hmm...this does not show the new values, only the binary ones. We have to extract the matrix using an igraph function and include an option to apply the weighted values.
+Hmm...this does not show the new values, only the binary ones. We have to extract the matrix using the `as_adjacency_matrix` function and include an option to apply the weighted values.
 
 ```{r adjacency}
 as_adjacency_matrix(conchords, attr = "weight")
@@ -186,7 +186,7 @@ Note that that command used here called this an **adjacency matrix**. That's bec
 
 ### Creating a Graph from an Adjacency Matrix and a Data Frame
 
-Earlier we demonstrated how to create an igraph object from an edgelist. However, you might have network data in other formats. For example, how can we create an igraph object by starting with an adjacency matrix? Below we will extract the adjacency matrix from the conchords network and then use the graph_from_adjacency_matrix command to create a new (duplicated) igraph object. We need to point out the adjacency matrix object and indicate whether the graph is directed or undirected, as well as if it is weighted or not.
+Earlier we demonstrated how to create an `igraph` object from an edgelist. However, you might have network data in other formats. For example, how can we create an `igraph` object by starting with an adjacency matrix? Below we will extract the adjacency matrix from the conchords network and then use the `graph_from_adjacency_matrix` command to create a new (duplicated) `igraph` object. We need to point out the adjacency matrix object and indicate whether the graph is directed or undirected, as well as if it is weighted or not.
 
 ```{r graph_mat}
 conchord_mat <- as_adjacency_matrix(conchords, attr = "weight")
@@ -198,7 +198,7 @@ conchord2
 
 ```
 
-Here you can see that the conchord igraph object was effectively duplicated.
+Here you can see that the conchord object was effectively duplicated.
 
 Finally, you might have network data in the form of data frames, which are data matrices that include a set of cases in the rows and variables in the columns. There are two main pieces of network information that could be contained in a data frame: 1) the vertex attributes and 2) the edge attributes.
 
@@ -225,7 +225,7 @@ edge_df
 
 ```
 
-Using these two data frames, we can create a new igraph object. We first need to assign the edge_df as "d", then indicate that those edges are undirected, and finally add the vertex attributes.
+Using these two data frames, we can create a new `igraph` object using the 'graph_from_data_frame' function. We first need to assign the edge_df as "d", then indicate that those edges are undirected, and finally add the vertex attributes.
 
 ```{r graph_df}
 conchord3 <- graph_from_data_frame(
@@ -236,9 +236,8 @@ conchord3
 
 ```
 
-As you can see, this creates a new igraph object named conchord3. This object is the same as the earlier ones we created, except that it now includes new vertex attributes for musician and for New Zealand.
+As you can see, this creates a new object named conchord3. This object is the same as the earlier ones we created, except that it now includes new vertex attributes for musician and for New Zealand.
 
-In addition to covering basic terminology, this chapter showed how to view networks in different formats (as an edgelist, as a graph, and as a matrix), how to identify and manipulate igraph objects, and how to create igraph objects from different starting points (an edgelist, an adjacency matrix, and a data frame). The next chapter will get into more details about visualizing igraph networks in ggraph.
+In addition to covering basic terminology, this chapter showed how to view networks in different formats (as an edgelist, as a graph, and as a matrix), how to identify and manipulate igraph objects, and how to create igraph objects from different starting points (an edgelist, an adjacency matrix, and a data frame). The next chapter will get into more details about visualizing networks in `ggraph`.
 
 ## References
-

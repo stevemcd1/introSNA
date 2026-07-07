@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./netsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Network Simulations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
   </div>
 </li>
       </ul>
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Setting up ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analyzing ego network data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Birds of a feather flock together. This is one of the most important insights about social interaction. Time and time again and across the globe, people display a tendency for connecting to others who are like themselves.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This tendency for connecting to similar others is called assortativity. And when people actually form relationships or engage in interactions with similar others, we refer to this as homophily. By contrast, connecting with dissimilar others is referred to as heterophily.</p>
+<p>Birds of a feather flock together. This is one of the most important insights about social interaction. Time and time again and across the globe, people display a tendency for connecting to others who are like themselves.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This tendency for connecting to similar others is called <strong>assortativity</strong>. And when people actually form relationships or engage in interactions with similar others, we refer to this as <strong>homophily</strong>. By contrast, connecting with dissimilar others is referred to as <strong>heterophily</strong>.</p>
 <p>Assortative tendencies may be the rule, but the study of different types of social contexts and relationships reveals variation in assortativity. For example, romantic relations in the United States tend to be racially and educationally homophilous, but also gender heterophilous. Furthermore, a social context might begin with strong assortative tendencies, only for those tendencies to weaken over time. An important goal of social science research is therefore to better understand the extent and dynamics of assortativity.</p>
 <p>We will begin to examine these issues using data from the Hartford drug user network. First, let’s load the necessary packages.</p>
 <div class="cell">
@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 + ... omitted several edges</code></pre>
 </div>
 </div>
-<p>The drug_connect object contains the largest connected component of the network. Note that we have information about ethnicity and gender for each individual. This information can be used to explore the role of assortativity in network relationships among drug users. Let’s visualize the network, highlighting the ethnic and gender attributes of the individuals.</p>
+<p>The “drug_connect” object contains the largest connected component of the network. Note that we have information about ethnicity and gender for each individual. This information can be used to explore the role of assortativity in network relationships among drug users. Let’s visualize the network, highlighting the ethnic and gender attributes of the individuals.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(drug_connect, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">color =</span> <span class="st">"darkgrey"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
@@ -388,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A few things stand out from the visualization. First two distinct groups are apparent from the visualization. Second, those two groups tend to be dominated by ethnic groups, with one group largely comprised of African American drug users and the other of Puerto Rican/Latino drug users. This tells us that assortatity by ethnicity is probably quite strong in this network. We can also observe some clustering by gender within those groups. So perhaps gender assortativity is present, though almost certainly not as strong as ethnic assortativity.</p>
 <section id="estimating-assortativity" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="estimating-assortativity"><span class="header-section-number">8.1</span> Estimating assortativity</h2>
-<p>Assortativity can be calculated by evaluating the number of ties between actors who share the same attribute (for example, both are women) relative to the number of ties between actors who have different attributes (for example, one is a woman and one is a man). This is referred to as a nominal form of assortativity. It measures ties based on homophilous matches on attributes. We can start by estimating assortativity based on gender.</p>
+<p>Assortativity can be calculated by evaluating the number of ties between actors who share the same attribute (for example, both are women) relative to the number of ties between actors who have different attributes (for example, one is a woman and one is a man). This is referred to as a “nominal” form of assortativity. It measures ties based on homophilous matches on attributes. We can start by estimating nominal assortativity based on gender.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">assortativity_nominal</span>(drug_connect, (<span class="fu">as.factor</span>(<span class="fu">V</span>(drug_connect)<span class="sc">$</span>gender)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -437,7 +437,7 @@ FALSE  TRUE
 6   1     1        TRUE</code></pre>
 </div>
 </div>
-<p>We can see that the homophilous values are true when the ethnicity values for ego and alter are the same and are false when they are not. To see how homophily varies by ethnicity, we can collapse or aggregate this table to obtain the proportion of homophilous ties for each ethnic group (based on the column for ego). Before doing this, I will add a variable that indicate what ethnicity each number refers to.</p>
+<p>The homophilous values are true when the ethnicity values for ego and alter are the same and are false when they are not. To see how homophily varies by ethnicity, we can collapse or aggregate this table to obtain the proportion of homophilous ties for each ethnic group (based on the column for ego). Before doing this, I will add a variable that indicates what ethnicity each number refers to.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>edge_df <span class="ot">&lt;-</span> edge_df <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ego_ethnicity =</span> <span class="fu">case_when</span>(</span>
@@ -463,7 +463,7 @@ FALSE  TRUE
 </section>
 <section id="assortativity-for-continuous-attributes" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="assortativity-for-continuous-attributes"><span class="header-section-number">8.2</span> Assortativity for continuous attributes</h2>
-<p>We can also conceive of assortativity based on continuous variables. In these instances, individuals might not have a tendency to exactly match with an alter attribute, but instead to connect with an attribute that is close to their own attribute. For example, age is a continuous attribute that is often subject to homophily, especially when it comes to marriage. When people get married, they are often close in age, not necessarily the exact same age. The continuous measurement of age allows us to evaluate assortativity by its intensity. For example, a marriage to someone who is within two years of your own age is certainly more homophilous than marrying someone who is twenty years older!</p>
+<p>We can also conceive of assortativity based on continuous variables. In these instances, individuals might not have a tendency to exactly match with an alter attribute, but instead to connect with an attribute that is close to their own attribute. For example, age is a continuous attribute that is often subject to homophily, especially when it comes to marriage. When people get married, they are often close in age, but not necessarily the exact same age. The continuous measurement of age allows us to evaluate assortativity by its intensity. For example, a marriage to someone who is within two years of your own age is certainly more homophilous than marrying someone who is twenty years older!</p>
 <p>While the drug users network does not contain any continuous attribute variables, we can estimate one in order to demonstrate the calculation of continuous assortativity. Below we will identify the degree for each individual in the network and assign that score as a vertex attribute. Then we can assess the extent to which people in this network prefer to connect with others who have similar degree scores.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(drug_connect)<span class="sc">$</span>degree <span class="ot">&lt;-</span> <span class="fu">degree</span>(drug_connect)</span>
@@ -483,7 +483,7 @@ FALSE  TRUE
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” Annual Review of Sociology 27(1):415–44.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>McPherson, Miller, Lynn Smith-Lovin, and James M. Cook. 2001. “Birds of a Feather: Homophily in Social Networks.” <em>Annual Review of Sociology</em> 27(1):415–44.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Weeks, Margaret R., Scott Clair, Stephen P. Borgatti, Kim Radda, and Jean J. Schensul. 2002. “Social Networks of Drug Users in High-Risk Sites: Finding the Connections.” AIDS and Behavior 6(2):193–206.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Weeks, Margaret R., Mark Convey, Julia Dickson-Gomez, Jianghong Li, Kim Radda, Maria Martinez, and Eduardo Robles. 2009. “Changing Drug Users’ Risk Environments: Peer Health Advocates as Multi-Level Community Change Agents.” American Journal of Community Psychology 43(3):330–44.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>M. E. J. Newman 2003. Mixing patterns in networks, Phys. Rev.&nbsp;E 67, 026126<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -900,8 +900,8 @@ FALSE  TRUE
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./roles.html" class="pagination-link" aria-label="Roles and relationships">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles and relationships</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./roles.html" class="pagination-link" aria-label="Roles">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
