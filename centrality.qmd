@@ -140,9 +140,9 @@ cent |>
 
 ```
 
-Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici's betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why. 
+Once again, Medici shows up as the most central family in the network, and by a wide margin. Medici's betweenness centrality score suggests that it resides on around 45 percent of all geodesic paths in the network. Further inspection of the graph reveals why.
 
-Below we highlight all of the direct paths to Medici. The first line of code identifies the numeric value associated with Medici. The next line assigns an edge attribute named "medici_edge" to indicate lines that are next to (or "incident" with) Medici. Then the `geom_node_link()` layer applies a separate color to those lines. 
+Below we highlight all of the direct paths to Medici. The first line of code identifies the numeric value associated with Medici. The next line assigns an edge attribute named "medici_edge" to indicate lines that are next to (or "incident" with) Medici. Then the `geom_node_link()` layer applies a separate color to those lines.
 
 ```{r medici}
 medici_id <- as.numeric(which(V(ifm)$vertex.names == "MEDICI"))

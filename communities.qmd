@@ -53,7 +53,7 @@ cliques(sampson, min = 5)
 
 ```
 
-The results show 8 different cliques the size of 5 or more. The largest clique includes 6 monks who are all interconnected. Below we identify those 6 monks and distinguish them from the others in the graph. First, we identify the numerical set of monks in the largest clique. Then we assign a logical value ("TRUE" or "FALSE") as a vertex attribute ("V(sampson)$clique") for monks who are either in or out of the largest clique. That information can then be used to color the labels in the graph.
+The results show 8 different cliques the size of 5 or more. The largest clique includes 6 monks who are all interconnected. Below we identify those 6 monks and distinguish them from the others in the graph. First, we identify the numerical set of monks in the largest clique. Then we assign a logical value ("TRUE" or "FALSE") as a vertex attribute ("V(sampson)\$clique") for monks who are either in or out of the largest clique. That information can then be used to color the labels in the graph.
 
 ```{r clique_graph}
 (max_clique <- as.numeric(unlist(cliques(sampson, min = 6))))

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Connectivity – Introduction to Social Network Analysis</title>
+<title>5&nbsp; Connectivity – Introduction to Social Network Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./communities.html" rel="next">
-<link href="./centrality.html" rel="prev">
+<link href="./centrality.html" rel="next">
+<link href="./graph_layouts.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./connectivity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./connectivity.html">Analysis</a></li><li class="breadcrumb-item"><a href="./connectivity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,14 +201,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./connectivity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -311,25 +311,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#moreno-data" id="toc-moreno-data" class="nav-link active" data-scroll-target="#moreno-data"><span class="header-section-number">6.1</span> Moreno data</a></li>
-  <li><a href="#connected-graphs-and-components" id="toc-connected-graphs-and-components" class="nav-link" data-scroll-target="#connected-graphs-and-components"><span class="header-section-number">6.2</span> Connected graphs and components</a></li>
-  <li><a href="#paths-and-distances" id="toc-paths-and-distances" class="nav-link" data-scroll-target="#paths-and-distances"><span class="header-section-number">6.3</span> Paths and distances</a>
+  <li><a href="#moreno-data" id="toc-moreno-data" class="nav-link active" data-scroll-target="#moreno-data"><span class="header-section-number">5.1</span> Moreno data</a></li>
+  <li><a href="#connected-graphs-and-components" id="toc-connected-graphs-and-components" class="nav-link" data-scroll-target="#connected-graphs-and-components"><span class="header-section-number">5.2</span> Connected graphs and components</a></li>
+  <li><a href="#paths-and-distances" id="toc-paths-and-distances" class="nav-link" data-scroll-target="#paths-and-distances"><span class="header-section-number">5.3</span> Paths and distances</a>
   <ul class="collapse">
-  <li><a href="#node-distance-summaries" id="toc-node-distance-summaries" class="nav-link" data-scroll-target="#node-distance-summaries"><span class="header-section-number">6.3.1</span> Node distance summaries</a></li>
+  <li><a href="#node-distance-summaries" id="toc-node-distance-summaries" class="nav-link" data-scroll-target="#node-distance-summaries"><span class="header-section-number">5.3.1</span> Node distance summaries</a></li>
   </ul></li>
-  <li><a href="#network-distance-summaries" id="toc-network-distance-summaries" class="nav-link" data-scroll-target="#network-distance-summaries"><span class="header-section-number">6.4</span> Network distance summaries</a></li>
-  <li><a href="#visualizing-paths" id="toc-visualizing-paths" class="nav-link" data-scroll-target="#visualizing-paths"><span class="header-section-number">6.5</span> Visualizing paths</a></li>
-  <li><a href="#cutpoints-and-bridges" id="toc-cutpoints-and-bridges" class="nav-link" data-scroll-target="#cutpoints-and-bridges"><span class="header-section-number">6.6</span> Cutpoints and Bridges</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.7</span> References</a></li>
+  <li><a href="#network-distance-summaries" id="toc-network-distance-summaries" class="nav-link" data-scroll-target="#network-distance-summaries"><span class="header-section-number">5.4</span> Network distance summaries</a></li>
+  <li><a href="#visualizing-paths" id="toc-visualizing-paths" class="nav-link" data-scroll-target="#visualizing-paths"><span class="header-section-number">5.5</span> Visualizing paths</a></li>
+  <li><a href="#cutpoints-and-bridges" id="toc-cutpoints-and-bridges" class="nav-link" data-scroll-target="#cutpoints-and-bridges"><span class="header-section-number">5.6</span> Cutpoints and Bridges</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5.7</span> References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centrality.html">Analysis</a></li><li class="breadcrumb-item"><a href="./connectivity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./connectivity.html">Analysis</a></li><li class="breadcrumb-item"><a href="./connectivity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></h1>
 </div>
 
 
@@ -354,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="moreno-data" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="moreno-data"><span class="header-section-number">6.1</span> Moreno data</h2>
+<section id="moreno-data" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="moreno-data"><span class="header-section-number">5.1</span> Moreno data</h2>
 <p>We will use classic network data from the social psychologist, Jacob Moreno, who observed the friendship relationships between 5th grade students in 1934.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In fact, Moreno is credited with being the first person to publish a network graph (or a “sociogram”) to describe network relationships. Let’s load the data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"moreno.rda"</span>)</span>
@@ -387,8 +387,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="connected-graphs-and-components" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="connected-graphs-and-components"><span class="header-section-number">6.2</span> Connected graphs and components</h2>
+<section id="connected-graphs-and-components" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="connected-graphs-and-components"><span class="header-section-number">5.2</span> Connected graphs and components</h2>
 <p>A <strong>connected graph</strong> is a graph in which every node can be reached by every other node by following the paths laid out by the edges. Here we can see that the Moreno network is disconnected. For example, student 28 can follow edge paths to nearly all of the other students, but it cannot reach students 32 or 33 because there is no edge path that connects them. Within a disconnected graph such as this, we could identify a set of <strong>components</strong>, which refer to a fully connected subgraph. We can let R identify the components in the Moreno graph by using the <code>components()</code> function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(comps <span class="ot">&lt;-</span> <span class="fu">components</span>(moreno))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -447,51 +447,51 @@ $no
 </div>
 </div>
 </section>
-<section id="paths-and-distances" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="paths-and-distances"><span class="header-section-number">6.3</span> Paths and distances</h2>
+<section id="paths-and-distances" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="paths-and-distances"><span class="header-section-number">5.3</span> Paths and distances</h2>
 <p>Network researchers often want to know how close or how far apart different nodes are from one another. We calculate distance by counting the edges between two nodes. The set of edges that one traverses on that journey is referred to as a <strong>path</strong>.</p>
 <p>Let’s look at some examples. Take a look at student 9 and student 1. How close are these two students? The answer depends on the number of edges that it takes to get from 9 to 1. However, that distance depends on which path one takes. Below we obtain a list of those paths.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all_simple_paths</span>(moreno2, <span class="at">from =</span> <span class="st">"9"</span>, <span class="at">to =</span> <span class="st">"1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 5/31 vertices, from d5d302c:
++ 5/31 vertices, from 9aa8dd9:
 [1] 9 7 3 2 1
 
 [[2]]
-+ 5/31 vertices, from d5d302c:
++ 5/31 vertices, from 9aa8dd9:
 [1]  9  7  3 16  1
 
 [[3]]
-+ 6/31 vertices, from d5d302c:
++ 6/31 vertices, from 9aa8dd9:
 [1] 9 7 4 3 2 1
 
 [[4]]
-+ 6/31 vertices, from d5d302c:
++ 6/31 vertices, from 9aa8dd9:
 [1]  9  7  4  3 16  1
 
 [[5]]
-+ 7/31 vertices, from d5d302c:
++ 7/31 vertices, from 9aa8dd9:
 [1] 9 7 8 4 3 2 1
 
 [[6]]
-+ 7/31 vertices, from d5d302c:
++ 7/31 vertices, from 9aa8dd9:
 [1]  9  7  8  4  3 16  1
 
 [[7]]
-+ 4/31 vertices, from d5d302c:
++ 4/31 vertices, from 9aa8dd9:
 [1]  9 11  5  1
 
 [[8]]
-+ 5/31 vertices, from d5d302c:
++ 5/31 vertices, from 9aa8dd9:
 [1]  9 11  5  6  1
 
 [[9]]
-+ 5/31 vertices, from d5d302c:
++ 5/31 vertices, from 9aa8dd9:
 [1]  9 17 11  5  1
 
 [[10]]
-+ 6/31 vertices, from d5d302c:
++ 6/31 vertices, from 9aa8dd9:
 [1]  9 17 11  5  6  1</code></pre>
 </div>
 </div>
@@ -502,7 +502,7 @@ $no
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>shortest_9to1<span class="sc">$</span>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-+ 4/31 vertices, from d5d302c:
++ 4/31 vertices, from 9aa8dd9:
 [1]  9 11  5  1</code></pre>
 </div>
 </div>
@@ -562,8 +562,8 @@ $no
 </div>
 </div>
 <p>The final two students (32 and 33) are disconnected from the graph. Their distances appear in rows and columns 9 and 10. The “INF” values indicate their distances to others in the graph are infinite and therefore cannot be calculated. The only estimable distances are among themselves.</p>
-<section id="node-distance-summaries" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="node-distance-summaries"><span class="header-section-number">6.3.1</span> Node distance summaries</h3>
+<section id="node-distance-summaries" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="node-distance-summaries"><span class="header-section-number">5.3.1</span> Node distance summaries</h3>
 <p>One might want to compare students in terms of their overall reachability within a network. For this we can examine the average geodesic distance that it would take for a student to pass a note to one of their classmates. For this, let’s return to the distance matrix from the main component of the Moreno graph. Student 1’s average distance can be obtained by taking the sum of the distance values in row 1 and dividing by the number of total students (that is, “length(moreno2)”) minus 1. We can then compare student 1’s average to that of student 9.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(distmat[<span class="dv">1</span>,])<span class="sc">/</span>(<span class="fu">length</span>(moreno2)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -595,8 +595,8 @@ $no
 <p>Not surprisingly, student 1 has a lower eccentricity score (6) than student 9 (8).</p>
 </section>
 </section>
-<section id="network-distance-summaries" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="network-distance-summaries"><span class="header-section-number">6.4</span> Network distance summaries</h2>
+<section id="network-distance-summaries" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="network-distance-summaries"><span class="header-section-number">5.4</span> Network distance summaries</h2>
 <p>The geodesic distances that appear in the matrix provide important information about reachability in the network as a whole. For example, we could calculate the average geodesic distance for the entire network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_distance</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -622,7 +622,7 @@ $no
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">farthest_vertices</span>(moreno2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vertices
-+ 2/31 vertices, from d5d302c:
++ 2/31 vertices, from 9aa8dd9:
 [1] 12 22
 
 $distance
@@ -650,13 +650,13 @@ $distance
 </div>
 <p>Here we can see that there are a dozen diameter paths in this network.</p>
 </section>
-<section id="visualizing-paths" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="visualizing-paths"><span class="header-section-number">6.5</span> Visualizing paths</h2>
+<section id="visualizing-paths" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="visualizing-paths"><span class="header-section-number">5.5</span> Visualizing paths</h2>
 <p>How would one visualize a diameter path in a graph? First, identify and save as an object the diameter path. Second, use that object to create an edgelist that follows the path. We do this by creating a two column diameter_edges object with <code>cbind()</code>, with the first column including all vertices in the path sequence except the last vertex (i.e., the “from” column) and the second column including all vertices except for the original vertex (i.e., the “to” column). From there we can apply different colors to the edges depending on whether or not they appear in the edgelist.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(diameter_path <span class="ot">&lt;-</span> <span class="fu">get_diameter</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 12/31 vertices, from d5d302c:
+<pre><code>+ 12/31 vertices, from 9aa8dd9:
  [1] 12 15 10  9 11  5  1 18 29 31 21 22</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(diameter_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(diameter_path[<span class="sc">-</span><span class="fu">length</span>(diameter_path)], </span>
@@ -690,20 +690,20 @@ $distance
 </div>
 </div>
 </section>
-<section id="cutpoints-and-bridges" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="cutpoints-and-bridges"><span class="header-section-number">6.6</span> Cutpoints and Bridges</h2>
+<section id="cutpoints-and-bridges" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="cutpoints-and-bridges"><span class="header-section-number">5.6</span> Cutpoints and Bridges</h2>
 <p>Finally, the study of connectivity often involves examining vulnerable aspects of the network – places that could lead to disconnection if they were to be removed.</p>
 <p>Why might this prove useful? Imagine you are managing a company and you notice in the organizational chart that information flowing from one part of the company to the rest of the company only goes through a single connection. If that edge is compromised, perhaps by one of the two individuals going on extended sick leave, the company will have trouble communicating. You therefore might recommend establishing redundant lines of communication between units. As another example, imagine you are a member of an international terrorism task force. If you notice that one terrorist is central to their coordination efforts, you might focus on apprehending and thus removing that individual from the network to break up their activities.</p>
 <p>These two examples point to the need for identifying network cutpoints and bridges. <strong>Cutpoints</strong> are vertices whose removal will disconnect the graph. Likewise, the removal of edges that are <strong>bridges</strong> will also disconnect the graph. Using the main component of the Moreno network, we can identify the set of cutpoints (also known as “articulation points”) and bridges.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(cutset <span class="ot">&lt;-</span> <span class="fu">articulation_points</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 7/31 vertices, from d5d302c:
+<pre><code>+ 7/31 vertices, from 9aa8dd9:
 [1] 15 10  9 29 21 18  1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(bridgeset <span class="ot">&lt;-</span> <span class="fu">bridges</span>(moreno2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>+ 3/45 edges from d5d302c:
+<pre><code>+ 3/45 edges from 9aa8dd9:
 [1] 10--15  9--10  1--18</code></pre>
 </div>
 </div>
@@ -744,8 +744,8 @@ $distance
 <p>Here we have a helpful visualization that allows us to see the vulnerable places in the network. Note how removing any one of those elements would disconnect the graph.</p>
 <p>This chapter clarifies many concepts related to connectivity and reachability in networks. These issues are especially important when we are trying to understand the flow of things (information, resources, diseases) throughout communities, because the structure of the network influences who receives those things and how fast.</p>
 </section>
-<section id="references" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="references"><span class="header-section-number">6.7</span> References</h2>
+<section id="references" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="references"><span class="header-section-number">5.7</span> References</h2>
 
 
 </section>
@@ -1160,13 +1160,13 @@ $distance
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./centrality.html" class="pagination-link" aria-label="Centrality">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality</span></span>
+      <a href="./graph_layouts.html" class="pagination-link" aria-label="Graph Layouts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Graph Layouts</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./communities.html" class="pagination-link" aria-label="Communities">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Communities</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./centrality.html" class="pagination-link" aria-label="Centrality">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Centrality</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
