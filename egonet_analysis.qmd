@@ -1,8 +1,8 @@
 # Ego networks: analysis
 
-Once the egocentric network data files have been constructed, we can turn to analyzing the data. As a reminder, this demonstration is an adaptation from Raffaele Vacca's highly recommended textbook devoted to ego network analysis.[^egonet_setup-1]
+Once the egocentric network data files have been constructed, we can turn to analyzing the data. As a reminder, this demonstration is an adaptation from Raffaele Vacca's highly recommended textbook devoted to ego network analysis.[^egonet_analysis-1]
 
-[^egonet_setup-1]: Vacca, Raffaele. 2024. Egocentric network analysis with R. <https://raffaelevacca.github.io/egocentric-r-book/>
+[^egonet_analysis-1]: Vacca, Raffaele. 2024. Egocentric network analysis with R. <https://raffaelevacca.github.io/egocentric-r-book/>
 
 First we will add needed ego attributes to the ego list files, then we will show basic visualization strategies, and then we will examine metrics across ego, alter, and edge level characteristics.
 
@@ -24,7 +24,7 @@ load_nets("gss_ego.rda")
 
 ### Adding ego attributes
 
-Let's begin by examining a single ego network. Below we save new igraph objects -- one without ego and one with ego included -- for the ego network number 10 in our larger list.
+Let's begin by examining a single ego network. Below we store new `igraph` objects -- one without ego and one with ego included -- for the ego network number 10 in our larger list.
 
 ```{r}
 # Ego-network graph, ego_id = 10
@@ -73,14 +73,14 @@ g1 + g2
 The problem is that we have 288 different ego networks that need new values for missing weights. So we need a function that will apply a value of 3 to all ego-alter edges simultaneously. See below: 1) generate a weight replacement function and 2) apply that function to all graphs in the gr.list.ego object.
 
 ```{r}
-### Weight replacement function
+# Weight replacement function
 weight_replace <- function(gr) {
   E(gr)$weight <- E(gr)$weight |> 
     replace_na(3)
   gr
 }
 
-### Apply the function to all graphs in the list
+# Apply the function to all graphs in the list
 gr.list.ego <- gr.list.ego |>
   map(weight_replace)
 
@@ -104,9 +104,9 @@ V(gr.list.ego[["10"]])$SEX
 
 The last value, which refers to the ego attribute is NA. We will need a special function for this, because instead of applying a constant value (3), it will be necessary to apply a unique value for each ego based on what is in the ego attribute file.
 
-With a little help from ChatGPT, I constructed the following function. With it, we can apply all of the values from the ego attribute file to the vertex attributes embedded within each ego network in the gr.list.ego object.
+With a little help from ChatGPT, I constructed the following function. With it, we can apply all of the values from the ego attribute file to the vertex attributes embedded within each ego network in the "gr.list.ego" object.
 
-The function 1) identifies the appropriate row based on matching ego_id, 2) identifies the last entry in the vector of attributes (because ego is always the last vertex in these objects), and 3) applies the appropriate value in the ego attribute to the attribute vector within the graph list object. The final portion of the code assigns all of the relevant attribute names to a vector ("ego_attributes"), which it then feeds into the function and applies across the list via the imap command.
+The function 1) identifies the appropriate row based on matching ego_id, 2) identifies the last entry in the vector of attributes (because ego is always the last vertex in these objects), and 3) applies the appropriate value in the ego attribute to the attribute vector within the graph list object. The final portion of the code assigns all of the relevant attribute names to a vector ("ego_attributes"), which it then feeds into the function and applies across the list via the `imap()` function.
 
 ```{r}
 # function that applies ego attribute to all egos
@@ -141,7 +141,7 @@ Indeed, the NAs have been replaced by the appropriate values.
 
 ### Visualizing ego networks
 
-Now that the correct values are in place, we can add attribute information to the network graphs. We'll start with a graph of the number 10 network that includes ego, showing the gender of the nodes. Note that the gr.ego.10 object needs to be recreated now that we have added the new attribute information to the orginal list.
+Now that the correct values are in place, we can add attribute information to the network graphs. We'll start with a graph of the number 10 network that includes ego, showing the gender of the nodes. Note that the gr.ego.10 object needs to be recreated now that we have added the new attribute information to the original list.
 
 ```{r}
 gr.ego.10 <- gr.list.ego[["10"]]
@@ -191,11 +191,11 @@ These results show two different modular groups. Ego is connected to all of thes
 
 ### Ego attributes
 
-Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call nested data structures: within each ego is a set of alters and within each group of alters is a set of relationships.
+Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call **nested data structures**: within each ego is a set of alters and within each group of alters is a set of relationships.
 
 These three levels can be analyzed separately or combined. Below we present an example of a combined analysis whereby alter composition and edge structures are aggregated to the ego level. In other words, we'll keep the data file at the ego level (with each row representing a unique ego) and add summary information about alters and alter ties to each row.
 
-Let's start by creating a new data matrix called e.attribute. Let's recode ego attributes for gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).
+We will start by creating a new data matrix called "ego.attribute". Let's recode gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).
 
 ```{r}
 ego.attribute <- ego |> 
@@ -259,14 +259,14 @@ centr_degree(gr.10)$centralization
 
 Density in this ego network is equal to .9, which indicates that 90% of all possible ties are present. The components indicates that there is one single connected component among the alters. (Running this on the network for ego number 80 would reveal two different components. See above.) Finally, the degree centralization score is .1, which suggests that this graph lacks hierarchy (it is not centered around a "star" alter).
 
-For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of the map function. Below we demonstrate how this is achieved for a single metric (edge_density).
+For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of `map_dbl()`. Below we demonstrate how this is achieved for a single metric (edge_density).
 
 ```{r}
 head(map_dbl(gr.list, edge_density))
 
 ```
 
-Next let's generate a single row of network metrics for a single ego network.
+Next we generate a single row of network metrics for a single ego network.
 
 ```{r}
 tibble(dens = edge_density(gr.10),
@@ -275,7 +275,7 @@ tibble(dens = edge_density(gr.10),
 
 ```
 
-Let's bring this all together by estimating these edge characteristics for all of the ego networks an combining them into a data frame.
+Let's bring this all together by estimating these edge characteristics for all of the ego networks and combining them into a data frame.
 
 ```{r}
 e.summary <- gr.list |>
@@ -306,7 +306,7 @@ glimpse(ego.attribute)
 
 ## Bivariate analyses
 
-With a dataset like this, it is possible to conduct various statistical analyses. Below we show a simple analysis of variance (ANOVA) test to demonstrate one possibility.
+With a data set like this, it is possible to conduct various statistical analyses. Below we show a simple analysis of variance (**ANOVA**) test to demonstrate one possibility.
 
 ```{r}
 ego.attribute$female <- factor(ego.attribute$female, labels = c("Male", "Female"))
@@ -338,10 +338,10 @@ boxplot(prop.fem ~ female, data = ego.attribute,
 
 ```
 
-These are simple bivariate analyses. More complex analyses based on multivariate and multilevel analyses are also possible with egocentric network data using multilevel regression modeling (see <https://raffaelevacca.github.io/egocentric-r-book/multilevel.html>). 
+These are simple bivariate analyses. More complex analyses based on multivariate and multilevel analyses are also possible with egocentric network data using multilevel regression modeling (see <https://raffaelevacca.github.io/egocentric-r-book/multilevel.html>).
 
-This chapter and the previous one presented a unique form of social network analysis that focuses on the personal relationships that surround individuals. This is a very useful approach to take especially when sampling large groups of people and in contexts that lack clear group boundaries.[^egonet_analysis-2] 
+This chapter and the previous one presented a unique form of social network analysis that focuses on the personal relationships that surround individuals. This is a very useful approach to take especially when sampling large groups of people and in contexts that lack clear group boundaries.[^egonet_analysis-2]
 
-[^egonet_analysis-2]:McCarty, C., Lubbers, M. J., Vacca, R., & Molina, J. L. 2019. Conducting personal network research: A practical guide. The Guilford Press.
+[^egonet_analysis-2]: McCarty, C., Lubbers, M. J., Vacca, R., & Molina, J. L. 2019. Conducting personal network research: A practical guide. The Guilford Press.
 
 ## References

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Two Mode Network Data – Introduction to Social Network Analysis</title>
+<title>13&nbsp; Two Mode Networks – Introduction to Social Network Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./two_mode.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./two_mode.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,14 +201,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./two_mode.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#two-mode-networks-from-edgelists" id="toc-two-mode-networks-from-edgelists" class="nav-link active" data-scroll-target="#two-mode-networks-from-edgelists"><span class="header-section-number">13.1</span> Two Mode Networks From Edgelists</a></li>
   <li><a href="#two-mode-networks-from-adjacency-matrices" id="toc-two-mode-networks-from-adjacency-matrices" class="nav-link" data-scroll-target="#two-mode-networks-from-adjacency-matrices"><span class="header-section-number">13.2</span> Two Mode Networks From Adjacency Matrices</a></li>
-  <li><a href="#visualising-two-mode-networks" id="toc-visualising-two-mode-networks" class="nav-link" data-scroll-target="#visualising-two-mode-networks"><span class="header-section-number">13.3</span> Visualising Two Mode Networks</a></li>
+  <li><a href="#visualizing-two-mode-networks" id="toc-visualizing-two-mode-networks" class="nav-link" data-scroll-target="#visualizing-two-mode-networks"><span class="header-section-number">13.3</span> Visualizing Two Mode Networks</a></li>
   <li><a href="#degree-centrality-in-two-mode-networks" id="toc-degree-centrality-in-two-mode-networks" class="nav-link" data-scroll-target="#degree-centrality-in-two-mode-networks"><span class="header-section-number">13.4</span> Degree Centrality in Two Mode Networks</a></li>
   <li><a href="#betweenness-centrality-in-two-mode-networks" id="toc-betweenness-centrality-in-two-mode-networks" class="nav-link" data-scroll-target="#betweenness-centrality-in-two-mode-networks"><span class="header-section-number">13.5</span> Betweenness Centrality in Two Mode Networks</a></li>
   <li><a href="#projecting-one-mode-networks" id="toc-projecting-one-mode-networks" class="nav-link" data-scroll-target="#projecting-one-mode-networks"><span class="header-section-number">13.6</span> Projecting One Mode Networks</a></li>
@@ -324,9 +324,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./two_mode.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./egonet_setup.html">Extensions</a></li><li class="breadcrumb-item"><a href="./two_mode.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></h1>
 </div>
 
 
@@ -343,8 +343,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This chapter introduces you to a slightly different form of network analysis - two mode networks. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of <em>social</em> networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types.</p>
-<p>Ties in two mode networks are tend to be defined by connections of affiliation. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g.&nbsp;from people to groups, not people to people or group to group).</p>
+<p>This chapter introduces you to a slightly different form of network analysis - <strong>two mode networks</strong>. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of <em>social</em> networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types.</p>
+<p>Ties in two mode networks are tend to be defined by connections of <strong>affiliation</strong>. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g.&nbsp;from people to groups, not people to people or group to group).</p>
 <p>To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Specifically, we will use a dataset on Grime music, which is a UK-based rap genre that emerged from the east London reggae and Garage scene in the early 2000s.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.</p>
 <p>Let’s get the data in an take a look.</p>
 <div class="cell">
@@ -356,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># reading data in</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load_nets</span>(<span class="st">"grime.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Like working with one mode networks, two mode data can be stored as either an edgelist or a matrix. There are some suble differences, however, in how they are stored and some major differences in how you convert them into network objects.</p>
-<p>In an edgelist, there are not “to” and “from” columns per se. Rather, one set of nodes is in one column and the second in a separate column. Rows still represent connections. These columns must be mutually exclusive. In other words, they must reflect the separate modes. In this case, we have artists (and only artists) in one column and the name of the songs they appeared on (and only those songs) in the second column.</p>
+<p>Like working with one mode networks, two mode data can be stored as either an edgelist or a matrix. There are some subtle differences, however, in how they are stored and some major differences in how you convert them into network objects.</p>
+<p>In an edgelist, there are not “to” and “from” columns per se. Rather, one set of nodes is in one column and the second set in a separate column. Rows still represent connections. These columns must be mutually exclusive. In other words, they must reflect the separate modes. In this case, we have artists (and only artists) in one column and the name of the songs they appeared on (and only those songs) in the second column.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(artist_track_edge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 Wiley               5AM (feat. Scorcher)                         </code></pre>
 </div>
 </div>
-<p>Next, our matrix looks a bit different. This is called an affiliation matrix (a.k.a a two mode matrix). In this, the rows are one mode and the columns are the second mode. In our case, artists are in rows and columns are the songs. Just like traditional adjacency matrices, the 1/0 reflect tie/no tie.</p>
+<p>Next, our matrix looks a bit different. This is called an <strong>affiliation matrix</strong> (a.k.a a two mode matrix). In this, the rows are one mode and the columns are the second mode. In our case, artists are in rows and columns are the songs. Just like traditional adjacency matrices, the network is binary, with 1s and 0s reflecting a tie vs.&nbsp;no tie.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(artist_track_adj)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -382,18 +382,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ..$ : chr [1:391] "See Clear Now (feat. Kano &amp; Scorcher)" "Cash in My Pocket (feat. Daniel Merriweather)" "5AM (feat. Scorcher)" "Step by Step (feat. Hot Chip)" ...</code></pre>
 </div>
 </div>
-<p>Now, let’s work on converting these datasets into graphs that we can work with.</p>
+<p>Now, let’s work on converting these data sets into graphs that we can work with.</p>
 <section id="two-mode-networks-from-edgelists" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="two-mode-networks-from-edgelists"><span class="header-section-number">13.1</span> Two Mode Networks From Edgelists</h2>
-<p>When converting edgelists into graph objects, you use the graph_from_data_frame() function with a few more steps. Notice below that we use our edgelist data and set directed to false. Now, when we look at the summary of the object, we see that we have an undriected network (UN) with 763 nodes and 1143 edges. At this point, R does not recognise this as a two mode network. There is another step we must do.</p>
+<p>When converting edgelists into graph objects, you use the <code>graph_from_data_frame()</code> function with a few more steps. Notice below that we use our edgelist data and set directed to false. Now, when we look at the summary of the object, we see that we have an undirected network (UN) with 763 nodes and 1143 edges. At this point, R does not recognize this as a two mode network. There is another step we must do.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a_t_g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(artist_track_edge, <span class="at">directed =</span> F)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 0b40ef0 UN-- 763 1143 -- 
+<pre><code>IGRAPH 2d830ff UN-- 763 1143 -- 
 + attr: name (v/c)
-+ edges from 0b40ef0 (vertex names):
++ edges from 2d830ff (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -405,22 +404,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 + ... omitted several edges</code></pre>
 </div>
 </div>
-<p>Below, we use the bipartite_mapping() function which basically scans your network object to determine whether there it is truly a two mode network. It generates an attribute called “type” which is a logic vector of TRUE and FALSE statements. We set that as a node level characteristic in our network. Those with a type == FALSE are one mode (in our case the artists) and TRUE are the second mode (the songs).</p>
+<p>Below, we use the <code>bipartite_mapping()</code> function which basically scans your network object to determine whether there it is truly a two mode network. It generates an attribute called “type” which is a logic vector of TRUE and FALSE statements. We set that as a node level characteristic in our network. Those with a type == FALSE are one mode (in our case the artists) and TRUE are the second mode (the songs).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g)<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="fu">bipartite_mapping</span>(a_t_g)<span class="sc">$</span>type</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">V</span>(a_t_g)<span class="sc">$</span>type) <span class="co"># Check if it worked</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">V</span>(a_t_g)<span class="sc">$</span>type) <span class="co"># Check if it worked</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE</code></pre>
 </div>
 </div>
-<p>Now when we look at the network we see that it is now a UN-B which means undirected bipartite graph. We also see that the type has been added as a logical vertex characteristic.</p>
+<p>Now when we look at the network we see that it is now a UN-B which means undirected <strong>bipartite</strong> graph. We also see that “type” has been added as a logical vertex characteristic.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 0b40ef0 UN-B 763 1143 -- 
+<pre><code>IGRAPH 2d830ff UN-B 763 1143 -- 
 + attr: name (v/c), type (v/l)
-+ edges from 0b40ef0 (vertex names):
++ edges from 2d830ff (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -436,22 +434,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="two-mode-networks-from-adjacency-matrices" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="two-mode-networks-from-adjacency-matrices"><span class="header-section-number">13.2</span> Two Mode Networks From Adjacency Matrices</h2>
-<p>When creating networks from affiliation matrices we use the graph_from_biadjacency_matrix() function. This is a slight permutation of the graph_from_adjacency_matrix() function we’ve used till now.</p>
+<p>When creating networks from affiliation matrices we use the <code>graph_from_biadjacency_matrix()</code> function. This is a slight permutation of the <code>graph_from_adjacency_matrix()</code> function we’ve used till now.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a_t_g2 <span class="ot">&lt;-</span> <span class="fu">graph_from_biadjacency_matrix</span>(artist_track_adj)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE</code></pre>
 </div>
 </div>
-<p>The graph_from_adjacency_matrix() automatically generates the type attribute and creates a bipartite network object for you.</p>
-<p>Now we are ready to get going with visualising and analysing this network!</p>
+<p><code>graph_from_adjacency_matrix()</code> automatically generates the type attribute and creates a bipartite network object for you.</p>
+<p>Now we are ready to visualize and analyze this network!</p>
 </section>
-<section id="visualising-two-mode-networks" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="visualising-two-mode-networks"><span class="header-section-number">13.3</span> Visualising Two Mode Networks</h2>
-<p>We will start with some basic visualisation of this network. In the chunk below, we encounter the pitfall that is common when working with two mode network data. Even though R knows this is a two mode network, the visualisation does not show that there is a difference between the nodes. So, we need to do a few things to make it work!</p>
+<section id="visualizing-two-mode-networks" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="visualizing-two-mode-networks"><span class="header-section-number">13.3</span> Visualizing Two Mode Networks</h2>
+<p>We will start with some basic visualization. In the chunk below, we encounter the pitfall that is common when working with two mode network data. Even though R knows this is a two mode network, the visualization does not show that there is a difference between the nodes. So, we need to do a few things to make it work!</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -465,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>One method that is commonly used is called the bipartite layout. This layout pushes one type of node to one side of the visual and the second to the opposite. We demonstrate a top and bottom version and a left and right version here (using the coord_flip option). Note that we have also set the color to the mode type with one color for the artists and another for the songs.</p>
+<p>One method that is commonly used is called the <strong>bipartite layout</strong>. This layout pushes one type of node to one side of the visual and the second to the opposite. We demonstrate a top and bottom version and a left and right version here using <code>coord_flip()</code>. Note that we have also set the color to the mode type with one color for the artists and another for the songs.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"bipartite"</span>) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
@@ -491,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The bipartite visualisations are a classic format. However, you lose the visual cues to the nature of the structure of the network by forcing them into vertical/horizontal ties. Below, we go through a few of our force-directed algorithms and adding a few more options to further clarify the two mode nature of the network.</p>
+<p>Bipartite visualization is a classic format. However, you lose the visual cues to the nature of the structure of the network by forcing them into vertical/horizontal ties. Below, we go through a few of our force-directed algorithms and adding a few more options to further clarify the two mode nature of the network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
@@ -508,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>In this next chunk we swap layouts but add shapes to further clarify the two modes. This is particularly important for accessibility since folk may not be able to see color well.</p>
+<p>In this next chunk we swap layouts but add shapes to further clarify the two modes. This is particularly important for accessibility since some folks may not be able to see color well.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
@@ -529,25 +525,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>mode <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type, <span class="st">"Song"</span>, <span class="st">"Artist"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> mode),</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">1</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="st">"steelblue1"</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="st">"maroon"</span>)</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> mode), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="st">"steelblue1"</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="st">"maroon"</span>)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -556,10 +543,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>After the standard options, we go through a series of scale_ options. If you set the shape scale as the mode and the color to another characterstic, it would generate two legends. However, since we set them both to the mode it collapses into one showing both the shape and color to reflect artist and song.</p>
+<p>After the standard options, we go through a series of “scale_” options. If you set the shape scale as the mode and the color to another characteristic, it would generate two legends. However, since we set them both to the mode it collapses into one showing both the shape and color to reflect artist and song.</p>
 <p>Nice work!!</p>
 <p>Now let’s turn to some analysis. We have already learned about different measures of centrality, so we won’t go too much into detail here. However, the main thing you must remember when working with centrality in two mode data is that your interpretation of the measures needs to reflect the two mode nature. For the sake of parsimony, we are going to cover degree centrality and betweenness centrality in two mode networks.</p>
-<p>To get going, we are going to make a quick data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.</p>
+<p>To get going, we are going to make a data frame that captures both the degree and betweenness centrality measures. We are also going to include the name of each node and an indicator as to whether the node is an artist or a song. This is going to come in handy when we are talking about these measures.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">degree =</span> <span class="fu">degree</span>(a_t_g2),</span>
@@ -571,24 +558,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="degree-centrality-in-two-mode-networks" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="degree-centrality-in-two-mode-networks"><span class="header-section-number">13.4</span> Degree Centrality in Two Mode Networks</h2>
-<p>The logic of degree centrality remains the same from one mode to two mode analysis.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The degree centrality simply counts the number of neighbours that a node has. The important thing to remember, however, is that counting the number of neighbours in a one mode network is usually interpreted as a measure of an indivdual’s prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this alters slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.</p>
-<p>If you are measuring the degree centrality of the individual artists in this network, then what you are actually capturing is the number of songs they are on in 2008.Their maximal degree is the n(songs). While we could still think of this as how prominent an artist is within the world of Grime, it is more appropriate to think of this as a measure of how expansive they are within this two mode world. The chunk below filters the dataframe we created to focus only on the artists and calculates a brief summary of the their degree centrality.</p>
+<p>The logic of degree centrality remains the same from one mode to two mode analysis.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Degree centrality simply counts the number of neighbors that a node has. The important thing to remember, however, is that counting the number of neighbors in a one mode network is usually interpreted as a measure of an indivdual’s prominence in the network. The maximum degree in a one mode network is n-1. When applied to a two mode network, this changes slightly depending on which mode you are measuring. The maximal degree for each mode is the N of the opposite mode.</p>
+<p>If you are measuring the degree centrality of the individual artists in this network, then what you are actually capturing is the number of songs they are on in 2008. Their maximal degree is the n(songs). While we could still think of this as how prominent an artist is within the world of Grime, it is more appropriate to think of this as a measure of how expansive they are within this two mode world. The chunk below filters the data frame we created to focus only on the artists and calculates a brief summary of the their degree centrality.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Artist"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">mean</span>(degree),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Artist"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(degree),</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">min =</span> <span class="fu">min</span>(degree),</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">max =</span> <span class="fu">max</span>(degree),</span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(degree),</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean(degree) min max       sd   n
 1     3.072581   1 146 8.513671 372</code></pre>
 </div>
 </div>
 <p>From this, we can infer that the average Grime artist from our set appeared on 3 songs in 2008. However, we can also see from the max and standard deviation that there is massive variance among these artists’ expansiveness in terms of their affiliation to songs. One final thing to note is that the maximum observed degree is much less than the number of possible degree centrality (n songs = 391). This suggests that, while some Grime artists are very expansive (appearing on 146 songs in one year!), there are many more songs than there are expansive individuals.</p>
-<p>This visualisation below demonstrates the artists with a degree equal to or higher than the average in red while those with below average are black. We do this by adding a vertex characteristic to our graph only for the artists (type = FALSE, songs are set to NA). Songs are left grey.</p>
+<p>The visualization below demonstrates the artists with a degree equal to or higher than the average in red while those with below average are black. We do this by adding a vertex characteristic to our graph only for the artists (<code>type = FALSE</code>, songs are set to NA). Songs are left grey.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>artist_degree_group <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>artist_degree_group[<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> </span>
@@ -596,21 +582,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Above Avg"</span>, <span class="st">"Below Avg"</span>)</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> artist_degree_group), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Artist Degree Centrality"</span>,</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Above Avg"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Below Avg"</span> <span class="ot">=</span> <span class="st">"black"</span>),</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.value =</span> <span class="st">"grey"</span> </span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> artist_degree_group), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">name =</span> <span class="st">"Node Type"</span>, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Artist Degree Centrality"</span>,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Above Avg"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Below Avg"</span> <span class="ot">=</span> <span class="st">"black"</span>),</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na.value =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -619,22 +600,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>If you are measuring the degree centrality of the second mode, in this case the songs, you are measuring the number of artists that were on each song. As above, the chunk below does the same for songs so that we can compare each.</p>
+<p>When measuring the degree centrality of the second mode – in this case the songs – you are measuring the number of artists that were on each song. As above, the chunk below does the same for songs so that we can compare each.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Song"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">mean</span>(degree),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Song"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(degree),</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">min =</span> <span class="fu">min</span>(degree),</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">max =</span> <span class="fu">max</span>(degree),</span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(degree),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean(degree) min max       sd   n
 1     2.923274   2   9 1.298617 391</code></pre>
 </div>
 </div>
-<p>Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualisation below repeats the aesthetic as above only now showing songs (type = TRUE) with a degree above the average.</p>
+<p>Here, the average song had roughly 3 artists featured. Standard deviation suggests that there is some variation in this across artists but the observed maximum is much lower than the possible degree (n artists = 372). In this case, it makes sense. Having almost 400 artists on a song might be hard to listen to. Or a very long song! The visualization below repeats the aesthetic as above only now showing songs (type = TRUE) with a degree above the average.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>song_degree_group <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(a_t_g2)<span class="sc">$</span>song_degree_group[<span class="fu">V</span>(a_t_g2)<span class="sc">$</span>type <span class="sc">==</span> <span class="cn">TRUE</span>] <span class="ot">&lt;-</span> </span>
@@ -642,21 +622,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Above Avg"</span>, <span class="st">"Below Avg"</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> song_degree_group), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Song Degree Centrality"</span>,</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Above Avg"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Below Avg"</span> <span class="ot">=</span> <span class="st">"black"</span>),</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.value =</span> <span class="st">"grey"</span> </span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(a_t_g2, <span class="at">layout =</span> <span class="st">"dh"</span>) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> mode, <span class="at">color =</span> song_degree_group), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">name =</span> <span class="st">"Node Type"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Artist"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"Song"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Song Degree Centrality"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Above Avg"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Below Avg"</span> <span class="ot">=</span> <span class="st">"black"</span>),</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na.value =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grime Artists Connected to Songs 2008"</span>) <span class="sc">+</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -669,16 +644,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="betweenness-centrality-in-two-mode-networks" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="betweenness-centrality-in-two-mode-networks"><span class="header-section-number">13.5</span> Betweenness Centrality in Two Mode Networks</h2>
-<p>The behind betweenness centrality being considered a measure of influence or bridging remains true in two mode networks, but the paths look a little different. In a one mode network the shortest pathways are calculated person-to-person and betweenness calculates the number of times each node appears on that path (known as the geodesic). However, such pathways do not exist in two mode networks. Since ties can only exist across the modes (person/group ties, not person/person or group/group), the pathways become person-to-group-to-person. As a result, a node’s betweenness in a two-mode network reflects how much it connects otherwise separate parts of the network across the two modes—for example, how an individual links otherwise disconnected groups, or how a group brings together otherwise unconnected individuals. While the measure is calculated in the same way as in one-mode networks, its interpretation emphasizes cross-mode brokerage rather than direct influence among nodes of the same type.</p>
+<p>While betweenness centrality is also considered a measure of influence or bridging in two mode networks, the paths look a little different. In a one mode network the shortest pathways are calculated person-to-person and betweenness calculates the number of times each node appears on that path (known as the geodesic). However, such pathways do not exist in two mode networks. Since ties can only exist across the modes (person-to-group ties, not person-to-person or group-to-group), the pathways become person-to-group-to-person. As a result, a node’s betweenness in a two mode network reflects how much it connects otherwise separate parts of the network across the two modes. For example, it would tell us how an individual serves as a bridge between otherwise disconnected groups, or how a group brings together otherwise unconnected individuals. While the measure is calculated in the same way as in one mode networks, its interpretation emphasizes cross-mode brokerage rather than direct influence among nodes of the same type.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Artist"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">mean</span>(between),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Artist"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(between),</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">min =</span> <span class="fu">min</span>(between),</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">max =</span> <span class="fu">max</span>(between),</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(between),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean(between) min      max       sd   n
 1       441.871   0 38560.67 2701.778 372</code></pre>
@@ -687,34 +661,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Remember that this measure captures how much an artist bridges across otherwise disconnected parts of the track–artist structure. This distribution tells a lot about artist bridging across this network! The mean is 442 with a max of over 38,000 and a huge standard deviation. This tells us that most artists have very low betweenness, while a small number act as major bridges in the network. Those with a betweenness score of 0 are embedded in small or redundant parts of the network. Those with higher levels of betweenness are key brokers across the space since they connect otherwise separate parts of the network.</p>
 <p>Now let’s turn to the song-level betweenness to examine how often a song lies on the shortest paths between pairs of artists in the network.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Song"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">mean</span>(between),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>centrality <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Song"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(between),</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">min =</span> <span class="fu">min</span>(between),</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">max =</span> <span class="fu">max</span>(between),</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(between),</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean(between)        min   max       sd   n
 1      415.8133 0.03846154 11454 1311.739 391</code></pre>
 </div>
 </div>
-<p>The distribution of song betweenness tells a similar story. The mean (416) relative to the max (11454) shows that there are some songs that are highly bridging while others are in more redundant parts of the network. Songs with high betweenness are those that connect otherwise disconnected clusters. Since songs are not agentic, we don’t really think of these as brokers, but really as meeting points or shared contexts.</p>
+<p>The distribution of song betweenness tells a similar story. The mean (416) relative to the max (11454) shows that there are some songs that are highly bridging while others are in more redundant parts of the network. Songs with high betweenness are those that connect otherwise disconnected clusters. Since songs are not actors, we don’t really think of these as brokers, but really as meeting points or shared contexts.</p>
 </section>
 <section id="projecting-one-mode-networks" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="projecting-one-mode-networks"><span class="header-section-number">13.6</span> Projecting One Mode Networks</h2>
 <p>One of the classic applications of two mode network analysis is to project a one mode network for both sets. In our case, this involves constructing an artist-to-artist network and a song-to-song network. The ties in the artist one mode network represent mutual appearances on songs. The ties are weighted by the total number of songs they co-appear on. Conversely, the ties in the song-to-song network reflect whether they share artists. Again, these ties are weighted, but, this time, the weights are the number of artists they share.</p>
-<p>This conversion process is useful to see the visualise the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what is called “the duality of persons and groups.”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>To project these one mode networks, we simply use the bipartite_projection() function. Before we use it, let’s understant it. The output from the chunk below shows that the function produces a list with two network objects. The first (proj1) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes, the node name, its mode, and the edge weight. The second (proj2) is another undirected network of our 392 songs with the same list of attributes.</p>
+<p>This conversion process is useful to see the ways that individuals and groups are connected to each other. The converted one mode networks reveal some interesting structures based on shared affiliation (for the person-to-person network) or shared affiliates (for the group-to-group network). Such dual connectivity based on affiliation (person-to-group and then the subsequent one mode permutations of those) is a major component of what is called “the duality of persons and groups.”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>To project these one mode networks, we simply use the <code>bipartite_projection()</code> function. Before we use it, let’s understand it. The output from the chunk below shows that the function produces a list with two network objects. The first (“proj1”) shows an undirected, weighted network with our 372 artists. This network has 852 edges between these nodes (the songs they share) and three attributes: the node name, its mode, and the edge weight. The second (“proj2”) is another undirected network of our 392 songs with the same list of attributes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bipartite_projection</span>(a_t_g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$proj1
-IGRAPH 6602a69 UNW- 372 852 -- 
+IGRAPH a3c8bc1 UNW- 372 852 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from 6602a69 (vertex names):
++ edges from a3c8bc1 (vertex names):
  [1] Wiley--Kano                Wiley--Scorcher           
  [3] Wiley--Daniel Merriweather Wiley--Hot Chip           
  [5] Wiley--Peter Raeburn       Wiley--Larry              
@@ -725,10 +698,10 @@ IGRAPH 6602a69 UNW- 372 852 --
 + ... omitted several edges
 
 $proj2
-IGRAPH 6602b98 UNW- 391 12312 -- 
+IGRAPH a3c8f0e UNW- 391 12312 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from 6602b98 (vertex names):
++ edges from a3c8f0e (vertex names):
 [1] See Clear Now (feat. Kano &amp; Scorcher)--Cash in My Pocket (feat. Daniel Merriweather)
 [2] See Clear Now (feat. Kano &amp; Scorcher)--5AM (feat. Scorcher)                         
 [3] See Clear Now (feat. Kano &amp; Scorcher)--Step by Step (feat. Hot Chip)                
@@ -738,7 +711,7 @@ IGRAPH 6602b98 UNW- 391 12312 --
 + ... omitted several edges</code></pre>
 </div>
 </div>
-<p>Now, we can create an object with this which will give us our projected networks that we can now plot and analyse individually. See below for examples.</p>
+<p>Now, we can create an object with this which will give us our projected networks that we can now plot and analyze individually. See below for examples.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># so we can do a side by side</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -768,8 +741,8 @@ IGRAPH 6602b98 UNW- 391 12312 --
 </div>
 </div>
 </div>
-<p>From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of separate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collaboration? Some fun stories could emerge from this!</p>
-<p>In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won’t mirror those from the two mode network. This is because you have removed the two-mode structure. This is a continuing debate among scholars.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!</p>
+<p>From these networks, we can tell slightly different stories about artists and the songs they create. From the first, the artist only network, there appears to be a dense group of artists separate from others with small communities surrounding them. This may generate interesting questions for your research. Are these reflective of separate sub-genres of the genre? From the second visual, we see that the main component of the graph is a long tree-like structure of songs connected through a few artists that appear to connect groups of other songs. This is fascinating! Think about the implications of this? What songs are connecting these big groups through artistic collaboration? Some fun stories could emerge from this!</p>
+<p>In sum, the projection of two mode to a one mode network is a useful tool. Beware, however, that taking measures like degree or betweenness from these networks won’t mirror those from the two mode network. This is because you have removed the two mode structure. This is a continuing debate among scholars.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Suffice it to say that it is one of the most unique and fun elements of working with two mode networks!</p>
 </section>
 <section id="references" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="references"><span class="header-section-number">13.7</span> References</h2>

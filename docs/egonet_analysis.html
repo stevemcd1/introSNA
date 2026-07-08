@@ -201,14 +201,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./two_mode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -362,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="adding-ego-attributes" class="level3" data-number="12.0.1">
 <h3 data-number="12.0.1" class="anchored" data-anchor-id="adding-ego-attributes"><span class="header-section-number">12.0.1</span> Adding ego attributes</h3>
-<p>Let’s begin by examining a single ego network. Below we save new igraph objects – one without ego and one with ego included – for the ego network number 10 in our larger list.</p>
+<p>Let’s begin by examining a single ego network. Below we store new <code>igraph</code> objects – one without ego and one with ego included – for the ego network number 10 in our larger list.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ego-network graph, ego_id = 10</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gr<span class="fl">.10</span> <span class="ot">&lt;-</span> gr.list[[<span class="st">"10"</span>]]</span>
@@ -414,14 +414,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The problem is that we have 288 different ego networks that need new values for missing weights. So we need a function that will apply a value of 3 to all ego-alter edges simultaneously. See below: 1) generate a weight replacement function and 2) apply that function to all graphs in the gr.list.ego object.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Weight replacement function</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Weight replacement function</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>weight_replace <span class="ot">&lt;-</span> <span class="cf">function</span>(gr) {</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">E</span>(gr)<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">E</span>(gr)<span class="sc">$</span>weight <span class="sc">|&gt;</span> </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="dv">3</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  gr</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Apply the function to all graphs in the list</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function to all graphs in the list</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>gr.list.ego <span class="ot">&lt;-</span> gr.list.ego <span class="sc">|&gt;</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(weight_replace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -441,8 +441,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The last value, which refers to the ego attribute is NA. We will need a special function for this, because instead of applying a constant value (3), it will be necessary to apply a unique value for each ego based on what is in the ego attribute file.</p>
-<p>With a little help from ChatGPT, I constructed the following function. With it, we can apply all of the values from the ego attribute file to the vertex attributes embedded within each ego network in the gr.list.ego object.</p>
-<p>The function 1) identifies the appropriate row based on matching ego_id, 2) identifies the last entry in the vector of attributes (because ego is always the last vertex in these objects), and 3) applies the appropriate value in the ego attribute to the attribute vector within the graph list object. The final portion of the code assigns all of the relevant attribute names to a vector (“ego_attributes”), which it then feeds into the function and applies across the list via the imap command.</p>
+<p>With a little help from ChatGPT, I constructed the following function. With it, we can apply all of the values from the ego attribute file to the vertex attributes embedded within each ego network in the “gr.list.ego” object.</p>
+<p>The function 1) identifies the appropriate row based on matching ego_id, 2) identifies the last entry in the vector of attributes (because ego is always the last vertex in these objects), and 3) applies the appropriate value in the ego attribute to the attribute vector within the graph list object. The final portion of the code assigns all of the relevant attribute names to a vector (“ego_attributes”), which it then feeds into the function and applies across the list via the <code>imap()</code> function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function that applies ego attribute to all egos</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>add_ego_attributes <span class="ot">&lt;-</span> <span class="cf">function</span>(gr, ego_id, ego_df, attributes) {</span>
@@ -480,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visualizing-ego-networks" class="level3" data-number="12.0.2">
 <h3 data-number="12.0.2" class="anchored" data-anchor-id="visualizing-ego-networks"><span class="header-section-number">12.0.2</span> Visualizing ego networks</h3>
-<p>Now that the correct values are in place, we can add attribute information to the network graphs. We’ll start with a graph of the number 10 network that includes ego, showing the gender of the nodes. Note that the gr.ego.10 object needs to be recreated now that we have added the new attribute information to the orginal list.</p>
+<p>Now that the correct values are in place, we can add attribute information to the network graphs. We’ll start with a graph of the number 10 network that includes ego, showing the gender of the nodes. Note that the gr.ego.10 object needs to be recreated now that we have added the new attribute information to the original list.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gr.ego<span class="fl">.10</span> <span class="ot">&lt;-</span> gr.list.ego[[<span class="st">"10"</span>]]</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -539,9 +539,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="12.1" class="anchored" data-anchor-id="adding-network-metrics"><span class="header-section-number">12.1</span> Adding network metrics</h2>
 <section id="ego-attributes" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="ego-attributes"><span class="header-section-number">12.1.1</span> Ego attributes</h3>
-<p>Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call nested data structures: within each ego is a set of alters and within each group of alters is a set of relationships.</p>
+<p>Statistical analysis of ego networks can be conducted at three different levels: ego attributes, alter composition, and edge structure. These are what we call <strong>nested data structures</strong>: within each ego is a set of alters and within each group of alters is a set of relationships.</p>
 <p>These three levels can be analyzed separately or combined. Below we present an example of a combined analysis whereby alter composition and edge structures are aggregated to the ego level. In other words, we’ll keep the data file at the ego level (with each row representing a unique ego) and add summary information about alters and alter ties to each row.</p>
-<p>Let’s start by creating a new data matrix called e.attribute. Let’s recode ego attributes for gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).</p>
+<p>We will start by creating a new data matrix called “ego.attribute”. Let’s recode gender (SEX) and race (RACE) into dummy variables (i.e., binary variables).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ego.attribute <span class="ot">&lt;-</span> ego <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FEMALE =</span> <span class="fu">case_when</span>(SEX <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,SEX <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
@@ -632,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Density in this ego network is equal to .9, which indicates that 90% of all possible ties are present. The components indicates that there is one single connected component among the alters. (Running this on the network for ego number 80 would reveal two different components. See above.) Finally, the degree centralization score is .1, which suggests that this graph lacks hierarchy (it is not centered around a “star” alter).</p>
-<p>For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of the map function. Below we demonstrate how this is achieved for a single metric (edge_density).</p>
+<p>For the purpose of analysis, it will be necessary to obtain these estimates for all egos. This will require the use of <code>map_dbl()</code>. Below we demonstrate how this is achieved for a single metric (edge_density).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">map_dbl</span>(gr.list, edge_density))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -640,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 0.8333333 0.8333333 0.9000000 0.0000000 0.0000000 1.0000000 </code></pre>
 </div>
 </div>
-<p>Next let’s generate a single row of network metrics for a single ego network.</p>
+<p>Next we generate a single row of network metrics for a single ego network.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">dens =</span> <span class="fu">edge_density</span>(gr<span class="fl">.10</span>),</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">components</span>(gr<span class="fl">.10</span>)<span class="sc">$</span>no,</span>
@@ -652,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1   0.9                      1       0.1</code></pre>
 </div>
 </div>
-<p>Let’s bring this all together by estimating these edge characteristics for all of the ego networks an combining them into a data frame.</p>
+<p>Let’s bring this all together by estimating these edge characteristics for all of the ego networks and combining them into a data frame.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>e.summary <span class="ot">&lt;-</span> gr.list <span class="sc">|&gt;</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span> <span class="fu">tibble</span>(<span class="at">dens =</span> <span class="fu">edge_density</span>(gr<span class="fl">.10</span>),</span>
@@ -691,7 +691,7 @@ $ centralization &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0
 </section>
 <section id="bivariate-analyses" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="bivariate-analyses"><span class="header-section-number">12.2</span> Bivariate analyses</h2>
-<p>With a dataset like this, it is possible to conduct various statistical analyses. Below we show a simple analysis of variance (ANOVA) test to demonstrate one possibility.</p>
+<p>With a data set like this, it is possible to conduct various statistical analyses. Below we show a simple analysis of variance (<strong>ANOVA</strong>) test to demonstrate one possibility.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ego.attribute<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="fu">factor</span>(ego.attribute<span class="sc">$</span>female, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1176,8 +1176,8 @@ Residuals   286 2.201e-29 7.697e-32               </code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./two_mode.html" class="pagination-link" aria-label="Two Mode Network Data">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Network Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./two_mode.html" class="pagination-link" aria-label="Two Mode Networks">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
