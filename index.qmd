@@ -30,7 +30,7 @@ Here are links to those applications...
 
 ...and in the appendix you can find more information about the datasets.
 
-- [Network data descriptions](https://stevemcd1.github.io/introSNA/datasets.html)
+- [Network data descriptions](https://github.com/stevemcd1/intronets)
 
 ## Advanced Study
 
