@@ -40,6 +40,8 @@ book:
   appendices:
    - r_basics.qmd
    - interact_vis.qmd
+   - datasets.qmd
+   
 format:
   html:
     theme:

@@ -369,7 +369,7 @@ cug.test(dat = gh_net, gtrans, mode = c("graph"), cmode = "edges")
 
 ```
 
-The results show the observed value of transitivity at 0.63, which indicates that 63 percent of all possible triads in the network are complete (with ties between all three nodes). Is this a significantly high value? 
+The results show the observed value of transitivity at 0.63, which indicates that 63 percent of all possible triads in the network are complete (with ties between all three nodes). Is this a significantly high value?
 
 Yes. The Pr(X\<=Obs) portion of the output tells us that the probability that the observed transitivity value is greater than the random values from the simulated graphs is 1. A probability of 1 means the outcome is certain to happen.
 

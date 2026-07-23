@@ -66,7 +66,7 @@ ggplot(net_stats, aes(x = network, y = reciprocity)) +
   geom_point()
 ```
 
-A third, and final example, is the groups density over time. This is a measure of how many observed ties there are vs. the number of ties that are possible. This graph shows that the density does not change over time. Why would that be the case? Well, remember that the number of ties for each alter at each time point is constrained to exactly the top 3 alter nominations. Because every student has a degree of three in each of the time slices, density remains constant. 
+A third, and final example, is the groups density over time. This is a measure of how many observed ties there are vs. the number of ties that are possible. This graph shows that the density does not change over time. Why would that be the case? Well, remember that the number of ties for each alter at each time point is constrained to exactly the top 3 alter nominations. Because every student has a degree of three in each of the time slices, density remains constant.
 
 ```{r}
 

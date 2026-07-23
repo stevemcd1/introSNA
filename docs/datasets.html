@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix C — intronets Package: Dataset Descriptions – Introduction to Social Network Analysis</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./interact_vis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./datasets.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">intronets Package: Dataset Descriptions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./lightcover.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Intro to Social Network Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WELCOME!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_sna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Social Network Analysis?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What is a Network?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graph_layouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Graph Layouts</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./connectivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Connectivity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Centrality</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./communities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assortitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Assortativity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./roles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Roles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./netsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simulations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extensions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ego networks: setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./egonet_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ego networks: analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./two_mode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Mode Networks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Text Networks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dynamic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dynamic Networks</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">What is R and RStudio?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interact_vis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">intronets Package: Dataset Descriptions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#bali-terrorist-network" id="toc-bali-terrorist-network" class="nav-link active" data-scroll-target="#bali-terrorist-network"><span class="header-section-number">C.1</span> BALI TERRORIST NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">C.1.1</span> Background</a></li>
+  <li><a href="#network-structure" id="toc-network-structure" class="nav-link" data-scroll-target="#network-structure"><span class="header-section-number">C.1.2</span> Network Structure</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="header-section-number">C.1.3</span> Attributes</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">C.1.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#davis-southern-club-women-network-two-mode" id="toc-davis-southern-club-women-network-two-mode" class="nav-link" data-scroll-target="#davis-southern-club-women-network-two-mode"><span class="header-section-number">C.2</span> DAVIS SOUTHERN CLUB WOMEN NETWORK (Two Mode)</a>
+  <ul class="collapse">
+  <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1"><span class="header-section-number">C.2.1</span> Background</a></li>
+  <li><a href="#network-structure-1" id="toc-network-structure-1" class="nav-link" data-scroll-target="#network-structure-1"><span class="header-section-number">C.2.2</span> Network Structure</a></li>
+  <li><a href="#attributes-1" id="toc-attributes-1" class="nav-link" data-scroll-target="#attributes-1"><span class="header-section-number">C.2.3</span> Attributes</a></li>
+  <li><a href="#references-1" id="toc-references-1" class="nav-link" data-scroll-target="#references-1"><span class="header-section-number">C.2.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#declaration-of-independence-word-network-text" id="toc-declaration-of-independence-word-network-text" class="nav-link" data-scroll-target="#declaration-of-independence-word-network-text"><span class="header-section-number">C.3</span> DECLARATION OF INDEPENDENCE WORD NETWORK (text)</a>
+  <ul class="collapse">
+  <li><a href="#background-2" id="toc-background-2" class="nav-link" data-scroll-target="#background-2"><span class="header-section-number">C.3.1</span> Background</a></li>
+  <li><a href="#network-structure-2" id="toc-network-structure-2" class="nav-link" data-scroll-target="#network-structure-2"><span class="header-section-number">C.3.2</span> Network Structure</a></li>
+  <li><a href="#attributes-2" id="toc-attributes-2" class="nav-link" data-scroll-target="#attributes-2"><span class="header-section-number">C.3.3</span> Attributes</a></li>
+  <li><a href="#references-2" id="toc-references-2" class="nav-link" data-scroll-target="#references-2"><span class="header-section-number">C.3.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#drug-user-social-networks" id="toc-drug-user-social-networks" class="nav-link" data-scroll-target="#drug-user-social-networks"><span class="header-section-number">C.4</span> DRUG USER SOCIAL NETWORKS</a>
+  <ul class="collapse">
+  <li><a href="#background-3" id="toc-background-3" class="nav-link" data-scroll-target="#background-3"><span class="header-section-number">C.4.1</span> Background</a></li>
+  <li><a href="#network-structure-3" id="toc-network-structure-3" class="nav-link" data-scroll-target="#network-structure-3"><span class="header-section-number">C.4.2</span> Network Structure</a></li>
+  <li><a href="#attributes-3" id="toc-attributes-3" class="nav-link" data-scroll-target="#attributes-3"><span class="header-section-number">C.4.3</span> Attributes</a></li>
+  <li><a href="#references-3" id="toc-references-3" class="nav-link" data-scroll-target="#references-3"><span class="header-section-number">C.4.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#eies-electronic-communication-network" id="toc-eies-electronic-communication-network" class="nav-link" data-scroll-target="#eies-electronic-communication-network"><span class="header-section-number">C.5</span> EIES ELECTRONIC COMMUNICATION NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background-4" id="toc-background-4" class="nav-link" data-scroll-target="#background-4"><span class="header-section-number">C.5.1</span> Background</a></li>
+  <li><a href="#network-structure-4" id="toc-network-structure-4" class="nav-link" data-scroll-target="#network-structure-4"><span class="header-section-number">C.5.2</span> Network Structure</a></li>
+  <li><a href="#attributes-4" id="toc-attributes-4" class="nav-link" data-scroll-target="#attributes-4"><span class="header-section-number">C.5.3</span> Attributes</a></li>
+  <li><a href="#references-4" id="toc-references-4" class="nav-link" data-scroll-target="#references-4"><span class="header-section-number">C.5.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#fraternity-social-networks-longitudinal" id="toc-fraternity-social-networks-longitudinal" class="nav-link" data-scroll-target="#fraternity-social-networks-longitudinal"><span class="header-section-number">C.6</span> FRATERNITY SOCIAL NETWORKS (LONGITUDINAL)</a>
+  <ul class="collapse">
+  <li><a href="#background-5" id="toc-background-5" class="nav-link" data-scroll-target="#background-5"><span class="header-section-number">C.6.1</span> Background</a></li>
+  <li><a href="#network-structure-5" id="toc-network-structure-5" class="nav-link" data-scroll-target="#network-structure-5"><span class="header-section-number">C.6.2</span> Network Structure</a></li>
+  <li><a href="#attributes-5" id="toc-attributes-5" class="nav-link" data-scroll-target="#attributes-5"><span class="header-section-number">C.6.3</span> Attributes</a></li>
+  <li><a href="#references-5" id="toc-references-5" class="nav-link" data-scroll-target="#references-5"><span class="header-section-number">C.6.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#general-social-survey-2004-survey" id="toc-general-social-survey-2004-survey" class="nav-link" data-scroll-target="#general-social-survey-2004-survey"><span class="header-section-number">C.7</span> GENERAL SOCIAL SURVEY 2004 (SURVEY)</a>
+  <ul class="collapse">
+  <li><a href="#background-6" id="toc-background-6" class="nav-link" data-scroll-target="#background-6"><span class="header-section-number">C.7.1</span> Background</a></li>
+  <li><a href="#network-structure-6" id="toc-network-structure-6" class="nav-link" data-scroll-target="#network-structure-6"><span class="header-section-number">C.7.2</span> Network Structure</a></li>
+  <li><a href="#attributes-6" id="toc-attributes-6" class="nav-link" data-scroll-target="#attributes-6"><span class="header-section-number">C.7.3</span> Attributes</a></li>
+  <li><a href="#references-6" id="toc-references-6" class="nav-link" data-scroll-target="#references-6"><span class="header-section-number">C.7.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#general-social-survey-2004-ego-network-data" id="toc-general-social-survey-2004-ego-network-data" class="nav-link" data-scroll-target="#general-social-survey-2004-ego-network-data"><span class="header-section-number">C.8</span> GENERAL SOCIAL SURVEY 2004 (EGO NETWORK DATA)</a>
+  <ul class="collapse">
+  <li><a href="#background-7" id="toc-background-7" class="nav-link" data-scroll-target="#background-7"><span class="header-section-number">C.8.1</span> Background</a></li>
+  <li><a href="#network-structure-7" id="toc-network-structure-7" class="nav-link" data-scroll-target="#network-structure-7"><span class="header-section-number">C.8.2</span> Network Structure</a></li>
+  <li><a href="#attributes-7" id="toc-attributes-7" class="nav-link" data-scroll-target="#attributes-7"><span class="header-section-number">C.8.3</span> Attributes</a></li>
+  <li><a href="#references-7" id="toc-references-7" class="nav-link" data-scroll-target="#references-7"><span class="header-section-number">C.8.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#github-developer-collaboration-network" id="toc-github-developer-collaboration-network" class="nav-link" data-scroll-target="#github-developer-collaboration-network"><span class="header-section-number">C.9</span> GITHUB DEVELOPER COLLABORATION NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background-8" id="toc-background-8" class="nav-link" data-scroll-target="#background-8"><span class="header-section-number">C.9.1</span> Background</a></li>
+  <li><a href="#network-structure-8" id="toc-network-structure-8" class="nav-link" data-scroll-target="#network-structure-8"><span class="header-section-number">C.9.2</span> Network Structure</a></li>
+  <li><a href="#attributes-8" id="toc-attributes-8" class="nav-link" data-scroll-target="#attributes-8"><span class="header-section-number">C.9.3</span> Attributes</a></li>
+  <li><a href="#references-8" id="toc-references-8" class="nav-link" data-scroll-target="#references-8"><span class="header-section-number">C.9.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#grime-music-artist-track-network" id="toc-grime-music-artist-track-network" class="nav-link" data-scroll-target="#grime-music-artist-track-network"><span class="header-section-number">C.10</span> GRIME MUSIC ARTIST-TRACK NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background-9" id="toc-background-9" class="nav-link" data-scroll-target="#background-9"><span class="header-section-number">C.10.1</span> Background</a></li>
+  <li><a href="#network-structure-9" id="toc-network-structure-9" class="nav-link" data-scroll-target="#network-structure-9"><span class="header-section-number">C.10.2</span> Network Structure</a></li>
+  <li><a href="#attributes-9" id="toc-attributes-9" class="nav-link" data-scroll-target="#attributes-9"><span class="header-section-number">C.10.3</span> Attributes</a></li>
+  <li><a href="#references-9" id="toc-references-9" class="nav-link" data-scroll-target="#references-9"><span class="header-section-number">C.10.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#grime-time-longitudinal" id="toc-grime-time-longitudinal" class="nav-link" data-scroll-target="#grime-time-longitudinal"><span class="header-section-number">C.11</span> GRIME TIME (LONGITUDINAL)</a>
+  <ul class="collapse">
+  <li><a href="#background-10" id="toc-background-10" class="nav-link" data-scroll-target="#background-10"><span class="header-section-number">C.11.1</span> Background</a></li>
+  <li><a href="#network-structure-10" id="toc-network-structure-10" class="nav-link" data-scroll-target="#network-structure-10"><span class="header-section-number">C.11.2</span> Network Structure</a></li>
+  <li><a href="#attributes-10" id="toc-attributes-10" class="nav-link" data-scroll-target="#attributes-10"><span class="header-section-number">C.11.3</span> Attributes</a></li>
+  <li><a href="#references-10" id="toc-references-10" class="nav-link" data-scroll-target="#references-10"><span class="header-section-number">C.11.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#hollywood-movies-network-two-mode" id="toc-hollywood-movies-network-two-mode" class="nav-link" data-scroll-target="#hollywood-movies-network-two-mode"><span class="header-section-number">C.12</span> HOLLYWOOD MOVIES NETWORK (TWO MODE)</a>
+  <ul class="collapse">
+  <li><a href="#background-11" id="toc-background-11" class="nav-link" data-scroll-target="#background-11"><span class="header-section-number">C.12.1</span> Background</a></li>
+  <li><a href="#network-structure-11" id="toc-network-structure-11" class="nav-link" data-scroll-target="#network-structure-11"><span class="header-section-number">C.12.2</span> Network Structure</a></li>
+  <li><a href="#attributes-11" id="toc-attributes-11" class="nav-link" data-scroll-target="#attributes-11"><span class="header-section-number">C.12.3</span> Attributes</a></li>
+  <li><a href="#references-11" id="toc-references-11" class="nav-link" data-scroll-target="#references-11"><span class="header-section-number">C.12.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#job-description-word-network-text" id="toc-job-description-word-network-text" class="nav-link" data-scroll-target="#job-description-word-network-text"><span class="header-section-number">C.13</span> JOB DESCRIPTION WORD NETWORK (TEXT)</a>
+  <ul class="collapse">
+  <li><a href="#background-12" id="toc-background-12" class="nav-link" data-scroll-target="#background-12"><span class="header-section-number">C.13.1</span> Background</a></li>
+  <li><a href="#network-structure-12" id="toc-network-structure-12" class="nav-link" data-scroll-target="#network-structure-12"><span class="header-section-number">C.13.2</span> Network Structure</a></li>
+  <li><a href="#attributes-12" id="toc-attributes-12" class="nav-link" data-scroll-target="#attributes-12"><span class="header-section-number">C.13.3</span> Attributes</a></li>
+  <li><a href="#references-12" id="toc-references-12" class="nav-link" data-scroll-target="#references-12"><span class="header-section-number">C.13.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#krackhardt-high-tech-managers" id="toc-krackhardt-high-tech-managers" class="nav-link" data-scroll-target="#krackhardt-high-tech-managers"><span class="header-section-number">C.14</span> KRACKHARDT HIGH-TECH MANAGERS</a>
+  <ul class="collapse">
+  <li><a href="#background-13" id="toc-background-13" class="nav-link" data-scroll-target="#background-13"><span class="header-section-number">C.14.1</span> Background</a></li>
+  <li><a href="#network-structure-13" id="toc-network-structure-13" class="nav-link" data-scroll-target="#network-structure-13"><span class="header-section-number">C.14.2</span> Network Structure</a></li>
+  <li><a href="#attributes-13" id="toc-attributes-13" class="nav-link" data-scroll-target="#attributes-13"><span class="header-section-number">C.14.3</span> Attributes</a></li>
+  <li><a href="#references-13" id="toc-references-13" class="nav-link" data-scroll-target="#references-13"><span class="header-section-number">C.14.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#moreno-classroom-sociometry" id="toc-moreno-classroom-sociometry" class="nav-link" data-scroll-target="#moreno-classroom-sociometry"><span class="header-section-number">C.15</span> MORENO CLASSROOM SOCIOMETRY</a>
+  <ul class="collapse">
+  <li><a href="#background-14" id="toc-background-14" class="nav-link" data-scroll-target="#background-14"><span class="header-section-number">C.15.1</span> Background</a></li>
+  <li><a href="#network-structure-14" id="toc-network-structure-14" class="nav-link" data-scroll-target="#network-structure-14"><span class="header-section-number">C.15.2</span> Network Structure</a></li>
+  <li><a href="#attributes-14" id="toc-attributes-14" class="nav-link" data-scroll-target="#attributes-14"><span class="header-section-number">C.15.3</span> Attributes</a></li>
+  <li><a href="#references-14" id="toc-references-14" class="nav-link" data-scroll-target="#references-14"><span class="header-section-number">C.15.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#padgett-florentine-families-marriage-network" id="toc-padgett-florentine-families-marriage-network" class="nav-link" data-scroll-target="#padgett-florentine-families-marriage-network"><span class="header-section-number">C.16</span> PADGETT FLORENTINE FAMILIES MARRIAGE NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background-15" id="toc-background-15" class="nav-link" data-scroll-target="#background-15"><span class="header-section-number">C.16.1</span> Background</a></li>
+  <li><a href="#network-structure-15" id="toc-network-structure-15" class="nav-link" data-scroll-target="#network-structure-15"><span class="header-section-number">C.16.2</span> Network Structure</a></li>
+  <li><a href="#attributes-15" id="toc-attributes-15" class="nav-link" data-scroll-target="#attributes-15"><span class="header-section-number">C.16.3</span> Attributes</a></li>
+  <li><a href="#references-15" id="toc-references-15" class="nav-link" data-scroll-target="#references-15"><span class="header-section-number">C.16.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#sampson-monastery-network" id="toc-sampson-monastery-network" class="nav-link" data-scroll-target="#sampson-monastery-network"><span class="header-section-number">C.17</span> SAMPSON MONASTERY NETWORK</a>
+  <ul class="collapse">
+  <li><a href="#background-16" id="toc-background-16" class="nav-link" data-scroll-target="#background-16"><span class="header-section-number">C.17.1</span> Background</a></li>
+  <li><a href="#network-structure-16" id="toc-network-structure-16" class="nav-link" data-scroll-target="#network-structure-16"><span class="header-section-number">C.17.2</span> Network Structure</a></li>
+  <li><a href="#attributes-16" id="toc-attributes-16" class="nav-link" data-scroll-target="#attributes-16"><span class="header-section-number">C.17.3</span> Attributes</a></li>
+  <li><a href="#references-16" id="toc-references-16" class="nav-link" data-scroll-target="#references-16"><span class="header-section-number">C.17.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#state-of-the-union-word-network-text" id="toc-state-of-the-union-word-network-text" class="nav-link" data-scroll-target="#state-of-the-union-word-network-text"><span class="header-section-number">C.18</span> STATE OF THE UNION WORD NETWORK (TEXT)</a>
+  <ul class="collapse">
+  <li><a href="#background-17" id="toc-background-17" class="nav-link" data-scroll-target="#background-17"><span class="header-section-number">C.18.1</span> Background</a></li>
+  <li><a href="#network-structure-17" id="toc-network-structure-17" class="nav-link" data-scroll-target="#network-structure-17"><span class="header-section-number">C.18.2</span> Network Structure</a></li>
+  <li><a href="#attributes-17" id="toc-attributes-17" class="nav-link" data-scroll-target="#attributes-17"><span class="header-section-number">C.18.3</span> Attributes</a></li>
+  <li><a href="#references-17" id="toc-references-17" class="nav-link" data-scroll-target="#references-17"><span class="header-section-number">C.18.4</span> References</a></li>
+  </ul></li>
+  <li><a href="#countries-trade-networks" id="toc-countries-trade-networks" class="nav-link" data-scroll-target="#countries-trade-networks"><span class="header-section-number">C.19</span> COUNTRIES TRADE NETWORKS</a>
+  <ul class="collapse">
+  <li><a href="#background-18" id="toc-background-18" class="nav-link" data-scroll-target="#background-18"><span class="header-section-number">C.19.1</span> Background</a></li>
+  <li><a href="#network-structure-18" id="toc-network-structure-18" class="nav-link" data-scroll-target="#network-structure-18"><span class="header-section-number">C.19.2</span> Network Structure</a></li>
+  <li><a href="#attributes-18" id="toc-attributes-18" class="nav-link" data-scroll-target="#attributes-18"><span class="header-section-number">C.19.3</span> Attributes</a></li>
+  <li><a href="#references-18" id="toc-references-18" class="nav-link" data-scroll-target="#references-18"><span class="header-section-number">C.19.4</span> References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./r_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./datasets.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">intronets Package: Dataset Descriptions</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Appendix C — intronets Package: Dataset Descriptions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A reference guide to the datasets included in the <strong>intronets</strong> package.</p>
+<section id="bali-terrorist-network" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="bali-terrorist-network"><span class="header-section-number">C.1</span> BALI TERRORIST NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Bali Terrorist Network</li>
+<li><strong>File:</strong> bali.rda</li>
+<li><strong>R Objects:</strong> bali (igraph)</li>
+</ul>
+<section id="background" class="level3" data-number="C.1.1">
+<h3 data-number="C.1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">C.1.1</span> Background</h3>
+<p>This dataset captures the social network underlying the 2002 Bali bombings, one of the deadliest terrorist attacks in Southeast Asian history. Nodes represent individuals connected to the attack, and edges reflect documented social ties among them. Roles are coded to distinguish participants by function within the network: Command Team (CT), Bomb Maker (BM), Suicide Bomber (SB), Operations Assistant (OA), and Team Leader (TL). The network is particularly useful for studying how covert organizations structure themselves and how role specialization relates to network position.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Reconstructed from investigative and journalistic sources following the October 2002 Bali bombings.</p></li>
+<li><p><strong>Domain:</strong> Terrorism / Security Studies / Dark Networks</p></li>
+</ul>
+</section>
+<section id="network-structure" class="level3" data-number="C.1.2">
+<h3 data-number="C.1.2" class="anchored" data-anchor-id="network-structure"><span class="header-section-number">C.1.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, undirected</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>Nodes:</strong> 17 (individuals involved in the attack)</li>
+<li><strong>Edges:</strong> 63 (documented social ties between individuals)</li>
+</ul>
+</section>
+<section id="attributes" class="level3" data-number="C.1.3">
+<h3 data-number="C.1.3" class="anchored" data-anchor-id="attributes"><span class="header-section-number">C.1.3</span> Attributes</h3>
+<section id="node-attributes" class="level4" data-number="C.1.3.1">
+<h4 data-number="C.1.3.1" class="anchored" data-anchor-id="node-attributes"><span class="header-section-number">C.1.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>role</strong> – Role in the attack (CT, OA, BM, SB, TL)</p></li>
+<li><p><strong>vertex.names:</strong> Individual identifiers</p></li>
+</ul>
+</section>
+<section id="edge-attributes" class="level4" data-number="C.1.3.2">
+<h4 data-number="C.1.3.2" class="anchored" data-anchor-id="edge-attributes"><span class="header-section-number">C.1.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>IC</strong> – Interaction context (numeric code)</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level3" data-number="C.1.4">
+<h3 data-number="C.1.4" class="anchored" data-anchor-id="references"><span class="header-section-number">C.1.4</span> References</h3>
+<p>Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counterterrorism and intelligence. Studies in Conflict &amp; Terrorism, 29(6), 559–575.</p>
+</section>
+</section>
+<section id="davis-southern-club-women-network-two-mode" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="davis-southern-club-women-network-two-mode"><span class="header-section-number">C.2</span> DAVIS SOUTHERN CLUB WOMEN NETWORK (Two Mode)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Davis Southern Club Women Network</li>
+<li><strong>File:</strong> davis_sw.rda</li>
+<li><strong>R Objects:</strong> davis_sw (igraph) — Southern women event attendance network</li>
+</ul>
+<section id="background-1" class="level3" data-number="C.2.1">
+<h3 data-number="C.2.1" class="anchored" data-anchor-id="background-1"><span class="header-section-number">C.2.1</span> Background</h3>
+<p>These data were collected by Davis et al in the 1930s. They represent observed attendance at 14 social events by 18 Southern women. The result is a person-by-event matrix: cell (i,j) is 1 if person i attended social event j, and 0 otherwise.</p>
+<ul>
+<li><strong>Data Collection:</strong> Davis et al.&nbsp;(1941), ethnographic observation</li>
+<li><strong>Domain:</strong> Gender / Race / Elites / Social Clubs &amp; Membership / The South</li>
+</ul>
+</section>
+<section id="network-structure-1" class="level3" data-number="C.2.2">
+<h3 data-number="C.2.2" class="anchored" data-anchor-id="network-structure-1"><span class="header-section-number">C.2.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Two mode (people and events)</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>davis_sw:</strong> 32 nodes | 89 edges | unweighted</li>
+</ul>
+</section>
+<section id="attributes-1" class="level3" data-number="C.2.3">
+<h3 data-number="C.2.3" class="anchored" data-anchor-id="attributes-1"><span class="header-section-number">C.2.3</span> Attributes</h3>
+<section id="node-attributes-all-networks" class="level4" data-number="C.2.3.1">
+<h4 data-number="C.2.3.1" class="anchored" data-anchor-id="node-attributes-all-networks"><span class="header-section-number">C.2.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> Person’s name</li>
+</ul>
+</section>
+</section>
+<section id="references-1" class="level3" data-number="C.2.4">
+<h3 data-number="C.2.4" class="anchored" data-anchor-id="references-1"><span class="header-section-number">C.2.4</span> References</h3>
+<p>Breiger R. (1974). The duality of persons and groups. Social Forces, 53, 181- 190.</p>
+<p>Davis, A et al.&nbsp;(1941). Deep South. Chicago: University of Chicago Press.</p>
+</section>
+</section>
+<section id="declaration-of-independence-word-network-text" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="declaration-of-independence-word-network-text"><span class="header-section-number">C.3</span> DECLARATION OF INDEPENDENCE WORD NETWORK (text)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Declaration of Independence Word Network</li>
+<li><strong>File:</strong> declaration_net.rda</li>
+<li><strong>R Objects:</strong> declaration_net (igraph) — word pairs that co-occur in the same sentence</li>
+</ul>
+<section id="background-2" class="level3" data-number="C.3.1">
+<h3 data-number="C.3.1" class="anchored" data-anchor-id="background-2"><span class="header-section-number">C.3.1</span> Background</h3>
+<p>This dataset contains one undirected network matrix showing word pairs that co-occur in the same sentence as part of the Declaration of Independence. In other words, a one mode projection of a sentence-word incidence matrix.</p>
+<ul>
+<li><strong>Data Collection:</strong> Andrew Davis (2026), downloaded from the National Archives.</li>
+<li><strong>Domain:</strong> Politics / Language</li>
+</ul>
+</section>
+<section id="network-structure-2" class="level3" data-number="C.3.2">
+<h3 data-number="C.3.2" class="anchored" data-anchor-id="network-structure-2"><span class="header-section-number">C.3.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One mode text network</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> mg only (other networks are binary)</li>
+<li><strong>declaration_net:</strong> 120 nodes (words) | 994 edges | unweighted</li>
+</ul>
+</section>
+<section id="attributes-2" class="level3" data-number="C.3.3">
+<h3 data-number="C.3.3" class="anchored" data-anchor-id="attributes-2"><span class="header-section-number">C.3.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-1" class="level4" data-number="C.3.3.1">
+<h4 data-number="C.3.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-1"><span class="header-section-number">C.3.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> The word</li>
+</ul>
+</section>
+</section>
+<section id="references-2" class="level3" data-number="C.3.4">
+<h3 data-number="C.3.4" class="anchored" data-anchor-id="references-2"><span class="header-section-number">C.3.4</span> References</h3>
+<p>United States. 1776. The Declaration of Independence. Washington, DC: National Archives.</p>
+</section>
+</section>
+<section id="drug-user-social-networks" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="drug-user-social-networks"><span class="header-section-number">C.4</span> DRUG USER SOCIAL NETWORKS</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Drug User Social Networks</li>
+<li><strong>File:</strong> drugnet.rda</li>
+<li><strong>R Objects:</strong> drugnet (igraph), drug_connect (igraph)</li>
+</ul>
+<section id="background-3" class="level3" data-number="C.4.1">
+<h3 data-number="C.4.1" class="anchored" data-anchor-id="background-3"><span class="header-section-number">C.4.1</span> Background</h3>
+<p>This dataset captures social networks among drug users in high-risk sites in Hartford, Connecticut, collected as part of a study examining how social ties facilitate or inhibit risk behaviors associated with drug use and HIV transmission. Nodes are individuals; directed edges represent social connections reported by respondents. Two versions of the network are provided:</p>
+<ul>
+<li><p><strong>drugnet:</strong> Full network (293 nodes, 337 edges), including isolates and those with limited connections. Represents the broader social field in which drug use occurs.</p></li>
+<li><p><strong>drug_connect:</strong> Connected subgraph (193 nodes, 323 edges), retaining only the reachable component. Better suited for most network analyses that require connectivity.</p></li>
+</ul>
+<p>Node attributes capture ethnicity and gender, enabling demographic analysis of network structure and risk exposure.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Ethnographic field research and structured interviews; Hartford, Connecticut, late 1990s/early 2000s.</p></li>
+<li><p><strong>Domain:</strong> Public Health / Sociology / Risk Behavior Networks</p></li>
+</ul>
+</section>
+<section id="network-structure-3" class="level3" data-number="C.4.2">
+<h3 data-number="C.4.2" class="anchored" data-anchor-id="network-structure-3"><span class="header-section-number">C.4.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, directed</li>
+<li><strong>Directed:</strong> Yes</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>drugnet:</strong> 293 nodes | 337 edges</li>
+<li><strong>drug_connect:</strong> 193 nodes | 323 edges</li>
+</ul>
+</section>
+<section id="attributes-3" class="level3" data-number="C.4.3">
+<h3 data-number="C.4.3" class="anchored" data-anchor-id="attributes-3"><span class="header-section-number">C.4.3</span> Attributes</h3>
+<section id="node-attributes-1" class="level4" data-number="C.4.3.1">
+<h4 data-number="C.4.3.1" class="anchored" data-anchor-id="node-attributes-1"><span class="header-section-number">C.4.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>name</strong> – Respondent identifier</p></li>
+<li><p><strong>ethnicity:</strong> Ethnicity (coded numerically: 1–4)</p></li>
+<li><p><strong>gender:</strong> Gender (coded numerically)</p></li>
+</ul>
+</section>
+</section>
+<section id="references-3" class="level3" data-number="C.4.4">
+<h3 data-number="C.4.4" class="anchored" data-anchor-id="references-3"><span class="header-section-number">C.4.4</span> References</h3>
+<p>Weeks, M. R., Clair, S., Borgatti, S. P., Radda, K., &amp; Schensul, J. J. (2002). Social networks of drug users in high-risk sites: Finding the connections. AIDS and Behavior, 6(2), 193–206.</p>
+<p>Weeks, M. R., Convey, M., Dickson-Gomez, J., Li, J., Radda, K., Martinez, M., &amp; Robles, E. (2009). Changing drug users’ risk environments: Peer health advocates as multi-level community change agents. American Journal of Community Psychology, 43(3), 330–344.</p>
+</section>
+</section>
+<section id="eies-electronic-communication-network" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="eies-electronic-communication-network"><span class="header-section-number">C.5</span> EIES ELECTRONIC COMMUNICATION NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> EIES Electronic Communication Network</li>
+<li><strong>File:</strong> eies.rda</li>
+<li><strong>R Objects:</strong> ebin1 (igraph) — Interactions at time 1 ebin2 (igraph) — Interactions at time 2 net_1 (network) — Interactions at time 1 (duplicate of ebin1) net_2 (network) — Interactions at time 2 (duplicate of ebin2) ebin_dynamic (networkDynamic) — Interactions at both times</li>
+</ul>
+<section id="background-4" class="level3" data-number="C.5.1">
+<h3 data-number="C.5.1" class="anchored" data-anchor-id="background-4"><span class="header-section-number">C.5.1</span> Background</h3>
+<p>These data arose from an early experiment on computer mediated communication. Fifty academics interested in interdisciplinary research were allowed to contact each other via an Electronic Information Exchange System (EIES). The data collected consisted of all messages sent plus acquaintance relationships at two time periods (collected via a questionnaire).</p>
+<ul>
+<li><strong>Data Collection:</strong> Freeman &amp; Freeman (1979), survey data</li>
+<li><strong>Domain:</strong> Communications / Science, Technology, and Society</li>
+</ul>
+</section>
+<section id="network-structure-4" class="level3" data-number="C.5.2">
+<h3 data-number="C.5.2" class="anchored" data-anchor-id="network-structure-4"><span class="header-section-number">C.5.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One mode, longitudinal (repeated cross-sections)</li>
+<li><strong>Directed:</strong> Yes</li>
+<li><strong>Weighted:</strong> Yes</li>
+<li><strong>ebin1:</strong> 32 nodes | 152 edges | weighted</li>
+<li><strong>ebin2:</strong> 32 nodes | 204 edges | weighted</li>
+<li><strong>net_1:</strong> 32 nodes | 152 edges | weighted</li>
+<li><strong>net_2:</strong> 32 nodes | 204 edges | weighted</li>
+<li><strong>ebin_dynamic:</strong> 32 nodes | 356 edges | weighted</li>
+</ul>
+</section>
+<section id="attributes-4" class="level3" data-number="C.5.3">
+<h3 data-number="C.5.3" class="anchored" data-anchor-id="attributes-4"><span class="header-section-number">C.5.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-2" class="level4" data-number="C.5.3.1">
+<h4 data-number="C.5.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-2"><span class="header-section-number">C.5.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><p><strong>name:</strong> Person’s name</p></li>
+<li><p><strong>citations:</strong> Number of citations of the actors work in the social science citation index at the beginning of the study</p></li>
+<li><p><strong>disccode:</strong> Scholarly discipline as a code: 1 = Sociology, 2 = Anthropology , 3 = Mathematics/Statistics, 4 = other</p></li>
+<li><p><strong>discipline:</strong> Name of discipline: Sociology, Anthropology, Mathematics/ Statistics, other</p></li>
+<li><p><strong>totmessages:</strong> Number of messages sent by a person throughout the study period</p></li>
+</ul>
+</section>
+<section id="edge-attributes-1" class="level4" data-number="C.5.3.2">
+<h4 data-number="C.5.3.2" class="anchored" data-anchor-id="edge-attributes-1"><span class="header-section-number">C.5.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>wgt:</strong> Acquaintance information: 4 = close personal friend, 3= friend, 2= person I’ve met, 1 = person I’ve heard of but not met, and 0 = person unknown to me (or no reply).</li>
+</ul>
+</section>
+</section>
+<section id="references-4" class="level3" data-number="C.5.4">
+<h3 data-number="C.5.4" class="anchored" data-anchor-id="references-4"><span class="header-section-number">C.5.4</span> References</h3>
+<p>Freeman, S C and L C Freeman (1979). The networkers network: A study of the impact of a new communications medium on sociometric structure. Social Science Research Reports No 46. Irvine CA, University of California.</p>
+<p>Wasserman, S., &amp; Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.</p>
+</section>
+</section>
+<section id="fraternity-social-networks-longitudinal" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="fraternity-social-networks-longitudinal"><span class="header-section-number">C.6</span> FRATERNITY SOCIAL NETWORKS (LONGITUDINAL)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Fraternity Social Networks (Longitudinal)</li>
+<li><strong>File:</strong> frat_graphs.rda</li>
+<li><strong>R Objects:</strong> frat_i (list of igraph objects) frat_n (list of igraph objects)</li>
+</ul>
+<section id="background-5" class="level3" data-number="C.6.1">
+<h3 data-number="C.6.1" class="anchored" data-anchor-id="background-5"><span class="header-section-number">C.6.1</span> Background</h3>
+<p>This dataset contains longitudinal social network data from a fraternity, capturing evolving social ties across 15 observation waves. Two parallel lists of igraph objects are provided – frat_i and frat_n – representing the same network under different construction or filtering conditions (e.g., different tie definitions or inclusion criteria). Each list element is named by wave (frat0 through frat15, with frat9 absent), allowing analysis of how network structure changes over time within a bounded social group.</p>
+<p>Each wave captures a directed network of 17 individuals. The longitudinal structure makes this dataset particularly useful for studying tie formation, dissolution, and the dynamics of small-group cohesion.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Repeated sociometric surveys within a single fraternity chapter across 15 observation periods.</p></li>
+<li><p><strong>Domain:</strong> Social Psychology / Small Group Dynamics / Longitudinal SNA</p></li>
+</ul>
+</section>
+<section id="network-structure-5" class="level3" data-number="C.6.2">
+<h3 data-number="C.6.2" class="anchored" data-anchor-id="network-structure-5"><span class="header-section-number">C.6.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, directed, longitudinal (15 waves)</li>
+<li><strong>Directed:</strong> Yes</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>Per wave:</strong> 17 nodes | ~51 edges (varies by wave)</li>
+<li><strong>Waves:</strong> frat0, frat1, …, frat8, frat10, …, frat15 (15 total)</li>
+<li><strong>Lists:</strong> frat_i and frat_n (two parallel representations)</li>
+</ul>
+</section>
+<section id="attributes-5" class="level3" data-number="C.6.3">
+<h3 data-number="C.6.3" class="anchored" data-anchor-id="attributes-5"><span class="header-section-number">C.6.3</span> Attributes</h3>
+<section id="node-attributes-2" class="level4" data-number="C.6.3.1">
+<h4 data-number="C.6.3.1" class="anchored" data-anchor-id="node-attributes-2"><span class="header-section-number">C.6.3.1</span> Node Attributes</h4>
+<ul>
+<li><strong>name</strong> – Anonymized individual identifier (X1, X2, …, X17)</li>
+</ul>
+</section>
+</section>
+<section id="references-5" class="level3" data-number="C.6.4">
+<h3 data-number="C.6.4" class="anchored" data-anchor-id="references-5"><span class="header-section-number">C.6.4</span> References</h3>
+<p>Newcomb T. (1961). The acquaintance process. New York: Holt, Reinhard &amp; Winston.</p>
+<p>Nordlie P. (1958). A longitudinal study of interpersonal attraction in a natural group setting. Unpublished doctoral dissertation, University of Michigan.</p>
+<p>White H., Boorman S. and Breiger R. (1977). Social structure from multiple networks, I. Blockmodels of roles and positions. American Journal of Sociology, 81, 730-780.</p>
+</section>
+</section>
+<section id="general-social-survey-2004-survey" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="general-social-survey-2004-survey"><span class="header-section-number">C.7</span> GENERAL SOCIAL SURVEY 2004 (SURVEY)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> General Social Survey</li>
+<li><strong>File:</strong> gss.rda</li>
+<li><strong>R Objects:</strong> gss (data frame)</li>
+</ul>
+<section id="background-6" class="level3" data-number="C.7.1">
+<h3 data-number="C.7.1" class="anchored" data-anchor-id="background-6"><span class="header-section-number">C.7.1</span> Background</h3>
+<p>The General Social Survey (GSS) is one of the longest-running and most widely used social surveys in the United States. This file contains data from the 2004 wave, including responses from 1,467 survey respondents across 122 variables.</p>
+<p>A central feature of this dataset for social network analysis is the name generator module: respondents were asked to identify up to five people (“alters”) with whom they discuss important matters. For each alter listed, the survey collected information on tie strength, relationship type (e.g., spouse, parent, sibling, coworker, friend), and the extent to which alters know each other. Additional name interpreter variables capture alter characteristics including age, education, sex, race, religion, and political party identification.</p>
+<p>This dataset is particularly associated with debates about trends in American social isolation: McPherson et al.&nbsp;(2006) reported a dramatic shrinkage in core discussion networks between 1985 and 2004, a finding subsequently critiqued by Fischer (2009) as potentially artifactual.</p>
+<p>See also: gss_ego.rda for the ego network reformatting of this data.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> NORC at the University of Chicago, 2004. National probability sample of U.S. adults.</p></li>
+<li><p><strong>Domain:</strong> Sociology / Ego Network Analysis / Social Isolation Research</p></li>
+</ul>
+</section>
+<section id="network-structure-6" class="level3" data-number="C.7.2">
+<h3 data-number="C.7.2" class="anchored" data-anchor-id="network-structure-6"><span class="header-section-number">C.7.2</span> Network Structure</h3>
+<ul>
+<li><p><strong>Network Type:</strong> Survey data with embedded ego network measures (not a graph object; use gss_ego.rda for igraph-based analysis)</p></li>
+<li><p><strong>Directed:</strong> N/A (relational data embedded in survey format)</p></li>
+<li><p><strong>Weighted:</strong> N/A OBSERVATIONS : 1,467 respondents (egos) VARIABLES : 122</p></li>
+</ul>
+</section>
+<section id="attributes-6" class="level3" data-number="C.7.3">
+<h3 data-number="C.7.3" class="anchored" data-anchor-id="attributes-6"><span class="header-section-number">C.7.3</span> Attributes</h3>
+<p>KEY VARIABLES (selection):</p>
+<ul>
+<li><p><strong>Ego-level:</strong> GSSID, AGE, EDUC, SEX, RACE, PARTYID, RELIG, NUMGIVEN</p></li>
+<li><p><strong>Alter tie:</strong> EQCLOSE, RCLOSE1–RCLOSE5 (relationship closeness)</p></li>
+<li><p><strong>Alter-alter:</strong> CLOSE12–CLOSE45 (alter-alter tie indicators, up to 5 alters)</p></li>
+<li><p><strong>Alter sex:</strong> SEX1–SEX5</p></li>
+<li><p><strong>Alter race:</strong> RACE1–RACE5</p></li>
+<li><p><strong>Relationship:</strong> SPOUSE1–SPOUSE5, PARENT1–PARENT5, SIBLING1–SIBLING5, CHILD1–CHILD5, OTHFAM1–OTHFAM5, COWORK1–COWORK5, MEMGRP1–MEMGRP5, NEIGHBR1–NEIGHBR5, FRIEND1–FRIEND5, ADVISOR1–ADVISOR5, OTHER1–OTHER5</p></li>
+<li><p><strong>Alter-level:</strong> TALKTO1–TALKTO5, KNOWN1–KNOWN5, EDUC1–EDUC5, AGE1–AGE5, RELIG1–RELIG5, PARTYID1–PARTYID3</p></li>
+<li><p><strong>Summary:</strong> TALKPOL, FRNDKNOW</p></li>
+</ul>
+</section>
+<section id="references-6" class="level3" data-number="C.7.4">
+<h3 data-number="C.7.4" class="anchored" data-anchor-id="references-6"><span class="header-section-number">C.7.4</span> References</h3>
+<p>Davern, M., Bautista, R., Freese, J., Herd, P., &amp; Morgan, S. L. (2025). General Social Survey 1972–2024 [Machine-readable data file]. NORC at the University of Chicago.</p>
+<p>Fischer, C. S. (2009). The 2004 GSS finding of shrunken social networks: An artifact? American Sociological Review, 74(4), 657–669.</p>
+<p>McPherson, M., Smith-Lovin, L., &amp; Brashears, M. E. (2006). Social isolation in America: Changes in core discussion networks over two decades. American Sociological Review, 71(3), 353–375.</p>
+</section>
+</section>
+<section id="general-social-survey-2004-ego-network-data" class="level2" data-number="C.8">
+<h2 data-number="C.8" class="anchored" data-anchor-id="general-social-survey-2004-ego-network-data"><span class="header-section-number">C.8</span> GENERAL SOCIAL SURVEY 2004 (EGO NETWORK DATA)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> General Social Survey Ego Networks</li>
+<li><strong>File:</strong> gss_ego.rda</li>
+<li><strong>R Objects:</strong> ego (data frame) alterlong (data frame) gr.list (list of igraph objects — alter networks only) gr.list.ego (list of igraph objects — ego + alters)</li>
+</ul>
+<section id="background-7" class="level3" data-number="C.8.1">
+<h3 data-number="C.8.1" class="anchored" data-anchor-id="background-7"><span class="header-section-number">C.8.1</span> Background</h3>
+<p>This file is a restructured, ego-network-ready version of the 2004 General Social Survey (see also gss.rda). The raw GSS survey matrix has been converted into a set of ego network objects suitable for direct use in igraph-based analyses. A total of 288 egos have at least one named alter and are included.</p>
+<p>Four objects are provided to support different analytical approaches:</p>
+<ul>
+<li><p><strong>ego:</strong> Data frame of 288 ego respondents with demographic attributes.</p></li>
+<li><p><strong>alterlong:</strong> Long-format data frame (955 rows) of alter-level attributes, one row per alter, linked to ego by ego_id.</p></li>
+<li><p><strong>gr.list:</strong> Named list of 288 igraph objects, one per ego. Each graph contains only the alters and their inter-connections (alter network without ego node).</p></li>
+<li><p><strong>gr.list.ego:</strong> Named list of 288 igraph objects, one per ego. Each graph includes the ego node connected to all alters, plus alter- alter ties (full ego network with ego included).</p></li>
+</ul>
+<p>This structure supports both aggregate ego network analysis (e.g., average density across all egos) and individual-level inspection of specific ego networks.</p>
+<p>See also: gss.rda for the full survey data in wide format.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> NORC at the University of Chicago, 2004. National probability sample of U.S. adults.</p></li>
+<li><p><strong>Domain:</strong> Sociology / Ego Network Analysis / Social Isolation Research</p></li>
+</ul>
+</section>
+<section id="network-structure-7" class="level3" data-number="C.8.2">
+<h3 data-number="C.8.2" class="anchored" data-anchor-id="network-structure-7"><span class="header-section-number">C.8.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Collection of ego networks (one igraph per respondent)</li>
+<li><strong>Directed:</strong> No (alter-alter ties are undirected)</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>ego:</strong> 288 respondents x 8 variables</li>
+<li><strong>alterlong:</strong> 955 alter observations x 20 variables</li>
+<li><strong>gr.list:</strong> 288 igraph objects (alter networks, no ego node)</li>
+<li><strong>gr.list.ego:</strong> 288 igraph objects (full ego networks with ego node)</li>
+</ul>
+</section>
+<section id="attributes-7" class="level3" data-number="C.8.3">
+<h3 data-number="C.8.3" class="anchored" data-anchor-id="attributes-7"><span class="header-section-number">C.8.3</span> Attributes</h3>
+<p>EGO ATTRIBUTES (ego data frame): ego_id, AGE, EDUC, SEX, RACE, PARTYID, RELIG, NUMGIVEN</p>
+<p>ALTER ATTRIBUTES (alterlong data frame): ego_id, alter_id, SEX, RACE, SPOUSE, PARENT, SIBLING, CHILD, OTHFAM, COWORK, MEMGRP, NEIGHBR, FRIEND, ADVISOR, OTHER, TALKTO, KNOWN, EDUC, AGE, RELIG</p>
+</section>
+<section id="references-7" class="level3" data-number="C.8.4">
+<h3 data-number="C.8.4" class="anchored" data-anchor-id="references-7"><span class="header-section-number">C.8.4</span> References</h3>
+<p>Davern, M., Bautista, R., Freese, J., Herd, P., &amp; Morgan, S. L. (2025). General Social Survey 1972–2024 [Machine-readable data file]. NORC at the University of Chicago.</p>
+<p>Fischer, C. S. (2009). The 2004 GSS finding of shrunken social networks: An artifact? American Sociological Review, 74(4), 657–669.</p>
+<p>McPherson, M., Smith-Lovin, L., &amp; Brashears, M. E. (2006). Social isolation in America: Changes in core discussion networks over two decades. American Sociological Review, 71(3), 353–375.</p>
+</section>
+</section>
+<section id="github-developer-collaboration-network" class="level2" data-number="C.9">
+<h2 data-number="C.9" class="anchored" data-anchor-id="github-developer-collaboration-network"><span class="header-section-number">C.9</span> GITHUB DEVELOPER COLLABORATION NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> GitHub Developer Collaboration Network</li>
+<li><strong>File:</strong> github.rda</li>
+<li><strong>R Objects:</strong> github (igraph)</li>
+</ul>
+<section id="background-8" class="level3" data-number="C.9.1">
+<h3 data-number="C.9.1" class="anchored" data-anchor-id="background-8"><span class="header-section-number">C.9.1</span> Background</h3>
+<p>This dataset represents the collaboration network among software developers employed at one large (anonymous) technology company, as observed through their activity on GitHub. Nodes are individual developers; edges reflect co-contribution to shared code repositories (i.e., two developers are linked if they both committed code to at least one common repository).</p>
+<p>The network is a one-mode projection of an underlying two-mode (bipartite) person-by-repository network. Edge weights reflect the number of shared repositories between any two developers, making this a valued network. Not all developers form a single connected component; a component attribute identifies which connected subgraph each node belongs to.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> GitHub activity logs, January 2018 to February 2021, extracted via the GHTorrent project.</p></li>
+<li><p><strong>Domain:</strong> Computational Social Science / Software Engineering / Organizational Networks</p></li>
+</ul>
+</section>
+<section id="network-structure-8" class="level3" data-number="C.9.2">
+<h3 data-number="C.9.2" class="anchored" data-anchor-id="network-structure-8"><span class="header-section-number">C.9.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, undirected, weighted</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> Yes (number of shared repositories)</li>
+<li><strong>Nodes:</strong> 174 (individual developers)</li>
+<li><strong>Edges:</strong> 890 (co-contribution ties between developers)</li>
+</ul>
+</section>
+<section id="attributes-8" class="level3" data-number="C.9.3">
+<h3 data-number="C.9.3" class="anchored" data-anchor-id="attributes-8"><span class="header-section-number">C.9.3</span> Attributes</h3>
+<section id="node-attributes-3" class="level4" data-number="C.9.3.1">
+<h4 data-number="C.9.3.1" class="anchored" data-anchor-id="node-attributes-3"><span class="header-section-number">C.9.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>name</strong> – Developer identifier (anonymized)</p></li>
+<li><p><strong>component:</strong> Connected component membership (integer)</p></li>
+</ul>
+</section>
+<section id="edge-attributes-2" class="level4" data-number="C.9.3.2">
+<h4 data-number="C.9.3.2" class="anchored" data-anchor-id="edge-attributes-2"><span class="header-section-number">C.9.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>weight</strong> – Number of shared repositories (integer)</li>
+</ul>
+</section>
+</section>
+<section id="references-8" class="level3" data-number="C.9.4">
+<h3 data-number="C.9.4" class="anchored" data-anchor-id="references-8"><span class="header-section-number">C.9.4</span> References</h3>
+<p>Gousios, G., Vasilescu, B., Serebrenik, A., &amp; Zaidman, A. (2014). Lean GHTorrent: GitHub data on demand. In Proceedings of the 11th Working Conference on Mining Software Repositories (MSR 2014), pp.&nbsp;384–387. ACM.</p>
+<p>Middleton, J., Murphy-Hill, E., Green, D., Meade, A., Mayer, R., White, D., &amp; McDonald, S. (2018). Which contributions predict whether developers are accepted into GitHub teams. In Proceedings of the 15th International Conference on Mining Software Repositories (MSR ’18), pp.&nbsp;403–413. ACM.</p>
+</section>
+</section>
+<section id="grime-music-artist-track-network" class="level2" data-number="C.10">
+<h2 data-number="C.10" class="anchored" data-anchor-id="grime-music-artist-track-network"><span class="header-section-number">C.10</span> GRIME MUSIC ARTIST-TRACK NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Grime Music Artist–Track Network</li>
+<li><strong>File:</strong> grime.rda</li>
+<li><strong>R Objects:</strong> artist_track_adj (matrix) artist_track_edge (data frame)</li>
+</ul>
+<section id="background-9" class="level3" data-number="C.10.1">
+<h3 data-number="C.10.1" class="anchored" data-anchor-id="background-9"><span class="header-section-number">C.10.1</span> Background</h3>
+<p>This dataset captures the bipartite (two-mode) network connecting Grime music artists to the tracks on which they have appeared. Grime is a genre of electronic music originating in East London in the early 2000s, characterized by rapid collaboration and frequent guest appearances across tracks. A tie exists between an artist and a track when that artist contributed to the recording.</p>
+<p>The data are provided in two complementary formats:</p>
+<ul>
+<li><p><strong>artist_track_adj:</strong> A 372 x 391 binary adjacency matrix (artists as rows, tracks as columns). Suitable for matrix operations and bipartite projection.</p></li>
+<li><p><strong>artist_track_edge:</strong> An edge list data frame (1,143 rows) with columns for artist name and track name. More readable and suitable for graph construction.</p></li>
+</ul>
+<p>This bipartite structure can be projected into either a one-mode artist-artist network (two artists linked if they share a track) or a one-mode track-track network (two tracks linked if they share an artist).</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Compiled from publicly available discography and music database sources for Grime genre recordings.</p></li>
+<li><p><strong>Domain:</strong> Cultural Sociology / Music Studies / Bipartite Networks</p></li>
+</ul>
+</section>
+<section id="network-structure-9" class="level3" data-number="C.10.2">
+<h3 data-number="C.10.2" class="anchored" data-anchor-id="network-structure-9"><span class="header-section-number">C.10.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Two-mode (bipartite), undirected</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No (binary co-appearance)</li>
+<li><strong>artist_track_adj:</strong> 372 artists x 391 tracks (matrix)</li>
+<li><strong>artist_track_edge:</strong> 1,143 artist–track co-appearance ties (edge list)</li>
+</ul>
+</section>
+<section id="attributes-9" class="level3" data-number="C.10.3">
+<h3 data-number="C.10.3" class="anchored" data-anchor-id="attributes-9"><span class="header-section-number">C.10.3</span> Attributes</h3>
+<p>NODE ATTRIBUTES (edge list columns):</p>
+<ul>
+<li><strong>artist:</strong> Artist name (string)</li>
+<li><strong>track_name:</strong> Track name (string)</li>
+</ul>
+<p>EXAMPLE ARTISTS : Wiley, Kano, Scorcher, Hot Chip, Messy, Desperado</p>
+</section>
+<section id="references-9" class="level3" data-number="C.10.4">
+<h3 data-number="C.10.4" class="anchored" data-anchor-id="references-9"><span class="header-section-number">C.10.4</span> References</h3>
+<p>Leppard, T. R. (2024). Collaborating with Competitors: Exploring Network Mechanisms that Drive the Benefits of Collaboration in Music. https://www.lib.ncsu.edu/resolver/1840.20/41837</p>
+<p>Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087</p>
+</section>
+</section>
+<section id="grime-time-longitudinal" class="level2" data-number="C.11">
+<h2 data-number="C.11" class="anchored" data-anchor-id="grime-time-longitudinal"><span class="header-section-number">C.11</span> GRIME TIME (LONGITUDINAL)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Grime Time Networks</li>
+<li><strong>File:</strong> grime_time.rda</li>
+<li><strong>R Objects:</strong> grime1i (igraph) — 1st cross-section, artist-to-artist grime2i (igraph) — 2nd cross-section, artist-to-artist grime3i (igraph) — 3rd cross-section, artist-to-artist grime4i (igraph) — 4th cross-section, artist-to-artist grime1n (network) — 1st cross-section, artist-to-artist grime2n (network) — 2nd cross-section, artist-to-artist grime3n (network) — 3rd cross-section, artist-to-artist grime4n (network) — 4th cross-section, artist-to-artist grime_time (networkDynamic) — combination of cross-sections</li>
+</ul>
+<section id="background-10" class="level3" data-number="C.11.1">
+<h3 data-number="C.11.1" class="anchored" data-anchor-id="background-10"><span class="header-section-number">C.11.1</span> Background</h3>
+<p>These data represent the collaborations that occur between UK Grime artists every two year period from 2008 till 2014. These data were collected from Spotify and coded as directed networks where the tie represents featuring on another artist’s music in that year. Collaborations were weighted based on the number of songs the artists created together In this dataset there are cross-sectional networks stored as igraph and network objects. Then there is a dynamic network dataset created from these cross-sections.</p>
+<ul>
+<li><strong>Data Collection:</strong> Leppard (2024), Dissertation</li>
+</ul>
+</section>
+<section id="network-structure-10" class="level3" data-number="C.11.2">
+<h3 data-number="C.11.2" class="anchored" data-anchor-id="network-structure-10"><span class="header-section-number">C.11.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One mode, longitudinal (repeated cross-sections)</li>
+<li><strong>Directed:</strong> Yes</li>
+<li><strong>Weighted:</strong> Yes</li>
+<li><strong>grime1i:</strong> 40 nodes | 28 edges | weighted</li>
+<li><strong>grime2i:</strong> 51 nodes | 37 edges | weighted</li>
+<li><strong>grime3i:</strong> 81 nodes | 70 edges | weighted</li>
+<li><strong>grime4i:</strong> 83 nodes | 66 edges | weighted</li>
+</ul>
+</section>
+<section id="attributes-10" class="level3" data-number="C.11.3">
+<h3 data-number="C.11.3" class="anchored" data-anchor-id="attributes-10"><span class="header-section-number">C.11.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-3" class="level4" data-number="C.11.3.1">
+<h4 data-number="C.11.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-3"><span class="header-section-number">C.11.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> Artist’s name</li>
+</ul>
+</section>
+<section id="edge-attributes-3" class="level4" data-number="C.11.3.2">
+<h4 data-number="C.11.3.2" class="anchored" data-anchor-id="edge-attributes-3"><span class="header-section-number">C.11.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>collab_weight:</strong> Number of collaborations in that year.</li>
+</ul>
+</section>
+</section>
+<section id="references-10" class="level3" data-number="C.11.4">
+<h3 data-number="C.11.4" class="anchored" data-anchor-id="references-10"><span class="header-section-number">C.11.4</span> References</h3>
+<p>Leppard, T. R. (2024). Collaborating with Competitors: Exploring Network Mechanisms that Drive the Benefits of Collaboration in Music. https://www.lib.ncsu.edu/resolver/1840.20/41837</p>
+<p>Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087</p>
+</section>
+</section>
+<section id="hollywood-movies-network-two-mode" class="level2" data-number="C.12">
+<h2 data-number="C.12" class="anchored" data-anchor-id="hollywood-movies-network-two-mode"><span class="header-section-number">C.12</span> HOLLYWOOD MOVIES NETWORK (TWO MODE)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Hollywood Movies Network</li>
+<li><strong>File:</strong> hwd20.rda</li>
+<li><strong>R Objects:</strong> hwd20 (igraph) — Actor-to-movie network hwdactors (igraph) — Actor-to-actor network hwdmovies (igraph) — Movie-to-movie network</li>
+</ul>
+<section id="background-11" class="level3" data-number="C.12.1">
+<h3 data-number="C.12.1" class="anchored" data-anchor-id="background-11"><span class="header-section-number">C.12.1</span> Background</h3>
+<p>This dataset is an adapted version of a dataset collected scraped from IMDB by Douglas Luke. That original dataset included an edgelist of 160 movies and the top actors from those movies. With the help of ChatGPT, we condensed this dataset down to an edgelist of 20 interconnected movies and their top actors.</p>
+<p>hwd20 is the bipartite network of links between actors and movies.</p>
+<p>hwdactors is the one mode projection of hwd20 showing the connections between actors on the basis of co-appearance in movies.</p>
+<p>hwdmovies is the one mode projection of hwd20 showing the connections between movies on the basis of actors included in those movies.</p>
+<ul>
+<li><strong>Data Collection:</strong> Douglas Luke (2015), https://github.com/DougLuke/UserNetR</li>
+<li><strong>Domain:</strong> Communication / Digital Media / Arts &amp; Culture</li>
+</ul>
+</section>
+<section id="network-structure-11" class="level3" data-number="C.12.2">
+<h3 data-number="C.12.2" class="anchored" data-anchor-id="network-structure-11"><span class="header-section-number">C.12.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Two mode (hwd20) and one mode (hwdmovies, hwdactors)</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> Yes (for one mode projections)</li>
+<li><strong>hwd20:</strong> 192 nodes | 200 edges | binary</li>
+<li><strong>hwdactors:</strong> 172 nodes | 896 edges | weighted</li>
+<li><strong>hwdmovies:</strong> 20 nodes | 48 edges | weighted</li>
+</ul>
+</section>
+<section id="attributes-11" class="level3" data-number="C.12.3">
+<h3 data-number="C.12.3" class="anchored" data-anchor-id="attributes-11"><span class="header-section-number">C.12.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-4" class="level4" data-number="C.12.3.1">
+<h4 data-number="C.12.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-4"><span class="header-section-number">C.12.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> Actor/movie name</li>
+</ul>
+</section>
+<section id="edge-attributes-4" class="level4" data-number="C.12.3.2">
+<h4 data-number="C.12.3.2" class="anchored" data-anchor-id="edge-attributes-4"><span class="header-section-number">C.12.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>weight (hwdactors):</strong> Number of shared movies</li>
+<li><strong>weight (hwdmovies):</strong> Number of shared actors</li>
+</ul>
+</section>
+</section>
+<section id="references-11" class="level3" data-number="C.12.4">
+<h3 data-number="C.12.4" class="anchored" data-anchor-id="references-11"><span class="header-section-number">C.12.4</span> References</h3>
+<p>Luke, Douglas. (2015). A User’s Guide to Network Analysis in R. Springer. https://github.com/DougLuke/UserNetR</p>
+</section>
+</section>
+<section id="job-description-word-network-text" class="level2" data-number="C.13">
+<h2 data-number="C.13" class="anchored" data-anchor-id="job-description-word-network-text"><span class="header-section-number">C.13</span> JOB DESCRIPTION WORD NETWORK (TEXT)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Job Description Word Network</li>
+<li><strong>File:</strong> jobdescnet.rda</li>
+<li><strong>R Objects:</strong> jobdescnet (igraph) — Job title-to-word network jobtitlenet (igraph) — Job title-to-job title network jobwordnet (igraph) — Word-to-word network</li>
+</ul>
+<section id="background-12" class="level3" data-number="C.13.1">
+<h3 data-number="C.13.1" class="anchored" data-anchor-id="background-12"><span class="header-section-number">C.13.1</span> Background</h3>
+<p>These data were scraped with permission from the USAjobs database. The original file contains all of the available federal job postings for the US in the summer of 2021. This file is a subset based on a single representative job ad from 15 of the most popular job titles in the database.</p>
+<p>The two mode job title-to-word network (jobdescnet) was sliced to include only instances where edge weights exceeded 2 (and isolate words removed) in order to reduce the total number of words and the overall density of the network.</p>
+<p>jobdescnet is a two mode network representing the linkages between those 15 ads and 784 common words appearing in those job ads. jobtitlenet is a one mode network showing connections between job titles based on word co-occurrance. jobwordnet is a one mode network showing the connections between words based on presence in multiple job ads.</p>
+<ul>
+<li><strong>Data Collection:</strong> McDonald et al.&nbsp;(2026), scraped from USAjobs.gov</li>
+<li><strong>Domain:</strong> Work / Organizations / Occupations / Job Search</li>
+</ul>
+</section>
+<section id="network-structure-12" class="level3" data-number="C.13.2">
+<h3 data-number="C.13.2" class="anchored" data-anchor-id="network-structure-12"><span class="header-section-number">C.13.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Two mode (jobdescnet) and one mode (jobtitlenet &amp; jobwordnet)</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> Yes</li>
+<li><strong>jobdescnet:</strong> 117 nodes | 121 edges | weighted</li>
+<li><strong>jobtitlenet:</strong> 15 nodes | 29 edges | binary</li>
+<li><strong>jobwordnet:</strong> 102 nodes | 784 edges | binary</li>
+</ul>
+</section>
+<section id="attributes-12" class="level3" data-number="C.13.3">
+<h3 data-number="C.13.3" class="anchored" data-anchor-id="attributes-12"><span class="header-section-number">C.13.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-5" class="level4" data-number="C.13.3.1">
+<h4 data-number="C.13.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-5"><span class="header-section-number">C.13.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> job title/word</li>
+<li><strong>component:</strong> community membership (based on the infomap algorithm)</li>
+</ul>
+</section>
+<section id="edge-attributes-5" class="level4" data-number="C.13.3.2">
+<h4 data-number="C.13.3.2" class="anchored" data-anchor-id="edge-attributes-5"><span class="header-section-number">C.13.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>weight (jobdescnet):</strong> Number of times word appears in job advertisement</li>
+<li><strong>weight (jobtitlenet):</strong> Number of shared words in job advertisements</li>
+<li><strong>weight (jobwordnet):</strong> Number of job advertisements that used the same words</li>
+</ul>
+</section>
+</section>
+<section id="references-12" class="level3" data-number="C.13.4">
+<h3 data-number="C.13.4" class="anchored" data-anchor-id="references-12"><span class="header-section-number">C.13.4</span> References</h3>
+<p>McDonald, Steve, Jill E. Yavorsky, Daulton Selke, Dakota Dougherty, Adam Goldfarb, and Tremaine Winstead. (2026). “Occupational Segregation and Gendered Language in Job Advertisements.” Unpublished manuscript.</p>
+</section>
+</section>
+<section id="krackhardt-high-tech-managers" class="level2" data-number="C.14">
+<h2 data-number="C.14" class="anchored" data-anchor-id="krackhardt-high-tech-managers"><span class="header-section-number">C.14</span> KRACKHARDT HIGH-TECH MANAGERS</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Krackhardt High-Tech Managers</li>
+<li><strong>File:</strong> hi_tech.rda</li>
+<li><strong>R Objects:</strong> hta (igraph) — Advice network htf (igraph) — Friendship network htr (igraph) — Reports-To network</li>
+</ul>
+<section id="background-13" class="level3" data-number="C.14.1">
+<h3 data-number="C.14.1" class="anchored" data-anchor-id="background-13"><span class="header-section-number">C.14.1</span> Background</h3>
+<p>These data were collected from the 21 managers of a high-technology equipment manufacturer on the west coast of the United States (total company size: just over 100 employees). Three distinct types of directed relational data were collected:</p>
+<ul>
+<li><p><strong>hta (ADVICE):</strong> Each manager identified colleagues they go to for advice. Directed: A → B means A seeks advice from B.</p></li>
+<li><p>21 nodes | 190 edges</p></li>
+<li><p><strong>htf (FRIENDSHIP):</strong> Each manager identified colleagues they consider friends. Directed: A → B means A names B as a friend (asymmetric).</p></li>
+<li><p>21 nodes | 102 edges</p></li>
+<li><p><strong>htr (REPORTS_TO):</strong> Formal organizational hierarchy, extracted from company documents. A → B means A reports to B.</p></li>
+<li><p>21 nodes | 20 edges All three networks share the same node set and attribute table, enabling direct comparison of formal structure (htr) with informal networks (hta, htf). This multiplex design makes the dataset ideal for studying the alignment (or misalignment) of formal and informal organizational structure.</p></li>
+<li><p><strong>Data Collection:</strong> Survey and organizational documents; west coast U.S. technology company, mid-1980s.</p></li>
+<li><p><strong>Domain:</strong> Organizational Behavior / Management / Multiplex Networks</p></li>
+</ul>
+</section>
+<section id="network-structure-13" class="level3" data-number="C.14.2">
+<h3 data-number="C.14.2" class="anchored" data-anchor-id="network-structure-13"><span class="header-section-number">C.14.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Multiplex (three one-mode directed networks, shared node set)</li>
+<li><strong>Directed:</strong> Yes (all three networks)</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>hta (Advice):</strong> 21 nodes | 190 edges</li>
+<li><strong>htf (Friendship):</strong> 21 nodes | 102 edges</li>
+<li><strong>htr (Reports-To):</strong> 21 nodes | 20 edges</li>
+</ul>
+</section>
+<section id="attributes-13" class="level3" data-number="C.14.3">
+<h3 data-number="C.14.3" class="anchored" data-anchor-id="attributes-13"><span class="header-section-number">C.14.3</span> Attributes</h3>
+<p>NODE ATTRIBUTES (shared across hta, htf, htr):</p>
+<ul>
+<li><strong>name:</strong> Manager name</li>
+<li><strong>age:</strong> Age in years</li>
+<li><strong>tenure:</strong> Length of service in years</li>
+<li><strong>level:</strong> Hierarchical level (1 = CEO, 2 = Vice President, 3 = Manager)</li>
+<li><strong>dept:</strong> Department (0 = CEO/no dept, 1–4 = departments)</li>
+</ul>
+</section>
+<section id="references-13" class="level3" data-number="C.14.4">
+<h3 data-number="C.14.4" class="anchored" data-anchor-id="references-13"><span class="header-section-number">C.14.4</span> References</h3>
+<p>Krackhardt, D. (1987). Cognitive social structures. Social Networks, 9, 104–134.</p>
+<p>Wasserman, S., &amp; Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.</p>
+</section>
+</section>
+<section id="moreno-classroom-sociometry" class="level2" data-number="C.15">
+<h2 data-number="C.15" class="anchored" data-anchor-id="moreno-classroom-sociometry"><span class="header-section-number">C.15</span> MORENO CLASSROOM SOCIOMETRY</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Moreno Classroom Sociometry</li>
+<li><strong>File:</strong> moreno.rda</li>
+<li><strong>R Objects:</strong> moreno (igraph)</li>
+</ul>
+<section id="background-14" class="level3" data-number="C.15.1">
+<h3 data-number="C.15.1" class="anchored" data-anchor-id="background-14"><span class="header-section-number">C.15.1</span> Background</h3>
+<p>This dataset contains Jacob Moreno’s classic sociometric data collected from a classroom of 33 children. Moreno is widely credited as the founder of sociometry — the systematic measurement of social preferences within groups — and this dataset is among the earliest and most cited examples of social network data in the history of the field.</p>
+<p>Edges represent mutual friendship or positive social nominations between students. The network captures the informal social structure of the classroom, including popular children (high degree), isolated children (low degree), and clique formations. Gender is recorded as a node attribute, enabling analysis of gender-based segregation in children’s peer networks.</p>
+<p>This is an undirected network — ties are treated as symmetric regardless of directionality of the original nominations.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Sociometric surveys administered to a classroom of children; early-to-mid 20th century. Collected by Jacob L. Moreno.</p></li>
+<li><p><strong>Domain:</strong> Developmental Psychology / Sociometry / Classic SNA</p></li>
+</ul>
+</section>
+<section id="network-structure-14" class="level3" data-number="C.15.2">
+<h3 data-number="C.15.2" class="anchored" data-anchor-id="network-structure-14"><span class="header-section-number">C.15.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, undirected, binary</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>Nodes:</strong> 33 (students)</li>
+<li><strong>Edges:</strong> 46 (friendship/positive nomination ties)</li>
+</ul>
+</section>
+<section id="attributes-14" class="level3" data-number="C.15.3">
+<h3 data-number="C.15.3" class="anchored" data-anchor-id="attributes-14"><span class="header-section-number">C.15.3</span> Attributes</h3>
+<section id="node-attributes-4" class="level4" data-number="C.15.3.1">
+<h4 data-number="C.15.3.1" class="anchored" data-anchor-id="node-attributes-4"><span class="header-section-number">C.15.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>vertex.names</strong> – Student identifier</p></li>
+<li><p><strong>gender:</strong> Gender (coded 1 or 2; 16 and 17 students respectively)</p></li>
+</ul>
+</section>
+</section>
+<section id="references-14" class="level3" data-number="C.15.4">
+<h3 data-number="C.15.4" class="anchored" data-anchor-id="references-14"><span class="header-section-number">C.15.4</span> References</h3>
+<p>Moreno, J. L. (1934). Who Shall Survive? Foundations of Sociometry, Group Psychotherapy and Sociodrama. Nervous and Mental Disease Publishing Company.</p>
+</section>
+</section>
+<section id="padgett-florentine-families-marriage-network" class="level2" data-number="C.16">
+<h2 data-number="C.16" class="anchored" data-anchor-id="padgett-florentine-families-marriage-network"><span class="header-section-number">C.16</span> PADGETT FLORENTINE FAMILIES MARRIAGE NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Padgett Florentine Families Marriage Network</li>
+<li><strong>File:</strong> ifm.rda</li>
+<li><strong>R Objects:</strong> ifm (igraph)</li>
+</ul>
+<section id="background-15" class="level3" data-number="C.16.1">
+<h3 data-number="C.16.1" class="anchored" data-anchor-id="background-15"><span class="header-section-number">C.16.1</span> Background</h3>
+<p>This dataset captures the marriage alliance network among 16 prominent Florentine families during the early 15th century (circa 1430). The data were collected by John Padgett from historical documents and have become one of the most widely used networks in social network analysis pedagogy and research.</p>
+<p>Nodes represent family aggregates (not individuals); an edge between two families indicates that they were linked by at least one recorded marriage alliance. The network is symmetric — if Family A married into Family B, the tie is undirected.</p>
+<p>Substantively, the data capture a pivotal political struggle for control of Florence, with two dominant factions: one centered on the Medici family (node 9) and one on the Strozzi family (node 15). The Medici’s strategic use of marriage ties — including bridging across otherwise disconnected families — is often cited as a key factor in their political rise.</p>
+<p>Node attributes provide economic and political context: net wealth (1427), civic council seats held (1282–1344), and total marriage/business ties across the broader dataset of 116 families.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Historical documents; Renaissance Florence, circa 1430. Data collected and coded by John Padgett.</p></li>
+<li><p><strong>Domain:</strong> Historical Sociology / Political Sociology / Classic SNA</p></li>
+</ul>
+</section>
+<section id="network-structure-15" class="level3" data-number="C.16.2">
+<h3 data-number="C.16.2" class="anchored" data-anchor-id="network-structure-15"><span class="header-section-number">C.16.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, undirected, binary</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>Nodes:</strong> 16 (Florentine family aggregates)</li>
+<li><strong>Edges:</strong> 20 (marriage alliance ties)</li>
+</ul>
+</section>
+<section id="attributes-15" class="level3" data-number="C.16.3">
+<h3 data-number="C.16.3" class="anchored" data-anchor-id="attributes-15"><span class="header-section-number">C.16.3</span> Attributes</h3>
+<section id="node-attributes-5" class="level4" data-number="C.16.3.1">
+<h4 data-number="C.16.3.1" class="anchored" data-anchor-id="node-attributes-5"><span class="header-section-number">C.16.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>vertex.names</strong> – Family name</p></li>
+<li><p><strong>wealth:</strong> Net wealth in 1427 (thousands of lira)</p></li>
+<li><p><strong>seats:</strong> Priorates (civic council seats) held 1282–1344</p></li>
+<li><p><strong>ties:</strong> Total marriage/business ties in 116-family dataset</p></li>
+</ul>
+</section>
+</section>
+<section id="references-15" class="level3" data-number="C.16.4">
+<h3 data-number="C.16.4" class="anchored" data-anchor-id="references-15"><span class="header-section-number">C.16.4</span> References</h3>
+<p>Breiger, R., &amp; Pattison, P. (1986). Cumulated social roles: The duality of persons and their algebras. Social Networks, 8, 215–256.</p>
+<p>Kent, D. (1978). The Rise of the Medici: Faction in Florence, 1426–1434. Oxford University Press.</p>
+</section>
+</section>
+<section id="sampson-monastery-network" class="level2" data-number="C.17">
+<h2 data-number="C.17" class="anchored" data-anchor-id="sampson-monastery-network"><span class="header-section-number">C.17</span> SAMPSON MONASTERY NETWORK</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Sampson Monastery Network</li>
+<li><strong>File:</strong> sampson.rda</li>
+<li><strong>R Objects:</strong> sampson (igraph)</li>
+</ul>
+<section id="background-16" class="level3" data-number="C.17.1">
+<h3 data-number="C.17.1" class="anchored" data-anchor-id="background-16"><span class="header-section-number">C.17.1</span> Background</h3>
+<p>Samuel Sampson collected data on social interactions among novice monks at a New England monastery during a period of significant internal conflict, while he was in residence as an experimenter studying vision. The dataset captures positive friendship (“liking”) ties, derived from the top-3 nominations in the final wave of sociometric rankings (SAMPLK3), and has become one of the most frequently analyzed networks in social network analysis research and pedagogy.</p>
+<p>During Sampson’s residence, a political crisis within the monastery led to the expulsion of four monks (Nos. 2, 3, 17, and 18 in the Boorman &amp; Breiger coding) and the voluntary departure of several others (Nos. 1, 7, 14, 15, and 16). Only four monks ultimately remained: Bonaventure, Berthold, Ambrose, and Louis (Nos. 5, 6, 9, and 11).</p>
+<p>Node attributes record each monk’s faction membership (Loyal Opposition, Young Turks, Outcasts, or Waverers) and whether they were part of the original pre-crisis cohort (cloisterville). These faction labels, developed by Breiger, Boorman, and Arabie, are used extensively in the blockmodeling literature.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Sociometric rankings collected at three time points (SAMPLK1–3) during residency at a New England monastery, 1960s. This network reflects SAMPLK3 (final wave, top-3 nominations).</p></li>
+<li><p><strong>Domain:</strong> Organizational Sociology / Classic SNA / Blockmodeling</p></li>
+</ul>
+</section>
+<section id="network-structure-16" class="level3" data-number="C.17.2">
+<h3 data-number="C.17.2" class="anchored" data-anchor-id="network-structure-16"><span class="header-section-number">C.17.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> One-mode, undirected, binary</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> No</li>
+<li><strong>Nodes:</strong> 18 (novice monks)</li>
+<li><strong>Edges:</strong> 60 (“liking” ties — top-3 friendship nominations)</li>
+</ul>
+</section>
+<section id="attributes-16" class="level3" data-number="C.17.3">
+<h3 data-number="C.17.3" class="anchored" data-anchor-id="attributes-16"><span class="header-section-number">C.17.3</span> Attributes</h3>
+<section id="node-attributes-6" class="level4" data-number="C.17.3.1">
+<h4 data-number="C.17.3.1" class="anchored" data-anchor-id="node-attributes-6"><span class="header-section-number">C.17.3.1</span> Node Attributes</h4>
+<ul>
+<li><p><strong>vertex.names</strong> – Monk name (abbreviated)</p></li>
+<li><p><strong>group:</strong> Faction (Loyal Opposition, Young Turks, Outcasts, Waverers)</p></li>
+<li><p><strong>cloisterville:</strong> Pre-crisis cohort membership (logical)</p></li>
+</ul>
+</section>
+</section>
+<section id="references-16" class="level3" data-number="C.17.4">
+<h3 data-number="C.17.4" class="anchored" data-anchor-id="references-16"><span class="header-section-number">C.17.4</span> References</h3>
+<p>Breiger, R., Boorman, S., &amp; Arabie, P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328–383.</p>
+<p>Sampson, S. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.</p>
+</section>
+</section>
+<section id="state-of-the-union-word-network-text" class="level2" data-number="C.18">
+<h2 data-number="C.18" class="anchored" data-anchor-id="state-of-the-union-word-network-text"><span class="header-section-number">C.18</span> STATE OF THE UNION WORD NETWORK (TEXT)</h2>
+<ul>
+<li><strong>Dataset Name:</strong> State of the Union Word Network</li>
+<li><strong>File:</strong> sotunet.rda</li>
+<li><strong>R Objects:</strong> sotunet (igraph) — President-to-word network sotupresnet (igraph) — President-to-president network sotuwordnet (igraph) — Word-to-word network</li>
+</ul>
+<section id="background-17" class="level3" data-number="C.18.1">
+<h3 data-number="C.18.1" class="anchored" data-anchor-id="background-17"><span class="header-section-number">C.18.1</span> Background</h3>
+<p>Based on the raw text from State of the Union (SOTU) Addresses from American presidents. Collected via the ‘sotu’ package in R. Collapsed to include the first SOTUs from 15 selected presidents. Words include only nouns from those speeches.</p>
+<p>The two mode president-to-word network (sotunet) was sliced to include only instances where edge weights exceeded 7 (and isolate words removed) in order to reduce the total number of words and the overall density of the network.</p>
+<p>sotupresnet represents the one mode projection of sotunet showing the connections between presidents on the basis of similar noun usage.</p>
+<p>sotuwordnet represents the one mode projection of sotunet showing the connections between words on the basis of similar utterance by presidents.</p>
+<ul>
+<li><strong>Data Collection:</strong> Taylor B. Arnold (2022)</li>
+<li><strong>Domain:</strong> Political Science / Language</li>
+</ul>
+</section>
+<section id="network-structure-17" class="level3" data-number="C.18.2">
+<h3 data-number="C.18.2" class="anchored" data-anchor-id="network-structure-17"><span class="header-section-number">C.18.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Two mode (sotunet) and one mode (sotupresnet and sotuwordnet)</li>
+<li><strong>Directed:</strong> No</li>
+<li><strong>Weighted:</strong> Yes</li>
+<li><strong>sotunet:</strong> 246 nodes | 535 edges | weighted</li>
+<li><strong>sotupresnet:</strong> 15 nodes | 104 edges | weighted</li>
+<li><strong>sotuwordnet:</strong> 231 nodes | 11167 edges | weighted</li>
+</ul>
+</section>
+<section id="attributes-17" class="level3" data-number="C.18.3">
+<h3 data-number="C.18.3" class="anchored" data-anchor-id="attributes-17"><span class="header-section-number">C.18.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-6" class="level4" data-number="C.18.3.1">
+<h4 data-number="C.18.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-6"><span class="header-section-number">C.18.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> President/word</li>
+</ul>
+</section>
+<section id="edge-attributes-6" class="level4" data-number="C.18.3.2">
+<h4 data-number="C.18.3.2" class="anchored" data-anchor-id="edge-attributes-6"><span class="header-section-number">C.18.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>weight (sotunet):</strong> Number of times word appears in president’s speech</li>
+<li><strong>weight (sotupresnet):</strong> Number of shared words in presidential speeches</li>
+<li><strong>weight (sotuwordnet):</strong> Number of president speeches that used the same words</li>
+</ul>
+</section>
+</section>
+<section id="references-17" class="level3" data-number="C.18.4">
+<h3 data-number="C.18.4" class="anchored" data-anchor-id="references-17"><span class="header-section-number">C.18.4</span> References</h3>
+<p>Arnold, Taylor B. (2022). sotu: United States Presidential State of the Union Addresses. https://cran.r-project.org/package=sotu</p>
+</section>
+</section>
+<section id="countries-trade-networks" class="level2" data-number="C.19">
+<h2 data-number="C.19" class="anchored" data-anchor-id="countries-trade-networks"><span class="header-section-number">C.19</span> COUNTRIES TRADE NETWORKS</h2>
+<ul>
+<li><strong>Dataset Name:</strong> Countries Trade Networks</li>
+<li><strong>File:</strong> tradenets.rda</li>
+<li><strong>R Objects:</strong> mg (igraph) — Manufactured Goods trade network f (igraph) — Foods trade network c (igraph) — Crude Materials trade network m (igraph) — Minerals &amp; Fuels trade network d (igraph) — Diplomatic Exchange network trade_attr (data frame) — Country-level attributes</li>
+</ul>
+<section id="background-18" class="level3" data-number="C.19.1">
+<h3 data-number="C.19.1" class="anchored" data-anchor-id="background-18"><span class="header-section-number">C.19.1</span> Background</h3>
+<p>This dataset contains five directed network matrices representing economic and diplomatic relations among 24 countries, selected by Wasserman and Faust (1994) from a larger dataset of 63 countries compiled by Smith and White (1988). The selection was designed to be geographically, economically, and politically representative of the global system.</p>
+<p>Four trade networks capture the flow of different commodity types — manufactured goods, food and live animals, crude materials (excluding food), and minerals and fuels. A fifth network captures diplomatic exchange (mutual ambassador placement) among the same countries. In all networks, a directed tie from country A to country B indicates that A exports the relevant commodity to (or exchanges diplomats with) B.</p>
+<p>An attribute data frame provides macroeconomic context for each country: population growth, GNP growth, secondary school enrollment, and energy consumption — all measured circa 1970–1981.</p>
+<ul>
+<li><p><strong>Data Collection:</strong> Smith &amp; White (1988), based on international trade statistics for the period 1965–1980.</p></li>
+<li><p><strong>Domain:</strong> International Relations / World Systems Theory / Multiplex Network Analysis</p></li>
+</ul>
+</section>
+<section id="network-structure-18" class="level3" data-number="C.19.2">
+<h3 data-number="C.19.2" class="anchored" data-anchor-id="network-structure-18"><span class="header-section-number">C.19.2</span> Network Structure</h3>
+<ul>
+<li><strong>Network Type:</strong> Multiplex (five one-mode directed networks, shared node set)</li>
+<li><strong>Directed:</strong> Yes (all five networks)</li>
+<li><strong>Weighted:</strong> mg only (other networks are binary)</li>
+<li><strong>mg (Manufactured Goods):</strong> 24 nodes | 310 edges | weighted</li>
+<li><strong>f (Foods):</strong> 24 nodes | 307 edges | binary</li>
+<li><strong>c (Crude Materials):</strong> 24 nodes | 307 edges | binary</li>
+<li><strong>m (Minerals &amp; Fuels):</strong> 24 nodes | 135 edges | binary</li>
+<li><strong>d (Diplomatic Exchange):</strong> 24 nodes | 369 edges | binary</li>
+</ul>
+</section>
+<section id="attributes-18" class="level3" data-number="C.19.3">
+<h3 data-number="C.19.3" class="anchored" data-anchor-id="attributes-18"><span class="header-section-number">C.19.3</span> Attributes</h3>
+<section id="node-attributes-all-networks-7" class="level4" data-number="C.19.3.1">
+<h4 data-number="C.19.3.1" class="anchored" data-anchor-id="node-attributes-all-networks-7"><span class="header-section-number">C.19.3.1</span> Node Attributes (All Networks)</h4>
+<ul>
+<li><strong>name:</strong> Country name</li>
+</ul>
+</section>
+<section id="edge-attributes-7" class="level4" data-number="C.19.3.2">
+<h4 data-number="C.19.3.2" class="anchored" data-anchor-id="edge-attributes-7"><span class="header-section-number">C.19.3.2</span> Edge Attributes</h4>
+<ul>
+<li><strong>weight:</strong> Trade volume/value (mg only; other networks have no edge attrs)</li>
+</ul>
+</section>
+<section id="country-attributes-trade_attr-data-frame" class="level4" data-number="C.19.3.3">
+<h4 data-number="C.19.3.3" class="anchored" data-anchor-id="country-attributes-trade_attr-data-frame"><span class="header-section-number">C.19.3.3</span> Country Attributes (Trade_Attr Data Frame)</h4>
+<ul>
+<li><strong>POP_GROWTH:</strong> Average annual population growth, 1970–1981 (%)</li>
+<li><strong>GNP:</strong> Average annual GNP per capita growth, 1970–1981 (%)</li>
+<li><strong>SCHOOLS:</strong> Secondary school enrollment ratio, 1981</li>
+<li><strong>ENERGY:</strong> Energy consumption per capita, 1981 (kg coal equivalent)</li>
+</ul>
+</section>
+</section>
+<section id="references-18" class="level3" data-number="C.19.4">
+<h3 data-number="C.19.4" class="anchored" data-anchor-id="references-18"><span class="header-section-number">C.19.4</span> References</h3>
+<p>Smith, D., &amp; White, D. (1988). Structure and dynamics of the global economy: Network analysis of international trade 1965–1980. Unpublished manuscript.</p>
+<p>Wasserman, S., &amp; Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./interact_vis.html" class="pagination-link" aria-label="Interactive Network Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

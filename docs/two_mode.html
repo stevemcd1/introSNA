@@ -299,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">intronets Package: Dataset Descriptions</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -390,9 +396,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a_t_g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(artist_track_edge, <span class="at">directed =</span> F)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 2d830ff UN-- 763 1143 -- 
+<pre><code>IGRAPH 37b1882 UN-- 763 1143 -- 
 + attr: name (v/c)
-+ edges from 2d830ff (vertex names):
++ edges from 37b1882 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -416,9 +422,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 2d830ff UN-B 763 1143 -- 
+<pre><code>IGRAPH 37b1882 UN-B 763 1143 -- 
 + attr: name (v/c), type (v/l)
-+ edges from 2d830ff (vertex names):
++ edges from 37b1882 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -684,10 +690,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bipartite_projection</span>(a_t_g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$proj1
-IGRAPH a3c8bc1 UNW- 372 852 -- 
+IGRAPH b02ee0c UNW- 372 852 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from a3c8bc1 (vertex names):
++ edges from b02ee0c (vertex names):
  [1] Wiley--Kano                Wiley--Scorcher           
  [3] Wiley--Daniel Merriweather Wiley--Hot Chip           
  [5] Wiley--Peter Raeburn       Wiley--Larry              
@@ -698,10 +704,10 @@ IGRAPH a3c8bc1 UNW- 372 852 --
 + ... omitted several edges
 
 $proj2
-IGRAPH a3c8f0e UNW- 391 12312 -- 
+IGRAPH b02efd0 UNW- 391 12312 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from a3c8f0e (vertex names):
++ edges from b02efd0 (vertex names):
 [1] See Clear Now (feat. Kano &amp; Scorcher)--Cash in My Pocket (feat. Daniel Merriweather)
 [2] See Clear Now (feat. Kano &amp; Scorcher)--5AM (feat. Scorcher)                         
 [3] See Clear Now (feat. Kano &amp; Scorcher)--Step by Step (feat. Hot Chip)                

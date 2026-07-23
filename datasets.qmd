@@ -1,0 +1,826 @@
+# intronets Package: Dataset Descriptions
+
+A reference guide to the datasets included in the **intronets** package.
+
+## BALI TERRORIST NETWORK {#bali-terrorist-network}
+
+- **Dataset Name:** Bali Terrorist Network
+- **File:** bali.rda
+- **R Objects:** bali (igraph)
+
+### Background
+
+This dataset captures the social network underlying the 2002 Bali bombings, one of the deadliest terrorist attacks in Southeast Asian history. Nodes represent individuals connected to the attack, and edges reflect documented social ties among them. Roles are coded to distinguish participants by function within the network: Command Team (CT), Bomb Maker (BM), Suicide Bomber (SB), Operations Assistant (OA), and Team Leader (TL). The network is particularly useful for studying how covert organizations structure themselves and how role specialization relates to network position.
+
+- **Data Collection:** Reconstructed from investigative and journalistic sources following the October 2002 Bali bombings.
+
+- **Domain:** Terrorism / Security Studies / Dark Networks
+
+### Network Structure
+
+- **Network Type:** One-mode, undirected
+- **Directed:** No
+- **Weighted:** No
+- **Nodes:** 17 (individuals involved in the attack)
+- **Edges:** 63 (documented social ties between individuals)
+
+### Attributes
+
+#### Node Attributes
+
+- **role** -- Role in the attack (CT, OA, BM, SB, TL)
+
+- **vertex.names:** Individual identifiers
+
+#### Edge Attributes
+
+- **IC** -- Interaction context (numeric code)
+
+### References
+
+Koschade, S. (2006). A social network analysis of Jemaah Islamiyah: The applications to counterterrorism and intelligence. Studies in Conflict & Terrorism, 29(6), 559–575.
+
+## DAVIS SOUTHERN CLUB WOMEN NETWORK (Two Mode) {#davis-southern-club-women-network-two-mode}
+
+- **Dataset Name:** Davis Southern Club Women Network
+- **File:** davis_sw.rda
+- **R Objects:** davis_sw (igraph) — Southern women event attendance network
+
+### Background
+
+These data were collected by Davis et al in the 1930s. They represent observed attendance at 14 social events by 18 Southern women. The result is a person-by-event matrix: cell (i,j) is 1 if person i attended social event j, and 0 otherwise.
+
+- **Data Collection:** Davis et al. (1941), ethnographic observation
+- **Domain:** Gender / Race / Elites / Social Clubs & Membership / The South
+
+### Network Structure
+
+- **Network Type:** Two mode (people and events)
+- **Directed:** No
+- **Weighted:** No
+- **davis_sw:** 32 nodes \| 89 edges \| unweighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** Person's name
+
+### References
+
+Breiger R. (1974). The duality of persons and groups. Social Forces, 53, 181- 190.
+
+Davis, A et al. (1941). Deep South. Chicago: University of Chicago Press.
+
+## DECLARATION OF INDEPENDENCE WORD NETWORK (text) {#declaration-of-independence-word-network-text}
+
+- **Dataset Name:** Declaration of Independence Word Network
+- **File:** declaration_net.rda
+- **R Objects:** declaration_net (igraph) — word pairs that co-occur in the same sentence
+
+### Background
+
+This dataset contains one undirected network matrix showing word pairs that co-occur in the same sentence as part of the Declaration of Independence. In other words, a one mode projection of a sentence-word incidence matrix.
+
+- **Data Collection:** Andrew Davis (2026), downloaded from the National Archives.
+- **Domain:** Politics / Language
+
+### Network Structure
+
+- **Network Type:** One mode text network
+- **Directed:** No
+- **Weighted:** mg only (other networks are binary)
+- **declaration_net:** 120 nodes (words) \| 994 edges \| unweighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** The word
+
+### References
+
+United States. 1776. The Declaration of Independence. Washington, DC: National Archives.
+
+## DRUG USER SOCIAL NETWORKS {#drug-user-social-networks}
+
+- **Dataset Name:** Drug User Social Networks
+- **File:** drugnet.rda
+- **R Objects:** drugnet (igraph), drug_connect (igraph)
+
+### Background
+
+This dataset captures social networks among drug users in high-risk sites in Hartford, Connecticut, collected as part of a study examining how social ties facilitate or inhibit risk behaviors associated with drug use and HIV transmission. Nodes are individuals; directed edges represent social connections reported by respondents. Two versions of the network are provided:
+
+- **drugnet:** Full network (293 nodes, 337 edges), including isolates and those with limited connections. Represents the broader social field in which drug use occurs.
+
+- **drug_connect:** Connected subgraph (193 nodes, 323 edges), retaining only the reachable component. Better suited for most network analyses that require connectivity.
+
+Node attributes capture ethnicity and gender, enabling demographic analysis of network structure and risk exposure.
+
+- **Data Collection:** Ethnographic field research and structured interviews; Hartford, Connecticut, late 1990s/early 2000s.
+
+- **Domain:** Public Health / Sociology / Risk Behavior Networks
+
+### Network Structure
+
+- **Network Type:** One-mode, directed
+- **Directed:** Yes
+- **Weighted:** No
+- **drugnet:** 293 nodes \| 337 edges
+- **drug_connect:** 193 nodes \| 323 edges
+
+### Attributes
+
+#### Node Attributes
+
+- **name** -- Respondent identifier
+
+- **ethnicity:** Ethnicity (coded numerically: 1–4)
+
+- **gender:** Gender (coded numerically)
+
+### References
+
+Weeks, M. R., Clair, S., Borgatti, S. P., Radda, K., & Schensul, J. J. (2002). Social networks of drug users in high-risk sites: Finding the connections. AIDS and Behavior, 6(2), 193–206.
+
+Weeks, M. R., Convey, M., Dickson-Gomez, J., Li, J., Radda, K., Martinez, M., & Robles, E. (2009). Changing drug users' risk environments: Peer health advocates as multi-level community change agents. American Journal of Community Psychology, 43(3), 330–344.
+
+## EIES ELECTRONIC COMMUNICATION NETWORK {#eies-electronic-communication-network}
+
+- **Dataset Name:** EIES Electronic Communication Network
+- **File:** eies.rda
+- **R Objects:** ebin1 (igraph) — Interactions at time 1 ebin2 (igraph) — Interactions at time 2 net_1 (network) — Interactions at time 1 (duplicate of ebin1) net_2 (network) — Interactions at time 2 (duplicate of ebin2) ebin_dynamic (networkDynamic) — Interactions at both times
+
+### Background
+
+These data arose from an early experiment on computer mediated communication. Fifty academics interested in interdisciplinary research were allowed to contact each other via an Electronic Information Exchange System (EIES). The data collected consisted of all messages sent plus acquaintance relationships at two time periods (collected via a questionnaire).
+
+- **Data Collection:** Freeman & Freeman (1979), survey data
+- **Domain:** Communications / Science, Technology, and Society
+
+### Network Structure
+
+- **Network Type:** One mode, longitudinal (repeated cross-sections)
+- **Directed:** Yes
+- **Weighted:** Yes
+- **ebin1:** 32 nodes \| 152 edges \| weighted
+- **ebin2:** 32 nodes \| 204 edges \| weighted
+- **net_1:** 32 nodes \| 152 edges \| weighted
+- **net_2:** 32 nodes \| 204 edges \| weighted
+- **ebin_dynamic:** 32 nodes \| 356 edges \| weighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** Person's name
+
+- **citations:** Number of citations of the actors work in the social science citation index at the beginning of the study
+
+- **disccode:** Scholarly discipline as a code: 1 = Sociology, 2 = Anthropology , 3 = Mathematics/Statistics, 4 = other
+
+- **discipline:** Name of discipline: Sociology, Anthropology, Mathematics/ Statistics, other
+
+- **totmessages:** Number of messages sent by a person throughout the study period
+
+#### Edge Attributes
+
+- **wgt:** Acquaintance information: 4 = close personal friend, 3= friend, 2= person I've met, 1 = person I've heard of but not met, and 0 = person unknown to me (or no reply).
+
+### References
+
+Freeman, S C and L C Freeman (1979). The networkers network: A study of the impact of a new communications medium on sociometric structure. Social Science Research Reports No 46. Irvine CA, University of California.
+
+Wasserman, S., & Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.
+
+## FRATERNITY SOCIAL NETWORKS (LONGITUDINAL) {#fraternity-social-networks-longitudinal}
+
+- **Dataset Name:** Fraternity Social Networks (Longitudinal)
+- **File:** frat_graphs.rda
+- **R Objects:** frat_i (list of igraph objects) frat_n (list of igraph objects)
+
+### Background
+
+This dataset contains longitudinal social network data from a fraternity, capturing evolving social ties across 15 observation waves. Two parallel lists of igraph objects are provided -- frat_i and frat_n -- representing the same network under different construction or filtering conditions (e.g., different tie definitions or inclusion criteria). Each list element is named by wave (frat0 through frat15, with frat9 absent), allowing analysis of how network structure changes over time within a bounded social group.
+
+Each wave captures a directed network of 17 individuals. The longitudinal structure makes this dataset particularly useful for studying tie formation, dissolution, and the dynamics of small-group cohesion.
+
+- **Data Collection:** Repeated sociometric surveys within a single fraternity chapter across 15 observation periods.
+
+- **Domain:** Social Psychology / Small Group Dynamics / Longitudinal SNA
+
+### Network Structure
+
+- **Network Type:** One-mode, directed, longitudinal (15 waves)
+- **Directed:** Yes
+- **Weighted:** No
+- **Per wave:** 17 nodes \| \~51 edges (varies by wave)
+- **Waves:** frat0, frat1, ..., frat8, frat10, ..., frat15 (15 total)
+- **Lists:** frat_i and frat_n (two parallel representations)
+
+### Attributes
+
+#### Node Attributes
+
+- **name** -- Anonymized individual identifier (X1, X2, ..., X17)
+
+### References
+
+Newcomb T. (1961). The acquaintance process. New York: Holt, Reinhard & Winston.
+
+Nordlie P. (1958). A longitudinal study of interpersonal attraction in a natural group setting. Unpublished doctoral dissertation, University of Michigan.
+
+White H., Boorman S. and Breiger R. (1977). Social structure from multiple networks, I. Blockmodels of roles and positions. American Journal of Sociology, 81, 730-780.
+
+## GENERAL SOCIAL SURVEY 2004 (SURVEY) {#general-social-survey-2004-survey}
+
+- **Dataset Name:** General Social Survey
+- **File:** gss.rda
+- **R Objects:** gss (data frame)
+
+### Background
+
+The General Social Survey (GSS) is one of the longest-running and most widely used social surveys in the United States. This file contains data from the 2004 wave, including responses from 1,467 survey respondents across 122 variables.
+
+A central feature of this dataset for social network analysis is the name generator module: respondents were asked to identify up to five people ("alters") with whom they discuss important matters. For each alter listed, the survey collected information on tie strength, relationship type (e.g., spouse, parent, sibling, coworker, friend), and the extent to which alters know each other. Additional name interpreter variables capture alter characteristics including age, education, sex, race, religion, and political party identification.
+
+This dataset is particularly associated with debates about trends in American social isolation: McPherson et al. (2006) reported a dramatic shrinkage in core discussion networks between 1985 and 2004, a finding subsequently critiqued by Fischer (2009) as potentially artifactual.
+
+See also: gss_ego.rda for the ego network reformatting of this data.
+
+- **Data Collection:** NORC at the University of Chicago, 2004. National probability sample of U.S. adults.
+
+- **Domain:** Sociology / Ego Network Analysis / Social Isolation Research
+
+### Network Structure
+
+- **Network Type:** Survey data with embedded ego network measures (not a graph object; use gss_ego.rda for igraph-based analysis)
+
+- **Directed:** N/A (relational data embedded in survey format)
+
+- **Weighted:** N/A OBSERVATIONS : 1,467 respondents (egos) VARIABLES : 122
+
+### Attributes
+
+KEY VARIABLES (selection):
+
+- **Ego-level:** GSSID, AGE, EDUC, SEX, RACE, PARTYID, RELIG, NUMGIVEN
+
+- **Alter tie:** EQCLOSE, RCLOSE1–RCLOSE5 (relationship closeness)
+
+- **Alter-alter:** CLOSE12–CLOSE45 (alter-alter tie indicators, up to 5 alters)
+
+- **Alter sex:** SEX1–SEX5
+
+- **Alter race:** RACE1–RACE5
+
+- **Relationship:** SPOUSE1–SPOUSE5, PARENT1–PARENT5, SIBLING1–SIBLING5, CHILD1–CHILD5, OTHFAM1–OTHFAM5, COWORK1–COWORK5, MEMGRP1–MEMGRP5, NEIGHBR1–NEIGHBR5, FRIEND1–FRIEND5, ADVISOR1–ADVISOR5, OTHER1–OTHER5
+
+- **Alter-level:** TALKTO1–TALKTO5, KNOWN1–KNOWN5, EDUC1–EDUC5, AGE1–AGE5, RELIG1–RELIG5, PARTYID1–PARTYID3
+
+- **Summary:** TALKPOL, FRNDKNOW
+
+### References
+
+Davern, M., Bautista, R., Freese, J., Herd, P., & Morgan, S. L. (2025). General Social Survey 1972–2024 \[Machine-readable data file\]. NORC at the University of Chicago.
+
+Fischer, C. S. (2009). The 2004 GSS finding of shrunken social networks: An artifact? American Sociological Review, 74(4), 657–669.
+
+McPherson, M., Smith-Lovin, L., & Brashears, M. E. (2006). Social isolation in America: Changes in core discussion networks over two decades. American Sociological Review, 71(3), 353–375.
+
+## GENERAL SOCIAL SURVEY 2004 (EGO NETWORK DATA) {#general-social-survey-2004-ego-network-data}
+
+- **Dataset Name:** General Social Survey Ego Networks
+- **File:** gss_ego.rda
+- **R Objects:** ego (data frame) alterlong (data frame) gr.list (list of igraph objects — alter networks only) gr.list.ego (list of igraph objects — ego + alters)
+
+### Background
+
+This file is a restructured, ego-network-ready version of the 2004 General Social Survey (see also gss.rda). The raw GSS survey matrix has been converted into a set of ego network objects suitable for direct use in igraph-based analyses. A total of 288 egos have at least one named alter and are included.
+
+Four objects are provided to support different analytical approaches:
+
+- **ego:** Data frame of 288 ego respondents with demographic attributes.
+
+- **alterlong:** Long-format data frame (955 rows) of alter-level attributes, one row per alter, linked to ego by ego_id.
+
+- **gr.list:** Named list of 288 igraph objects, one per ego. Each graph contains only the alters and their inter-connections (alter network without ego node).
+
+- **gr.list.ego:** Named list of 288 igraph objects, one per ego. Each graph includes the ego node connected to all alters, plus alter- alter ties (full ego network with ego included).
+
+This structure supports both aggregate ego network analysis (e.g., average density across all egos) and individual-level inspection of specific ego networks.
+
+See also: gss.rda for the full survey data in wide format.
+
+- **Data Collection:** NORC at the University of Chicago, 2004. National probability sample of U.S. adults.
+
+- **Domain:** Sociology / Ego Network Analysis / Social Isolation Research
+
+### Network Structure
+
+- **Network Type:** Collection of ego networks (one igraph per respondent)
+- **Directed:** No (alter-alter ties are undirected)
+- **Weighted:** No
+- **ego:** 288 respondents x 8 variables
+- **alterlong:** 955 alter observations x 20 variables
+- **gr.list:** 288 igraph objects (alter networks, no ego node)
+- **gr.list.ego:** 288 igraph objects (full ego networks with ego node)
+
+### Attributes
+
+EGO ATTRIBUTES (ego data frame): ego_id, AGE, EDUC, SEX, RACE, PARTYID, RELIG, NUMGIVEN
+
+ALTER ATTRIBUTES (alterlong data frame): ego_id, alter_id, SEX, RACE, SPOUSE, PARENT, SIBLING, CHILD, OTHFAM, COWORK, MEMGRP, NEIGHBR, FRIEND, ADVISOR, OTHER, TALKTO, KNOWN, EDUC, AGE, RELIG
+
+### References
+
+Davern, M., Bautista, R., Freese, J., Herd, P., & Morgan, S. L. (2025). General Social Survey 1972–2024 \[Machine-readable data file\]. NORC at the University of Chicago.
+
+Fischer, C. S. (2009). The 2004 GSS finding of shrunken social networks: An artifact? American Sociological Review, 74(4), 657–669.
+
+McPherson, M., Smith-Lovin, L., & Brashears, M. E. (2006). Social isolation in America: Changes in core discussion networks over two decades. American Sociological Review, 71(3), 353–375.
+
+## GITHUB DEVELOPER COLLABORATION NETWORK {#github-developer-collaboration-network}
+
+- **Dataset Name:** GitHub Developer Collaboration Network
+- **File:** github.rda
+- **R Objects:** github (igraph)
+
+### Background
+
+This dataset represents the collaboration network among software developers employed at one large (anonymous) technology company, as observed through their activity on GitHub. Nodes are individual developers; edges reflect co-contribution to shared code repositories (i.e., two developers are linked if they both committed code to at least one common repository).
+
+The network is a one-mode projection of an underlying two-mode (bipartite) person-by-repository network. Edge weights reflect the number of shared repositories between any two developers, making this a valued network. Not all developers form a single connected component; a component attribute identifies which connected subgraph each node belongs to.
+
+- **Data Collection:** GitHub activity logs, January 2018 to February 2021, extracted via the GHTorrent project.
+
+- **Domain:** Computational Social Science / Software Engineering / Organizational Networks
+
+### Network Structure
+
+- **Network Type:** One-mode, undirected, weighted
+- **Directed:** No
+- **Weighted:** Yes (number of shared repositories)
+- **Nodes:** 174 (individual developers)
+- **Edges:** 890 (co-contribution ties between developers)
+
+### Attributes
+
+#### Node Attributes
+
+- **name** -- Developer identifier (anonymized)
+
+- **component:** Connected component membership (integer)
+
+#### Edge Attributes
+
+- **weight** -- Number of shared repositories (integer)
+
+### References
+
+Gousios, G., Vasilescu, B., Serebrenik, A., & Zaidman, A. (2014). Lean GHTorrent: GitHub data on demand. In Proceedings of the 11th Working Conference on Mining Software Repositories (MSR 2014), pp. 384–387. ACM.
+
+Middleton, J., Murphy-Hill, E., Green, D., Meade, A., Mayer, R., White, D., & McDonald, S. (2018). Which contributions predict whether developers are accepted into GitHub teams. In Proceedings of the 15th International Conference on Mining Software Repositories (MSR '18), pp. 403–413. ACM.
+
+## GRIME MUSIC ARTIST-TRACK NETWORK {#grime-music-artist-track-network}
+
+- **Dataset Name:** Grime Music Artist–Track Network
+- **File:** grime.rda
+- **R Objects:** artist_track_adj (matrix) artist_track_edge (data frame)
+
+### Background
+
+This dataset captures the bipartite (two-mode) network connecting Grime music artists to the tracks on which they have appeared. Grime is a genre of electronic music originating in East London in the early 2000s, characterized by rapid collaboration and frequent guest appearances across tracks. A tie exists between an artist and a track when that artist contributed to the recording.
+
+The data are provided in two complementary formats:
+
+- **artist_track_adj:** A 372 x 391 binary adjacency matrix (artists as rows, tracks as columns). Suitable for matrix operations and bipartite projection.
+
+- **artist_track_edge:** An edge list data frame (1,143 rows) with columns for artist name and track name. More readable and suitable for graph construction.
+
+This bipartite structure can be projected into either a one-mode artist-artist network (two artists linked if they share a track) or a one-mode track-track network (two tracks linked if they share an artist).
+
+- **Data Collection:** Compiled from publicly available discography and music database sources for Grime genre recordings.
+
+- **Domain:** Cultural Sociology / Music Studies / Bipartite Networks
+
+### Network Structure
+
+- **Network Type:** Two-mode (bipartite), undirected
+- **Directed:** No
+- **Weighted:** No (binary co-appearance)
+- **artist_track_adj:** 372 artists x 391 tracks (matrix)
+- **artist_track_edge:** 1,143 artist–track co-appearance ties (edge list)
+
+### Attributes
+
+NODE ATTRIBUTES (edge list columns):
+
+- **artist:** Artist name (string)
+- **track_name:** Track name (string)
+
+EXAMPLE ARTISTS : Wiley, Kano, Scorcher, Hot Chip, Messy, Desperado
+
+### References
+
+Leppard, T. R. (2024). Collaborating with Competitors: Exploring Network Mechanisms that Drive the Benefits of Collaboration in Music. https://www.lib.ncsu.edu/resolver/1840.20/41837
+
+Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087
+
+## GRIME TIME (LONGITUDINAL) {#grime-time-longitudinal}
+
+- **Dataset Name:** Grime Time Networks
+- **File:** grime_time.rda
+- **R Objects:** grime1i (igraph) — 1st cross-section, artist-to-artist grime2i (igraph) — 2nd cross-section, artist-to-artist grime3i (igraph) — 3rd cross-section, artist-to-artist grime4i (igraph) — 4th cross-section, artist-to-artist grime1n (network) — 1st cross-section, artist-to-artist grime2n (network) — 2nd cross-section, artist-to-artist grime3n (network) — 3rd cross-section, artist-to-artist grime4n (network) — 4th cross-section, artist-to-artist grime_time (networkDynamic) — combination of cross-sections
+
+### Background
+
+These data represent the collaborations that occur between UK Grime artists every two year period from 2008 till 2014. These data were collected from Spotify and coded as directed networks where the tie represents featuring on another artist's music in that year. Collaborations were weighted based on the number of songs the artists created together In this dataset there are cross-sectional networks stored as igraph and network objects. Then there is a dynamic network dataset created from these cross-sections.
+
+- **Data Collection:** Leppard (2024), Dissertation
+
+### Network Structure
+
+- **Network Type:** One mode, longitudinal (repeated cross-sections)
+- **Directed:** Yes
+- **Weighted:** Yes
+- **grime1i:** 40 nodes \| 28 edges \| weighted
+- **grime2i:** 51 nodes \| 37 edges \| weighted
+- **grime3i:** 81 nodes \| 70 edges \| weighted
+- **grime4i:** 83 nodes \| 66 edges \| weighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** Artist's name
+
+#### Edge Attributes
+
+- **collab_weight:** Number of collaborations in that year.
+
+### References
+
+Leppard, T. R. (2024). Collaborating with Competitors: Exploring Network Mechanisms that Drive the Benefits of Collaboration in Music. https://www.lib.ncsu.edu/resolver/1840.20/41837
+
+Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087
+
+## HOLLYWOOD MOVIES NETWORK (TWO MODE) {#hollywood-movies-network-two-mode}
+
+- **Dataset Name:** Hollywood Movies Network
+- **File:** hwd20.rda
+- **R Objects:** hwd20 (igraph) — Actor-to-movie network hwdactors (igraph) — Actor-to-actor network hwdmovies (igraph) — Movie-to-movie network
+
+### Background
+
+This dataset is an adapted version of a dataset collected scraped from IMDB by Douglas Luke. That original dataset included an edgelist of 160 movies and the top actors from those movies. With the help of ChatGPT, we condensed this dataset down to an edgelist of 20 interconnected movies and their top actors.
+
+hwd20 is the bipartite network of links between actors and movies.
+
+hwdactors is the one mode projection of hwd20 showing the connections between actors on the basis of co-appearance in movies.
+
+hwdmovies is the one mode projection of hwd20 showing the connections between movies on the basis of actors included in those movies.
+
+- **Data Collection:** Douglas Luke (2015), https://github.com/DougLuke/UserNetR
+- **Domain:** Communication / Digital Media / Arts & Culture
+
+### Network Structure
+
+- **Network Type:** Two mode (hwd20) and one mode (hwdmovies, hwdactors)
+- **Directed:** No
+- **Weighted:** Yes (for one mode projections)
+- **hwd20:** 192 nodes \| 200 edges \| binary
+- **hwdactors:** 172 nodes \| 896 edges \| weighted
+- **hwdmovies:** 20 nodes \| 48 edges \| weighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** Actor/movie name
+
+#### Edge Attributes
+
+- **weight (hwdactors):** Number of shared movies
+- **weight (hwdmovies):** Number of shared actors
+
+### References
+
+Luke, Douglas. (2015). A User's Guide to Network Analysis in R. Springer. https://github.com/DougLuke/UserNetR
+
+## JOB DESCRIPTION WORD NETWORK (TEXT) {#job-description-word-network-text}
+
+- **Dataset Name:** Job Description Word Network
+- **File:** jobdescnet.rda
+- **R Objects:** jobdescnet (igraph) — Job title-to-word network jobtitlenet (igraph) — Job title-to-job title network jobwordnet (igraph) — Word-to-word network
+
+### Background
+
+These data were scraped with permission from the USAjobs database. The original file contains all of the available federal job postings for the US in the summer of 2021. This file is a subset based on a single representative job ad from 15 of the most popular job titles in the database.
+
+The two mode job title-to-word network (jobdescnet) was sliced to include only instances where edge weights exceeded 2 (and isolate words removed) in order to reduce the total number of words and the overall density of the network.
+
+jobdescnet is a two mode network representing the linkages between those 15 ads and 784 common words appearing in those job ads. jobtitlenet is a one mode network showing connections between job titles based on word co-occurrance. jobwordnet is a one mode network showing the connections between words based on presence in multiple job ads.
+
+- **Data Collection:** McDonald et al. (2026), scraped from USAjobs.gov
+- **Domain:** Work / Organizations / Occupations / Job Search
+
+### Network Structure
+
+- **Network Type:** Two mode (jobdescnet) and one mode (jobtitlenet & jobwordnet)
+- **Directed:** No
+- **Weighted:** Yes
+- **jobdescnet:** 117 nodes \| 121 edges \| weighted
+- **jobtitlenet:** 15 nodes \| 29 edges \| binary
+- **jobwordnet:** 102 nodes \| 784 edges \| binary
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** job title/word
+- **component:** community membership (based on the infomap algorithm)
+
+#### Edge Attributes
+
+- **weight (jobdescnet):** Number of times word appears in job advertisement
+- **weight (jobtitlenet):** Number of shared words in job advertisements
+- **weight (jobwordnet):** Number of job advertisements that used the same words
+
+### References
+
+McDonald, Steve, Jill E. Yavorsky, Daulton Selke, Dakota Dougherty, Adam Goldfarb, and Tremaine Winstead. (2026). “Occupational Segregation and Gendered Language in Job Advertisements.” Unpublished manuscript.
+
+## KRACKHARDT HIGH-TECH MANAGERS {#krackhardt-high-tech-managers}
+
+- **Dataset Name:** Krackhardt High-Tech Managers
+- **File:** hi_tech.rda
+- **R Objects:** hta (igraph) — Advice network htf (igraph) — Friendship network htr (igraph) — Reports-To network
+
+### Background
+
+These data were collected from the 21 managers of a high-technology equipment manufacturer on the west coast of the United States (total company size: just over 100 employees). Three distinct types of directed relational data were collected:
+
+- **hta (ADVICE):** Each manager identified colleagues they go to for advice. Directed: A → B means A seeks advice from B.
+
+- 21 nodes \| 190 edges
+
+- **htf (FRIENDSHIP):** Each manager identified colleagues they consider friends. Directed: A → B means A names B as a friend (asymmetric).
+
+- 21 nodes \| 102 edges
+
+- **htr (REPORTS_TO):** Formal organizational hierarchy, extracted from company documents. A → B means A reports to B.
+
+- 21 nodes \| 20 edges All three networks share the same node set and attribute table, enabling direct comparison of formal structure (htr) with informal networks (hta, htf). This multiplex design makes the dataset ideal for studying the alignment (or misalignment) of formal and informal organizational structure.
+
+- **Data Collection:** Survey and organizational documents; west coast U.S. technology company, mid-1980s.
+
+- **Domain:** Organizational Behavior / Management / Multiplex Networks
+
+### Network Structure
+
+- **Network Type:** Multiplex (three one-mode directed networks, shared node set)
+- **Directed:** Yes (all three networks)
+- **Weighted:** No
+- **hta (Advice):** 21 nodes \| 190 edges
+- **htf (Friendship):** 21 nodes \| 102 edges
+- **htr (Reports-To):** 21 nodes \| 20 edges
+
+### Attributes
+
+NODE ATTRIBUTES (shared across hta, htf, htr):
+
+- **name:** Manager name
+- **age:** Age in years
+- **tenure:** Length of service in years
+- **level:** Hierarchical level (1 = CEO, 2 = Vice President, 3 = Manager)
+- **dept:** Department (0 = CEO/no dept, 1–4 = departments)
+
+### References
+
+Krackhardt, D. (1987). Cognitive social structures. Social Networks, 9, 104–134.
+
+Wasserman, S., & Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.
+
+## MORENO CLASSROOM SOCIOMETRY {#moreno-classroom-sociometry}
+
+- **Dataset Name:** Moreno Classroom Sociometry
+- **File:** moreno.rda
+- **R Objects:** moreno (igraph)
+
+### Background
+
+This dataset contains Jacob Moreno's classic sociometric data collected from a classroom of 33 children. Moreno is widely credited as the founder of sociometry — the systematic measurement of social preferences within groups — and this dataset is among the earliest and most cited examples of social network data in the history of the field.
+
+Edges represent mutual friendship or positive social nominations between students. The network captures the informal social structure of the classroom, including popular children (high degree), isolated children (low degree), and clique formations. Gender is recorded as a node attribute, enabling analysis of gender-based segregation in children's peer networks.
+
+This is an undirected network — ties are treated as symmetric regardless of directionality of the original nominations.
+
+- **Data Collection:** Sociometric surveys administered to a classroom of children; early-to-mid 20th century. Collected by Jacob L. Moreno.
+
+- **Domain:** Developmental Psychology / Sociometry / Classic SNA
+
+### Network Structure
+
+- **Network Type:** One-mode, undirected, binary
+- **Directed:** No
+- **Weighted:** No
+- **Nodes:** 33 (students)
+- **Edges:** 46 (friendship/positive nomination ties)
+
+### Attributes
+
+#### Node Attributes
+
+- **vertex.names** -- Student identifier
+
+- **gender:** Gender (coded 1 or 2; 16 and 17 students respectively)
+
+### References
+
+Moreno, J. L. (1934). Who Shall Survive? Foundations of Sociometry, Group Psychotherapy and Sociodrama. Nervous and Mental Disease Publishing Company.
+
+## PADGETT FLORENTINE FAMILIES MARRIAGE NETWORK {#padgett-florentine-families-marriage-network}
+
+- **Dataset Name:** Padgett Florentine Families Marriage Network
+- **File:** ifm.rda
+- **R Objects:** ifm (igraph)
+
+### Background
+
+This dataset captures the marriage alliance network among 16 prominent Florentine families during the early 15th century (circa 1430). The data were collected by John Padgett from historical documents and have become one of the most widely used networks in social network analysis pedagogy and research.
+
+Nodes represent family aggregates (not individuals); an edge between two families indicates that they were linked by at least one recorded marriage alliance. The network is symmetric — if Family A married into Family B, the tie is undirected.
+
+Substantively, the data capture a pivotal political struggle for control of Florence, with two dominant factions: one centered on the Medici family (node 9) and one on the Strozzi family (node 15). The Medici's strategic use of marriage ties — including bridging across otherwise disconnected families — is often cited as a key factor in their political rise.
+
+Node attributes provide economic and political context: net wealth (1427), civic council seats held (1282–1344), and total marriage/business ties across the broader dataset of 116 families.
+
+- **Data Collection:** Historical documents; Renaissance Florence, circa 1430. Data collected and coded by John Padgett.
+
+- **Domain:** Historical Sociology / Political Sociology / Classic SNA
+
+### Network Structure
+
+- **Network Type:** One-mode, undirected, binary
+- **Directed:** No
+- **Weighted:** No
+- **Nodes:** 16 (Florentine family aggregates)
+- **Edges:** 20 (marriage alliance ties)
+
+### Attributes
+
+#### Node Attributes
+
+- **vertex.names** -- Family name
+
+- **wealth:** Net wealth in 1427 (thousands of lira)
+
+- **seats:** Priorates (civic council seats) held 1282–1344
+
+- **ties:** Total marriage/business ties in 116-family dataset
+
+### References
+
+Breiger, R., & Pattison, P. (1986). Cumulated social roles: The duality of persons and their algebras. Social Networks, 8, 215–256.
+
+Kent, D. (1978). The Rise of the Medici: Faction in Florence, 1426–1434. Oxford University Press.
+
+## SAMPSON MONASTERY NETWORK {#sampson-monastery-network}
+
+- **Dataset Name:** Sampson Monastery Network
+- **File:** sampson.rda
+- **R Objects:** sampson (igraph)
+
+### Background
+
+Samuel Sampson collected data on social interactions among novice monks at a New England monastery during a period of significant internal conflict, while he was in residence as an experimenter studying vision. The dataset captures positive friendship ("liking") ties, derived from the top-3 nominations in the final wave of sociometric rankings (SAMPLK3), and has become one of the most frequently analyzed networks in social network analysis research and pedagogy.
+
+During Sampson's residence, a political crisis within the monastery led to the expulsion of four monks (Nos. 2, 3, 17, and 18 in the Boorman & Breiger coding) and the voluntary departure of several others (Nos. 1, 7, 14, 15, and 16). Only four monks ultimately remained: Bonaventure, Berthold, Ambrose, and Louis (Nos. 5, 6, 9, and 11).
+
+Node attributes record each monk's faction membership (Loyal Opposition, Young Turks, Outcasts, or Waverers) and whether they were part of the original pre-crisis cohort (cloisterville). These faction labels, developed by Breiger, Boorman, and Arabie, are used extensively in the blockmodeling literature.
+
+- **Data Collection:** Sociometric rankings collected at three time points (SAMPLK1–3) during residency at a New England monastery, 1960s. This network reflects SAMPLK3 (final wave, top-3 nominations).
+
+- **Domain:** Organizational Sociology / Classic SNA / Blockmodeling
+
+### Network Structure
+
+- **Network Type:** One-mode, undirected, binary
+- **Directed:** No
+- **Weighted:** No
+- **Nodes:** 18 (novice monks)
+- **Edges:** 60 ("liking" ties — top-3 friendship nominations)
+
+### Attributes
+
+#### Node Attributes
+
+- **vertex.names** -- Monk name (abbreviated)
+
+- **group:** Faction (Loyal Opposition, Young Turks, Outcasts, Waverers)
+
+- **cloisterville:** Pre-crisis cohort membership (logical)
+
+### References
+
+Breiger, R., Boorman, S., & Arabie, P. (1975). An algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional scaling. Journal of Mathematical Psychology, 12, 328–383.
+
+Sampson, S. (1969). Crisis in a cloister. Unpublished doctoral dissertation, Cornell University.
+
+## STATE OF THE UNION WORD NETWORK (TEXT) {#state-of-the-union-word-network-text}
+
+- **Dataset Name:** State of the Union Word Network
+- **File:** sotunet.rda
+- **R Objects:** sotunet (igraph) — President-to-word network sotupresnet (igraph) — President-to-president network sotuwordnet (igraph) — Word-to-word network
+
+### Background
+
+Based on the raw text from State of the Union (SOTU) Addresses from American presidents. Collected via the 'sotu' package in R. Collapsed to include the first SOTUs from 15 selected presidents. Words include only nouns from those speeches.
+
+The two mode president-to-word network (sotunet) was sliced to include only instances where edge weights exceeded 7 (and isolate words removed) in order to reduce the total number of words and the overall density of the network.
+
+sotupresnet represents the one mode projection of sotunet showing the connections between presidents on the basis of similar noun usage.
+
+sotuwordnet represents the one mode projection of sotunet showing the connections between words on the basis of similar utterance by presidents.
+
+- **Data Collection:** Taylor B. Arnold (2022)
+- **Domain:** Political Science / Language
+
+### Network Structure
+
+- **Network Type:** Two mode (sotunet) and one mode (sotupresnet and sotuwordnet)
+- **Directed:** No
+- **Weighted:** Yes
+- **sotunet:** 246 nodes \| 535 edges \| weighted
+- **sotupresnet:** 15 nodes \| 104 edges \| weighted
+- **sotuwordnet:** 231 nodes \| 11167 edges \| weighted
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** President/word
+
+#### Edge Attributes
+
+- **weight (sotunet):** Number of times word appears in president's speech
+- **weight (sotupresnet):** Number of shared words in presidential speeches
+- **weight (sotuwordnet):** Number of president speeches that used the same words
+
+### References
+
+Arnold, Taylor B. (2022). sotu: United States Presidential State of the Union Addresses. https://cran.r-project.org/package=sotu
+
+## COUNTRIES TRADE NETWORKS {#countries-trade-networks}
+
+- **Dataset Name:** Countries Trade Networks
+- **File:** tradenets.rda
+- **R Objects:** mg (igraph) — Manufactured Goods trade network f (igraph) — Foods trade network c (igraph) — Crude Materials trade network m (igraph) — Minerals & Fuels trade network d (igraph) — Diplomatic Exchange network trade_attr (data frame) — Country-level attributes
+
+### Background
+
+This dataset contains five directed network matrices representing economic and diplomatic relations among 24 countries, selected by Wasserman and Faust (1994) from a larger dataset of 63 countries compiled by Smith and White (1988). The selection was designed to be geographically, economically, and politically representative of the global system.
+
+Four trade networks capture the flow of different commodity types — manufactured goods, food and live animals, crude materials (excluding food), and minerals and fuels. A fifth network captures diplomatic exchange (mutual ambassador placement) among the same countries. In all networks, a directed tie from country A to country B indicates that A exports the relevant commodity to (or exchanges diplomats with) B.
+
+An attribute data frame provides macroeconomic context for each country: population growth, GNP growth, secondary school enrollment, and energy consumption — all measured circa 1970–1981.
+
+- **Data Collection:** Smith & White (1988), based on international trade statistics for the period 1965–1980.
+
+- **Domain:** International Relations / World Systems Theory / Multiplex Network Analysis
+
+### Network Structure
+
+- **Network Type:** Multiplex (five one-mode directed networks, shared node set)
+- **Directed:** Yes (all five networks)
+- **Weighted:** mg only (other networks are binary)
+- **mg (Manufactured Goods):** 24 nodes \| 310 edges \| weighted
+- **f (Foods):** 24 nodes \| 307 edges \| binary
+- **c (Crude Materials):** 24 nodes \| 307 edges \| binary
+- **m (Minerals & Fuels):** 24 nodes \| 135 edges \| binary
+- **d (Diplomatic Exchange):** 24 nodes \| 369 edges \| binary
+
+### Attributes
+
+#### Node Attributes (All Networks)
+
+- **name:** Country name
+
+#### Edge Attributes
+
+- **weight:** Trade volume/value (mg only; other networks have no edge attrs)
+
+#### Country Attributes (Trade_Attr Data Frame)
+
+- **POP_GROWTH:** Average annual population growth, 1970–1981 (%)
+- **GNP:** Average annual GNP per capita growth, 1970–1981 (%)
+- **SCHOOLS:** Secondary school enrollment ratio, 1981
+- **ENERGY:** Energy consumption per capita, 1981 (kg coal equivalent)
+
+### References
+
+Smith, D., & White, D. (1988). Structure and dynamics of the global economy: Network analysis of international trade 1965–1980. Unpublished manuscript.
+
+Wasserman, S., & Faust, K. (1994). Social Network Analysis: Methods and Applications. Cambridge University Press.
