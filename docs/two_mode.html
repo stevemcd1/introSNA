@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./network_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks with ggraph</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Visualizing Networks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -299,12 +299,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Interactive Network Visualization</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">intronets Package: Dataset Descriptions</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -352,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This chapter introduces you to a slightly different form of network analysis - <strong>two mode networks</strong>. So far in our learning we have focused on networks with one type of thing connected with others of the same type. Individuals connected to individuals, for example. However, it is possible that one type of thing is connected to that of another type. Individuals may belong to groups, they might subscribe to channels etc. Outside of <em>social</em> networks, words may belong to books, countries may belong to treaties and more. The two mode nature allows you to account for the characteristics of both node types.</p>
 <p>Ties in two mode networks are tend to be defined by connections of <strong>affiliation</strong>. Similar tools of analysis are available for two mode network analysis as those we have covered so far only with some slight alterations to account for the two mode nature. Note, ties within a two mode network must be exclusive. By this, we mean that in order for it to truly be a two mode network, ties within mode must not exist, only across mode (e.g.&nbsp;from people to groups, not people to people or group to group).</p>
 <p>To illustrate this we are going to use a network where artists are connected to the songs they have worked on. Specifically, we will use a dataset on Grime music, which is a UK-based rap genre that emerged from the east London reggae and Garage scene in the early 2000s.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Rather than direct artist-to-artist collaboration networks, this network considers artists connected to the songs they create treating songs as an artifact with characteristics separate of the artists. Likewise, the artists have characteristics separate of the songs they work on.</p>
-<p>Let’s get the data in an take a look.</p>
+<p>Let’s get the data in and take a look.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
@@ -396,9 +390,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a_t_g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(artist_track_edge, <span class="at">directed =</span> F)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 37b1882 UN-- 763 1143 -- 
+<pre><code>IGRAPH f5209e7 UN-- 763 1143 -- 
 + attr: name (v/c)
-+ edges from 37b1882 (vertex names):
++ edges from f5209e7 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -422,9 +416,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_t_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH 37b1882 UN-B 763 1143 -- 
+<pre><code>IGRAPH f5209e7 UN-B 763 1143 -- 
 + attr: name (v/c), type (v/l)
-+ edges from 37b1882 (vertex names):
++ edges from f5209e7 (vertex names):
 [1] Wiley              --See Clear Now (feat. Kano &amp; Scorcher)        
 [2] Kano               --See Clear Now (feat. Kano &amp; Scorcher)        
 [3] Scorcher           --See Clear Now (feat. Kano &amp; Scorcher)        
@@ -690,10 +684,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bipartite_projection</span>(a_t_g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$proj1
-IGRAPH b02ee0c UNW- 372 852 -- 
+IGRAPH 43f27c5 UNW- 372 852 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from b02ee0c (vertex names):
++ edges from 43f27c5 (vertex names):
  [1] Wiley--Kano                Wiley--Scorcher           
  [3] Wiley--Daniel Merriweather Wiley--Hot Chip           
  [5] Wiley--Peter Raeburn       Wiley--Larry              
@@ -704,10 +698,10 @@ IGRAPH b02ee0c UNW- 372 852 --
 + ... omitted several edges
 
 $proj2
-IGRAPH b02efd0 UNW- 391 12312 -- 
+IGRAPH 43f298e UNW- 391 12312 -- 
 + attr: name (v/c), mode (v/c), artist_degree_group (v/c),
 | song_degree_group (v/c), weight (e/n)
-+ edges from b02efd0 (vertex names):
++ edges from 43f298e (vertex names):
 [1] See Clear Now (feat. Kano &amp; Scorcher)--Cash in My Pocket (feat. Daniel Merriweather)
 [2] See Clear Now (feat. Kano &amp; Scorcher)--5AM (feat. Scorcher)                         
 [3] See Clear Now (feat. Kano &amp; Scorcher)--Step by Step (feat. Hot Chip)                

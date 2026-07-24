@@ -8,7 +8,7 @@ To illustrate this we are going to use a network where artists are connected to 
 
 [^two_mode-1]: Leppard, Tom R., Andrew P. Davis. 2026. “The Ties that Rhyme: Duality in Symbolic and Structural Networks of Grime Music.” British Journal of Sociology. https://doi.org/10.1111/1468-4446.70087
 
-Let's get the data in an take a look.
+Let's get the data in and take a look.
 
 ```{r load}
 #| warning: false
